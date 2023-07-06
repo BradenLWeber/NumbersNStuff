@@ -1,8 +1,12 @@
 import { Box } from "@mui/material";
 
-export default PostWrapper = (props) => {
+const Wrapper = (props) => {
   const { children } = props;
   return (
-    <Box sx={{ height: "100%", width: "100%", padding: 10 }}>{children}</Box>
+    <Box height="100%" width="100%" p={10}>
+      {children}
+    </Box>
   );
 };
+
+export default Wrapper;

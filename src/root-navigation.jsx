@@ -4,6 +4,7 @@ import ChalkBrain from "./assets/global/ChalkBrain.png";
 import TextButton from "./components/atoms/text-button";
 import { useState } from "react";
 import Home from "./screens/home";
+import Posts from "./screens/posts";
 
 function App() {
   const [tab, setTab] = useState("Home"); // Home, Posts, About, Playground
@@ -11,23 +12,19 @@ function App() {
   return (
     <Box
       id="ScreenWrapper"
-      sx={{
-        width: "100%",
-        height: "100%",
-        display: "flex",
-        flexDirection: "column",
-      }}
+      width="100%"
+      height="100%"
+      display="flex"
+      flexDirection="column"
     >
       <Box
         id="'NavigationBar'"
-        sx={{
-          height: 70,
-          backgroundColor: Color.primary,
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
+        height={70}
+        backgroundColor={Color.primary}
+        display="flex"
+        flexDirection="row"
+        alignItems="center"
+        justifyContent="space-between"
       >
         <ButtonBase
           id="Logo"
@@ -40,11 +37,11 @@ function App() {
             width={60}
             style={{ borderRadius: 10 }}
           ></img>
-          <Typography sx={{ ml: 12, fontSize: 40 }}>Math Addict</Typography>
+          <Typography ml={12} fontSize={40}>
+            Math Addict
+          </Typography>
         </ButtonBase>
-        <Box
-          sx={{ mr: 14, display: "flex", flexDirection: "row", columnGap: 5 }}
-        >
+        <Box mr={14} display="flex" flexDirection="row" columnGap={5}>
           <TextButton onClick={() => setTab("Posts")}>Posts</TextButton>
           <TextButton onClick={() => setTab("Playgrounds")}>
             Playgrounds
@@ -52,9 +49,9 @@ function App() {
           <TextButton onClick={() => setTab("About")}>About</TextButton>
         </Box>
       </Box>
-      <Box sx={{ flex: 1, minHeight: 0, backgroundColor: Color.light }}>
+      <Box flex={1} backgroundColor={Color.light} overflow="auto">
         {tab === "Home" && <Home></Home>}
-        {tab === "Posts" && "Posts"}
+        {tab === "Posts" && <Posts></Posts>}
         {tab === "About" && "About"}
         {tab === "Playground" && "Playground"}
       </Box>

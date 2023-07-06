@@ -1,14 +1,14 @@
 import { Typography } from "@mui/material";
 import { Font } from "../../styles/Font";
 
-const PostTitle = (props) => {
+const Title = (props) => {
   const { children } = props;
 
   return (
-    <Typography fontSize={Font.size.title} sx={{ marginY: 10 }}>
+    <Typography fontSize={Font.size.title} marginY={10}>
       {children}
     </Typography>
   );
 };
 
-export default PostTitle;
+export default Title;

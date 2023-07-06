@@ -7,7 +7,7 @@ const TextButton = (props) => {
 
   return (
     <ButtonBase sx={{ px: 10, py: 5, borderRadius: 2 }} onClick={onClick}>
-      <Typography sx={{ fontSize: Font.size.button }}>{children}</Typography>
+      <Typography fontSize={Font.size.button}>{children}</Typography>
     </ButtonBase>
   );
 };
