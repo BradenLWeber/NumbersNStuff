@@ -31,6 +31,7 @@ const TreeNode = (props) => {
         <Typography
           sx={{
             cursor: "pointer",
+            color: node.expandable ? Color.black : Color.gray,
             "&:hover": { color: node.expandable ? "inherit" : Color.secondary },
           }}
           onClick={clickIcon}

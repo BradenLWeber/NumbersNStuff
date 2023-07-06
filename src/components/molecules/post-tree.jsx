@@ -81,7 +81,7 @@ const PostTree = (props) => {
   }, []);
 
   return (
-    <Box id="post-tree-wrapper" width={300} height="100%" p={10}>
+    <Box id="post-tree-wrapper" width={300} height="100%" p={10} mt={40}>
       {postList.map((post) => (
         <TreeNode node={post} key={post.text} level={0}></TreeNode>
       ))}

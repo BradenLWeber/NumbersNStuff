@@ -65,7 +65,7 @@ const PostCard = (props) => {
         alignItems="flex-end"
       >
         <img src={image} height={150}></img>
-        <Typography>{createdDate}</Typography>
+        <Typography color={Color.gray}>{createdDate}</Typography>
       </Box>
     </Box>
   );
