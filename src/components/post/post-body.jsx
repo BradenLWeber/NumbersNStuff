@@ -1,5 +1,5 @@
-import { Typography } from "@mui/material";
-import { Font } from "../../styles/Font";
+import { Typography } from '@mui/material';
+import { Font } from 'styles/Font';
 
 const Body = (props) => {
   const { children } = props;

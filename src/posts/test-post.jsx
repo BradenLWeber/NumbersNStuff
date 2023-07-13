@@ -1,15 +1,15 @@
-import Body from "../components/post/post-body";
-import Header from "../components/post/post-header";
-import Title from "../components/post/post-title";
-import Wrapper from "../components/post/post-wrapper";
-import ChalkBrain from "./../assets/global/ChalkBrain.png";
+import Body from 'components/post/post-body';
+import Header from 'components/post/post-header';
+import Title from 'components/post/post-title';
+import Wrapper from 'components/post/post-wrapper';
+import ChalkBrain from 'assets/global/ChalkBrain.png';
 
 export const testPost = {
-  title: "Test post",
-  description: "This is testing the post. Lick a post, or a salt block.",
+  title: 'Test post',
+  description: 'This is testing the post. Lick a post, or a salt block.',
   image: ChalkBrain,
-  createdDate: "7/1/2023",
-  tags: ["test", "chip"],
+  createdDate: '7/1/2023',
+  tags: ['test', 'chip'],
   post: (
     <Wrapper>
       <Title>Unibrows 4Ever</Title>

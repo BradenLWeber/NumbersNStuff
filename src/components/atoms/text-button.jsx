@@ -1,6 +1,6 @@
-import { ButtonBase, Typography } from "@mui/material";
-import { Font } from "../../styles/Font";
-import PropTypes from "prop-types";
+import { ButtonBase, Typography } from '@mui/material';
+import { Font } from 'styles/Font';
+import PropTypes from 'prop-types';
 
 const TextButton = (props) => {
   const { children, onClick } = props;
