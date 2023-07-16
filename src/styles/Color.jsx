@@ -3,6 +3,6 @@ export const Color = {
   secondary: '#f0b66a',
   tertriary: '#f0b08d',
   black: '#111111',
-  gray: '#5c6364',
+  gray: '#454c4d',
   light: '#fdfaf0',
 };

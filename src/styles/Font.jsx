@@ -1,7 +1,7 @@
 export const Font = {
   size: {
     title: 44,
-    header: 30,
+    header: 28,
     button: 18,
     body: 18,
   },

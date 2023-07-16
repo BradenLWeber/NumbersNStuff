@@ -1,8 +1,10 @@
-import { testPost } from './test-post';
 import ChalkBrain from 'assets/global/ChalkBrain.png';
+import { theDivideBy3Game } from './the-divide-by-3-game';
+import { iFoundItButIDontUnderstandIt } from './i-found-it-but-i-dont-understand-it';
 
 export const posts = [
-  testPost,
+  theDivideBy3Game,
+  iFoundItButIDontUnderstandIt,
   {
     title: 'Tester boy',
     createdDate: '8/2/2023',

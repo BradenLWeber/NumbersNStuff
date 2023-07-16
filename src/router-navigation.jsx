@@ -6,6 +6,7 @@ const RouterNavigation = () => {
     {
       path: '/',
       element: <RootNavigation page='Home' />,
+      errorElement: <RootNavigation showArchive={true} page='Error' />,
     },
     {
       path: '/posts',
@@ -22,6 +23,10 @@ const RouterNavigation = () => {
     {
       path: '/post/:title',
       element: <RootNavigation showArchive={true} page='Post' />,
+    },
+    {
+      path: '/playground/:title',
+      element: <div></div>,
     },
   ]);
 

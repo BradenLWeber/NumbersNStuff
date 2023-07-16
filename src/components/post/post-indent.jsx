@@ -1,20 +1,21 @@
 import { Typography } from '@mui/material';
-import { Font } from 'styles/Font';
 import { Color } from 'styles/Color';
+import { Font } from 'styles/Font';
 
-const Title = (props) => {
+const Indent = (props) => {
   const { children } = props;
 
   return (
     <Typography
-      fontSize={Font.size.title}
-      marginY={20}
+      fontSize={Font.size.body}
       color={Color.gray}
-      fontWeight={500}
+      mb={20}
+      ml={20}
+      mt={20}
     >
       {children}
     </Typography>
   );
 };
 
-export default Title;
+export default Indent;

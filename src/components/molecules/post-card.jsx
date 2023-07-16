@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Color } from 'styles/Color';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { parseTitleToUrl } from 'utilities/functions';
 
 const PostCard = (props) => {
   const { post, chipClick } = props;
@@ -12,7 +13,7 @@ const PostCard = (props) => {
   const [url, setUrl] = useState('/');
 
   useEffect(() => {
-    setUrl('/post/' + title.toLowerCase().split(' ').join('-'));
+    setUrl('/post/' + parseTitleToUrl(title));
   }, []);
 
   return (

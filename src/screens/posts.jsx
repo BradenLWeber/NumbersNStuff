@@ -6,6 +6,7 @@ import _ from 'lodash';
 
 const Posts = () => {
   const [filter, setFilter] = useState('');
+  const [allPosts, setAllPosts] = useState([...posts].reverse());
   const [postList, setPostList] = useState([...posts].reverse());
   const [filterBy, setFilterBy] = useState('Newest first');
 
@@ -14,7 +15,7 @@ const Posts = () => {
       typeof event === 'string' ? event : event.target.value
     ).toLowerCase();
     setPostList(
-      posts.filter(
+      allPosts.filter(
         (p) =>
           p.title.toLowerCase().includes(value) ||
           p.description.toLowerCase().includes(value) ||
@@ -28,9 +29,16 @@ const Posts = () => {
     const value = event.target.value;
     const direction = value === 'Newest first' ? -1 : 1;
 
+    setAllPosts(
+      _.orderBy(
+        allPosts,
+        (item) => new Date(item.createdDate).getTime() * direction,
+      ),
+    );
+
     setPostList(
       _.orderBy(
-        posts,
+        postList,
         (item) => new Date(item.createdDate).getTime() * direction,
       ),
     );

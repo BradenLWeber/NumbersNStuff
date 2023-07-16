@@ -2,6 +2,7 @@ import { Box } from '@mui/material';
 import { posts } from 'posts/all-posts';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { parseTitleToUrl } from 'utilities/functions';
 
 const Post = () => {
   const { title } = useParams();
@@ -12,7 +13,7 @@ const Post = () => {
     const allPosts = posts;
     setPost(
       allPosts.filter((post) => {
-        return post.title.toLowerCase().split(' ').join('-') === title;
+        return parseTitleToUrl(post.title) === title;
       })[0],
     );
   }, [title]);

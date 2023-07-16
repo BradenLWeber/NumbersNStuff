@@ -7,12 +7,12 @@ import Posts from './posts';
 import About from './about';
 import PropTypes from 'prop-types';
 import PostTree from 'components/molecules/post-tree';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Post from './post';
+import Error from './error';
 
 const RootNavigation = (props) => {
   const { showArchive, page } = props;
-  const { year, month, day } = useParams();
 
   return (
     <Box
@@ -67,9 +67,10 @@ const RootNavigation = (props) => {
         {showArchive && <PostTree />}
         {page === 'Home' && <Home />}
         {page === 'Posts' && <Posts />}
-        {page === 'Post' && <Post year={year} month={month} day={day} />}
+        {page === 'Post' && <Post />}
         {page === 'About' && <About />}
         {page === 'Playground' && 'Playground'}
+        {page === 'Error' && <Error />}
       </Box>
     </Box>
   );
