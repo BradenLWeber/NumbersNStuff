@@ -10,7 +10,7 @@ import NumberLineWithArrows from '../assets/global/number-line-with-arrows.png';
 
 export const theDivideBy3Game = {
   title: 'The divide by 3 game',
-  description: 'This is testing the post. Lick a post, or a salt block.',
+  description: "A nifty game to play when you're bored in class.",
   image: ChalkBrain,
   createdDate: '6/11/2023',
   tags: ['game'],

@@ -13,10 +13,10 @@ import RandomSummation from '../assets/global/random-summations.png';
 
 export const iFoundItButIDontUnderstandIt = {
   title: "I found it, but I don't understand it",
-  description: 'This is testing the post. Lick a post, or a salt block.',
+  description: 'This is a story about a child, a calculator, and summations.',
   image: ChalkBrain,
   createdDate: '6/13/2023',
-  tags: ['calculator'],
+  tags: ['calculator', 'summation'],
   post: (
     <Wrapper>
       <Title>I found it, but I don't understand it</Title>

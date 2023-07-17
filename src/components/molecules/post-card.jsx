@@ -21,9 +21,11 @@ const PostCard = (props) => {
       id='post-card-wrapper'
       display='flex'
       flexDirection='row'
-      height={220}
+      height='fit-content'
+      minHeight={220}
       width='100%'
       maxWidth={1000}
+      minWidth={450}
       mr={10}
       mb={20}
       padding='20px 20px 20px 0px'
@@ -40,6 +42,8 @@ const PostCard = (props) => {
           <Link to={url} style={{ color: 'unset', textDecoration: 'none' }}>
             <Typography
               fontSize={Font.size.title}
+              lineHeight={1}
+              mr={20}
               sx={{
                 ':hover': {
                   color: Color.tertriary,
@@ -50,11 +54,11 @@ const PostCard = (props) => {
               {title}
             </Typography>
           </Link>
-          <Typography fontSize={Font.size.body} mt={10}>
+          <Typography fontSize={Font.size.body} mt={10} mr={10}>
             {description}
           </Typography>
         </Box>
-        <Box display='flex' flexDirection='row'>
+        <Box display='flex' flexDirection='row' mt={20}>
           {tags.map((tag) => (
             <Chip
               label={tag}
