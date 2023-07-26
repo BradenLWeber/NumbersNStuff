@@ -11,9 +11,9 @@ const {
 const { default: Title } = require('components/post/post-title');
 
 const DivideBy3Playground = (props) => {
-    const [phase, setPhase] = useState(1);
-    const [win, setWin] = useState(true);
-    const [moves, setMoves] = useState(0);
+  const [phase, setPhase] = useState(1);
+  const [win, setWin] = useState(true);
+  const [moves, setMoves] = useState(0);
   const [number, setNumber] = useState('');
   const [chooseNumberButtonText, setChooseNumberButtonText] =
     useState('Looking good');
@@ -49,80 +49,111 @@ const DivideBy3Playground = (props) => {
   const addOne = () => {
     setNumber(BigInt(BigInt(number) + BigInt(1)).toString());
     setMoves(moves + 1);
-  }
+  };
 
   const subtractOne = () => {
     setNumber(BigInt(BigInt(number) - BigInt(1)).toString());
     setMoves(moves + 1);
     if (number === '1') {
-        playerWon();
+      playerWon();
     }
-  }
+  };
 
   const divideByThree = () => {
     const divided = BigInt(number) / BigInt(3);
     setMoves(moves + 1);
     if (divided * BigInt(3) !== BigInt(number)) {
-        setWin(false);
-        setPhase(3);
+      setWin(false);
+      setPhase(3);
     } else if (divided === BigInt(0)) {
-        playerWon();
+      playerWon();
     } else {
-        setNumber(divided.toString());
+      setNumber(divided.toString());
     }
-  }
+  };
 
   const playerWon = () => {
     setWin(true);
     setPhase(3);
-  }
+  };
 
   const reset = () => {
     setNumber('');
     setMoves(0);
     setPhase(1);
-  }
+  };
 
   return (
     <PlaygroundWrapper>
-      {phase === 1 && <Box display='flex' flexDirection='column'>
-        <Title>Choose a large number</Title>
-        <TextField
-          label='Pick a good one'
-          value={number}
-          onChange={(e) => setNumber(e.target.value)}
-        />
-        <Button
-          variant='outlined'
-          sx={{
-            mt: 20,
-            backgroundColor: chooseNumberButtonColor,
-            border: chooseNumberButtonColor,
-            color: chooseNumberButtonColor === Color.black ? 'white' : 'black',
-            '&:hover': {
-                color: 'black'
-            }
-          }}
-          disabled={number.length <= 3}
-          onClick={() => setPhase(2)}
-        >
-          {chooseNumberButtonText}
-        </Button>
-      </Box>}
-      {phase === 2 && <Box display='flex' flexDirection='column'>
-        <Tooltip title={number}><div><Title>{number}</Title></div></Tooltip>
-        <Box display='flex' flexDirection='row' columnGap={10}>
-            <Button variant='outlined' onClick={addOne}>+1</Button>
-            <Button variant='outlined' onClick={subtractOne}>-1</Button>
-            <Button variant='outlined' onClick={divideByThree}>/3</Button>
+      {phase === 1 && (
+        <Box display='flex' flexDirection='column'>
+          <Title>Choose a large number</Title>
+          <TextField
+            label='Pick a good one'
+            value={number}
+            onChange={(e) => setNumber(e.target.value)}
+          />
+          <Button
+            variant='outlined'
+            sx={{
+              mt: 20,
+              backgroundColor: chooseNumberButtonColor,
+              border: chooseNumberButtonColor,
+              color:
+                chooseNumberButtonColor === Color.black ? 'white' : 'black',
+              '&:hover': {
+                color: 'black',
+              },
+            }}
+            disabled={number.length <= 3}
+            onClick={() => setPhase(2)}
+          >
+            {chooseNumberButtonText}
+          </Button>
         </Box>
-        </Box>}
-          {phase === 3 && <Box>
-            <Title>{win ? 'Congratulations!' : 'Better Luck next time'}</Title>
-            <Header>{win ? 'You won in ' : 'You lost in '}{moves} moves</Header>
-            <Body>{win ? '' : `${number} / 3 = ${BigInt(number) / BigInt(3) * BigInt(3) - BigInt(number) === BigInt(-2) ? BigInt(number) + '.666666' : BigInt(number) + '.333333'}`}</Body>
-            <Button variant='outlined' sx={{mt: 20}} onClick={reset}>Play again?</Button>
-        </Box>}
+      )}
+      {phase === 2 && (
+        <Box display='flex' flexDirection='column'>
+          <Tooltip title={number}>
+            <div>
+              <Title>{number}</Title>
+            </div>
+          </Tooltip>
+          <Box display='flex' flexDirection='row' columnGap={10}>
+            <Button variant='outlined' onClick={addOne}>
+              +1
+            </Button>
+            <Button variant='outlined' onClick={subtractOne}>
+              -1
+            </Button>
+            <Button variant='outlined' onClick={divideByThree}>
+              /3
+            </Button>
+          </Box>
+        </Box>
+      )}
+      {phase === 3 && (
+        <Box>
+          <Title>{win ? 'Congratulations!' : 'Better Luck next time'}</Title>
+          <Header>
+            {win ? 'You won in ' : 'You lost in '}
+            {moves} moves
+          </Header>
+          <Body>
+            {win
+              ? ''
+              : `${number} / 3 = ${
+                  (BigInt(number) / BigInt(3)) * BigInt(3) - BigInt(number) ===
+                  BigInt(-2)
+                    ? BigInt(number) + '.666666'
+                    : BigInt(number) + '.333333'
+                }`}
+          </Body>
+          <Button variant='outlined' sx={{ mt: 20 }} onClick={reset}>
+            Play again?
+          </Button>
+        </Box>
+      )}
     </PlaygroundWrapper>
   );
 };
