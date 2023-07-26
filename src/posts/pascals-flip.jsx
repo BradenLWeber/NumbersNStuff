@@ -105,34 +105,66 @@ export const pascalsFlip = {
       <Image src={XComplex} />
       <Body>
         Once again, the end result was a little different. This one ended in 0s
-        after four lines and had a line of 12s right before.{' '}
+        after four lines and had a line of 12s right before.
       </Body>
       <Body>
         I was puzzling over these observations, trying to figure out if there
         was some pattern I was missing. I ran a few more examples and compiled
         the data.
       </Body>
-      <Indent>f(x) = x² - runs for 3 lines, ends with 2s</Indent>
-      <Indent>f(x) = x² - x + 1 - runs for 3 lines, ends with 2s </Indent>
-      <Indent>f(x) = 2x² - 1 - runs for 3 lines, ends with 4s</Indent>
-      <Indent>f(x) = x³ - runs for 4 lines, ends with 6s.</Indent>
-      <Indent>f(x) = x³ - x² - x - runs for 4 lines, ends with 6s.</Indent>
-      <Indent>f(x) = x³ + x² - runs for 4 lines, ends with 6s.</Indent>
-      <Indent>f(x) = 2x³ -3x² + x - 5 - runs for 4 lines, ends with 12s</Indent>
-      <Indent>f(x) = x4 - runs for 5 lines, ends with 24s</Indent>
+      <Indent separate={true} widthFirstLine={200}>
+        f(x) = x² | runs for 3 lines, ends with 2s
+      </Indent>
+      <Indent separate={true} widthFirstLine={200}>
+        f(x) = x² - x + 1 | runs for 3 lines, ends with 2s
+      </Indent>
+      <Indent separate={true} widthFirstLine={200}>
+        f(x) = 2x² - 1 | runs for 3 lines, ends with 4s
+      </Indent>
+      <Indent separate={true} widthFirstLine={200}>
+        f(x) = x³ | runs for 4 lines, ends with 6s.
+      </Indent>
+      <Indent separate={true} widthFirstLine={200}>
+        f(x) = x³ - x² - x | runs for 4 lines, ends with 6s.
+      </Indent>
+      <Indent separate={true} widthFirstLine={200}>
+        f(x) = x³ + x² | runs for 4 lines, ends with 6s.
+      </Indent>
+      <Indent separate={true} widthFirstLine={200}>
+        f(x) = 2x³ -3x² + x - 5 | runs for 4 lines, ends with 12s
+      </Indent>
+      <Indent separate={true} widthFirstLine={200}>
+        f(x) = x⁴ | runs for 5 lines, ends with 24s
+      </Indent>
       <Body>
         At this point, I started to see a pattern emerging. The line of numbers
         at the end seemed to depend upon the highest term within f(x). Rewriting
         the above data according to highest term looked like this.
       </Body>
-      <Indent>f(x) = x² - 3 lines, ends with 2s</Indent>
-      <Indent>f(x) = x² ... - 3 lines, ends with 2s </Indent>
-      <Indent>f(x) = 2x² ... - 3 lines, ends with 4s</Indent>
-      <Indent>f(x) = x³ - 4 lines, ends with 6s.</Indent>
-      <Indent>f(x) = x³ ... - 4 lines, ends with 6s.</Indent>
-      <Indent>f(x) = x³ ... - 4 lines, ends with 6s.</Indent>
-      <Indent>f(x) = 2x³ ... - 4 lines, ends with 12s</Indent>
-      <Indent>f(x) = x4 - 5 lines, ends with 24s </Indent>
+      <Indent separate={true} widthFirstLine={130}>
+        f(x) = x² | 3 lines, ends with 2s
+      </Indent>
+      <Indent separate={true} widthFirstLine={130}>
+        f(x) = x² ... | 3 lines, ends with 2s
+      </Indent>
+      <Indent separate={true} widthFirstLine={130}>
+        f(x) = 2x² ... | 3 lines, ends with 4s
+      </Indent>
+      <Indent separate={true} widthFirstLine={130}>
+        f(x) = x³ | 4 lines, ends with 6s.
+      </Indent>
+      <Indent separate={true} widthFirstLine={130}>
+        f(x) = x³ ... | 4 lines, ends with 6s.
+      </Indent>
+      <Indent separate={true} widthFirstLine={130}>
+        f(x) = x³ ... | 4 lines, ends with 6s.
+      </Indent>
+      <Indent separate={true} widthFirstLine={130}>
+        f(x) = 2x³ ... | 4 lines, ends with 12s
+      </Indent>
+      <Indent separate={true} widthFirstLine={130}>
+        f(x) = x⁴ | 5 lines, ends with 24s
+      </Indent>
       <Body>
         Whenever I changed things other than the highest term in f(x), the end
         result didn't change.
@@ -153,11 +185,21 @@ export const pascalsFlip = {
       <Body>
         For the above examples, I checked to make sure this held true.
       </Body>
-      <Indent>f(x) = x² 1 * 2! = 2</Indent>
-      <Indent>f(x) = 2x² 2 * 2! = 4</Indent>
-      <Indent>f(x) = x³ 1 * 3! = 6</Indent>
-      <Indent>f(x) = 2x³ 2 * 3! = 12</Indent>
-      <Indent>f(x) = x4 1 * 4! = 24</Indent>
+      <Indent separate={true} widthFirstLine={100}>
+        f(x) = x² | 1 * 2! = 2
+      </Indent>
+      <Indent separate={true} widthFirstLine={100}>
+        f(x) = 2x² | 2 * 2! = 4
+      </Indent>
+      <Indent separate={true} widthFirstLine={100}>
+        f(x) = x³ | 1 * 3! = 6
+      </Indent>
+      <Indent separate={true} widthFirstLine={100}>
+        f(x) = 2x³ | 2 * 3! = 12
+      </Indent>
+      <Indent separate={true} widthFirstLine={100}>
+        f(x) = x⁴ | 1 * 4! = 24
+      </Indent>
       <Body>
         Eureka! What an unexpected pattern to find here! Recapping what we've
         got so far in a very long sentence:
@@ -175,11 +217,11 @@ export const pascalsFlip = {
       <Body>
         The a * (b!) is nice and neat, but it looks very much like something
         else. It looks like someone took the integral of the final number over
-        and over until they reached the first term.{' '}
+        and over until they reached the first term.
       </Body>
       <Body>I did some calculations to make sure.</Body>
-      <Indent mb={5}>
-        <b>x² from 2</b>
+      <Indent mb={5} bold={true}>
+        x² from 2
       </Indent>
       <Indent mt={5} mb={5}>
         ∫2 = 2x
@@ -187,8 +229,8 @@ export const pascalsFlip = {
       <Indent mt={5} mb={5}>
         ∫2x = x²
       </Indent>
-      <Indent mb={5}>
-        <b>2x² from 4</b>
+      <Indent mb={5} bold={true}>
+        2x² from 4
       </Indent>
       <Indent mt={5} mb={5}>
         ∫4 = 4x
@@ -196,8 +238,8 @@ export const pascalsFlip = {
       <Indent mt={5} mb={5}>
         ∫4x = 2x²
       </Indent>
-      <Indent mb={5}>
-        <b>x³ from 6</b>
+      <Indent mb={5} bold={true}>
+        x³ from 6
       </Indent>
       <Indent mt={5} mb={5}>
         ∫6 = 6x
@@ -208,8 +250,8 @@ export const pascalsFlip = {
       <Indent mt={5} mb={5}>
         ∫3x² = x³
       </Indent>
-      <Indent mb={5}>
-        <b>2x³ from 12</b>
+      <Indent mb={5} bold={true}>
+        2x³ from 12
       </Indent>
       <Indent mt={5} mb={5}>
         ∫12 = 12x
@@ -220,8 +262,8 @@ export const pascalsFlip = {
       <Indent mt={5} mb={5}>
         ∫6x² = 2x³
       </Indent>
-      <Indent mb={5}>
-        <b>x4 from 24</b>
+      <Indent mb={5} bold={true}>
+        x⁴ from 24
       </Indent>
       <Indent mt={5} mb={5}>
         ∫24 = 24x
@@ -232,7 +274,7 @@ export const pascalsFlip = {
       <Indent mt={5} mb={5}>
         ∫12x² = 4x³
       </Indent>
-      <Indent mt={5}>∫4x³ = x4</Indent>
+      <Indent mt={5}>∫4x³ = x⁴</Indent>
       <Body>
         I didn't know for sure, but I had a good feeling that this was the true
         pattern. At this time, I also noticed that the number of times the

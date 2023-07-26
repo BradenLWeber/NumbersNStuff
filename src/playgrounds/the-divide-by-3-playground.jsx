@@ -10,7 +10,7 @@ const {
 } = require('components/playground/playground-wrapper');
 const { default: Title } = require('components/post/post-title');
 
-const DivideBy3Playground = (props) => {
+const DivideBy3Playground = () => {
   const [phase, setPhase] = useState(1);
   const [number, setNumber] = useState('');
   const [win, setWin] = useState(true);
