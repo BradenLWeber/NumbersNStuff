@@ -63,11 +63,11 @@ export const theDivideBy3Game = {
         write out every number and highlight the ones divisible by 3, it would
         look something like this.
       </Body>
-      <Image src={NumberLine} width={600} height={70}></Image>
+      <Image src={NumberLine} width={600} height={70} />
       <Body>
         You can see that each white number is only one away from a blue number.{' '}
       </Body>
-      <Image src={NumberLineWithArrows} width={600} height={70}></Image>
+      <Image src={NumberLineWithArrows} width={600} height={70} />
       <Body>
         Therefore, to make a white number divisible by 3, you will either need
         to <i>add one</i> or <i>subtract one</i>.

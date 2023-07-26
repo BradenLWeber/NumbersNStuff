@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const Image = (props) => {
   const { src, height, width } = props;
@@ -21,7 +20,7 @@ const Image = (props) => {
       height={imgHeight}
       width={imgWidth}
       style={{ marginTop: 20, marginBottom: 20 }}
-    ></img>
+    />
   );
 };
 

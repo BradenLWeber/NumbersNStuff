@@ -34,7 +34,7 @@ export const pascalsFlip = {
         Everyone knows Pascal's triangle. You start with 1 at the top, and on
         every subsequent layer of the pyramid, you add the two numbers above.
       </Body>
-      <Image src={PascalsTriangle}></Image>
+      <Image src={PascalsTriangle} />
       <Body>
         One of my favorite things to do when I'm bored is think of a popular
         mathematical thing I've been taught and then ask myself, which parts of
@@ -47,7 +47,7 @@ export const pascalsFlip = {
         with a long line of numbers and work down to one at the bottom?
       </Body>
       <Body>So I made a long line of 1's and started adding</Body>
-      <Image src={AddOnes}></Image>
+      <Image src={AddOnes} />
       <Body>
         I stopped pretty quickly because it was clear I wasn't doing anything
         groundbreaking. The pattern was obvious. So I thought okay, what can I
@@ -58,7 +58,7 @@ export const pascalsFlip = {
         using a polynomial. The simplest one would be f(x) = x, where x starts
         at 1 and increases by 1 every step.
       </Body>
-      <Image src={AddX}></Image>
+      <Image src={AddX} />
       <Body>
         This one was a little more interesting, but it still takes on a very
         predictable quality. The thing I enjoyed about pascal's triangle is that
@@ -80,7 +80,7 @@ export const pascalsFlip = {
         To do this, I will definitely need to make f(x) more complex, so I
         started small. f(x) = x³.
       </Body>
-      <Image src={X3}></Image>
+      <Image src={X3} />
       <Body>
         Woah! Hold up. When I started with a line of numbers calculated from
         f(x) = x³ and recursively subtracted the next number from the previous
@@ -91,7 +91,7 @@ export const pascalsFlip = {
         The first thing I wanted to do was try to replicate this behavior with
         something other than f(x) = x³. I started small with x².
       </Body>
-      <Image src={X2}></Image>
+      <Image src={X2} />
       <Body>
         Replicated! But there was something different about the two examples.
         The previous one ended up with 0s after four iterations and had a line
@@ -102,7 +102,7 @@ export const pascalsFlip = {
         I held these observations in my head as a tried a much more complex
         example. I tried f(x) = 2x³ - 3x² + x - 5.
       </Body>
-      <Image src={XComplex}></Image>
+      <Image src={XComplex} />
       <Body>
         Once again, the end result was a little different. This one ended in 0s
         after four lines and had a line of 12s right before.{' '}
@@ -240,7 +240,7 @@ export const pascalsFlip = {
         lines it took to reach that final number before the 0s. I visualized it
         like this:
       </Body>
-      <Image src={IntegralExamples}></Image>
+      <Image src={IntegralExamples} />
       <Body>
         Interestingly, this integral strategy didn't seem to apply to the middle
         rows in a consistent way. It only applied to the bottom and top row.
@@ -260,25 +260,25 @@ export const pascalsFlip = {
         pyramid thing and land on the number 2, I run the integrals, and I
         figure out the first term is x².
       </Body>
-      <Image src={IntegralX2}></Image>
+      <Image src={IntegralX2} />
       <Body>
         Theoretically, I should be able go through each number in the line I
         started with and subtract x² from it. Whatever is left will be all the
         terms other than the highest term.
       </Body>
-      <Image src={SubtractionLine}></Image>
+      <Image src={SubtractionLine} />
       <Body>
         In this example, we would be left with f(x) = -x + 1, as expected. Then
         I do the flipped pyramid again to figure out the highest term, which
         will be -x.
       </Body>
-      <Image src={IntegralX}></Image>
+      <Image src={IntegralX} />
       <Body>
         Then I subtract -x from the top row, and I should be left with f(x) = 1.
         I can confirm this when I subtract -x from every row and see it's a list
         of ones
       </Body>
-      <Image src={Integral1}></Image>
+      <Image src={Integral1} />
       <Body>
         So with just that starting line of numbers, I can calculate all the
         terms of f(x) one by one. How cool!
@@ -294,18 +294,18 @@ export const pascalsFlip = {
         Now that I had satisfied myself with flipped pyramids of polynomials, I
         tried other things, such as f(x) = 1/x.
       </Body>
-      <Image src={OneOverX}></Image>
+      <Image src={OneOverX} />
       <Body>
         Nothing jumped out to me with that same "What treasure did I just
         stumble upon" feeling. Next I tried f(x) = cos(x), except I jumped by
         increments of π/2 instead of 1.
       </Body>
-      <Image src={CosX}></Image>
+      <Image src={CosX} />
       <Body>
         It brought an interesting pattern, but it was predictable. I didn't
         sense anything significant to mine from here. What about f(x) = 2^x?
       </Body>
-      <Image src={PowerOf2}></Image>
+      <Image src={PowerOf2} />
       <Body>
         I stopped early in this one because it was pretty obvious where it was
         going. Once again, an interesting pattern, but I didn't see anything

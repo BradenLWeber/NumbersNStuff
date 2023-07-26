@@ -56,29 +56,29 @@ export const iFoundItButIDontUnderstandIt = {
         function works best when you put a variable on the right side. I started
         trying out summations.
       </Body>
-      <Image src={RandomSummation} height={370}></Image>
+      <Image src={RandomSummation} height={370} />
       <Body>
-        {'('}For those of you that don't know how summations work, you can find
-        an explanation{' '}
+        (For those of you that don't know how summations work, you can find an
+        explanation{' '}
         <a
           href='https://www.khanacademy.org/math/ap-calculus-ab/ab-integration-new/ab-6-3/a/review-summation-notation'
           target='_blank'
         >
           here
         </a>
-        {')'}
+        )
       </Body>
       <Body>
         At this point, I thought, what happens if I sum to really high numbers?
         I kept with 1/n^2 and summed all the way up to 100000.
       </Body>
-      <Image src={n21000000} height={92}></Image>
+      <Image src={n21000000} height={92} />
       <Body>
         The calculator took a half second to finish. I had <i>never</i> seen my
         calculator give an answer that wasn't instant. With fear and trembling,
         I added another zero to the top.
       </Body>
-      <Image src={n210000000} height={90}></Image>
+      <Image src={n210000000} height={90} />
       <Body>
         This second number seemed suspiciously close to the first one. I thought
         1/n^2 must have a finite answer when the top number drifted off to
@@ -96,7 +96,7 @@ export const iFoundItButIDontUnderstandIt = {
         Last time, I noticed patterns when I added one zero at a time to the top
         number. I tried it again.
       </Body>
-      <Image src={OneOverN} height={460}></Image>
+      <Image src={OneOverN} height={460} />
       <Body>
         With every higher summation, my calculator was slower and slower in
         producing an answer. For the highest number I managed to calculate, I
@@ -152,7 +152,7 @@ export const iFoundItButIDontUnderstandIt = {
         But I too distracted by new, wonderful reality to be disappointed. I
         couldn't prove it, but it sure looked like this was true:
       </Body>
-      <Image src={SummationPart} height={96}></Image>
+      <Image src={SummationPart} height={96} />
       <Body>Don't tell me that doesn't give you chills.</Body>
       <Body>
         To this day, I don't know any way of proving this. I never learned
@@ -173,7 +173,7 @@ export const iFoundItButIDontUnderstandIt = {
       <Body>
         So, the equation that I found, but still don't understand, is this:
       </Body>
-      <Image src={SummationFull} height={95}></Image>
+      <Image src={SummationFull} height={95} />
       <Body>
         If you or a loved one can prove this equation to be correct OR false,
         please satisfy this hungry soul.

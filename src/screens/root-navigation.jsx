@@ -2,17 +2,21 @@ import { Box, ButtonBase, Typography } from '@mui/material';
 import { Color } from 'styles/Color';
 import ChalkBrain from 'assets/global/ChalkBrain.png';
 import TextButton from 'components/atoms/text-button';
-import Home from './home';
-import Posts from './posts';
-import About from './about';
 import PropTypes from 'prop-types';
 import PostTree from 'components/molecules/post-tree';
-import { Link } from 'react-router-dom';
-import Post from './post';
+import { Link, Outlet, useNavigate, useLocation } from 'react-router-dom';
 import Error from './error';
 
+import { useEffect } from 'react';
+
 const RootNavigation = (props) => {
-  const { showArchive, page } = props;
+  const { page } = props;
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (location.pathname === '/') navigate('/home');
+  }, [location]);
 
   return (
     <Box
@@ -31,7 +35,7 @@ const RootNavigation = (props) => {
         alignItems='center'
         justifyContent='space-between'
       >
-        <Link to='/' style={{ color: 'unset' }}>
+        <Link to='/home' style={{ color: 'unset' }}>
           <ButtonBase id='Logo' sx={{ p: 5, pr: 15, borderRadius: '10px' }}>
             <img
               alt='Chalk drawing of a brain'
@@ -64,13 +68,12 @@ const RootNavigation = (props) => {
         flexDirection='row'
         overflow='auto'
       >
-        {showArchive && <PostTree />}
-        {page === 'Home' && <Home />}
-        {page === 'Posts' && <Posts />}
-        {page === 'Post' && <Post />}
-        {page === 'About' && <About />}
-        {page === 'Playground' && 'Playground'}
+        {!(
+          location.pathname.includes('home') ||
+          location.pathname.includes('playground')
+        ) && <PostTree />}
         {page === 'Error' && <Error />}
+        <Outlet />
       </Box>
     </Box>
   );
