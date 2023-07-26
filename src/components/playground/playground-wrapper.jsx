@@ -11,6 +11,7 @@ const PlaygroundWrapper = (props) => {
       minHeight={0}
       backgroundColor='white'
       p={20}
+      overflow='auto'
     >
       {children}
     </Box>

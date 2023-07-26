@@ -1,4 +1,4 @@
-import { Box, Button, TextField, Tooltip } from '@mui/material';
+import { Box, Button, TextField, Tooltip, Typography } from '@mui/material';
 import Body from 'components/post/post-body';
 import Header from 'components/post/post-header';
 import { useEffect, useState } from 'react';
@@ -12,16 +12,19 @@ const { default: Title } = require('components/post/post-title');
 
 const DivideBy3Playground = (props) => {
   const [phase, setPhase] = useState(1);
+  const [number, setNumber] = useState('');
   const [win, setWin] = useState(true);
   const [moves, setMoves] = useState(0);
-  const [number, setNumber] = useState('');
   const [chooseNumberButtonText, setChooseNumberButtonText] =
     useState('Looking good');
   const [chooseNumberButtonColor, setChooseNumberButtonColor] = useState(
     Color.primary,
   );
+  const [history, setHistory] = useState([]);
 
   useEffect(() => {
+    if (phase !== 1) return;
+
     if (number.length < 8) {
       setChooseNumberButtonText('Looking good');
       setChooseNumberButtonColor(Color.lightGray);
@@ -47,13 +50,17 @@ const DivideBy3Playground = (props) => {
   }, [number]);
 
   const addOne = () => {
-    setNumber(BigInt(BigInt(number) + BigInt(1)).toString());
+    const newNumber = BigInt(BigInt(number) + BigInt(1)).toString();
+    setNumber(newNumber);
+    setHistory([...history, '+1 ' + newNumber]);
     setMoves(moves + 1);
   };
 
   const subtractOne = () => {
-    setNumber(BigInt(BigInt(number) - BigInt(1)).toString());
+    const newNumber = BigInt(BigInt(number) - BigInt(1)).toString();
+    setNumber(newNumber);
     setMoves(moves + 1);
+    setHistory([...history, '-1 ' + newNumber]);
     if (number === '1') {
       playerWon();
     }
@@ -69,6 +76,7 @@ const DivideBy3Playground = (props) => {
       playerWon();
     } else {
       setNumber(divided.toString());
+      setHistory([...history, '/3 ' + divided.toString()]);
     }
   };
 
@@ -81,7 +89,24 @@ const DivideBy3Playground = (props) => {
     setNumber('');
     setMoves(0);
     setPhase(1);
+    setHistory([]);
   };
+
+  const chooseNumber = () => {
+    setPhase(2);
+    setHistory([number]);
+  };
+
+  const HistoryComponent = () => (
+    <>
+      <Header>History</Header>
+      {history.map((hist, i) => (
+        <Typography pb={i === history.length - 1 ? 10 : 0} color={Color.gray}>
+          {hist}
+        </Typography>
+      ))}
+    </>
+  );
 
   return (
     <PlaygroundWrapper>
@@ -106,7 +131,7 @@ const DivideBy3Playground = (props) => {
               },
             }}
             disabled={number.length <= 3}
-            onClick={() => setPhase(2)}
+            onClick={chooseNumber}
           >
             {chooseNumberButtonText}
           </Button>
@@ -119,7 +144,7 @@ const DivideBy3Playground = (props) => {
               <Title>{number}</Title>
             </div>
           </Tooltip>
-          <Box display='flex' flexDirection='row' columnGap={10}>
+          <Box display='flex' flexDirection='row' columnGap={10} mb={20}>
             <Button variant='outlined' onClick={addOne}>
               +1
             </Button>
@@ -130,14 +155,17 @@ const DivideBy3Playground = (props) => {
               /3
             </Button>
           </Box>
+          <HistoryComponent />
         </Box>
       )}
       {phase === 3 && (
         <Box>
-          <Title>{win ? 'Congratulations!' : 'Better Luck next time'}</Title>
+          <Title>
+            {win ? 'Congratulations!' : 'Better Luck next time :\\'}
+          </Title>
           <Header>
             {win ? 'You won in ' : 'You lost in '}
-            {moves} moves
+            {moves} move(s){win ? '!' : '.'}
           </Header>
           <Body>
             {win
@@ -145,13 +173,14 @@ const DivideBy3Playground = (props) => {
               : `${number} / 3 = ${
                   (BigInt(number) / BigInt(3)) * BigInt(3) - BigInt(number) ===
                   BigInt(-2)
-                    ? BigInt(number) + '.666666'
-                    : BigInt(number) + '.333333'
+                    ? BigInt(number) / BigInt(3) + '.666666'
+                    : BigInt(number) / BigInt(3) + '.333333'
                 }`}
           </Body>
-          <Button variant='outlined' sx={{ mt: 20 }} onClick={reset}>
+          <Button variant='outlined' sx={{ mt: 20, mb: 20 }} onClick={reset}>
             Play again?
           </Button>
+          <HistoryComponent />
         </Box>
       )}
     </PlaygroundWrapper>
