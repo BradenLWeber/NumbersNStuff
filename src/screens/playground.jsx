@@ -9,7 +9,7 @@ import Error from './error';
 const Playground = () => {
   const { title } = useParams();
 
-  const [playground, setPlayground] = useState({});
+  const [playground, setPlayground] = useState({ element: <div /> });
 
   useEffect(() => {
     const allPlaygrounds = playgrounds;
