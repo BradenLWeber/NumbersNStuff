@@ -14,7 +14,11 @@ const postTitle = 'The divide by 3 game';
 export const theDivideBy3Game = {
   title: postTitle,
   description: "A nifty game to play when you're bored in class.",
-  image: ChalkBrain,
+  image: {
+    src: NumberLineWithArrows,
+    height: 150,
+    width: 270,
+  },
   createdDate: '6/11/2023',
   tags: ['game'],
   post: (

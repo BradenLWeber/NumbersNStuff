@@ -7,10 +7,10 @@ import PostTree from 'components/molecules/post-tree';
 import { Link, Outlet, useNavigate, useLocation } from 'react-router-dom';
 import Error from './error';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const RootNavigation = (props) => {
-  const { page } = props;
+  const { page, showArchive } = props;
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -70,10 +70,9 @@ const RootNavigation = (props) => {
         flexDirection='row'
         overflow='auto'
       >
-        {!(
-          location.pathname.includes('home') ||
-          location.pathname.includes('playground')
-        ) && <PostTree />}
+        {(showArchive ||
+          (!location.pathname.includes('home') &&
+            !location.pathname.includes('playground'))) && <PostTree />}
         {page === 'Error' && <Error />}
         <Outlet />
       </Box>

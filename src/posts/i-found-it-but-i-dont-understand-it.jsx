@@ -17,7 +17,10 @@ const postTitle = "I found it, but I don't understand it";
 export const iFoundItButIDontUnderstandIt = {
   title: postTitle,
   description: 'This is a story about a child, a calculator, and summations.',
-  image: ChalkBrain,
+  image: {
+    src: SummationFull,
+    height: 110,
+  },
   createdDate: '6/13/2023',
   tags: ['calculator', 'summation'],
   post: (

@@ -1,4 +1,3 @@
-import ChalkBrain from 'assets/global/ChalkBrain.png';
 import Body from 'components/post/post-body';
 import Header from 'components/post/post-header';
 import Image from 'components/post/post-image';
@@ -26,7 +25,9 @@ const postTitle = "Pascal's Flip";
 export const pascalsFlip = {
   title: postTitle,
   description: 'A surprising discovery from an inverted pyramid.',
-  image: ChalkBrain,
+  image: {
+    src: PascalsTriangle,
+  },
   createdDate: '6/18/2023',
   tags: ['pascal', 'geometric'],
   post: (

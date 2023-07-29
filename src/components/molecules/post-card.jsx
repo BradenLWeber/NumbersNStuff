@@ -79,7 +79,13 @@ const PostCard = (props) => {
         justifyContent='space-between'
         alignItems='flex-end'
       >
-        <img src={image} height={150} alt='Post icon' />
+        <img
+          src={image.src}
+          height={image.height || 150}
+          width={image.width || 'auto'}
+          alt='Post icon'
+          style={{ objectFit: 'cover' }}
+        />
         <Typography color={Color.gray}>{createdDate}</Typography>
       </Box>
     </Box>
