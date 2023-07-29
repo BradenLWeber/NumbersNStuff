@@ -36,10 +36,6 @@ const RouterNavigation = () => {
         },
       ],
     },
-    {
-      path: '/playground/:title',
-      element: <div />,
-    },
   ]);
 
   return <RouterProvider router={router} />;

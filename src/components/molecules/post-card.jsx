@@ -101,7 +101,11 @@ PostCard.propTypes = {
   post: PropTypes.shape({
     title: PropTypes.string,
     description: PropTypes.string,
-    image: PropTypes.string,
+    image: PropTypes.shape({
+      src: PropTypes.string,
+      height: PropTypes.number,
+      width: PropTypes.number,
+    }),
     createdDate: PropTypes.string,
     tags: PropTypes.arrayOf(PropTypes.string),
   }),

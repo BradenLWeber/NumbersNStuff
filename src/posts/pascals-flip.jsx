@@ -32,7 +32,7 @@ export const pascalsFlip = {
   tags: ['pascal', 'geometric'],
   post: (
     <Wrapper>
-      <Title>Pascal's flip</Title>
+      <Title playgroundName={'helo'}>Pascal's flip</Title>
       <Header>Reaching the flip</Header>
       <Body>
         Everyone knows Pascal's triangle. You start with 1 at the top, and on
