@@ -24,7 +24,7 @@ const postTitle = "Pascal's Flip";
 
 export const pascalsFlip = {
   title: postTitle,
-  description: 'A surprising discovery from an inverted pyramid.',
+  description: 'A surprising discovery from an inverted pyramid of numbers.',
   image: {
     src: PascalsTriangle,
   },
@@ -32,7 +32,7 @@ export const pascalsFlip = {
   tags: ['pascal', 'geometric'],
   post: (
     <Wrapper>
-      <Title playgroundName={postTitle}>Pascal's flip</Title>
+      <Title>Pascal's flip</Title>
       <Header>Reaching the flip</Header>
       <Body>
         Everyone knows Pascal's triangle. You start with 1 at the top, and on

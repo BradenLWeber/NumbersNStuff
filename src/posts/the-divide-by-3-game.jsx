@@ -16,7 +16,7 @@ export const theDivideBy3Game = {
   description: "A nifty game to play when you're bored in class.",
   image: {
     src: NumberLineWithArrows,
-    height: 150,
+    height: 120,
     width: 270,
   },
   createdDate: '6/11/2023',

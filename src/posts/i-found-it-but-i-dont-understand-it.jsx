@@ -25,9 +25,7 @@ export const iFoundItButIDontUnderstandIt = {
   tags: ['calculator', 'summation'],
   post: (
     <Wrapper>
-      <Title playgroundName={postTitle}>
-        I found it, but I don't understand it
-      </Title>
+      <Title>I found it, but I don't understand it</Title>
       <Body>
         This is a story of a boy getting a new fancy calculator and wondering
         what all the buttons do.

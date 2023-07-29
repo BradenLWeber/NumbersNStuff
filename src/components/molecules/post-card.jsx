@@ -54,7 +54,12 @@ const PostCard = (props) => {
               {title}
             </Typography>
           </Link>
-          <Typography fontSize={Font.size.body} mt={10} mr={10}>
+          <Typography
+            fontSize={Font.size.body}
+            mt={10}
+            mr={10}
+            color={Color.gray}
+          >
             {description}
           </Typography>
         </Box>
