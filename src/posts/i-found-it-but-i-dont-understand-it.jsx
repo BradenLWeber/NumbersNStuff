@@ -10,16 +10,21 @@ import n21000000 from '../assets/global/n2-100000.png';
 import n210000000 from '../assets/global/n2-1000000.png';
 import OneOverN from '../assets/global/one-over-n.png';
 import RandomSummation from '../assets/global/random-summations.png';
+import Footer from 'components/post/post-footer';
+
+const postTitle = "I found it, but I don't understand it";
 
 export const iFoundItButIDontUnderstandIt = {
-  title: "I found it, but I don't understand it",
+  title: postTitle,
   description: 'This is a story about a child, a calculator, and summations.',
   image: ChalkBrain,
   createdDate: '6/13/2023',
   tags: ['calculator', 'summation'],
   post: (
     <Wrapper>
-      <Title>I found it, but I don't understand it</Title>
+      <Title playgroundName={postTitle}>
+        I found it, but I don't understand it
+      </Title>
       <Body>
         This is a story of a boy getting a new fancy calculator and wondering
         what all the buttons do.
@@ -178,6 +183,7 @@ export const iFoundItButIDontUnderstandIt = {
         If you or a loved one can prove this equation to be correct OR false,
         please satisfy this hungry soul.
       </Body>
+      <Footer></Footer>
     </Wrapper>
   ),
 };

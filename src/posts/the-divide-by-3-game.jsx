@@ -7,16 +7,19 @@ import Indent from 'components/post/post-indent';
 import Image from 'components/post/post-image';
 import NumberLine from '../assets/global/number-line.png';
 import NumberLineWithArrows from '../assets/global/number-line-with-arrows.png';
+import Footer from 'components/post/post-footer';
+
+const postTitle = 'The divide by 3 game';
 
 export const theDivideBy3Game = {
-  title: 'The divide by 3 game',
+  title: postTitle,
   description: "A nifty game to play when you're bored in class.",
   image: ChalkBrain,
   createdDate: '6/11/2023',
   tags: ['game'],
   post: (
     <Wrapper>
-      <Title>The divide by 3 game</Title>
+      <Title playgroundName={postTitle}>The divide by 3 game</Title>
       <Body>
         There is an easy way to tell if a number is divisible by three. If all
         the digits add up to a number divisible by three, the original number is
@@ -160,6 +163,7 @@ export const theDivideBy3Game = {
       <Indent>/3 (1)</Indent>
       <Indent>-1 (0)</Indent>
       <Body>Invigorating, right?</Body>
+      <Footer title={postTitle}></Footer>
     </Wrapper>
   ),
 };

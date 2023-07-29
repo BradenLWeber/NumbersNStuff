@@ -62,7 +62,9 @@ const RootNavigation = (props) => {
         </Box>
       </Box>
       <Box
+        id='main-body-wrapper'
         flex={1}
+        minWidth={0}
         backgroundColor={Color.light}
         display='flex'
         flexDirection='row'

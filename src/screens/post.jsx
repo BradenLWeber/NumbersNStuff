@@ -19,7 +19,7 @@ const Post = () => {
   }, [title]);
 
   return (
-    <Box id='post-wrapper' mt={10}>
+    <Box id='post-wrapper' mt={10} flex={1} minWidth={0}>
       {post.post}
     </Box>
   );

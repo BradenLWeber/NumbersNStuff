@@ -2,6 +2,7 @@ import DivideBy3Playground from 'playgrounds/the-divide-by-3-playground';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import About from 'screens/about';
 import Home from 'screens/home';
+import Playground from 'screens/playground';
 import Post from 'screens/post';
 import Posts from 'screens/posts';
 import RootNavigation from 'screens/root-navigation';
@@ -22,16 +23,16 @@ const RouterNavigation = () => {
           element: <Posts />,
         },
         {
-          path: 'playgrounds',
-          element: <DivideBy3Playground />,
-        },
-        {
           path: 'about',
           element: <About />,
         },
         {
           path: 'post/:title',
           element: <Post />,
+        },
+        {
+          path: 'playground/:title',
+          element: <Playground />,
         },
       ],
     },

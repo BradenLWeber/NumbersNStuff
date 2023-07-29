@@ -19,16 +19,19 @@ import Integral1 from 'assets/global/inverted-pyramid-ones-only.png';
 import OneOverX from 'assets/global/inverted-pyramid-one-over-x.png';
 import CosX from 'assets/global/inverted-pyramid-cos-x.png';
 import PowerOf2 from 'assets/global/inverted-pyramid-2-power-of-n.png';
+import Footer from 'components/post/post-footer';
+
+const postTitle = "Pascal's Flip";
 
 export const pascalsFlip = {
-  title: "Pascal's Flip",
+  title: postTitle,
   description: 'A surprising discovery from an inverted pyramid.',
   image: ChalkBrain,
   createdDate: '6/18/2023',
   tags: ['pascal', 'geometric'],
   post: (
     <Wrapper>
-      <Title>Pascal's flip</Title>
+      <Title playgroundName={postTitle}>Pascal's flip</Title>
       <Header>Reaching the flip</Header>
       <Body>
         Everyone knows Pascal's triangle. You start with 1 at the top, and on
@@ -336,18 +339,18 @@ export const pascalsFlip = {
         Now that I had satisfied myself with flipped pyramids of polynomials, I
         tried other things, such as f(x) = 1/x.
       </Body>
-      <Image src={OneOverX} />
+      <Image src={OneOverX} width={800} />
       <Body>
         Nothing jumped out to me with that same "What treasure did I just
         stumble upon" feeling. Next I tried f(x) = cos(x), except I jumped by
         increments of π/2 instead of 1.
       </Body>
-      <Image src={CosX} />
+      <Image src={CosX} width={800} />
       <Body>
         It brought an interesting pattern, but it was predictable. I didn't
         sense anything significant to mine from here. What about f(x) = 2^x?
       </Body>
-      <Image src={PowerOf2} />
+      <Image src={PowerOf2} width={800} />
       <Body>
         I stopped early in this one because it was pretty obvious where it was
         going. Once again, an interesting pattern, but I didn't see anything
@@ -364,6 +367,7 @@ export const pascalsFlip = {
         anyone could figure out how to prove the method mathematically instead
         of empirically, I would love to see the proof.
       </Body>
+      <Footer></Footer>
     </Wrapper>
   ),
 };

@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { Color } from 'styles/Color';
 import { Link } from 'react-router-dom';
 import { parseTitleToUrl } from 'utilities/functions';
+import Node from 'classes/node';
 
 const TreeNode = (props) => {
   const { level } = props; // node is also in props but is not getting etracted due to naming conflicts
@@ -65,6 +66,7 @@ const TreeNode = (props) => {
 
 TreeNode.propTypes = {
   node: PropTypes.instanceOf(Node),
+  level: PropTypes.number,
 };
 
 export default TreeNode;

@@ -3,6 +3,7 @@ import { posts } from 'posts/all-posts';
 import TreeNode from './tree-node';
 import { Box, Typography } from '@mui/material';
 import { Color } from 'styles/Color';
+import Node from 'classes/node';
 
 const getMonthFromNumber = (num) => {
   num = Number(num);
@@ -91,15 +92,5 @@ const PostTree = () => {
     </Box>
   );
 };
-
-export class Node {
-  constructor(text, expandable) {
-    this.nodes = [];
-    this.text = text;
-    this.expandable = expandable;
-    this.expanded = false;
-    this.level = 1;
-  }
-}
 
 export default PostTree;

@@ -1,9 +1,11 @@
 import { Box, Button, TextField, Tooltip, Typography } from '@mui/material';
 import Body from 'components/post/post-body';
 import Header from 'components/post/post-header';
+import { theDivideBy3Game } from 'posts/the-divide-by-3-game';
 import { useEffect, useState } from 'react';
 
 import { Color } from 'styles/Color';
+import { parseTitleToUrl } from 'utilities/functions';
 
 const {
   default: PlaygroundWrapper,
@@ -21,6 +23,11 @@ const DivideBy3Playground = () => {
     Color.primary,
   );
   const [history, setHistory] = useState([]);
+  const [postName, setPostName] = useState('');
+
+  useEffect(() => {
+    setPostName(parseTitleToUrl(theDivideBy3Game.title));
+  }, []);
 
   useEffect(() => {
     if (phase !== 1) return;
@@ -108,8 +115,26 @@ const DivideBy3Playground = () => {
     </>
   );
 
+  const Explanation = () => (
+    <>
+      <Title>Rules</Title>
+      <Body>
+        <b>1)</b> Start with a large number
+      </Body>
+      <Body>
+        <b>2)</b> Add 1, subtract 1, or divide by 3
+      </Body>
+      <Body>
+        <b>3)</b> Repeat step 2 until you reach 0.
+      </Body>
+      <Body mt={30}>
+        If the resulting number is ever not a whole number, you lose.
+      </Body>
+    </>
+  );
+
   return (
-    <PlaygroundWrapper>
+    <PlaygroundWrapper explanation={<Explanation />} postName={postName}>
       {phase === 1 && (
         <Box display='flex' flexDirection='column'>
           <Title>Choose a large number</Title>
@@ -165,7 +190,8 @@ const DivideBy3Playground = () => {
           </Title>
           <Header>
             {win ? 'You won in ' : 'You lost in '}
-            {moves} move(s){win ? '!' : '.'}
+            {moves} move{moves > 1 ? 's' : ''}
+            {win ? '!' : '.'}
           </Header>
           <Body>
             {win
