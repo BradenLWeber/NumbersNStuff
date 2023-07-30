@@ -2,28 +2,18 @@ import Body from 'components/post/post-body';
 import Header from 'components/post/post-header';
 import Title from 'components/post/post-title';
 import Wrapper from 'components/post/post-wrapper';
-import ChalkBrain from 'assets/global/ChalkBrain.png';
 import Indent from 'components/post/post-indent';
 import Image from 'components/post/post-image';
 import NumberLine from '../assets/global/number-line.png';
 import NumberLineWithArrows from '../assets/global/number-line-with-arrows.png';
 import Footer from 'components/post/post-footer';
 
-const postTitle = 'The divide by 3 game';
+export const theDivideBy3GameTitle = 'The divide by 3 game';
 
-export const theDivideBy3Game = {
-  title: postTitle,
-  description: "A nifty game to play when you're bored in class.",
-  image: {
-    src: NumberLineWithArrows,
-    height: 120,
-    width: 270,
-  },
-  createdDate: '6/11/2023',
-  tags: ['game'],
-  post: (
+export const TheDivideBy3Game = () => {
+  return (
     <Wrapper>
-      <Title playgroundName={postTitle}>The divide by 3 game</Title>
+      <Title playgroundName={theDivideBy3GameTitle}>The divide by 3 game</Title>
       <Body>
         There is an easy way to tell if a number is divisible by three. If all
         the digits add up to a number divisible by three, the original number is
@@ -167,7 +157,9 @@ export const theDivideBy3Game = {
       <Indent>/3 (1)</Indent>
       <Indent>-1 (0)</Indent>
       <Body>Invigorating, right?</Body>
-      <Footer title={postTitle}></Footer>
+      <Footer title={theDivideBy3GameTitle}></Footer>
     </Wrapper>
-  ),
+  );
 };
+
+export default TheDivideBy3Game;

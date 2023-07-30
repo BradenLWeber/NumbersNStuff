@@ -1,7 +1,7 @@
 import { Box, Button, TextField, Tooltip, Typography } from '@mui/material';
 import Body from 'components/post/post-body';
 import Header from 'components/post/post-header';
-import { theDivideBy3Game } from 'posts/the-divide-by-3-game';
+import { theDivideBy3GameTitle } from 'posts/the-divide-by-3-game';
 import { useEffect, useState } from 'react';
 
 import { Color } from 'styles/Color';
@@ -26,7 +26,7 @@ const DivideBy3Playground = () => {
   const [postName, setPostName] = useState('');
 
   useEffect(() => {
-    setPostName(parseTitleToUrl(theDivideBy3Game.title));
+    setPostName(parseTitleToUrl(theDivideBy3GameTitle));
   }, []);
 
   useEffect(() => {

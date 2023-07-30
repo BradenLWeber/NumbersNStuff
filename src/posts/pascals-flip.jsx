@@ -20,17 +20,10 @@ import CosX from 'assets/global/inverted-pyramid-cos-x.png';
 import PowerOf2 from 'assets/global/inverted-pyramid-2-power-of-n.png';
 import Footer from 'components/post/post-footer';
 
-const postTitle = "Pascal's Flip";
+export const pascalsFlipTitle = "Pascal's Flip";
 
-export const pascalsFlip = {
-  title: postTitle,
-  description: 'A surprising discovery from an inverted pyramid of numbers.',
-  image: {
-    src: PascalsTriangle,
-  },
-  createdDate: '6/18/2023',
-  tags: ['pascal', 'geometric'],
-  post: (
+export const PascalsFlip = () => {
+  return (
     <Wrapper>
       <Title>Pascal's flip</Title>
       <Header>Reaching the flip</Header>
@@ -370,5 +363,7 @@ export const pascalsFlip = {
       </Body>
       <Footer></Footer>
     </Wrapper>
-  ),
+  );
 };
+
+export default PascalsFlip;

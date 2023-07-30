@@ -1,7 +1,6 @@
 import Body from 'components/post/post-body';
 import Title from 'components/post/post-title';
 import Wrapper from 'components/post/post-wrapper';
-import ChalkBrain from 'assets/global/ChalkBrain.png';
 import Indent from 'components/post/post-indent';
 import Image from 'components/post/post-image';
 import SummationFull from '../assets/global/summation-full.png';
@@ -12,18 +11,11 @@ import OneOverN from '../assets/global/one-over-n.png';
 import RandomSummation from '../assets/global/random-summations.png';
 import Footer from 'components/post/post-footer';
 
-const postTitle = "I found it, but I don't understand it";
+export const iFoundItButIDontUnderstandItTitle =
+  "I found it, but I don't understand it";
 
-export const iFoundItButIDontUnderstandIt = {
-  title: postTitle,
-  description: 'This is a story about a child, a calculator, and summations.',
-  image: {
-    src: SummationFull,
-    height: 110,
-  },
-  createdDate: '6/13/2023',
-  tags: ['calculator', 'summation'],
-  post: (
+export const IFoundItButIDontUnderstandIt = () => {
+  return (
     <Wrapper>
       <Title>I found it, but I don't understand it</Title>
       <Body>
@@ -186,5 +178,7 @@ export const iFoundItButIDontUnderstandIt = {
       </Body>
       <Footer></Footer>
     </Wrapper>
-  ),
+  );
 };
+
+export default IFoundItButIDontUnderstandIt;
