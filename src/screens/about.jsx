@@ -2,6 +2,8 @@ import { Box } from '@mui/material';
 import Title from 'components/post/post-title';
 import Body from 'components/post/post-body';
 import ChalkBrain from 'assets/global/ChalkBrain.png';
+import Braden from 'assets/global/me.jpg';
+import KassiAndBraden from 'assets/global/kassi-and-braden.jpg';
 
 const About = () => {
   return (
@@ -22,7 +24,7 @@ const About = () => {
             decorated educationally in the mathematical sphere, but I can't
             shake my drive to discover new mathematical concepts.
           </Body>
-          <Body>
+          <Body mt={20}>
             This blog started to solve a simple problem. All my math adventures
             were contained inside my head and hardly anywhere else. I want other
             people to experience the wonder of math too! I can't do that if I
@@ -32,7 +34,7 @@ const About = () => {
           <Title>Personal life</Title>
           <Body>
             I am a native Michigander who still lives in this state for reasons
-            that don't always feel good enough (who would every purposely choose
+            that don't always feel good enough (who would ever purposely choose
             Michigan weather?). I graduated from Calvin University with a
             bachelor's degree in Computer Science, and I do website work as my
             full time job.
@@ -46,18 +48,26 @@ const About = () => {
             She's my best friend and greatest supporter. I love you, Kassi.
           </Body>
           <Title>Contact Me</Title>
-          <Body>
+          <Body mb={30}>
             Email me at bradenlweber@gmail.com, or message me on{' '}
             <a href='https://www.linkedin.com/in/braden-weber/'>LinkedIn</a>.
           </Body>
         </Box>
-        <img
-          alt='Chalk drawing of a brain'
-          src={ChalkBrain}
-          width={400}
-          height={350}
-          style={{ marginTop: 114 }}
-        />
+        <Box display='flex' flexDirection='column'>
+          <img
+            alt='Braden'
+            src={Braden}
+            width={400}
+            height={350}
+            style={{ marginTop: 114 }}
+          />
+          <img
+            alt='kassi-and-braden'
+            src={KassiAndBraden}
+            width={400}
+            style={{ marginTop: 50, paddingBottom: 30 }}
+          />
+        </Box>
       </Box>
     </Box>
   );
