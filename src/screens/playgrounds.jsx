@@ -1,9 +1,9 @@
 import { Box, MenuItem, TextField } from '@mui/material';
-import PostCard from 'components/molecules/post-card';
+import PostCard from 'components/general/post-card';
 import { useState } from 'react';
 import _ from 'lodash';
 import { playgrounds } from 'playgrounds/all-playgrounds';
-import PlaygroundCard from 'components/molecules/playground-card';
+import PlaygroundCard from 'components/general/playground-card';
 
 const Playgrounds = () => {
   const [filter, setFilter] = useState('');

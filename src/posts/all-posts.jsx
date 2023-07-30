@@ -1,13 +1,13 @@
 import IFoundItButIDontUnderstandIt, {
   iFoundItButIDontUnderstandItTitle,
-} from './i-found-it-but-i-dont-understand-it';
-import PascalsFlip, { pascalsFlipTitle } from './pascals-flip';
+} from './i-found-it-but-i-dont-understand-it/i-found-it-but-i-dont-understand-it';
+import PascalsFlip, { pascalsFlipTitle } from './pascals-flip/pascals-flip';
 import TheDivideBy3Game, {
   theDivideBy3GameTitle,
-} from './the-divide-by-3-game';
-import NumberLineWithArrows from '../assets/global/number-line-with-arrows.png';
-import SummationFull from '../assets/global/summation-full.png';
-import PascalsTriangle from 'assets/global/pascals-triangle.png';
+} from './divide-by-3-game/the-divide-by-3-game';
+import NumberLineWithArrows from 'posts/divide-by-3-game/number-line-with-arrows.png';
+import SummationFull from 'posts/i-found-it-but-i-dont-understand-it/summation-full.png';
+import PascalsTriangle from 'posts/pascals-flip/pascals-triangle.png';
 
 export const posts = [
   {

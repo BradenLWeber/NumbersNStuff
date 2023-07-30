@@ -1,6 +1,6 @@
 import { Box, MenuItem, TextField } from '@mui/material';
 import { posts } from 'posts/all-posts';
-import PostCard from 'components/molecules/post-card';
+import PostCard from 'components/general/post-card';
 import { useState } from 'react';
 import _ from 'lodash';
 

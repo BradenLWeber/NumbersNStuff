@@ -1,7 +1,7 @@
 import { Box, Button, TextField, Tooltip, Typography } from '@mui/material';
 import Body from 'components/post/post-body';
 import Header from 'components/post/post-header';
-import { theDivideBy3GameTitle } from 'posts/the-divide-by-3-game';
+import { theDivideBy3GameTitle } from 'posts/divide-by-3-game/the-divide-by-3-game';
 import { useEffect, useState } from 'react';
 
 import { Color } from 'styles/Color';

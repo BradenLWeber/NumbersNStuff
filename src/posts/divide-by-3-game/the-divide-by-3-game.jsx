@@ -4,8 +4,8 @@ import Title from 'components/post/post-title';
 import Wrapper from 'components/post/post-wrapper';
 import Indent from 'components/post/post-indent';
 import Image from 'components/post/post-image';
-import NumberLine from '../assets/global/number-line.png';
-import NumberLineWithArrows from '../assets/global/number-line-with-arrows.png';
+import NumberLine from 'posts/divide-by-3-game/number-line.png';
+import NumberLineWithArrows from 'posts/divide-by-3-game/number-line-with-arrows.png';
 import Footer from 'components/post/post-footer';
 
 export const theDivideBy3GameTitle = 'The divide by 3 game';

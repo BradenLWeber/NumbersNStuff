@@ -1,9 +1,9 @@
 import { Box, ButtonBase, Typography } from '@mui/material';
 import { Color } from 'styles/Color';
 import ChalkBrain from 'assets/global/ChalkBrain.png';
-import TextButton from 'components/atoms/text-button';
+import TextButton from 'components/general/text-button';
 import PropTypes from 'prop-types';
-import PostTree from 'components/molecules/post-tree';
+import PostTree from 'components/general/post-tree';
 import { Link, Outlet, useNavigate, useLocation } from 'react-router-dom';
 import Error from './error';
 

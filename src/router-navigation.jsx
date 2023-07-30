@@ -1,4 +1,4 @@
-import DivideBy3Playground from 'playgrounds/the-divide-by-3-playground';
+import DivideBy3Playground from 'playgrounds/divide-by-3-game/the-divide-by-3-playground';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import About from 'screens/about';
 import Home from 'screens/home';
