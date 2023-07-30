@@ -2,24 +2,19 @@ import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 
 const Image = (props) => {
-  const { src, height, width } = props;
-  const [imgWidth, setImgWidth] = useState('auto');
-  const [imgHeight, setImgHeight] = useState('auto');
-
-  useEffect(() => {
-    setImgHeight(height ? height + 'px' : 'auto');
-  }, [height]);
-
-  useEffect(() => {
-    setImgWidth(width ? width + 'px' : 'auto');
-  }, [width]);
+  const { src, height, width, mt, mb, keepRatio, border } = props;
 
   return (
     <img
       src={src}
-      height={imgHeight}
-      width={imgWidth}
-      style={{ marginTop: 20, marginBottom: 20 }}
+      height={height ? height + 'px' : 'auto'}
+      width={width ? width + 'px' : 'auto'}
+      style={{
+        marginTop: mt === undefined ? 20 : mt,
+        marginBottom: mb === undefined ? 20 : mt,
+        objectFit: keepRatio ? 'cover' : 'contain',
+        border: border ? border : 'unset',
+      }}
     />
   );
 };
@@ -28,6 +23,9 @@ Image.propTypes = {
   src: PropTypes.string,
   height: PropTypes.number,
   width: PropTypes.number,
+  mb: PropTypes.number,
+  mt: PropTypes.number,
+  keepRatio: PropTypes.bool,
 };
 
 export default Image;

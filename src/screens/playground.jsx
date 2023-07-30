@@ -15,7 +15,6 @@ const Playground = () => {
     const allPlaygrounds = playgrounds;
     setPlayground(
       allPlaygrounds.filter((playground) => {
-        console.log(playground.title);
         return parseTitleToUrl(playground.title) === title;
       })[0],
     );
