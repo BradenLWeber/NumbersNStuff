@@ -19,8 +19,8 @@ const About = () => {
           <Body>
             I am just a friendly, neighborhood mathematician. I do math because
             I enjoy it, though I only sometimes understand it. I am not
-            decorated educationally, but I can't shake my drive to discover new
-            mathematical concepts.
+            decorated educationally in the mathematical sphere, but I can't
+            shake my drive to discover new mathematical concepts.
           </Body>
           <Body>
             This blog started to solve a simple problem. All my math adventures
@@ -29,14 +29,34 @@ const About = () => {
             keep it all to myself, so this is my attempt to get everything into
             a public space.
           </Body>
+          <Title>Personal life</Title>
+          <Body>
+            I am a native Michigander who still lives in this state for reasons
+            that don't always feel good enough (who would every purposely choose
+            Michigan weather?). I graduated from Calvin University with a
+            bachelor's degree in Computer Science, and I do website work as my
+            full time job.
+          </Body>
+          <Body mt={20}>
+            I am married to a woman far better than I deserve. For those who
+            like the Meyer Briggs personality test, I consistently test as{' '}
+            <a href='https://www.16personalities.com/infp-personality'>INFP</a>,
+            and she tests as{' '}
+            <a href='https://www.16personalities.com/infj-personality'>INFJ</a>.
+            She's my best friend and greatest supporter. I love you, Kassi.
+          </Body>
           <Title>Contact Me</Title>
-          <Body>bradenlweber@gmail.com</Body>
+          <Body>
+            Email me at bradenlweber@gmail.com, or message me on{' '}
+            <a href='https://www.linkedin.com/in/braden-weber/'>LinkedIn</a>.
+          </Body>
         </Box>
         <img
           alt='Chalk drawing of a brain'
           src={ChalkBrain}
           width={400}
           height={350}
+          style={{ marginTop: 114 }}
         />
       </Box>
     </Box>
