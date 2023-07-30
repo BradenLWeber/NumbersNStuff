@@ -4,7 +4,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { Color } from 'styles/Color';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { parseTitleToUrl } from 'utilities/functions';
 import Node from 'classes/node';
 
@@ -12,14 +12,15 @@ const TreeNode = (props) => {
   const { level } = props; // node is also in props but is not getting etracted due to naming conflicts
   const [node, setNode] = useState(props.node);
   const [url, setUrl] = useState('/');
+  const location = useLocation();
 
   useEffect(() => {
     setUrl(
       node.expandable
-        ? '/posts/'
+        ? location.pathname
         : '/post/' + parseTitleToUrl(node.text.toLowerCase().split(': ')[1]),
     );
-  }, []);
+  }, [location]);
 
   const clickIcon = () => {
     setNode((prevNode) => ({
@@ -58,7 +59,7 @@ const TreeNode = (props) => {
       {node.nodes.length > 0 &&
         node.expanded &&
         node.nodes.map((n) => (
-          <TreeNode node={n} id={n.text} level={level + 1} />
+          <TreeNode node={n} key={n.text} level={level + 1} />
         ))}
     </>
   );

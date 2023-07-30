@@ -12,11 +12,16 @@ const Title = (props) => {
 
   useState(() => {
     if (playgroundName)
-    setPlaygroundUrl('/playground/' + parseTitleToUrl(playgroundName))
-  }, [playgroundName])
+      setPlaygroundUrl('/playground/' + parseTitleToUrl(playgroundName));
+  }, [playgroundName]);
 
   return (
-    <Box display='flex' flexDirection='row' justifyContent='space-between' alignItems='center'>
+    <Box
+      display='flex'
+      flexDirection='row'
+      justifyContent='space-between'
+      alignItems='center'
+    >
       <Typography
         fontSize={Font.size.title}
         marginY={20}

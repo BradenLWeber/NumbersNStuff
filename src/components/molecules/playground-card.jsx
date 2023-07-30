@@ -61,7 +61,7 @@ PlaygroundCard.propTypes = {
   image: PropTypes.shape({
     src: PropTypes.string,
     height: PropTypes.number,
-    width: PropTypes.string,
+    width: PropTypes.number,
   }),
   mb: PropTypes.number,
 };
