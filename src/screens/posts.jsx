@@ -48,11 +48,17 @@ const Posts = () => {
   return (
     <Box display='flex' flexDirection='row' width='100%'>
       <Box id='posts-wrapper' width='100%' height='100%' p={30}>
-        <Box width='100%' maxWidth={1000} display='flex' flexDirection='row'>
+        <Box
+          width='100%'
+          maxWidth={1000}
+          display='flex'
+          flexDirection='row'
+          mb={8}
+        >
           <TextField
             variant='standard'
             label='Filter'
-            sx={{ flex: 1, minWidth: 0 }}
+            sx={{ flex: 1, minWidth: 0, mt: 8 }}
             value={filter}
             onChange={(v) => updateFilter(v)}
           />

@@ -61,12 +61,12 @@ const Playgrounds = () => {
           maxWidth={1000}
           display='flex'
           flexDirection='row'
-          mb={20}
+          mb={28}
         >
           <TextField
             variant='standard'
             label='Filter'
-            sx={{ flex: 1, minWidth: 0 }}
+            sx={{ flex: 1, minWidth: 0, mt: 8 }}
             value={filter}
             onChange={(v) => updateFilter(v)}
           />
