@@ -54,7 +54,7 @@ const PostTree = () => {
 
       // Add year if it doesn't exist
       if (pl.length === 0 || pl[pl.length - 1].text !== year) {
-        pl.push(new Node(year, true));
+        pl.push(new Node(year, true, 1));
       }
       yearNodes = pl[pl.length - 1].nodes;
 
@@ -63,12 +63,12 @@ const PostTree = () => {
         yearNodes.length === 0 ||
         yearNodes[yearNodes.length - 1].text !== monthName
       ) {
-        yearNodes.push(new Node(monthName, true));
+        yearNodes.push(new Node(monthName, true, 2));
       }
       monthNodes = yearNodes[yearNodes.length - 1].nodes;
 
       // Add post
-      monthNodes.push(new Node(`${day}: ${post.title}`, false));
+      monthNodes.push(new Node(`${day}: ${post.title}`, false, 3));
     });
 
     setPostList(pl);

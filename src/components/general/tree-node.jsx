@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { Color } from 'styles/Color';
 import { Link, useLocation } from 'react-router-dom';
-import { parseTitleToUrl } from 'utilities/functions';
+import { getChildNodeNames, parseTitleToUrl } from 'utilities/functions';
 import Node from 'classes/node';
 
 const TreeNode = (props) => {
@@ -15,12 +15,21 @@ const TreeNode = (props) => {
   const location = useLocation();
 
   useEffect(() => {
+    const url = location.pathname;
+    const urlItems = url.split('/');
     setUrl(
       node.expandable
-        ? location.pathname
+        ? url
         : '/post/' + parseTitleToUrl(node.text.toLowerCase().split(': ')[1]),
     );
-  }, [location]);
+    if (url.includes('/post/')) {
+      const childNodes = getChildNodeNames(node.level, node.text, node.nodes);
+      const shouldBeExpanded = childNodes
+        .map((text) => parseTitleToUrl(text))
+        .includes(urlItems[urlItems.length - 1]);
+      node.expanded = shouldBeExpanded;
+    }
+  }, [location.pathname]);
 
   const clickIcon = () => {
     setNode((prevNode) => ({
