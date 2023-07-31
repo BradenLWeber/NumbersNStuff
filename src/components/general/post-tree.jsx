@@ -81,7 +81,8 @@ const PostTree = () => {
       minWidth={300}
       height='100%'
       p={20}
-      mt={30}
+      pt={50}
+      boxSizing='border-box'
     >
       <Typography color={Color.gray} mb={5}>
         Blog Archive

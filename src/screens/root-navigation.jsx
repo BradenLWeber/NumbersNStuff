@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 import PostTree from 'components/general/post-tree';
 import { Link, Outlet, useNavigate, useLocation } from 'react-router-dom';
 import Error from './error';
-
-import { useEffect, useState } from 'react';
+import ReactLogo from 'assets/global/react-logo.png';
+import { useEffect } from 'react';
 
 const RootNavigation = (props) => {
   const { page, showArchive } = props;
@@ -17,6 +17,10 @@ const RootNavigation = (props) => {
   useEffect(() => {
     if (location.pathname === '/') navigate('/home');
   }, [location]);
+
+  const showExtraItems =
+    !location.pathname.includes('home') &&
+    !location.pathname.includes('playground/');
 
   return (
     <Box
@@ -63,18 +67,40 @@ const RootNavigation = (props) => {
       </Box>
       <Box
         id='main-body-wrapper'
-        flex={1}
-        minWidth={0}
-        backgroundColor={Color.light}
-        display='flex'
-        flexDirection='row'
         overflow='auto'
+        flex={1}
+        display='flex'
+        minHeight={0}
+        flexDirection='column'
       >
-        {(showArchive ||
-          (!location.pathname.includes('home') &&
-            !location.pathname.includes('playground'))) && <PostTree />}
-        {page === 'Error' && <Error />}
-        <Outlet />
+        <Box
+          flex={1}
+          minWidth={0}
+          backgroundColor={Color.light}
+          display='flex'
+          flexDirection='row'
+        >
+          {showArchive || (showExtraItems && <PostTree />)}
+          {page === 'Error' && <Error />}
+          <Outlet />
+        </Box>
+        {showExtraItems && (
+          <Box
+            id='bottom-wrapper'
+            width='100%'
+            height={40}
+            minHeight={40}
+            backgroundColor={Color.gray}
+            display='flex'
+            flexDirection='row'
+            justifyContent='center'
+            alignItems='center'
+            color={Color.white}
+          >
+            <Typography>Created in React</Typography>
+            <img src={ReactLogo} height={30} />
+          </Box>
+        )}
       </Box>
     </Box>
   );

@@ -10,6 +10,7 @@ export const playgrounds = [
       height: 190,
       width: 420,
     },
+    createdDate: '6/11/2023',
     element: <DivideBy3Playground />,
   },
 ];
