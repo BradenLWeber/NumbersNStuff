@@ -15,6 +15,7 @@ const About = () => {
         p={30}
         display='flex'
         flexDirection='row'
+        boxSizing='border-box'
       >
         <Box flex={1} minWidth={0} mr={50}>
           <Title>Welcome!</Title>

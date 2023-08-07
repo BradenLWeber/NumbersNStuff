@@ -157,6 +157,15 @@ export const TheDivideBy3Game = () => {
       <Indent>/3 (1)</Indent>
       <Indent>-1 (0)</Indent>
       <Body>Invigorating, right?</Body>
+      <Body mt={20}>
+        This trick isn't only possible with the number 3. There are strategies
+        for figuring out if numbers are divisible by 4, 6, 7, 8, and 9. Check
+        out{' '}
+        <a href='https://www.youtube.com/watch?v=f6tHqOmIj1E'>
+          this Vsauce video
+        </a>{' '}
+        for more information on this.
+      </Body>
       <Footer title={theDivideBy3GameTitle}></Footer>
     </Wrapper>
   );

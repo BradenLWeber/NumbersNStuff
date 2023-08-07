@@ -1,5 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import BlackBoard from 'assets/global/blackboard.jpg';
+import { Link } from 'react-router-dom';
 import { Color } from 'styles/Color.jsx';
 
 const sideMargin = 250;
@@ -7,7 +8,7 @@ const boxHeight = 220;
 
 const Home = () => {
   const Banner = (props) => {
-    const { text1, text2, margin, color } = props;
+    const { text1, text2, margin, color, url } = props;
     return (
       <Box
         id='play-around'
@@ -46,14 +47,22 @@ const Home = () => {
           position='relative'
           right={0}
         >
-          <Typography
-            fontSize={34}
-            fontWeight={300}
-            color={Color.gray}
-            textAlign='right'
-          >
-            {text1}
-          </Typography>
+          <Link to={url} style={{ textDecoration: 'none' }}>
+            <Typography
+              fontSize={34}
+              fontWeight={300}
+              color={Color.gray}
+              textAlign='right'
+              sx={{
+                cursor: 'pointer',
+                '&:hover': {
+                  color: color,
+                },
+              }}
+            >
+              {text1}
+            </Typography>
+          </Link>
           <Typography fontSize={22} fontWeight={300} textAlign='right'>
             {text2}
           </Typography>
@@ -125,18 +134,21 @@ const Home = () => {
             }
             color={Color.tertriary}
             margin={3}
+            url={'/posts'}
           />
           <Banner
             text1='Play Around'
             text2='Try the interactive playgrounds and bring mathematical concepts to life'
             color={Color.secondary}
             margin={2}
+            url={'/playgrounds'}
           />
           <Banner
             text1='Contact Me'
             text2='Help me take these mathematical concepts to the next level'
             color={Color.primary}
             margin={1}
+            url={'/about'}
           />
           <Box id='bottom-margin' mt={100} />
         </Box>

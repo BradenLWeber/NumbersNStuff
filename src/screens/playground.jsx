@@ -1,10 +1,7 @@
-import { Box } from '@mui/material';
 import { playgrounds } from 'playgrounds/all-playgrounds';
-import { posts } from 'posts/all-posts';
 import { useEffect, useState } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import { parseTitleToUrl } from 'utilities/functions';
-import Error from './error';
 
 const Playground = () => {
   const { title } = useParams();
