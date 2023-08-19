@@ -134,21 +134,21 @@ const Home = () => {
             }
             color={Color.tertriary}
             margin={3}
-            url={'/posts'}
+            url='/posts'
           />
           <Banner
             text1='Play Around'
             text2='Try the interactive playgrounds and bring mathematical concepts to life'
             color={Color.secondary}
             margin={2}
-            url={'/playgrounds'}
+            url='/playgrounds'
           />
           <Banner
             text1='Contact Me'
             text2='Help me take these mathematical concepts to the next level'
             color={Color.primary}
             margin={1}
-            url={'/about'}
+            url='/about'
           />
           <Box id='bottom-margin' mt={100} />
         </Box>

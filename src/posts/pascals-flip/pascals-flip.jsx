@@ -217,8 +217,8 @@ export const PascalsFlip = () => {
         and over until they reached the first term.
       </Body>
       <Body>I did some calculations to make sure.</Body>
-      <Indent mb={5} bold={true}>
-        x² from 2
+      <Indent mb={5}>
+        <b>x² from 2</b>
       </Indent>
       <Indent mt={5} mb={5}>
         ∫2 = 2x
@@ -226,8 +226,8 @@ export const PascalsFlip = () => {
       <Indent mt={5} mb={5}>
         ∫2x = x²
       </Indent>
-      <Indent mb={5} bold={true}>
-        2x² from 4
+      <Indent mb={5}>
+        <b>2x² from 4</b>
       </Indent>
       <Indent mt={5} mb={5}>
         ∫4 = 4x
@@ -235,8 +235,8 @@ export const PascalsFlip = () => {
       <Indent mt={5} mb={5}>
         ∫4x = 2x²
       </Indent>
-      <Indent mb={5} bold={true}>
-        x³ from 6
+      <Indent mb={5}>
+        <b>x³ from 6</b>
       </Indent>
       <Indent mt={5} mb={5}>
         ∫6 = 6x
@@ -247,8 +247,8 @@ export const PascalsFlip = () => {
       <Indent mt={5} mb={5}>
         ∫3x² = x³
       </Indent>
-      <Indent mb={5} bold={true}>
-        2x³ from 12
+      <Indent mb={5}>
+        <b>2x³ from 12</b>
       </Indent>
       <Indent mt={5} mb={5}>
         ∫12 = 12x
@@ -259,8 +259,8 @@ export const PascalsFlip = () => {
       <Indent mt={5} mb={5}>
         ∫6x² = 2x³
       </Indent>
-      <Indent mb={5} bold={true}>
-        x⁴ from 24
+      <Indent mb={5}>
+        <b>x⁴ from 24</b>
       </Indent>
       <Indent mt={5} mb={5}>
         ∫24 = 24x
@@ -361,7 +361,7 @@ export const PascalsFlip = () => {
         anyone could figure out how to prove the method mathematically instead
         of empirically, I would love to see the proof.
       </Body>
-      <Footer></Footer>
+      <Footer />
     </Wrapper>
   );
 };

@@ -19,4 +19,4 @@ export const getChildNodeNames = (level, text, nodes) => {
     });
     return childNodes;
   }
-}
+};

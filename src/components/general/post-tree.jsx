@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { posts } from 'posts/all-posts';
 import TreeNode from './tree-node';
-import { Box, Typography } from '@mui/material';
+import { Box, Button, TextField, Typography } from '@mui/material';
 import { Color } from 'styles/Color';
 import Node from 'classes/node';
+import FilledButton from './filled-button';
+import TextInput from './text-input';
 
 const getMonthFromNumber = (num) => {
   num = Number(num);
@@ -39,6 +41,8 @@ const getMonthFromNumber = (num) => {
 
 const PostTree = () => {
   const [postList, setPostList] = useState([]);
+  const [email, setEmail] = useState('');
+  const [subscribeMessage, setSubscribeMessage] = useState('');
 
   useEffect(() => {
     const p = posts;
@@ -90,6 +94,30 @@ const PostTree = () => {
       {postList.map((post) => (
         <TreeNode node={post} key={post.text} level={0} />
       ))}
+      <Box mt={40}>
+        <TextInput
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder='Email'
+          size='small'
+          fullWidth={true}
+        ></TextInput>
+        <FilledButton
+          variant='contained'
+          color={Color.black}
+          backgroundColor={Color.primary}
+          hoverColor={Color.black}
+          hoverBackgroundColor={Color.tertriary}
+          sx={{ mt: 10 }}
+          fullWidth={true}
+          onClick={() => setSubscribeMessage('Subscribed!')}
+        >
+          Subscribe
+        </FilledButton>
+        <Typography color={Color.gray} mt={10}>
+          {subscribeMessage}
+        </Typography>
+      </Box>
     </Box>
   );
 };

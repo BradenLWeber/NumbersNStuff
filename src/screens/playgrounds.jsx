@@ -1,5 +1,4 @@
 import { Box, MenuItem, TextField } from '@mui/material';
-import PostCard from 'components/general/post-card';
 import { useState } from 'react';
 import _ from 'lodash';
 import { playgrounds } from 'playgrounds/all-playgrounds';

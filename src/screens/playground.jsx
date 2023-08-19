@@ -17,7 +17,7 @@ const Playground = () => {
     );
   }, [title]);
 
-  return playground?.element || <Navigate to={'/error'} />;
+  return playground?.element || <Navigate to='/error' />;
 };
 
 export default Playground;

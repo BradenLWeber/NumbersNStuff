@@ -176,7 +176,7 @@ export const IFoundItButIDontUnderstandIt = () => {
         If you or a loved one can prove this equation to be correct OR false,
         please satisfy this hungry soul.
       </Body>
-      <Footer></Footer>
+      <Footer />
     </Wrapper>
   );
 };

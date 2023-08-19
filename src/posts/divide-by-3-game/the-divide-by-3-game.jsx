@@ -166,7 +166,7 @@ export const TheDivideBy3Game = () => {
         </a>{' '}
         for more information on this.
       </Body>
-      <Footer title={theDivideBy3GameTitle}></Footer>
+      <Footer title={theDivideBy3GameTitle} />
     </Wrapper>
   );
 };

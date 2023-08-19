@@ -1,7 +1,6 @@
 import { Box } from '@mui/material';
 import Title from 'components/post/post-title';
 import Body from 'components/post/post-body';
-import ChalkBrain from 'assets/global/ChalkBrain.png';
 import Braden from 'assets/global/me.jpg';
 import KassiAndBraden from 'assets/global/kassi-and-braden.jpg';
 

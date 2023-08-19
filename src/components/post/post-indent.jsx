@@ -5,7 +5,7 @@ import { Font } from 'styles/Font';
 import PropTypes from 'prop-types';
 
 const Indent = (props) => {
-  const { children, mt, mb, separate, widthFirstLine, bold } = props;
+  const { children, mt, mb, separate, widthFirstLine, bold, multiline } = props;
   const [marginTop, setMarginTop] = useState(20);
   const [marginBottom, setMarginBottom] = useState(20);
 
@@ -29,7 +29,7 @@ const Indent = (props) => {
       justifyContent='space-between'
       alignItems='center'
       width='fit-content'
-      height={30}
+      height={multiline ? 'fit-content' : 30}
       fontWeight={bold ? 'bold' : 'normal'}
     >
       {separate ? (
@@ -53,6 +53,7 @@ Indent.propTypes = {
   separate: PropTypes.bool,
   widthFirstLine: PropTypes.number,
   bold: PropTypes.bool,
+  multiline: PropTypes.bool,
 };
 
 export default Indent;

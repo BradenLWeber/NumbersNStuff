@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import { useState, useEffect } from 'react';
 
 const Image = (props) => {
   const { src, height, width, mt, mb, keepRatio, border } = props;

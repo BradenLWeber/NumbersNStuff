@@ -8,6 +8,10 @@ import TheDivideBy3Game, {
 import NumberLineWithArrows from 'posts/divide-by-3-game/number-line-with-arrows.png';
 import SummationFull from 'posts/i-found-it-but-i-dont-understand-it/summation-full.png';
 import PascalsTriangle from 'posts/pascals-flip/pascals-triangle.png';
+import NumberPalindromes, {
+  numberPalindromesTitle,
+} from './number-palindromes/number-palindromes';
+import ExamplePalindromes from 'posts/number-palindromes/examples.png';
 
 export const posts = [
   {
@@ -42,5 +46,16 @@ export const posts = [
     createdDate: '6/18/2023',
     tags: ['pascal', 'geometric'],
     element: <PascalsFlip />,
+  },
+  {
+    title: numberPalindromesTitle,
+    description:
+      'A journey from one end of a number to the other. And back. In other bases.',
+    image: {
+      src: ExamplePalindromes,
+    },
+    createdDate: '8/19/2023',
+    tags: ['palindrome', 'bases'],
+    element: <NumberPalindromes />,
   },
 ];
