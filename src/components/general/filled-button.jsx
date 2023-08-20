@@ -31,7 +31,7 @@ const FilledButton = (props) => {
 FilledButton.propTypes = {
   children: PropTypes.string,
   color: PropTypes.string,
-  background: PropTypes.string,
+  backgroundColor: PropTypes.string,
   hoverColor: PropTypes.string,
   hoverBackgroundColor: PropTypes.string,
   // other props are spread into "options"

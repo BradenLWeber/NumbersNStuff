@@ -316,6 +316,29 @@ export const NumberPalindromes = () => {
         <b>Hypothesis #2</b>: Numbers with a high ammount of divisors are more
         likely to be palindromes in many bases.
       </Indent>
+      <Body>
+        That hypothesis got me thinking, is there any correlation between the
+        divisors and the bases? Or is this just a nifty fact?
+      </Body>
+      <Body>Checking...</Body>
+      <Body>
+        Nah, the divisors and bases don't seem to overlap. They're really close
+        to overlapping though. Strangly close.
+      </Body>
+      <Body>
+        Hey! That's interseting. The bases where the number is a palindrome
+        tends to be a divisor minus 1. It doesn't seem like it fits for every
+        divisor or for every base, but there is a clear correlation there once
+        you look for it.
+      </Body>
+      <Body>
+        See, this is the kind of thing I'm looking for! What an unexpected
+        pattern to find in a random concept.
+      </Body>
+      <Indent>
+        <b>Hypothesis #2</b>: Numbers tend to be palindromes in bases that are
+        equal to one of their divisors minus one.
+      </Indent>
       <Footer title={numberPalindromesTitle} />
     </Wrapper>
   );

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { posts } from 'posts/all-posts';
 import TreeNode from './tree-node';
-import { Box, Button, TextField, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { Color } from 'styles/Color';
 import Node from 'classes/node';
 import FilledButton from './filled-button';
@@ -97,7 +97,7 @@ const PostTree = () => {
       <Box mt={40}>
         <TextInput
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(v) => setEmail(v)}
           placeholder='Email'
           size='small'
           fullWidth={true}

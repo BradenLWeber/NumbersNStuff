@@ -6,11 +6,9 @@ import { useEffect, useState } from 'react';
 
 import { Color } from 'styles/Color';
 import { parseTitleToUrl } from 'utilities/functions';
-
-const {
-  default: PlaygroundWrapper,
-} = require('components/playground/playground-wrapper');
-const { default: Title } = require('components/post/post-title');
+import Title from 'components/post/post-title';
+import PlaygroundWrapper from 'components/playground/playground-wrapper';
+import TextInput from 'components/general/text-input';
 
 const DivideBy3Playground = () => {
   const [phase, setPhase] = useState(1);
@@ -138,10 +136,10 @@ const DivideBy3Playground = () => {
       {phase === 1 && (
         <Box display='flex' flexDirection='column'>
           <Title>Choose a large number</Title>
-          <TextField
+          <TextInput
             label='Pick a good one'
             value={number}
-            onChange={(e) => setNumber(e.target.value)}
+            onChange={(v) => setNumber(v)}
           />
           <Button
             variant='outlined'

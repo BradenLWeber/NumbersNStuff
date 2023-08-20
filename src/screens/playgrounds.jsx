@@ -3,6 +3,7 @@ import { useState } from 'react';
 import _ from 'lodash';
 import { playgrounds } from 'playgrounds/all-playgrounds';
 import PlaygroundCard from 'components/general/playground-card';
+import TextInput from 'components/general/text-input';
 
 const Playgrounds = () => {
   const [filter, setFilter] = useState('');
@@ -14,10 +15,8 @@ const Playgrounds = () => {
   );
   const [filterBy, setFilterBy] = useState('Newest first');
 
-  const updateFilter = (event) => {
-    const value = (
-      typeof event === 'string' ? event : event.target.value
-    ).toLowerCase();
+  const updateFilter = (val) => {
+    const value = val.toLowerCase();
     setPlaygroundList(
       allPlaygrounds.filter((p) => p.title.toLowerCase().includes(value)),
     );
@@ -62,23 +61,23 @@ const Playgrounds = () => {
           flexDirection='row'
           mb={28}
         >
-          <TextField
+          <TextInput
             variant='standard'
             label='Filter'
             sx={{ flex: 1, minWidth: 0, mt: 8 }}
             value={filter}
             onChange={(v) => updateFilter(v)}
           />
-          <TextField
+          <TextInput
             select
             label='filter by'
             value={filterBy}
-            onChange={(e) => updateFilterBy(e)}
+            onChange={(v) => updateFilterBy(v)}
             sx={{ width: 220, ml: 30 }}
           >
             <MenuItem value='Newest first'>Newest first</MenuItem>
             <MenuItem value='Oldest first'>Oldest first</MenuItem>
-          </TextField>
+          </TextInput>
         </Box>
         <Box
           id='playground-list-wrapper'
