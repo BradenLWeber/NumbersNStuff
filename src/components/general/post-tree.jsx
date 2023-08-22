@@ -1,11 +1,13 @@
-import { useEffect, useState } from 'react';
-import { posts } from 'posts/all-posts';
-import TreeNode from './tree-node';
 import { Box, Typography } from '@mui/material';
+import { useEffect, useState } from 'react';
+
 import { Color } from 'styles/Color';
-import Node from 'classes/node';
+import Database from 'utilities/database';
 import FilledButton from './filled-button';
+import Node from 'classes/node';
 import TextInput from './text-input';
+import TreeNode from './tree-node';
+import { posts } from 'posts/all-posts';
 
 const getMonthFromNumber = (num) => {
   num = Number(num);
@@ -42,7 +44,6 @@ const getMonthFromNumber = (num) => {
 const PostTree = () => {
   const [postList, setPostList] = useState([]);
   const [email, setEmail] = useState('');
-  const [subscribeMessage, setSubscribeMessage] = useState('');
 
   useEffect(() => {
     const p = posts;
@@ -78,6 +79,11 @@ const PostTree = () => {
     setPostList(pl);
   }, []);
 
+  const testDb = () => {
+    const db = new Database();
+    setTimeout(() => db.getEmailEnabled('armyofbraden@gmail.com'), 3000);
+  };
+
   return (
     <Box
       id='post-tree-wrapper'
@@ -102,21 +108,6 @@ const PostTree = () => {
           size='small'
           fullWidth={true}
         ></TextInput>
-        <FilledButton
-          variant='contained'
-          color={Color.black}
-          backgroundColor={Color.primary}
-          hoverColor={Color.black}
-          hoverBackgroundColor={Color.tertriary}
-          sx={{ mt: 10 }}
-          fullWidth={true}
-          onClick={() => setSubscribeMessage('Subscribed!')}
-        >
-          Subscribe
-        </FilledButton>
-        <Typography color={Color.gray} mt={10}>
-          {subscribeMessage}
-        </Typography>
       </Box>
     </Box>
   );

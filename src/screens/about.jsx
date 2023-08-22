@@ -1,8 +1,9 @@
-import { Box } from '@mui/material';
-import Title from 'components/post/post-title';
 import Body from 'components/post/post-body';
+import { Box } from '@mui/material';
 import Braden from 'assets/global/me.jpg';
+import FilledButton from 'components/general/filled-button';
 import KassiAndBraden from 'assets/global/kassi-and-braden.jpg';
+import Title from 'components/post/post-title';
 
 const About = () => {
   return (
@@ -69,6 +70,21 @@ const About = () => {
           />
         </Box>
       </Box>
+      <FilledButton
+        variant='contained'
+        color={Color.black}
+        backgroundColor={Color.primary}
+        hoverColor={Color.black}
+        hoverBackgroundColor={Color.tertriary}
+        sx={{ mt: 10 }}
+        fullWidth={true}
+        onClick={() => testDb()}
+      >
+        Subscribe
+      </FilledButton>
+      <Typography color={Color.gray} mt={10}>
+        {subscribeMessage}
+      </Typography>
     </Box>
   );
 };
