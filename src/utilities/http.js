@@ -1,20 +1,34 @@
 export default class Http {
-  async post(url, body, headers) {
+  static async post(url, body, headers) {
     const requestOptions = {
       method: 'POST',
-      headers,
-      body,
+      headers: { 'Content-Type': 'application/json', ...headers },
+      body: JSON.stringify(body),
     };
 
-    return fetch(url, requestOptions).then((response) => response.json());
+    return fetch('/.netlify/functions/api/' + url, requestOptions)
+      .then((response) => {
+        return response.json();
+      })
+      .then((json) => {
+        if (!json.success && json.message) alert(json.message);
+        return json;
+      });
   }
 
-  async get(url, headers) {
+  static async get(url, headers) {
     const requestOptions = {
-      headers,
-      body,
+      headers: { 'Content-Type': 'application/json', ...headers },
+      mode: 'cors',
     };
 
-    return fetch(url, requestOptions).then((response) => response.json());
+    return fetch('/.netlify/functions/api/' + url, requestOptions)
+      .then((response) => {
+        return response.json();
+      })
+      .then((json) => {
+        if (!json.success && json.message) alert(json.message);
+        return json;
+      });
   }
 }

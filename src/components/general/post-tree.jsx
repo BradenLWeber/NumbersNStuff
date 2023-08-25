@@ -2,10 +2,7 @@ import { Box, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 
 import { Color } from 'styles/Color';
-import Database from 'utilities/database';
-import FilledButton from './filled-button';
 import Node from 'classes/node';
-import TextInput from './text-input';
 import TreeNode from './tree-node';
 import { posts } from 'posts/all-posts';
 
@@ -43,7 +40,6 @@ const getMonthFromNumber = (num) => {
 
 const PostTree = () => {
   const [postList, setPostList] = useState([]);
-  const [email, setEmail] = useState('');
 
   useEffect(() => {
     const p = posts;
@@ -79,11 +75,6 @@ const PostTree = () => {
     setPostList(pl);
   }, []);
 
-  const testDb = () => {
-    const db = new Database();
-    setTimeout(() => db.getEmailEnabled('armyofbraden@gmail.com'), 3000);
-  };
-
   return (
     <Box
       id='post-tree-wrapper'
@@ -100,15 +91,6 @@ const PostTree = () => {
       {postList.map((post) => (
         <TreeNode node={post} key={post.text} level={0} />
       ))}
-      <Box mt={40}>
-        <TextInput
-          value={email}
-          onChange={(v) => setEmail(v)}
-          placeholder='Email'
-          size='small'
-          fullWidth={true}
-        ></TextInput>
-      </Box>
     </Box>
   );
 };

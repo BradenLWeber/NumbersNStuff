@@ -8,17 +8,12 @@ import PostTree from 'components/general/post-tree';
 import PropTypes from 'prop-types';
 import ReactLogo from 'assets/global/react-logo.png';
 import TextButton from 'components/general/text-button';
-import database from 'utilities/database';
 import { useEffect } from 'react';
 
 const RootNavigation = (props) => {
   const { page, showArchive } = props;
   const location = useLocation();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    database.connect();
-  }, []);
 
   useEffect(() => {
     if (location.pathname === '/') navigate('/home');

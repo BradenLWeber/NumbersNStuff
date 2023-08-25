@@ -20,3 +20,7 @@ export const getChildNodeNames = (level, text, nodes) => {
     return childNodes;
   }
 };
+
+export const validateEmail = (email) => {
+  return /^\S+@\S+\.\S+$/.test(email);
+};

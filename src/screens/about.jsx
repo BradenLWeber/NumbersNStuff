@@ -1,11 +1,43 @@
+import { Box, Typography } from '@mui/material';
+
 import Body from 'components/post/post-body';
-import { Box } from '@mui/material';
 import Braden from 'assets/global/me.jpg';
+import { Color } from 'styles/Color';
 import FilledButton from 'components/general/filled-button';
 import KassiAndBraden from 'assets/global/kassi-and-braden.jpg';
+import Subscription from 'utilities/subscription';
+import TextInput from 'components/general/text-input';
 import Title from 'components/post/post-title';
+import { useState } from 'react';
+import { validateEmail } from 'utilities/functions';
 
 const About = () => {
+  const [email, setEmail] = useState('');
+  const [subscribeButtonText, setSubscribeButtonText] = useState('Subscribe');
+  const [subscribeButtonDisabled, setSubscribeButtonDisabled] = useState(true);
+
+  const emailChange = (v) => {
+    setEmail(v);
+
+    setSubscribeButtonText('Subscribe');
+    setSubscribeButtonDisabled(!validateEmail(v));
+  };
+
+  const subscribe = () => {
+    if (subscribeButtonDisabled) return;
+
+    setSubscribeButtonText('Subscribing...');
+    setSubscribeButtonDisabled(true);
+    Subscription.add(email).then((res) => {
+      if (res.success) {
+        setSubscribeButtonText('Subscribed!');
+      } else {
+        setSubscribeButtonText('Subscribe');
+        setSubscribeButtonDisabled(false);
+      }
+    });
+  };
+
   return (
     <Box display='flex' flexDirection='row'>
       <Box
@@ -53,6 +85,28 @@ const About = () => {
             Email me at bradenlweber@gmail.com, or message me on{' '}
             <a href='https://www.linkedin.com/in/braden-weber/'>LinkedIn</a>.
           </Body>
+          <Title>Subscribe</Title>
+          <TextInput
+            value={email}
+            onChange={(v) => emailChange(v)}
+            placeholder='Email'
+            size='small'
+            fullWidth={true}
+            onEnter={subscribe}
+          ></TextInput>
+          <FilledButton
+            variant='contained'
+            color={Color.black}
+            backgroundColor={Color.primary}
+            hoverColor={Color.black}
+            hoverBackgroundColor={Color.tertriary}
+            sx={{ mt: 10 }}
+            fullWidth={true}
+            disabled={subscribeButtonDisabled}
+            onClick={subscribe}
+          >
+            {subscribeButtonText}
+          </FilledButton>
         </Box>
         <Box display='flex' flexDirection='column'>
           <img
@@ -70,21 +124,6 @@ const About = () => {
           />
         </Box>
       </Box>
-      <FilledButton
-        variant='contained'
-        color={Color.black}
-        backgroundColor={Color.primary}
-        hoverColor={Color.black}
-        hoverBackgroundColor={Color.tertriary}
-        sx={{ mt: 10 }}
-        fullWidth={true}
-        onClick={() => testDb()}
-      >
-        Subscribe
-      </FilledButton>
-      <Typography color={Color.gray} mt={10}>
-        {subscribeMessage}
-      </Typography>
     </Box>
   );
 };
