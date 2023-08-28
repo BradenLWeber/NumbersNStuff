@@ -1,4 +1,6 @@
 import { Button, buttonClasses, styled } from '@mui/material';
+
+import { Color } from 'styles/Color';
 import PropTypes from 'prop-types';
 
 const FilledButton = (props) => {
@@ -12,12 +14,12 @@ const FilledButton = (props) => {
   } = props;
 
   const StyledButton = styled(Button)(() => ({
-    color: color || '',
-    backgroundColor: backgroundColor || '',
-    borderColor: color || '',
+    color: color || Color.black,
+    backgroundColor: backgroundColor || Color.primary,
+    borderColor: color || Color.black,
     '&:hover': {
-      backgroundColor: hoverBackgroundColor || '',
-      color: hoverColor || '',
+      backgroundColor: hoverBackgroundColor || Color.tertriary,
+      color: hoverColor || Color.black,
     },
   }));
 

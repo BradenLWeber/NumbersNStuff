@@ -1,7 +1,7 @@
 import Filter from 'bad-words';
 import Http from './http';
 
-export default class Comment {
+export default class CommentApi {
   static async add(text, name, post) {
     // Scrub text and mark for check if something doesn't check out
     const originalAsteriskCount = (text.match(/\*/g) || []).length;
@@ -9,7 +9,7 @@ export default class Comment {
     text = filter.clean(text);
     const vulgar = (text.match(/\*/g) || []).length > originalAsteriskCount;
 
-    return Http.post('/comment', {
+    return Http.post('comment', {
       text,
       name,
       date: new Date(),
@@ -18,11 +18,15 @@ export default class Comment {
       flagged: false,
     });
   }
-  static async getAll(email) {
-    return Http.post('/comments');
+  static async getAll(post) {
+    return Http.get('comments', { post }).then((res) =>
+      res
+        .filter((item) => !item.vulgar)
+        .sort((a, b) => new Date(a.date) < new Date(b.date)),
+    );
   }
   static async flag(name, post, date) {
-    return Http.post('/comment', {
+    return Http.post('comment', {
       name,
       date,
       post,

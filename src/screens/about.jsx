@@ -2,10 +2,9 @@ import { Box, Typography } from '@mui/material';
 
 import Body from 'components/post/post-body';
 import Braden from 'assets/global/me.jpg';
-import { Color } from 'styles/Color';
 import FilledButton from 'components/general/filled-button';
 import KassiAndBraden from 'assets/global/kassi-and-braden.jpg';
-import Subscription from 'utilities/subscription';
+import SubscriptionApi from 'utilities/subscription';
 import TextInput from 'components/general/text-input';
 import Title from 'components/post/post-title';
 import { useState } from 'react';
@@ -28,7 +27,7 @@ const About = () => {
 
     setSubscribeButtonText('Subscribing...');
     setSubscribeButtonDisabled(true);
-    Subscription.add(email).then((res) => {
+    SubscriptionApi.add(email).then((res) => {
       if (res.success) {
         setSubscribeButtonText('Subscribed!');
       } else {
@@ -96,10 +95,6 @@ const About = () => {
           ></TextInput>
           <FilledButton
             variant='contained'
-            color={Color.black}
-            backgroundColor={Color.primary}
-            hoverColor={Color.black}
-            hoverBackgroundColor={Color.tertriary}
             sx={{ mt: 10 }}
             fullWidth={true}
             disabled={subscribeButtonDisabled}

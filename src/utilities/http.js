@@ -1,12 +1,21 @@
 export default class Http {
-  static async post(url, body, headers) {
+  static async post(url, body, params, headers) {
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', ...headers },
       body: JSON.stringify(body),
     };
 
-    return fetch('/.netlify/functions/api/' + url, requestOptions)
+    let parameters = [];
+    if (params) {
+      for (const key in params) {
+        parameters.push(key + '=' + encodeURIComponent(params[key]));
+      }
+    }
+    const httpParams =
+      parameters.length === 0 ? '' : '?' + parameters.join('&');
+
+    return fetch('/.netlify/functions/api/' + url + httpParams, requestOptions)
       .then((response) => {
         return response.json();
       })
@@ -16,13 +25,22 @@ export default class Http {
       });
   }
 
-  static async get(url, headers) {
+  static async get(url, params, headers) {
     const requestOptions = {
       headers: { 'Content-Type': 'application/json', ...headers },
       mode: 'cors',
     };
 
-    return fetch('/.netlify/functions/api/' + url, requestOptions)
+    let parameters = [];
+    if (params) {
+      for (const key in params) {
+        parameters.push(key + '=' + encodeURIComponent(params[key]));
+      }
+    }
+    const httpParams =
+      parameters.length === 0 ? '' : '?' + parameters.join('&');
+
+    return fetch('/.netlify/functions/api/' + url + httpParams, requestOptions)
       .then((response) => {
         return response.json();
       })

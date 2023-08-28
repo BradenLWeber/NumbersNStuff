@@ -8,7 +8,7 @@ const Wrapper = (props) => {
       p={10}
       boxSizing='border-box'
       pr={50}
-      pb={50}
+      pb={25}
       maxWidth={1000}
     >
       {children}

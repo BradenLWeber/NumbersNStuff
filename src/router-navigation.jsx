@@ -1,4 +1,5 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+
 import About from 'screens/about';
 import Home from 'screens/home';
 import Playground from 'screens/playground';
@@ -6,6 +7,7 @@ import Playgrounds from 'screens/playgrounds';
 import Post from 'screens/post';
 import Posts from 'screens/posts';
 import RootNavigation from 'screens/root-navigation';
+import Unsubscribe from 'screens/unsubscribe';
 
 const RouterNavigation = () => {
   const router = createBrowserRouter([
@@ -37,6 +39,10 @@ const RouterNavigation = () => {
         {
           path: 'playgrounds',
           element: <Playgrounds />,
+        },
+        {
+          path: 'unsubscribe',
+          element: <Unsubscribe />,
         },
       ],
     },

@@ -48,7 +48,6 @@ router.post('/unsubscribe', (req, res) => {
     db.collection('Subscriptions').updateOne(
       { email: req.body.email },
       { $set: { email: req.body.email, enabled: false } },
-      { upsert: true },
     );
     res.json(success);
   } catch (e) {
@@ -79,7 +78,10 @@ router.post('/comment', (req, res) => {
 
 router.get('/comments', (req, res) => {
   try {
-    res.json(db.collection('Comments').find({ post: req.body.title }));
+    db.collection('Comments')
+      .find({ post: req.query.post })
+      .toArray()
+      .then((arr) => res.json(arr));
   } catch (e) {
     res.json({ success: false, message: e.message });
   }

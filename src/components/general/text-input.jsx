@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { TextField } from '@mui/material';
 
 const TextInput = (props) => {
-  const { value, onChange, label, onEnter, ...options } = props;
+  const { value, onChange, label, onEnter, sx, ...options } = props;
 
   const keyPress = (e) => {
     if (e.keyCode === 13 && onEnter) {
@@ -16,6 +16,7 @@ const TextInput = (props) => {
       onChange={(e) => onChange(e.target.value)}
       label={label}
       onKeyDown={keyPress}
+      sx={{ backgroundColor: 'white', ...sx }}
       {...options}
     ></TextField>
   );
