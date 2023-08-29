@@ -15,10 +15,10 @@ const FilledButton = (props) => {
 
   const StyledButton = styled(Button)(() => ({
     color: color || Color.black,
-    backgroundColor: backgroundColor || Color.primary,
+    backgroundColor: backgroundColor || Color.tertriary,
     borderColor: color || Color.black,
     '&:hover': {
-      backgroundColor: hoverBackgroundColor || Color.tertriary,
+      backgroundColor: hoverBackgroundColor || Color.tertriaryDark,
       color: hoverColor || Color.black,
     },
   }));

@@ -20,7 +20,7 @@ export default class Http {
         return response.json();
       })
       .then((json) => {
-        if (!json.success && json.message) alert(json.message);
+        if (json.message) alert(json.message);
         return json;
       });
   }
@@ -45,7 +45,7 @@ export default class Http {
         return response.json();
       })
       .then((json) => {
-        if (!json.success && json.message) alert(json.message);
+        if (json.message) alert(json.message);
         return json;
       });
   }

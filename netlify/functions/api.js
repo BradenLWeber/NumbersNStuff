@@ -3,13 +3,8 @@ const cors = require('cors');
 const serverless = require('serverless-http');
 const express = require('express');
 const { MongoClient } = require('mongodb');
+const database = require('./database');
 require('dotenv').config();
-
-const client = new MongoClient(process.env.MONGO_URI || '');
-let db;
-client.connect().then((conn) => {
-  db = conn.db('MathAddict');
-});
 
 // We need to define our function name for express routes to set the correct base path
 const functionName = 'api';
@@ -30,8 +25,9 @@ app.use(routerBasePath, router);
 // normal return objects
 const success = { success: true };
 
-router.post('/subscribe', (req, res) => {
+router.post('/subscribe', async (req, res) => {
   try {
+    const db = await database;
     db.collection('Subscriptions').updateOne(
       { email: req.body.email },
       { $set: { email: req.body.email, enabled: true } },
@@ -43,8 +39,9 @@ router.post('/subscribe', (req, res) => {
   }
 });
 
-router.post('/unsubscribe', (req, res) => {
+router.post('/unsubscribe', async (req, res) => {
   try {
+    const db = await database;
     db.collection('Subscriptions').updateOne(
       { email: req.body.email },
       { $set: { email: req.body.email, enabled: false } },
@@ -55,8 +52,9 @@ router.post('/unsubscribe', (req, res) => {
   }
 });
 
-router.post('/comment', (req, res) => {
+router.post('/comment', async (req, res) => {
   try {
+    const db = await database;
     const { post, date, name, vulgar } = req.body;
     db.collection('Comments').updateOne(
       { post, date, name },
@@ -76,8 +74,9 @@ router.post('/comment', (req, res) => {
   }
 });
 
-router.get('/comments', (req, res) => {
+router.get('/comments', async (req, res) => {
   try {
+    const db = await database;
     db.collection('Comments')
       .find({ post: req.query.post })
       .toArray()
@@ -88,7 +87,7 @@ router.get('/comments', (req, res) => {
 });
 
 app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.header('Access-Control-Allow-Origin', 'http://localhost:8888');
   res.header(
     'Access-Control-Allow-Headers',
     'Origin, X-Requested-With, Content-Type, Accept',
@@ -96,7 +95,5 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.listen(3001);
-
 // Export lambda handler
-exports.handler = serverless(app);
+module.exports.handler = serverless(app);

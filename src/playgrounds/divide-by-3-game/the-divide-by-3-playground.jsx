@@ -1,14 +1,14 @@
 import { Box, Button, TextField, Tooltip, Typography } from '@mui/material';
-import Body from 'components/post/post-body';
-import Header from 'components/post/post-header';
-import { theDivideBy3GameTitle } from 'posts/divide-by-3-game/the-divide-by-3-game';
 import { useEffect, useState } from 'react';
 
+import Body from 'components/post/post-body';
 import { Color } from 'styles/Color';
-import { parseTitleToUrl } from 'utilities/functions';
-import Title from 'components/post/post-title';
+import Header from 'components/post/post-header';
 import PlaygroundWrapper from 'components/playground/playground-wrapper';
 import TextInput from 'components/general/text-input';
+import Title from 'components/post/post-title';
+import { parseTitleToUrl } from 'utilities/functions';
+import { theDivideBy3GameTitle } from 'posts/divide-by-3-game/the-divide-by-3-game';
 
 const DivideBy3Playground = () => {
   const [phase, setPhase] = useState(1);
@@ -26,6 +26,10 @@ const DivideBy3Playground = () => {
   useEffect(() => {
     setPostName(parseTitleToUrl(theDivideBy3GameTitle));
   }, []);
+
+  const numberChange = (num) => {
+    setNumber(num.replaceAll(/[^0-9]/g, ''));
+  };
 
   useEffect(() => {
     if (phase !== 1) return;
@@ -139,7 +143,7 @@ const DivideBy3Playground = () => {
           <TextInput
             label='Pick a good one'
             value={number}
-            onChange={(v) => setNumber(v)}
+            onChange={(v) => numberChange(v)}
           />
           <Button
             variant='outlined'
@@ -151,6 +155,7 @@ const DivideBy3Playground = () => {
                 chooseNumberButtonColor === Color.black ? 'white' : 'black',
               '&:hover': {
                 color: 'black',
+                backgroundColor: 'white',
               },
             }}
             disabled={number.length <= 3}

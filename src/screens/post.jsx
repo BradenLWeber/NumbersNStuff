@@ -7,6 +7,7 @@ import CommentApi from 'utilities/Comment';
 import Divider from 'components/post/post-divider';
 import FilledButton from 'components/general/filled-button';
 import TextInput from 'components/general/text-input';
+import Title from 'components/post/post-title';
 import { parseTitleToUrl } from 'utilities/functions';
 import { posts } from 'posts/all-posts';
 import { useParams } from 'react-router-dom';
@@ -40,6 +41,9 @@ const Post = () => {
     setSubmitCommentText('Submitting...');
     CommentApi.add(comment, name, title).then(() => {
       setSubmitCommentText('Submitted!');
+      setComments([...comments, { text: comment, name, date: new Date() }]);
+      setComment('');
+      setName('');
     });
   };
 
@@ -67,7 +71,8 @@ const Post = () => {
     <Box id='post-wrapper' mt={10} flex={1} minWidth={0}>
       {post.element}
       <Divider />
-      <Box p={10} mt={20} mb={50} display='flex' flexDirection='column'>
+      <Box p={10} mt={0} mb={50} display='flex' flexDirection='column'>
+        <Title>Comments</Title>
         <Stack direction='column' spacing={20} mb={40}>
           {comments?.map((c) => (
             <Comment

@@ -13,7 +13,7 @@ const Comment = (props) => {
   const [flagged, setFlagged] = useState(false);
 
   const reportComment = () => {
-    setLocalFlag(true);
+    setFlagged(true);
     CommentApi.flag(name, post, date);
   };
 

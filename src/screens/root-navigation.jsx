@@ -81,7 +81,7 @@ const RootNavigation = (props) => {
           display='flex'
           flexDirection='row'
         >
-          {showArchive || (showExtraItems && <PostTree />)}
+          {(showArchive || showExtraItems) && <PostTree />}
           {page === 'Error' && <Error />}
           <Outlet />
         </Box>

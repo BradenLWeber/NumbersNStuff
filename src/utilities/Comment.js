@@ -1,5 +1,6 @@
 import Filter from 'bad-words';
 import Http from './http';
+import dayjs from 'dayjs';
 
 export default class CommentApi {
   static async add(text, name, post) {
@@ -22,7 +23,7 @@ export default class CommentApi {
     return Http.get('comments', { post }).then((res) =>
       res
         .filter((item) => !item.vulgar)
-        .sort((a, b) => new Date(a.date) < new Date(b.date)),
+        .sort((a, b) => new Date(a.date) > new Date(b.date).toISOString()),
     );
   }
   static async flag(name, post, date) {

@@ -7,7 +7,7 @@ export const Color = {
   secondaryDark: '#a87d45',
   tertriary: '#f0b08d',
   tertriaryLight: '#f5cab3',
-  tertriaryDark: '#ad7c61',
+  tertriaryDark: '#bf947e',
   black: '#111111',
   gray: '#454c4d',
   midGray: '#888888',

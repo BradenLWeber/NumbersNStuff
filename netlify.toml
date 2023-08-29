@@ -1,0 +1,5 @@
+# [dev]
+# # Proxy requests from "/.netlify/functions/" to the local development server
+# [[redirects]]
+#   from = "http://localhost:8888/.netlify/functions/*"
+#   to = "http://localhost:3001/.netlify/functions"
