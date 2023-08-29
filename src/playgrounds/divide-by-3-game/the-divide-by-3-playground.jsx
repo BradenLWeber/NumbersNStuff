@@ -1,9 +1,10 @@
-import { Box, Button, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Tooltip, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 
 import Body from 'components/post/post-body';
 import { Color } from 'styles/Color';
 import Header from 'components/post/post-header';
+import OutlinedButton from 'components/general/outlined-button';
 import PlaygroundWrapper from 'components/playground/playground-wrapper';
 import TextInput from 'components/general/text-input';
 import Title from 'components/post/post-title';
@@ -20,6 +21,10 @@ const DivideBy3Playground = () => {
   const [chooseNumberButtonColor, setChooseNumberButtonColor] = useState(
     Color.primary,
   );
+  const [chooseNumberButtonHoverColor, setChooseNumberButtonHoverColor] =
+    useState(Color.primaryDark);
+  const [chooseNumberButtonTextColor, setChooseNumberButtonTextColor] =
+    useState(Color.black);
   const [history, setHistory] = useState([]);
   const [postName, setPostName] = useState('');
 
@@ -37,21 +42,33 @@ const DivideBy3Playground = () => {
     if (number.length < 8) {
       setChooseNumberButtonText('Looking good');
       setChooseNumberButtonColor(Color.lightGray);
+      setChooseNumberButtonHoverColor(Color.midGray);
+      setChooseNumberButtonTextColor(Color.black);
     } else if (number.length < 12) {
       setChooseNumberButtonText('Looking great');
       setChooseNumberButtonColor(Color.primary);
+      setChooseNumberButtonHoverColor(Color.primaryDark);
+      setChooseNumberButtonTextColor(Color.black);
     } else if (number.length < 18) {
       setChooseNumberButtonText('Looking spectacular');
       setChooseNumberButtonColor(Color.primary);
+      setChooseNumberButtonHoverColor(Color.primaryDark);
+      setChooseNumberButtonTextColor(Color.black);
     } else if (number.length < 24) {
       setChooseNumberButtonText('Looking to maybe stop soon');
       setChooseNumberButtonColor(Color.secondary);
+      setChooseNumberButtonHoverColor(Color.secondaryDark);
+      setChooseNumberButtonTextColor(Color.black);
     } else if (number.length < 30) {
       setChooseNumberButtonText('Looking into my soul');
       setChooseNumberButtonColor(Color.tertriary);
+      setChooseNumberButtonHoverColor(Color.tertriaryDark);
+      setChooseNumberButtonTextColor(Color.black);
     } else {
       setChooseNumberButtonText('I eat numbers for breakfast');
       setChooseNumberButtonColor(Color.black);
+      setChooseNumberButtonHoverColor(Color.gray);
+      setChooseNumberButtonTextColor(Color.white);
     }
 
     if (number.length > 35)
@@ -151,11 +168,10 @@ const DivideBy3Playground = () => {
               mt: 20,
               backgroundColor: chooseNumberButtonColor,
               border: chooseNumberButtonColor,
-              color:
-                chooseNumberButtonColor === Color.black ? 'white' : 'black',
+              color: chooseNumberButtonTextColor,
               '&:hover': {
-                color: 'black',
-                backgroundColor: 'white',
+                color: chooseNumberButtonTextColor,
+                backgroundColor: chooseNumberButtonHoverColor,
               },
             }}
             disabled={number.length <= 3}
@@ -173,15 +189,9 @@ const DivideBy3Playground = () => {
             </div>
           </Tooltip>
           <Box display='flex' flexDirection='row' columnGap={10} mb={20}>
-            <Button variant='outlined' onClick={addOne}>
-              +1
-            </Button>
-            <Button variant='outlined' onClick={subtractOne}>
-              -1
-            </Button>
-            <Button variant='outlined' onClick={divideByThree}>
-              /3
-            </Button>
+            <OutlinedButton onClick={addOne}>+1</OutlinedButton>
+            <OutlinedButton onClick={subtractOne}>-1</OutlinedButton>
+            <OutlinedButton onClick={divideByThree}>/3</OutlinedButton>
           </Box>
           <HistoryComponent />
         </Box>

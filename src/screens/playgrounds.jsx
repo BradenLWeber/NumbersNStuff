@@ -1,9 +1,10 @@
 import { Box, MenuItem, TextField } from '@mui/material';
-import { useState } from 'react';
-import _ from 'lodash';
-import { playgrounds } from 'playgrounds/all-playgrounds';
+
 import PlaygroundCard from 'components/general/playground-card';
 import TextInput from 'components/general/text-input';
+import _ from 'lodash';
+import { playgrounds } from 'playgrounds/all-playgrounds';
+import { useState } from 'react';
 
 const Playgrounds = () => {
   const [filter, setFilter] = useState('');
@@ -65,6 +66,7 @@ const Playgrounds = () => {
             variant='standard'
             label='Filter'
             sx={{ flex: 1, minWidth: 0, mt: 8 }}
+            backgroundColor='inherit'
             value={filter}
             onChange={(v) => updateFilter(v)}
           />

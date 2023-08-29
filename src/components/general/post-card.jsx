@@ -1,9 +1,10 @@
 import { Box, Chip, Typography } from '@mui/material';
-import { Font } from 'styles/Font';
-import PropTypes from 'prop-types';
-import { Color } from 'styles/Color';
-import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+
+import { Color } from 'styles/Color';
+import { Font } from 'styles/Font';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { parseTitleToUrl } from 'utilities/functions';
 
 const PostCard = (props) => {
@@ -71,6 +72,9 @@ const PostCard = (props) => {
               sx={{
                 mr: 10,
                 backgroundColor: Color.secondary,
+                '&:hover': {
+                  backgroundColor: Color.secondaryDark,
+                },
               }}
               onClick={() => chipClick(tag)}
             />

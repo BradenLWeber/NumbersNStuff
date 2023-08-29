@@ -1,8 +1,10 @@
 import { Box, MenuItem, TextField } from '@mui/material';
-import { posts } from 'posts/all-posts';
+
 import PostCard from 'components/general/post-card';
-import { useState } from 'react';
+import TextInput from 'components/general/text-input';
 import _ from 'lodash';
+import { posts } from 'posts/all-posts';
+import { useState } from 'react';
 
 const Posts = () => {
   const [filter, setFilter] = useState('');
@@ -10,10 +12,8 @@ const Posts = () => {
   const [postList, setPostList] = useState([...posts].reverse());
   const [filterBy, setFilterBy] = useState('Newest first');
 
-  const updateFilter = (event) => {
-    const value = (
-      typeof event === 'string' ? event : event.target.value
-    ).toLowerCase();
+  const updateFilter = (v) => {
+    const value = v.toLowerCase();
     setPostList(
       allPosts.filter(
         (p) =>
@@ -25,8 +25,7 @@ const Posts = () => {
     setFilter(value);
   };
 
-  const updateFilterBy = (event) => {
-    const value = event.target.value;
+  const updateFilterBy = (value) => {
     const direction = value === 'Newest first' ? -1 : 1;
 
     setAllPosts(
@@ -61,14 +60,15 @@ const Posts = () => {
           flexDirection='row'
           mb={8}
         >
-          <TextField
+          <TextInput
             variant='standard'
             label='Filter'
             sx={{ flex: 1, minWidth: 0, mt: 8 }}
+            backgroundColor='inherit'
             value={filter}
             onChange={(v) => updateFilter(v)}
           />
-          <TextField
+          <TextInput
             select
             label='filter by'
             value={filterBy}
@@ -77,7 +77,7 @@ const Posts = () => {
           >
             <MenuItem value='Newest first'>Newest first</MenuItem>
             <MenuItem value='Oldest first'>Oldest first</MenuItem>
-          </TextField>
+          </TextInput>
         </Box>
         {postList.map((post) => (
           <PostCard post={post} chipClick={updateFilter} key={post.title} />

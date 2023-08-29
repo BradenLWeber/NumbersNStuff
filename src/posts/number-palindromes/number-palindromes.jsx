@@ -1,12 +1,12 @@
 import Body from 'components/post/post-body';
+import { Color } from 'styles/Color';
+import Divider from 'components/post/post-divider';
+import Footer from 'components/post/post-footer';
 import Header from 'components/post/post-header';
+import Image from 'components/post/post-image';
+import Indent from 'components/post/post-indent';
 import Title from 'components/post/post-title';
 import Wrapper from 'components/post/post-wrapper';
-import Indent from 'components/post/post-indent';
-import Image from 'components/post/post-image';
-import Footer from 'components/post/post-footer';
-import Divider from 'components/post/post-divider';
-import { Color } from 'styles/Color';
 
 export const numberPalindromesTitle = 'Number Palindromes';
 
@@ -55,7 +55,7 @@ export const NumberPalindromes = () => {
         to do in class, I had to find something else to make <i>the click</i>{' '}
         happen.
       </Body>
-      <Indent multiline={true}>
+      <Indent>
         <i>
           <b>The click</b>: An event where a new mathematical concept goes from
           created to the creator. This happens when a mathmatician concept is
@@ -336,7 +336,7 @@ export const NumberPalindromes = () => {
         pattern to find in a random concept.
       </Body>
       <Indent>
-        <b>Hypothesis #2</b>: Numbers tend to be palindromes in bases that are
+        <b>Hypothesis #3</b>: Numbers tend to be palindromes in bases that are
         equal to one of their divisors minus one.
       </Indent>
       <Footer title={numberPalindromesTitle} />

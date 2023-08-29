@@ -1,11 +1,12 @@
-import { Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
+
 import { Color } from 'styles/Color';
 import { Font } from 'styles/Font';
 import PropTypes from 'prop-types';
 
 const Indent = (props) => {
-  const { children, mt, mb, separate, widthFirstLine, bold, multiline } = props;
+  const { children, mt, mb, separate, widthFirstLine, bold } = props;
   const [marginTop, setMarginTop] = useState(20);
   const [marginBottom, setMarginBottom] = useState(20);
 
@@ -29,18 +30,23 @@ const Indent = (props) => {
       justifyContent='space-between'
       alignItems='center'
       width='fit-content'
-      height={multiline ? 'fit-content' : 30}
+      height={'fit-content'}
       fontWeight={bold ? 'bold' : 'normal'}
     >
       {separate ? (
         <>
-          <span style={{ width: widthFirstLine || 100 }}>
+          <span
+            style={{
+              width: widthFirstLine || 80,
+              minWidth: widthFirstLine || 80,
+            }}
+          >
             {children.split('|')[0]}
           </span>
           <span>{children.split('|')[1]}</span>
         </>
       ) : (
-        children
+        <span>{children}</span>
       )}
     </Typography>
   );
@@ -53,7 +59,6 @@ Indent.propTypes = {
   separate: PropTypes.bool,
   widthFirstLine: PropTypes.number,
   bold: PropTypes.bool,
-  multiline: PropTypes.bool,
 };
 
 export default Indent;

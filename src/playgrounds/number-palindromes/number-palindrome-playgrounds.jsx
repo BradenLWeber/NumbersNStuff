@@ -139,17 +139,11 @@ const NumberPalindromesPlayground = () => {
             checked={showAllNumbers}
             onChange={(v) => setShowAllNumbers(v)}
           />
-          <FilledButton
-            color={Color.black}
-            backgroundColor={Color.primary}
-            hoverBackgroundColor={Color.primaryDark}
-            sx={{ ml: 85 }}
-            onClick={calculate}
-          >
+          <FilledButton sx={{ ml: 85 }} onClick={calculate}>
             Calculate
           </FilledButton>
         </ButtonRow>
-        <Typography color={Color.red} ml={10}>
+        <Typography color={Color.red} ml={20}>
           {errorMessage}
         </Typography>
       </Box>
