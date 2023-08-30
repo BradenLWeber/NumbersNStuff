@@ -2,7 +2,9 @@ import { Box, Typography } from '@mui/material';
 
 import Body from 'components/post/post-body';
 import Braden from 'assets/global/me.jpg';
+import { Color } from 'styles/Color';
 import FilledButton from 'components/general/filled-button';
+import Image from 'components/post/post-image';
 import KassiAndBraden from 'assets/global/kassi-and-braden.jpg';
 import SubscriptionApi from 'utilities/subscription';
 import TextInput from 'components/general/text-input';
@@ -50,7 +52,7 @@ const About = () => {
       >
         <Box flex={1} minWidth={0} mr={50}>
           <Title>Welcome!</Title>
-          <Body>
+          <Body mt={-10}>
             I am just a friendly, neighborhood mathematician. I do math because
             I enjoy it, though I only sometimes understand it. I am not
             decorated educationally in the mathematical sphere, but I can't
@@ -63,8 +65,8 @@ const About = () => {
             keep it all to myself, so this is my attempt to get everything into
             a public space.
           </Body>
-          <Title>Personal life</Title>
-          <Body>
+          <Title>Personal Life</Title>
+          <Body mt={-10}>
             I am a native Michigander who still lives in this state for reasons
             that don't always feel good enough (who would ever purposely choose
             Michigan weather?). I graduated from Calvin University with a
@@ -77,10 +79,11 @@ const About = () => {
             <a href='https://www.16personalities.com/infp-personality'>INFP</a>,
             and she tests as{' '}
             <a href='https://www.16personalities.com/infj-personality'>INFJ</a>.
-            She's my best friend and greatest supporter. I love you, Kassi.
+            She's my best friend and greatest supporter, and she beats me at
+            Catan.
           </Body>
           <Title>Contact Me</Title>
-          <Body mb={30}>
+          <Body mt={-10}>
             Email me at bradenlweber@gmail.com, or message me on{' '}
             <a href='https://www.linkedin.com/in/braden-weber/'>LinkedIn</a>.
           </Body>
@@ -103,7 +106,7 @@ const About = () => {
             {subscribeButtonText}
           </FilledButton>
         </Box>
-        <Box display='flex' flexDirection='column'>
+        <Box display='flex' flexDirection='column' alignItems='center'>
           <img
             alt='Braden'
             src={Braden}
@@ -111,11 +114,16 @@ const About = () => {
             height={350}
             style={{ marginTop: 114 }}
           />
-          <img
-            alt='kassi-and-braden'
+          <Typography color={Color.midGray} fontSize={12}>
+            Photo by my most wonderful wife
+          </Typography>
+          <Image
+            alt='Braden and Kassi'
             src={KassiAndBraden}
             width={400}
-            style={{ marginTop: 50, paddingBottom: 30 }}
+            mt={50}
+            cred='Heidi Musolff Photography'
+            credRef='https://heidimusolff.com/'
           />
         </Box>
       </Box>

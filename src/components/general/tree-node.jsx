@@ -1,12 +1,13 @@
 import { Box, ButtonBase, Typography } from '@mui/material';
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
-import { Color } from 'styles/Color';
 import { Link, useLocation } from 'react-router-dom';
 import { getChildNodeNames, parseTitleToUrl } from 'utilities/functions';
+import { useEffect, useState } from 'react';
+
+import { Color } from 'styles/Color';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import Node from 'classes/node';
+import PropTypes from 'prop-types';
 
 const TreeNode = (props) => {
   const { level } = props; // node is also in props but is not getting etracted due to naming conflicts
@@ -56,12 +57,18 @@ const TreeNode = (props) => {
               cursor: 'pointer',
               color: node.expandable ? Color.black : Color.gray,
               '&:hover': {
-                color: node.expandable ? Color.gray : Color.secondary,
+                color: node.expandable ? Color.gray : Color.secondaryDark,
               },
             }}
             onClick={clickIcon}
           >
-            {node.text}
+            {node.text.includes(':') ? (
+              <span>
+                <b>{node.text.split(':')[0]}</b>:{node.text.split(':')[1]}
+              </span>
+            ) : (
+              node.text
+            )}
           </Typography>
         </Link>
       </Box>

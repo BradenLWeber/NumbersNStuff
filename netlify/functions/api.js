@@ -67,7 +67,7 @@ router.post('/comment', async (req, res) => {
     const response = success;
     if (vulgar)
       response.message =
-        'This comment was found to contain vulgar content. It will be screened by development before it is made public.';
+        'This comment was found to contain vulgar content. It will be screened by moderators before it is made public.';
     res.json(response);
   } catch (e) {
     res.json({ success: false, message: e.message });

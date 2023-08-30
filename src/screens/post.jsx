@@ -98,7 +98,7 @@ const Post = () => {
           onChange={commentChange}
           multiline
           rows={4}
-          sx={{ mr: 50 }}
+          sx={{ mr: 50, maxWidth: 1000 }}
         />
         <FilledButton
           onClick={submitComment}

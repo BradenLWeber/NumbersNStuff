@@ -1,23 +1,28 @@
 import Body from 'components/post/post-body';
-import Title from 'components/post/post-title';
-import Wrapper from 'components/post/post-wrapper';
-import Indent from 'components/post/post-indent';
+import Divider from 'components/post/post-divider';
+import Footer from 'components/post/post-footer';
 import Image from 'components/post/post-image';
-import SummationFull from 'posts/i-found-it-but-i-dont-understand-it/summation-full.png';
-import SummationPart from 'posts/i-found-it-but-i-dont-understand-it/summation-part.png';
-import n21000000 from 'posts/i-found-it-but-i-dont-understand-it/n2-100000.png';
-import n210000000 from 'posts/i-found-it-but-i-dont-understand-it/n2-1000000.png';
+import Indent from 'components/post/post-indent';
 import OneOverN from 'posts/i-found-it-but-i-dont-understand-it/one-over-n.png';
 import RandomSummation from 'posts/i-found-it-but-i-dont-understand-it/random-summations.png';
-import Footer from 'components/post/post-footer';
+import SummationFull from 'posts/i-found-it-but-i-dont-understand-it/summation-full.png';
+import SummationPart from 'posts/i-found-it-but-i-dont-understand-it/summation-part.png';
+import Title from 'components/post/post-title';
+import Wrapper from 'components/post/post-wrapper';
+import n21000000 from 'posts/i-found-it-but-i-dont-understand-it/n2-100000.png';
+import n210000000 from 'posts/i-found-it-but-i-dont-understand-it/n2-1000000.png';
 
 export const iFoundItButIDontUnderstandItTitle =
   "I found it, but I don't understand it";
+export const iFoundItButIDontUnderstandItDate = '6/13/2023';
 
 export const IFoundItButIDontUnderstandIt = () => {
   return (
     <Wrapper>
-      <Title>I found it, but I don't understand it</Title>
+      <Title date={iFoundItButIDontUnderstandItDate} author='Braden Weber'>
+        I found it, but I don't understand it
+      </Title>
+      <Divider />
       <Body>
         This is a story of a boy getting a new fancy calculator and wondering
         what all the buttons do.

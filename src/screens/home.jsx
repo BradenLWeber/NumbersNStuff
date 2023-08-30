@@ -1,7 +1,8 @@
 import { Box, Typography } from '@mui/material';
+
 import BlackBoard from 'assets/global/blackboard.jpg';
-import { Link } from 'react-router-dom';
 import { Color } from 'styles/Color.jsx';
+import { Link } from 'react-router-dom';
 
 const sideMargin = 250;
 const boxHeight = 220;
@@ -20,6 +21,12 @@ const Home = () => {
         borderRadius='0px 10px 10px 0px'
         display='flex'
         justifyContent='flex-end'
+        sx={{
+          transition: 'box-shadow 0.25s',
+          '&:hover': {
+            boxShadow: '0px 0px 20px ' + Color.black,
+          },
+        }}
       >
         <Box
           id='explore-posts-colored-area-border'
@@ -132,21 +139,21 @@ const Home = () => {
                 <b style={{ fontWeight: 500 }}>curiosity</b>
               </>
             }
-            color={Color.tertriary}
+            color={Color.tertriaryDark}
             margin={3}
             url='/posts'
           />
           <Banner
             text1='Play Around'
             text2='Try the interactive playgrounds and bring mathematical concepts to life'
-            color={Color.secondary}
+            color={Color.secondaryDark}
             margin={2}
             url='/playgrounds'
           />
           <Banner
             text1='Contact Me'
             text2='Help me take these mathematical concepts to the next level'
-            color={Color.primary}
+            color={Color.primaryDark}
             margin={1}
             url='/about'
           />

@@ -24,8 +24,7 @@ const Playgrounds = () => {
     setFilter(value);
   };
 
-  const updateFilterBy = (event) => {
-    const value = event.target.value;
+  const updateFilterBy = (value) => {
     const direction = value === 'Newest first' ? -1 : 1;
 
     setAllPlaygrounds(

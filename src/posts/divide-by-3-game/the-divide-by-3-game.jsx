@@ -1,19 +1,28 @@
 import Body from 'components/post/post-body';
+import Divider from 'components/post/post-divider';
+import Footer from 'components/post/post-footer';
 import Header from 'components/post/post-header';
-import Title from 'components/post/post-title';
-import Wrapper from 'components/post/post-wrapper';
-import Indent from 'components/post/post-indent';
 import Image from 'components/post/post-image';
+import Indent from 'components/post/post-indent';
 import NumberLine from 'posts/divide-by-3-game/number-line.png';
 import NumberLineWithArrows from 'posts/divide-by-3-game/number-line-with-arrows.png';
-import Footer from 'components/post/post-footer';
+import Title from 'components/post/post-title';
+import Wrapper from 'components/post/post-wrapper';
 
 export const theDivideBy3GameTitle = 'The divide by 3 game';
+export const theDivideBy3GameDate = '6/11/2023';
 
 export const TheDivideBy3Game = () => {
   return (
     <Wrapper>
-      <Title playgroundName={theDivideBy3GameTitle}>The divide by 3 game</Title>
+      <Title
+        playgroundName={theDivideBy3GameTitle}
+        date={theDivideBy3GameDate}
+        author='Braden Weber'
+      >
+        The divide by 3 game
+      </Title>
+      <Divider />
       <Body>
         There is an easy way to tell if a number is divisible by three. If all
         the digits add up to a number divisible by three, the original number is

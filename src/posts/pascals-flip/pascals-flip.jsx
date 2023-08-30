@@ -1,32 +1,36 @@
-import Body from 'components/post/post-body';
-import Header from 'components/post/post-header';
-import Image from 'components/post/post-image';
-import Title from 'components/post/post-title';
-import Wrapper from 'components/post/post-wrapper';
-import Indent from 'components/post/post-indent';
-import PascalsTriangle from 'posts/pascals-flip/pascals-triangle.png';
 import AddOnes from 'posts/pascals-flip/inverted-pyramid-ones.png';
 import AddX from 'posts/pascals-flip/inverted-pyramid-x.png';
-import X3 from 'posts/pascals-flip/inverted-pyramid-x3.png';
-import X2 from 'posts/pascals-flip/inverted-pyramid-x2.png';
-import XComplex from 'posts/pascals-flip/inverted-pyramid-x2-complicated.png';
-import IntegralExamples from 'posts/pascals-flip/inverted-pyramid-integral-example.png';
-import IntegralX2 from 'posts/pascals-flip/inverted-pyramid-integral-x2.png';
-import SubtractionLine from 'posts/pascals-flip/inverted-pyramid-subtract-all.png';
-import IntegralX from 'posts/pascals-flip/inverted-pyramid-x-step-2.png';
-import Integral1 from 'posts/pascals-flip/inverted-pyramid-ones-only.png';
-import OneOverX from 'posts/pascals-flip/inverted-pyramid-one-over-x.png';
+import Body from 'components/post/post-body';
 import CosX from 'posts/pascals-flip/inverted-pyramid-cos-x.png';
-import PowerOf2 from 'posts/pascals-flip/inverted-pyramid-2-power-of-n.png';
+import Divider from 'components/post/post-divider';
 import Footer from 'components/post/post-footer';
+import Header from 'components/post/post-header';
+import Image from 'components/post/post-image';
+import Indent from 'components/post/post-indent';
+import Integral1 from 'posts/pascals-flip/inverted-pyramid-ones-only.png';
+import IntegralExamples from 'posts/pascals-flip/inverted-pyramid-integral-example.png';
+import IntegralX from 'posts/pascals-flip/inverted-pyramid-x-step-2.png';
+import IntegralX2 from 'posts/pascals-flip/inverted-pyramid-integral-x2.png';
+import OneOverX from 'posts/pascals-flip/inverted-pyramid-one-over-x.png';
+import PascalsTriangle from 'posts/pascals-flip/pascals-triangle.png';
+import PowerOf2 from 'posts/pascals-flip/inverted-pyramid-2-power-of-n.png';
+import SubtractionLine from 'posts/pascals-flip/inverted-pyramid-subtract-all.png';
+import Title from 'components/post/post-title';
+import Wrapper from 'components/post/post-wrapper';
+import X2 from 'posts/pascals-flip/inverted-pyramid-x2.png';
+import X3 from 'posts/pascals-flip/inverted-pyramid-x3.png';
+import XComplex from 'posts/pascals-flip/inverted-pyramid-x2-complicated.png';
 
 export const pascalsFlipTitle = "Pascal's Flip";
+export const pascalsFlipDate = '6/18/2023';
 
 export const PascalsFlip = () => {
   return (
     <Wrapper>
-      <Title>Pascal's flip</Title>
-      <Header>Reaching the flip</Header>
+      <Title date={pascalsFlipDate} author='Braden Weber'>
+        Pascal's flip
+      </Title>
+      <Divider />
       <Body>
         Everyone knows Pascal's triangle. You start with 1 at the top, and on
         every subsequent layer of the pyramid, you add the two numbers above.

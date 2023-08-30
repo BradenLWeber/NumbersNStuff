@@ -1,13 +1,16 @@
 import { Box, IconButton, Tooltip, Typography } from '@mui/material';
-import { Font } from 'styles/Font';
-import { Color } from 'styles/Color';
+import { useEffect, useState } from 'react';
+
 import CalculateIcon from '@mui/icons-material/Calculate';
+import { Color } from 'styles/Color';
+import { Font } from 'styles/Font';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import dayjs from 'dayjs';
+import localizedFormat from 'dayjs/plugin/localizedFormat';
 import { parseTitleToUrl } from 'utilities/functions';
 
 const Title = (props) => {
-  const { children, playgroundName } = props;
+  const { children, playgroundName, date, author } = props;
   const [playgroundUrl, setPlaygroundUrl] = useState('');
 
   useState(() => {
@@ -15,31 +18,48 @@ const Title = (props) => {
       setPlaygroundUrl('/playground/' + parseTitleToUrl(playgroundName));
   }, [playgroundName]);
 
+  useEffect(() => {
+    dayjs.extend(localizedFormat);
+  }, []);
+
   return (
-    <Box
-      display='flex'
-      flexDirection='row'
-      justifyContent='space-between'
-      alignItems='center'
-    >
-      <Typography
-        fontSize={Font.size.title}
-        marginY={20}
-        color={Color.gray}
-        fontWeight={500}
+    <>
+      <Box
+        display='flex'
+        flexDirection='row'
+        justifyContent='space-between'
+        alignItems='center'
       >
-        {children}
-      </Typography>
-      {playgroundName && (
-        <Link to={playgroundUrl}>
-          <Tooltip title='Playground'>
-            <IconButton>
-              <CalculateIcon />
-            </IconButton>
-          </Tooltip>
-        </Link>
+        <Typography
+          fontSize={Font.size.title}
+          marginY={20}
+          color={Color.gray}
+          fontWeight={500}
+        >
+          {children}
+        </Typography>
+        {playgroundName && (
+          <Link to={playgroundUrl}>
+            <Tooltip title='Playground'>
+              <IconButton>
+                <CalculateIcon />
+              </IconButton>
+            </Tooltip>
+          </Link>
+        )}
+      </Box>
+      {date && author && (
+        <Box mt={-20} display='flex' flexDirection='row'>
+          <Typography color={Color.midGray} fontWeight='bold'>
+            {author}
+            &nbsp;&nbsp;&nbsp;•
+          </Typography>
+          <Typography color={Color.midGray} ml={12}>
+            {dayjs(date).format('LL')}
+          </Typography>
+        </Box>
       )}
-    </Box>
+    </>
   );
 };
 

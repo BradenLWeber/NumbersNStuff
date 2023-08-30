@@ -1,17 +1,24 @@
 import IFoundItButIDontUnderstandIt, {
+  iFoundItButIDontUnderstandItDate,
   iFoundItButIDontUnderstandItTitle,
 } from './i-found-it-but-i-dont-understand-it/i-found-it-but-i-dont-understand-it';
-import PascalsFlip, { pascalsFlipTitle } from './pascals-flip/pascals-flip';
-import TheDivideBy3Game, {
-  theDivideBy3GameTitle,
-} from './divide-by-3-game/the-divide-by-3-game';
-import NumberLineWithArrows from 'posts/divide-by-3-game/number-line-with-arrows.png';
-import SummationFull from 'posts/i-found-it-but-i-dont-understand-it/summation-full.png';
-import PascalsTriangle from 'posts/pascals-flip/pascals-triangle.png';
 import NumberPalindromes, {
+  numberPalindromesDate,
   numberPalindromesTitle,
 } from './number-palindromes/number-palindromes';
+import PascalsFlip, {
+  pascalsFlipDate,
+  pascalsFlipTitle,
+} from './pascals-flip/pascals-flip';
+import TheDivideBy3Game, {
+  theDivideBy3GameDate,
+  theDivideBy3GameTitle,
+} from './divide-by-3-game/the-divide-by-3-game';
+
 import ExamplePalindromes from 'posts/number-palindromes/examples.png';
+import NumberLineWithArrows from 'posts/divide-by-3-game/number-line-with-arrows.png';
+import PascalsTriangle from 'posts/pascals-flip/pascals-triangle.png';
+import SummationFull from 'posts/i-found-it-but-i-dont-understand-it/summation-full.png';
 
 export const posts = [
   {
@@ -22,7 +29,7 @@ export const posts = [
       height: 120,
       width: 270,
     },
-    createdDate: '6/11/2023',
+    createdDate: theDivideBy3GameDate,
     tags: ['game'],
     element: <TheDivideBy3Game />,
   },
@@ -33,7 +40,7 @@ export const posts = [
       src: SummationFull,
       height: 110,
     },
-    createdDate: '6/13/2023',
+    createdDate: iFoundItButIDontUnderstandItDate,
     tags: ['calculator', 'summation'],
     element: <IFoundItButIDontUnderstandIt />,
   },
@@ -43,7 +50,7 @@ export const posts = [
     image: {
       src: PascalsTriangle,
     },
-    createdDate: '6/18/2023',
+    createdDate: pascalsFlipDate,
     tags: ['pascal', 'geometric'],
     element: <PascalsFlip />,
   },
@@ -54,7 +61,7 @@ export const posts = [
     image: {
       src: ExamplePalindromes,
     },
-    createdDate: '8/19/2023',
+    createdDate: numberPalindromesDate,
     tags: ['palindrome', 'bases'],
     element: <NumberPalindromes />,
   },

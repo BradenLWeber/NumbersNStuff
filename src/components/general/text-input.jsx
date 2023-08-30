@@ -15,7 +15,7 @@ const TextInput = (props) => {
     <TextField
       id='text-input'
       value={value}
-      onChange={(e) => onChange(e.target.value)}
+      onChange={(e) => onChange(e.target.value, e)}
       label={label}
       onKeyDown={keyPress}
       sx={{ backgroundColor: backgroundColor || 'white', ...sx }}

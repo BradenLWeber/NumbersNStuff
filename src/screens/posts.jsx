@@ -12,7 +12,9 @@ const Posts = () => {
   const [postList, setPostList] = useState([...posts].reverse());
   const [filterBy, setFilterBy] = useState('Newest first');
 
-  const updateFilter = (v) => {
+  const updateFilter = (v, event) => {
+    event.stopPropagation();
+    event.preventDefault();
     const value = v.toLowerCase();
     setPostList(
       allPosts.filter(
@@ -58,7 +60,7 @@ const Posts = () => {
           maxWidth={1000}
           display='flex'
           flexDirection='row'
-          mb={8}
+          mb={20}
         >
           <TextInput
             variant='standard'
@@ -66,7 +68,7 @@ const Posts = () => {
             sx={{ flex: 1, minWidth: 0, mt: 8 }}
             backgroundColor='inherit'
             value={filter}
-            onChange={(v) => updateFilter(v)}
+            onChange={(v, e) => updateFilter(v, e)}
           />
           <TextInput
             select

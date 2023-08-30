@@ -3,17 +3,24 @@ import { Color } from 'styles/Color';
 import Divider from 'components/post/post-divider';
 import Footer from 'components/post/post-footer';
 import Header from 'components/post/post-header';
-import Image from 'components/post/post-image';
 import Indent from 'components/post/post-indent';
 import Title from 'components/post/post-title';
 import Wrapper from 'components/post/post-wrapper';
 
 export const numberPalindromesTitle = 'Number Palindromes';
+export const numberPalindromesDate = '8/19/2023';
 
 export const NumberPalindromes = () => {
   return (
     <Wrapper>
-      <Title playgroundName={numberPalindromesTitle}>Number Palindromes</Title>
+      <Title
+        playgroundName={numberPalindromesTitle}
+        date={numberPalindromesDate}
+        author='Braden Weber'
+      >
+        Number Palindromes
+      </Title>
+      <Divider />
       <Body>
         I have always found palindromes to be fascinating. For those of you who
         don't know, a palindrome is something that is the same forward and

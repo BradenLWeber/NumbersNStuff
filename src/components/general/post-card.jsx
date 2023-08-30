@@ -18,86 +18,86 @@ const PostCard = (props) => {
   }, []);
 
   return (
-    <Box
-      id='post-card-wrapper'
-      display='flex'
-      flexDirection='row'
-      height='fit-content'
-      minHeight={220}
-      width='100%'
-      maxWidth={1000}
-      minWidth={450}
-      mr={10}
-      mb={20}
-      padding='20px 20px 20px 0px'
-      boxSizing='border-box'
-    >
+    <Link to={url} style={{ color: 'unset', textDecoration: 'none' }}>
       <Box
-        flex={1}
-        minWidth={0}
+        id='post-card-wrapper'
         display='flex'
-        flexDirection='column'
-        justifyContent='space-between'
+        flexDirection='row'
+        height='fit-content'
+        minHeight={220}
+        width='100%'
+        maxWidth={1000}
+        minWidth={450}
+        mr={10}
+        mb={20}
+        boxSizing='border-box'
+        padding='20px 20px 20px 20px'
+        borderRadius={2}
+        backgroundColor={Color.white}
+        boxShadow={`2px 2px 5px ${Color.gray}`}
+        sx={{
+          transition: 'box-shadow 0.5s',
+          cursor: 'pointer',
+          '&:hover': {
+            boxShadow: '2px 2px 10px ' + Color.gray,
+          },
+        }}
       >
-        <Box>
-          <Link to={url} style={{ color: 'unset', textDecoration: 'none' }}>
-            <Typography
-              fontSize={Font.size.title}
-              lineHeight={1}
-              mr={20}
-              sx={{
-                ':hover': {
-                  color: Color.tertriary,
-                  cursor: 'pointer',
-                },
-              }}
-            >
+        <Box
+          flex={1}
+          minWidth={0}
+          display='flex'
+          flexDirection='column'
+          justifyContent='space-between'
+        >
+          <Box>
+            <Typography fontSize={Font.size.title} lineHeight={1} mr={20}>
               {title}
             </Typography>
-          </Link>
-          <Typography
-            fontSize={Font.size.body}
-            mt={10}
-            mr={10}
-            color={Color.gray}
-          >
-            {description}
-          </Typography>
+            <Typography
+              fontSize={Font.size.body}
+              mt={10}
+              mr={10}
+              color={Color.gray}
+            >
+              {description}
+            </Typography>
+          </Box>
+          <Box display='flex' flexDirection='row' mt={20}>
+            {tags.map((tag) => (
+              <Chip
+                label={tag}
+                key={tag}
+                sx={{
+                  mr: 10,
+                  backgroundColor: Color.secondary,
+                  '&:hover': {
+                    backgroundColor: Color.secondaryDark,
+                  },
+                }}
+                onClick={(e) => chipClick(tag, e)}
+              />
+            ))}
+          </Box>
         </Box>
-        <Box display='flex' flexDirection='row' mt={20}>
-          {tags.map((tag) => (
-            <Chip
-              label={tag}
-              key={tag}
-              sx={{
-                mr: 10,
-                backgroundColor: Color.secondary,
-                '&:hover': {
-                  backgroundColor: Color.secondaryDark,
-                },
-              }}
-              onClick={() => chipClick(tag)}
-            />
-          ))}
+        <Box
+          width='fit-content'
+          display='flex'
+          flexDirection='column'
+          justifyContent='space-between'
+          alignItems='flex-end'
+        >
+          <img
+            src={image.src}
+            height={image.height || 150}
+            width={image.width || 'auto'}
+            alt='Post icon'
+            style={{ objectFit: 'cover' }}
+          />
+          <Typography color={Color.gray}>{createdDate}</Typography>
         </Box>
       </Box>
-      <Box
-        width='fit-content'
-        display='flex'
-        flexDirection='column'
-        justifyContent='space-between'
-        alignItems='flex-end'
-      >
-        <img
-          src={image.src}
-          height={image.height || 150}
-          width={image.width || 'auto'}
-          alt='Post icon'
-          style={{ objectFit: 'cover' }}
-        />
-        <Typography color={Color.gray}>{createdDate}</Typography>
-      </Box>
-    </Box>
+    </Link>
   );
 };
 

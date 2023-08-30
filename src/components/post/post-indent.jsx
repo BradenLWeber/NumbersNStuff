@@ -53,7 +53,11 @@ const Indent = (props) => {
 };
 
 Indent.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.array,
+    PropTypes.node,
+  ]),
   mt: PropTypes.number,
   mb: PropTypes.number,
   separate: PropTypes.bool,
