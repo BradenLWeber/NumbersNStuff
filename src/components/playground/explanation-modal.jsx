@@ -39,7 +39,7 @@ const ExplanationModal = (props) => {
           zIndex={1}
           ml={-20}
           borderRadius='12px 12px 0px 0px'
-        ></Box>
+        />
         <Box
           position='relative'
           zIndex={100}

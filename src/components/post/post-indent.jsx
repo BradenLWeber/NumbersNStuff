@@ -52,10 +52,10 @@ const Indent = (props) => {
       justifyContent='space-between'
       alignItems='center'
       width='fit-content'
-      height={'fit-content'}
+      height='fit-content'
       fontWeight={bold ? 'bold' : 'normal'}
     >
-      {separate ? <>{Children}</> : <span width='100%'>{children}</span>}
+      {separate ? { Children } : <span width='100%'>{children}</span>}
     </Typography>
   );
 };

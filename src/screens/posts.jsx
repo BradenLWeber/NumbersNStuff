@@ -1,4 +1,4 @@
-import { Box, MenuItem, TextField } from '@mui/material';
+import { Box, MenuItem } from '@mui/material';
 
 import PostCard from 'components/general/post-card';
 import TextInput from 'components/general/text-input';

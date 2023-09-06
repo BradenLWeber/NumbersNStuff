@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 
 import Body from 'components/post/post-body';
 import FilledButton from 'components/general/filled-button';
@@ -49,7 +49,7 @@ const Unsubscribe = () => {
         onChange={emailChange}
         placeholder='Email'
         onEnter={unsubscribe}
-      ></TextInput>
+      />
       <FilledButton
         disabled={unsubscribeButtonDisabled}
         click={unsubscribe}

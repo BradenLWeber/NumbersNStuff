@@ -95,7 +95,7 @@ const About = () => {
             size='small'
             fullWidth={true}
             onEnter={subscribe}
-          ></TextInput>
+          />
           <FilledButton
             variant='contained'
             sx={{ mt: 10 }}

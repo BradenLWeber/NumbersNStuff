@@ -13,7 +13,7 @@ const Title = (props) => {
   const { children, playgroundName, date, author } = props;
   const [playgroundUrl, setPlaygroundUrl] = useState('');
 
-  useState(() => {
+  useEffect(() => {
     if (playgroundName)
       setPlaygroundUrl('/playground/' + parseTitleToUrl(playgroundName));
   }, [playgroundName]);

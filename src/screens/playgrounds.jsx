@@ -1,4 +1,4 @@
-import { Box, MenuItem, TextField } from '@mui/material';
+import { Box, MenuItem } from '@mui/material';
 
 import PlaygroundCard from 'components/general/playground-card';
 import TextInput from 'components/general/text-input';

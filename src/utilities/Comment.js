@@ -1,6 +1,5 @@
 import Filter from 'bad-words';
 import Http from './http';
-import dayjs from 'dayjs';
 
 export default class CommentApi {
   static async add(text, name, post) {
