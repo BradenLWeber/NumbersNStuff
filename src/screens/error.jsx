@@ -1,7 +1,9 @@
-import { Typography, Box, Button } from '@mui/material';
-import { useState } from 'react';
+import { Box, Typography } from '@mui/material';
+
 import { Color } from 'styles/Color';
 import { Font } from 'styles/Font';
+import OutlinedButton from 'components/general/outlined-button';
+import { useState } from 'react';
 
 const Error = () => {
   const [message, setMessage] = useState(0);
@@ -15,13 +17,12 @@ const Error = () => {
         Or else it's doing a really good job hiding.
       </Typography>
       {message < 126 && (
-        <Button
-          variant='outlined'
+        <OutlinedButton
           sx={{ mt: 50, mb: 20, width: 200, color: Color.green }}
-          onClick={() => setMessage(message + 1)}
+          click={() => setMessage(message + 1)}
         >
           Click me
-        </Button>
+        </OutlinedButton>
       )}
       {message === 1 && (
         <Typography>You just took orders from a button.</Typography>
