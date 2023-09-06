@@ -23,6 +23,12 @@ const RootNavigation = (props) => {
     !location.pathname.includes('home') &&
     !location.pathname.includes('playground/');
 
+  const clickLogo = () => {
+    window
+      .open('https://github.com/BradenLWeber/NumbersNStuff', '_blank')
+      .focus();
+  };
+
   return (
     <Box
       id='ScreenWrapper'
@@ -50,7 +56,7 @@ const RootNavigation = (props) => {
               style={{ borderRadius: 10 }}
             />
             <Typography ml={12} fontSize={40}>
-              Math Addict
+              Numbers 'n Stuff
             </Typography>
           </ButtonBase>
         </Link>
@@ -99,7 +105,12 @@ const RootNavigation = (props) => {
             color={Color.white}
           >
             <Typography>Created in React</Typography>
-            <img src={ReactLogo} height={30} />
+            <img
+              src={ReactLogo}
+              height={30}
+              onClick={clickLogo}
+              style={{ cursor: 'pointer' }}
+            />
           </Box>
         )}
       </Box>

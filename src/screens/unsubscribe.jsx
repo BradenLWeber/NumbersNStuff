@@ -52,7 +52,7 @@ const Unsubscribe = () => {
       ></TextInput>
       <FilledButton
         disabled={unsubscribeButtonDisabled}
-        onClick={unsubscribe}
+        click={unsubscribe}
         sx={{ minWidth: 92, mt: 20, width: 300 }}
       >
         {unsubscribeButtonText}

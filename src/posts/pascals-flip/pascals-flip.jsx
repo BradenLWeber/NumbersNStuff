@@ -113,28 +113,28 @@ export const PascalsFlip = () => {
         was some pattern I was missing. I ran a few more examples and compiled
         the data.
       </Body>
-      <Indent separate={true} widthFirstLine={200}>
+      <Indent separate={true} widths={[200]}>
         f(x) = x² | runs for 3 lines, ends with 2s
       </Indent>
-      <Indent separate={true} widthFirstLine={200}>
+      <Indent separate={true} widths={[200]}>
         f(x) = x² - x + 1 | runs for 3 lines, ends with 2s
       </Indent>
-      <Indent separate={true} widthFirstLine={200}>
+      <Indent separate={true} widths={[200]}>
         f(x) = 2x² - 1 | runs for 3 lines, ends with 4s
       </Indent>
-      <Indent separate={true} widthFirstLine={200}>
+      <Indent separate={true} widths={[200]}>
         f(x) = x³ | runs for 4 lines, ends with 6s.
       </Indent>
-      <Indent separate={true} widthFirstLine={200}>
+      <Indent separate={true} widths={[200]}>
         f(x) = x³ - x² - x | runs for 4 lines, ends with 6s.
       </Indent>
-      <Indent separate={true} widthFirstLine={200}>
+      <Indent separate={true} widths={[200]}>
         f(x) = x³ + x² | runs for 4 lines, ends with 6s.
       </Indent>
-      <Indent separate={true} widthFirstLine={200}>
+      <Indent separate={true} widths={[200]}>
         f(x) = 2x³ -3x² + x - 5 | runs for 4 lines, ends with 12s
       </Indent>
-      <Indent separate={true} widthFirstLine={200}>
+      <Indent separate={true} widths={[200]}>
         f(x) = x⁴ | runs for 5 lines, ends with 24s
       </Indent>
       <Body>
@@ -142,28 +142,28 @@ export const PascalsFlip = () => {
         at the end seemed to depend upon the highest term within f(x). Rewriting
         the above data according to highest term looked like this.
       </Body>
-      <Indent separate={true} widthFirstLine={130}>
+      <Indent separate={true} widths={[130]}>
         f(x) = x² | 3 lines, ends with 2s
       </Indent>
-      <Indent separate={true} widthFirstLine={130}>
+      <Indent separate={true} widths={[130]}>
         f(x) = x² ... | 3 lines, ends with 2s
       </Indent>
-      <Indent separate={true} widthFirstLine={130}>
+      <Indent separate={true} widths={[130]}>
         f(x) = 2x² ... | 3 lines, ends with 4s
       </Indent>
-      <Indent separate={true} widthFirstLine={130}>
+      <Indent separate={true} widths={[130]}>
         f(x) = x³ | 4 lines, ends with 6s.
       </Indent>
-      <Indent separate={true} widthFirstLine={130}>
+      <Indent separate={true} widths={[130]}>
         f(x) = x³ ... | 4 lines, ends with 6s.
       </Indent>
-      <Indent separate={true} widthFirstLine={130}>
+      <Indent separate={true} widths={[130]}>
         f(x) = x³ ... | 4 lines, ends with 6s.
       </Indent>
-      <Indent separate={true} widthFirstLine={130}>
+      <Indent separate={true} widths={[130]}>
         f(x) = 2x³ ... | 4 lines, ends with 12s
       </Indent>
-      <Indent separate={true} widthFirstLine={130}>
+      <Indent separate={true} widths={[130]}>
         f(x) = x⁴ | 5 lines, ends with 24s
       </Indent>
       <Body>
@@ -186,19 +186,19 @@ export const PascalsFlip = () => {
       <Body>
         For the above examples, I checked to make sure this held true.
       </Body>
-      <Indent separate={true} widthFirstLine={100}>
+      <Indent separate={true} widths={[100]}>
         f(x) = x² | 1 * 2! = 2
       </Indent>
-      <Indent separate={true} widthFirstLine={100}>
+      <Indent separate={true} widths={[100]}>
         f(x) = 2x² | 2 * 2! = 4
       </Indent>
-      <Indent separate={true} widthFirstLine={100}>
+      <Indent separate={true} widths={[100]}>
         f(x) = x³ | 1 * 3! = 6
       </Indent>
-      <Indent separate={true} widthFirstLine={100}>
+      <Indent separate={true} widths={[100]}>
         f(x) = 2x³ | 2 * 3! = 12
       </Indent>
-      <Indent separate={true} widthFirstLine={100}>
+      <Indent separate={true} widths={[100]}>
         f(x) = x⁴ | 1 * 4! = 24
       </Indent>
       <Body>
@@ -278,8 +278,8 @@ export const PascalsFlip = () => {
       <Indent mt={5}>∫4x³ = x⁴</Indent>
       <Body>
         I didn't know for sure, but I had a good feeling that this was the true
-        pattern. At this time, I also noticed that the number of times the
-        number had to be taken to the integral was the same as the number of
+        pattern. At this time, I also noticed that the amount of times the
+        number had to be taken to the integral was the same as the amount of
         lines it took to reach that final number before the 0s. I visualized it
         like this:
       </Body>
@@ -324,13 +324,8 @@ export const PascalsFlip = () => {
       <Image src={Integral1} />
       <Body>
         So with just that starting line of numbers, I can calculate all the
-        terms of f(x) one by one. How cool!
-      </Body>
-      <Body>
-        To summarize, I discovered a method that could take any series of
-        numbers run through a function f(x) starting at 1 and figure out what
-        f(x) is predictably without any other information. I love finding things
-        I didn't expect. Life is great.
+        terms of f(x) one by one. How cool! I love finding things I don't
+        expect. Life is great.
       </Body>
       <Header>What about things other than polynomials?</Header>
       <Body>

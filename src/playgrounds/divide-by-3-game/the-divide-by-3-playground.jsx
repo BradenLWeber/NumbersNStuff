@@ -127,7 +127,11 @@ const DivideBy3Playground = () => {
     <>
       <Header>History</Header>
       {history.map((hist, i) => (
-        <Typography pb={i === history.length - 1 ? 10 : 0} color={Color.gray}>
+        <Typography
+          pb={i === history.length - 1 ? 10 : 0}
+          color={Color.gray}
+          key={i}
+        >
           {hist}
         </Typography>
       ))}
@@ -136,7 +140,6 @@ const DivideBy3Playground = () => {
 
   const Explanation = () => (
     <>
-      <Title>Rules</Title>
       <Body>
         <b>1)</b> Start with a large number
       </Body>
@@ -183,15 +186,22 @@ const DivideBy3Playground = () => {
       )}
       {phase === 2 && (
         <Box display='flex' flexDirection='column'>
-          <Tooltip title={number}>
+          <Tooltip title={number} mb={0}>
             <div>
               <Title>{number}</Title>
             </div>
           </Tooltip>
-          <Box display='flex' flexDirection='row' columnGap={10} mb={20}>
-            <OutlinedButton onClick={addOne}>+1</OutlinedButton>
-            <OutlinedButton onClick={subtractOne}>-1</OutlinedButton>
-            <OutlinedButton onClick={divideByThree}>/3</OutlinedButton>
+          {/* I moved the title margin to this component so the tooltip displays a little higher up */}
+          <Box
+            display='flex'
+            flexDirection='row'
+            columnGap={10}
+            mb={20}
+            mt={20}
+          >
+            <OutlinedButton click={addOne}>+1</OutlinedButton>
+            <OutlinedButton click={subtractOne}>-1</OutlinedButton>
+            <OutlinedButton click={divideByThree}>/3</OutlinedButton>
           </Box>
           <HistoryComponent />
         </Box>
@@ -216,9 +226,9 @@ const DivideBy3Playground = () => {
                     : BigInt(number) / BigInt(3) + '.333333'
                 }`}
           </Body>
-          <Button variant='outlined' sx={{ mt: 20, mb: 20 }} onClick={reset}>
+          <OutlinedButton sx={{ mt: 20, mb: 20 }} click={reset}>
             Play again?
-          </Button>
+          </OutlinedButton>
           <HistoryComponent />
         </Box>
       )}

@@ -15,4 +15,5 @@ export const Color = {
   light: '#fdfaf0',
   white: '#fafafa',
   red: '#f04622 ',
+  redDark: '#d13413 ',
 };

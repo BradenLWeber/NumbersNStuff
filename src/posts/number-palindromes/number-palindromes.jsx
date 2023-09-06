@@ -1,4 +1,5 @@
 import Body from 'components/post/post-body';
+import { Box } from '@mui/material';
 import { Color } from 'styles/Color';
 import Divider from 'components/post/post-divider';
 import Footer from 'components/post/post-footer';
@@ -65,22 +66,496 @@ export const NumberPalindromes = () => {
       <Indent>
         <i>
           <b>The click</b>: An event where a new mathematical concept goes from
-          created to the creator. This happens when a mathmatician concept is
-          found to have some subjective quality that excites the imagination and
-          possibly causes some head scratching.
+          created to the creator. The concept is found to have some subjective
+          quality that excites the imagination and possibly causes some head
+          scratching.
         </i>
       </Indent>
-      <Body>There are two routes of exploration my gut let me to.</Body>
+      <Body>There are two routes of exploration my gut led me to.</Body>
       <Body>
-        First route: How often to palindromic whole numbers occur on the
+        <b>First route</b>: How often to palindromic whole numbers occur on the
         numberline? Are the gaps between them predictable?
       </Body>
       <Body>
-        Second route: What happens when we convert palindromic numbers to other
-        bases? Are there numbers that stay palindromic even when converted to
-        another base?
+        <b>Second route</b>: What happens when we convert palindromic numbers to
+        other bases? Are there numbers that stay palindromic even when converted
+        to another base?
       </Body>
       <Header>First route: Frequency of palindromic numbers</Header>
+      <Body>
+        To pursue this line of thought, I knew I would need some kind of a
+        script to do the heavy lifting for me. There are just too many numbers
+        to check.
+      </Body>
+      <Body>
+        But before rushing to the end, I always like to get a sense of the
+        territory I'm in. What kind of results should I be expecting?
+      </Body>
+      <Body>
+        The first place to start would be...small. How about the palindromic
+        numbers between 10 and 100. These aren't too difficult to find.
+      </Body>
+      <Indent>11, 22, 33, 44, 55, 66, 77, 88, 99</Indent>
+      <Body>
+        If we look at the gaps between all of them, it's nice and predictable
+      </Body>
+      <Indent>11, 11, 11, 11, 11, 11, 11, 11</Indent>
+      <Body>
+        Okay, now let's go up to 1000. I don't think the numbers will be too
+        hard to find just using my common sense.
+      </Body>
+      <Indent>
+        11, 22, 33, 44, 55, 66, 77, 88, 99, 101, 111, 121, 131, 141, 151, 161,
+        171, 181, 191, 202, 212, 222, 232, 242, 252, 262, 272, 282, 292, 303,
+        313...
+      </Indent>
+      <Body>
+        I'll stop writing them out because the pattern is fairly obvious. Once
+        we hit the hundreds, you only add by 10 every time until you cross the
+        gap into the next hundred, at which case you add 11. The gaps look like
+        this. (Asterisks added to emphasize pivot numbers)
+      </Body>
+      <Indent>
+        11, 11, 11, 11, 11, 11, 11, 11, *2*, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+        *11*, 10, 10, 10, 10, 10, 10, 10, 10, 10, *11*, 10...
+      </Indent>
+      <Body>
+        At this point, the next question is natural, right? We had a pattern of
+        11's from 10 to 100. Now we have a pattern of 10's from 100 to 1000.
+        Does each power of 10 have its own pattern?
+      </Body>
+      <Body>
+        Now I am going to build my script, because this is too much to keep
+        doing by hand
+      </Body>
+      <Body color={Color.midGray}>
+        Furiously typing... unashamedly snacking...
+      </Body>
+      <Body>
+        Turns out, building a script is not too bad. Palindromes are nice and
+        predictable.
+      </Body>
+      <Body>
+        I'll just jump right in. I'll run the script up to a million and one.
+        So, you know, it ends on a palindrome.
+      </Body>
+      <Box
+        height={300}
+        sx={{ overflowY: 'auto', overflowX: 'hidden' }}
+        mt={20}
+        mb={20}
+      >
+        <Indent mt={0} mb={0}>
+          11,11,11,11,11,11,11,11,11,*2*,
+          <br />
+          10,10,10,10,10,10,10,10,10,*11*,
+          <br />
+          10,10,10,10,10,10,10,10,10,*11*,
+          <br />
+          10,10,10,10,10,10,10,10,10,*11*,
+          <br />
+          10,10,10,10,10,10,10,10,10,*11*,
+          <br />
+          10,10,10,10,10,10,10,10,10,*11*,
+          <br />
+          10,10,10,10,10,10,10,10,10,*11*,
+          <br />
+          10,10,10,10,10,10,10,10,10,*11*,
+          <br />
+          10,10,10,10,10,10,10,10,10,*11*,
+          <br />
+          10,10,10,10,10,10,10,10,10,*2*,
+          <br />
+          110,110,110,110,110,110,110,110,110,*11*,
+          <br />
+          110,110,110,110,110,110,110,110,110,*11*,
+          <br />
+          110,110,110,110,110,110,110,110,110,*11*,
+          <br />
+          110,110,110,110,110,110,110,110,110,*11*,
+          <br />
+          110,110,110,110,110,110,110,110,110,*11*,
+          <br />
+          110,110,110,110,110,110,110,110,110,*11*,
+          <br />
+          110,110,110,110,110,110,110,110,110,*11*,
+          <br />
+          110,110,110,110,110,110,110,110,110,*11*,
+          <br />
+          110,110,110,110,110,110,110,110,110,*2*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*11*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*11*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*11*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*11*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*11*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*11*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*11*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*11*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*110*,
+          <br />
+          100,100,100,100,100,100,100,100,100,*2*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*11*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*11*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*11*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*11*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*11*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*11*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*11*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*11*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*110*,
+          <br />
+          1100,1100,1100,1100,1100,1100,1100,1100,1100,*2*
+        </Indent>
+      </Box>
+      <Body>
+        Looks like the gaps between palindromes are pretty regular. The pivot
+        numbers seem to change a little with time, which is interesting, but I'm
+        not sure it leads to much. I'll be honest, I was hoping for it to look
+        more chaotic, but it looks so orderly. Neat. Like it's got well defined
+        rules that I could find if I searched hard enough.
+      </Body>
+      <Body>
+        I think I might move on from this one. It's interesting, but not what
+        I'm looking for. I want to try idea number 2.
+      </Body>
       <Header>Second route: Consistency of palindromic numbers</Header>
       <Body>
         This route excites me because of my general lack of experience in other
@@ -109,8 +584,8 @@ export const NumberPalindromes = () => {
       </Body>
       <Divider />
       <Body>
-        The first thing do, of course, is to set my sights small and get a sense
-        of the playing field. What kinds of results should I be expecting?
+        The first thing do, of course, is to get a sense of the playing field.
+        What kinds of results should I be expecting?
       </Body>
       <Body>
         Base 10 and base 2 are very commonly used bases, so they don't feel so
@@ -126,61 +601,61 @@ export const NumberPalindromes = () => {
         Here are all the numbers that are palindromes in both base 2 and base
         10, checking up to 1,000,000:
       </Body>
-      <Indent separate={true} widthFirstLine={100}>
+      <Indent separate={true} widths={[100]}>
         1|1
       </Indent>
-      <Indent separate={true} widthFirstLine={100}>
+      <Indent separate={true} widths={[100]}>
         3|11
       </Indent>
-      <Indent separate={true} widthFirstLine={100}>
+      <Indent separate={true} widths={[100]}>
         5|101
       </Indent>
-      <Indent separate={true} widthFirstLine={100}>
+      <Indent separate={true} widths={[100]}>
         7|111
       </Indent>
-      <Indent separate={true} widthFirstLine={100}>
+      <Indent separate={true} widths={[100]}>
         9|1001
       </Indent>
-      <Indent separate={true} widthFirstLine={100}>
+      <Indent separate={true} widths={[100]}>
         33|100001
       </Indent>
-      <Indent separate={true} widthFirstLine={100}>
+      <Indent separate={true} widths={[100]}>
         99|1100011
       </Indent>
-      <Indent separate={true} widthFirstLine={100}>
+      <Indent separate={true} widths={[100]}>
         313|100111001
       </Indent>
-      <Indent separate={true} widthFirstLine={100}>
+      <Indent separate={true} widths={[100]}>
         585|1001001001
       </Indent>
-      <Indent separate={true} widthFirstLine={100}>
+      <Indent separate={true} widths={[100]}>
         717|1011001101
       </Indent>
-      <Indent separate={true} widthFirstLine={100}>
+      <Indent separate={true} widths={[100]}>
         7447|1110100010111
       </Indent>
-      <Indent separate={true} widthFirstLine={100}>
+      <Indent separate={true} widths={[100]}>
         9009|10001100110001
       </Indent>
-      <Indent separate={true} widthFirstLine={100}>
+      <Indent separate={true} widths={[100]}>
         15351|11101111110111
       </Indent>
-      <Indent separate={true} widthFirstLine={100}>
+      <Indent separate={true} widths={[100]}>
         32223|111110111011111
       </Indent>
-      <Indent separate={true} widthFirstLine={100}>
+      <Indent separate={true} widths={[100]}>
         39993|1001110000111001
       </Indent>
-      <Indent separate={true} widthFirstLine={100}>
+      <Indent separate={true} widths={[100]}>
         53235|1100111111110011
       </Indent>
-      <Indent separate={true} widthFirstLine={100}>
+      <Indent separate={true} widths={[100]}>
         53935|1101001010101111
       </Indent>
-      <Indent separate={true} widthFirstLine={100}>
+      <Indent separate={true} widths={[100]}>
         73737|10010000000001001
       </Indent>
-      <Indent separate={true} widthFirstLine={100}>
+      <Indent separate={true} widths={[100]}>
         585585|10001110111101110001
       </Indent>
       <Body>
@@ -192,22 +667,22 @@ export const NumberPalindromes = () => {
         I sketched out some data on how many palindrome pairs there are, going
         up by a power of 10 each time.
       </Body>
-      <Indent separate={true} widthFirstLine={200}>
+      <Indent separate={true} widths={[200]}>
         1-10|5
       </Indent>
-      <Indent separate={true} widthFirstLine={200}>
+      <Indent separate={true} widths={[200]}>
         11-100|2
       </Indent>
-      <Indent separate={true} widthFirstLine={200}>
+      <Indent separate={true} widths={[200]}>
         101-1000|3
       </Indent>
-      <Indent separate={true} widthFirstLine={200}>
+      <Indent separate={true} widths={[200]}>
         1001-10,000|2
       </Indent>
-      <Indent separate={true} widthFirstLine={200}>
+      <Indent separate={true} widths={[200]}>
         10,001-100,000|6
       </Indent>
-      <Indent separate={true} widthFirstLine={200}>
+      <Indent separate={true} widths={[200]}>
         100,001-1,000,000|1
       </Indent>
       <Body>
@@ -247,11 +722,12 @@ export const NumberPalindromes = () => {
         <i>Gears screaching... eletricity whirring...</i>
       </Body>
       <Body>
-        We got it! There are two numbers that have tied for first. In my
+        We got it! There are three numbers that have tied for first. In my
         innermost being I was hoping for something that was a palindrome in 6 or
         more bases, but we've maxed at out four.
       </Body>
-      <Body>The two numbers are:</Body>
+      <Body>The three numbers are:</Body>
+      <Indent separate={true}>121|(bases 3, 7, 8, 10)</Indent>
       <Indent separate={true}>373|(bases 4, 8, 9, 10)</Indent>
       <Indent separate={true}>786435|(bases 2, 4, 7, 8)</Indent>
       <Body>
@@ -327,7 +803,7 @@ export const NumberPalindromes = () => {
         That hypothesis got me thinking, is there any correlation between the
         divisors and the bases? Or is this just a nifty fact?
       </Body>
-      <Body>Checking...</Body>
+      <Body color={Color.midGray}>Checking...</Body>
       <Body>
         Nah, the divisors and bases don't seem to overlap. They're really close
         to overlapping though. Strangly close.
@@ -346,6 +822,49 @@ export const NumberPalindromes = () => {
         <b>Hypothesis #3</b>: Numbers tend to be palindromes in bases that are
         equal to one of their divisors minus one.
       </Indent>
+      <Divider />
+      <Body>
+        Okay, I've found some good things, but it's time to do some pure number
+        crunching. I just want a number that's a palindrome in a freaky number
+        of bases. Let's try... 1 to 1,000,0000 for bases 2 to 1,000. A lofty
+        goal with probably loftier computation time, but what am I doing if I'm
+        not testing my limits?
+      </Body>
+      <Body color={Color.midGray}>Loops looping... CPU overheating...</Body>
+      <Body>
+        Is this how Dr. Frankenstein felt when he saw his monster coming alive?
+        Because I've created something that's getting out of control. Thirty
+        bases! That's 3 to the 0. Count em, I dare you.
+      </Body>
+      <Indent separate widths={[100]}>
+        27720|82, 167, 179, 197, 209, 219, 230, 251, 263, 279, 307, 314, 329,
+        359, 384, 395, 419, 439, 461, 494, 503, 615, 629, 659, 692, 769, 791,
+        839, 923, 989
+      </Indent>
+      <Indent separate widths={[100]}>
+        55440|82, 239, 251, 263, 279, 307, 314, 329, 335, 359, 384, 395, 419,
+        439, 461, 494, 503, 527, 559, 615, 629, 659, 692, 719, 769, 791, 839,
+        879, 923, 989
+      </Indent>
+      <Body>
+        I just want to sit a moment and bask in such glorious numbers. Hey look.
+        The second number is just the first number times two. That makes sense
+        because it will share all the same divisors as the other one.
+      </Body>
+      <Body>
+        Ha! Check that out! I thought this couldn't get any better. Both numbers
+        have two bases that are themselves palindromes. The <i>same</i> two
+        bases. 494 and 989. Math has a sense of humor after all.
+      </Body>
+      <Body>
+        I love that there are probably many more numbers out there with many
+        more bases. It all becomes a game of how much we can compute. It's a
+        whole world to explore, one power of 10 at a time
+      </Body>
+      <Body>
+        For now, I will rest with my power of 10. But I hope you, dear reader,
+        go further.
+      </Body>
       <Footer title={numberPalindromesTitle} />
     </Wrapper>
   );

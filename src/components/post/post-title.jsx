@@ -35,6 +35,7 @@ const Title = (props) => {
           marginY={20}
           color={Color.gray}
           fontWeight={500}
+          lineHeight={1}
         >
           {children}
         </Typography>
@@ -49,7 +50,7 @@ const Title = (props) => {
         )}
       </Box>
       {date && author && (
-        <Box mt={-20} display='flex' flexDirection='row'>
+        <Box display='flex' flexDirection='row' mt={-5}>
           <Typography color={Color.midGray} fontWeight='bold'>
             {author}
             &nbsp;&nbsp;&nbsp;•

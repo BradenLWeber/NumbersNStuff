@@ -4,6 +4,8 @@ const serverless = require('serverless-http');
 const express = require('express');
 const { MongoClient } = require('mongodb');
 const database = require('./database');
+const _ = require('lodash');
+const cancelJobs = require('./cancelJobs');
 require('dotenv').config();
 
 // We need to define our function name for express routes to set the correct base path
@@ -24,6 +26,10 @@ app.use(routerBasePath, router);
 
 // normal return objects
 const success = { success: true };
+// error return objects
+const getErrorMessage = (e) => {
+  return { success: false, message: e.message };
+};
 
 router.post('/subscribe', async (req, res) => {
   try {
@@ -35,7 +41,7 @@ router.post('/subscribe', async (req, res) => {
     );
     res.json(success);
   } catch (e) {
-    res.json({ success: false, message: e.message });
+    res.json(getErrorMessage(e));
   }
 });
 
@@ -48,7 +54,7 @@ router.post('/unsubscribe', async (req, res) => {
     );
     res.json(success);
   } catch (e) {
-    res.json({ success: false, message: e.message });
+    res.json(getErrorMessage(e));
   }
 });
 
@@ -70,7 +76,7 @@ router.post('/comment', async (req, res) => {
         'This comment was found to contain vulgar content. It will be screened by moderators before it is made public.';
     res.json(response);
   } catch (e) {
-    res.json({ success: false, message: e.message });
+    res.json(getErrorMessage(e));
   }
 });
 
@@ -82,7 +88,7 @@ router.get('/comments', async (req, res) => {
       .toArray()
       .then((arr) => res.json(arr));
   } catch (e) {
-    res.json({ success: false, message: e.message });
+    res.json(getErrorMessage(e));
   }
 });
 

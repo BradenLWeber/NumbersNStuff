@@ -101,7 +101,7 @@ const About = () => {
             sx={{ mt: 10 }}
             fullWidth={true}
             disabled={subscribeButtonDisabled}
-            onClick={subscribe}
+            click={subscribe}
           >
             {subscribeButtonText}
           </FilledButton>

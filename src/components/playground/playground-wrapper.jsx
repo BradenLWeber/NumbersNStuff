@@ -1,10 +1,11 @@
-import { Box, IconButton, Modal, Tooltip } from '@mui/material';
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import { Box, IconButton, Tooltip } from '@mui/material';
+
 import ArticleIcon from '@mui/icons-material/Article';
+import ExplanationModal from './explanation-modal';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import { Color } from 'styles/Color';
-import { Link } from 'react-router-dom';
 
 const PlaygroundWrapper = (props) => {
   const { children, explanation, postName } = props;
@@ -18,7 +19,8 @@ const PlaygroundWrapper = (props) => {
       minHeight={0}
       backgroundColor='white'
       p={20}
-      overflow='auto'
+      overflowY='auto'
+      overflowX='hidden'
       position='relative'
     >
       <Tooltip title='Help'>
@@ -36,26 +38,11 @@ const PlaygroundWrapper = (props) => {
           </IconButton>
         </Tooltip>
       </Link>
-      <Modal open={helpModalOpen} onClose={() => setHelpModalOpen(false)}>
-        <Box
-          position='absolute'
-          top='50%'
-          left='50%'
-          width='90vw'
-          maxWidth={600}
-          boxSizing='border-box'
-          bgcolor='white'
-          boxShadow={24}
-          px={20}
-          pt={0}
-          pb={10}
-          borderRadius={4}
-          border={`10px solid ${Color.tertriary}`}
-          sx={{ transform: 'translate(-50%, -50%)' }}
-        >
-          {explanation}
-        </Box>
-      </Modal>
+      <ExplanationModal
+        open={helpModalOpen}
+        onClose={() => setHelpModalOpen(false)}
+        explanation={explanation}
+      />
       {children}
     </Box>
   );

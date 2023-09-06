@@ -24,10 +24,6 @@ export const IFoundItButIDontUnderstandIt = () => {
       </Title>
       <Divider />
       <Body>
-        This is a story of a boy getting a new fancy calculator and wondering
-        what all the buttons do.
-      </Body>
-      <Body>
         Scientific calculators have so many buttons, and I just wanted to figure
         out what they did without looking it up. I figured out very few, but I
         tried to make some progress in learning on my own.
@@ -87,8 +83,8 @@ export const IFoundItButIDontUnderstandIt = () => {
         1/n^2 must have a finite answer when the top number drifted off to
         infinity. And that finite number probably started with 1.6449, since
         that part of the decimal hadn't changed between 100,000 and 1,000,000.
-        (I looked it up later and I was right. The infinite summation adds up to
-        π^2/6)
+        (I looked it up later, and I was right. The infinite summation adds up
+        to π^2/6)
       </Body>
       <Body>
         This infinite summing seemed like a cool concept. I thought hey, you
@@ -108,29 +104,37 @@ export const IFoundItButIDontUnderstandIt = () => {
         waking up and seeing the calculator had completed its number crunching.
       </Body>
       <Body>
-        With each new number, it looked more and more like I couldn't use the
-        same strategy as the previous summation. The number didn't seem to be
+        With each new number, it looked more like I couldn't use the same
+        strategy as the previous summation. The number didn't seem to be
         settling down. So I thought fine, I'll see if I can notice a pattern in
-        between the difference of each new summation. Perhaps the differences
-        get closer and closer to zero, in which case, I could calculate the
-        number that will end the infinite summation using...something, I wasn't
-        sure yet.
+        between the <i>difference</i> of each new summation. Perhaps the
+        differences get closer and closer to zero, in which case, I could
+        calculate the number that will end the infinite summation
+        using...something, I wasn't sure yet.
       </Body>
       <Body>
         So I backed up and started with 10 on top. Then 100, then 1000, then
-        10000, and so forth. The differences between those summations look like
-        this.
+        10000, and so forth. Once I had a list, I calculated the{' '}
+        <i>difference</i> between the steps.
       </Body>
-      <Body>
-        (I'm going to make up a notation that definitely does not exist for sake
-        of space. SUM(x) means I've summed n=1 to x for 1/n, just like above)
-      </Body>
-      <Indent> SUM(100) - SUM(10) = 2.25840926367</Indent>
-      <Indent> SUM(1000) - SUM(100) = 2.29809334291</Indent>
-      <Indent> SUM(10000) - SUM(1000) = 2.30213517549</Indent>
-      <Indent> SUM(100000) - SUM(10000) = 2.30254009382</Indent>
-      <Indent> SUM(1000000) - SUM(100000) = 2.302580593</Indent>
-      <Indent> SUM(10000000) - SUM(1000000) - 2.30258464299</Indent>
+      <Indent separate={true} widths={[88, 120]}>
+        {'10|--> 100|= 2.25840926367'}
+      </Indent>
+      <Indent separate={true} widths={[88, 120]}>
+        {'100|--> 1,000|= 2.29809334291'}
+      </Indent>
+      <Indent separate={true} widths={[88, 120]}>
+        {'1,000|--> 10,000|= 2.30213517549'}
+      </Indent>
+      <Indent separate={true} widths={[88, 120]}>
+        {'10,000|--> 100,000|= 2.30254009382'}
+      </Indent>
+      <Indent separate={true} widths={[88, 120]}>
+        {'100,000|--> 1,000,000|= 2.302580593'}
+      </Indent>
+      <Indent separate={true} widths={[88, 120]}>
+        {'1,000,000|--> 10,000,000|= 2.30258464299'}
+      </Indent>
       <Body>
         You may see a startling pattern emerge here. At least, it was startling
         to me. The longer I went on calculating the difference in between these
@@ -146,14 +150,16 @@ export const IFoundItButIDontUnderstandIt = () => {
       </Body>
       <Body>
         At this point, I was burning with curiosity, so I looked up what the
-        infinite summation of 1/n actually is. Spoiler alert - it's infinity.
-        The summation never converges onto one number, it only ever gets bigger,
-        and bigger, and bigger, and bigger. Which makes sense give the
-        observations I had already made.
+        infinite summation of 1/n actually is. Spoiler alert—it's infinity. The
+        summation never converges onto one number, it only ever gets bigger, and
+        bigger, and bigger, and bigger. Which makes sense give the observations
+        I had already made.
       </Body>
       <Body>
         But I too distracted by new, wonderful reality to be disappointed. I
-        couldn't prove it, but it sure looked like this was true:
+        couldn't prove it, but it sure looked like I had found a cool
+        relationship between the summation of 1/n and ln(10). If we simplify the
+        equations down a little bit, we get this hefty guy:
       </Body>
       <Image src={SummationPart} height={96} />
       <Body>Don't tell me that doesn't give you chills.</Body>

@@ -94,7 +94,9 @@ const PostCard = (props) => {
             alt='Post icon'
             style={{ objectFit: 'cover' }}
           />
-          <Typography color={Color.gray}>{createdDate}</Typography>
+          <Typography color={Color.midGray} mb={-5}>
+            {createdDate}
+          </Typography>
         </Box>
       </Box>
     </Link>

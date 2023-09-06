@@ -42,7 +42,6 @@ const PlaygroundCard = (props) => {
         src={image.src}
         height={image.height}
         width={image.width}
-        keepRatio={true}
         borderRadius='7px 7px 0px 0px'
       />
       <Typography

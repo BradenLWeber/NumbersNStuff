@@ -82,7 +82,7 @@ const Footer = (props) => {
         />
         <FilledButton
           disabled={subscribeButtonDisabled}
-          onClick={subscribe}
+          click={subscribe}
           sx={{ minWidth: 92 }}
         >
           {subscribeButtonText}

@@ -101,7 +101,7 @@ const Post = () => {
           sx={{ mr: 50, maxWidth: 1000 }}
         />
         <FilledButton
-          onClick={submitComment}
+          click={submitComment}
           disabled={submitCommentDisabled}
           sx={{ mt: 10, width: 200 }}
         >

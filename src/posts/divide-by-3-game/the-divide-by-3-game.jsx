@@ -24,10 +24,10 @@ export const TheDivideBy3Game = () => {
       </Title>
       <Divider />
       <Body>
-        There is an easy way to tell if a number is divisible by three. If all
-        the digits add up to a number divisible by three, the original number is
-        divisible by three as well. For example, the number 84 could be
-        evaluated like so:
+        There is an easy way to tell if a number is divisible by 3. If all the
+        digits add up to a number divisible by 3, the original number is
+        divisible by 3 as well. For example, the number 84 could be evaluated
+        like so:
       </Body>
       <Indent>8 + 4 = 12</Indent>
       <Body>
@@ -52,8 +52,8 @@ export const TheDivideBy3Game = () => {
       </Body>
       <Header>An observation from the nifty fact</Header>
       <Body>
-        When I figured this out, I utilized it during class when I didn't want
-        to pay attention. I would type a string of random characters in my
+        When I learned this, I utilized it during class when I didn't want to
+        pay attention. I would type a string of random characters in my
         calculator and figure out if it was divisible by 3. Yes, I would rather
         pass the time figuring out of random large numbers are divisible by 3
         than pay attention to my teacher. Guilty as charged.
@@ -76,7 +76,7 @@ export const TheDivideBy3Game = () => {
       <Image src={NumberLineWithArrows} width={600} height={70} />
       <Body>
         Therefore, to make a white number divisible by 3, you will either need
-        to <i>add one</i> or <i>subtract one</i>.
+        to <i>add 1</i> or <i>subtract 1</i>.
       </Body>
       <Body>
         The question is, how do we know which one to do? Let's observe how these
@@ -90,12 +90,12 @@ export const TheDivideBy3Game = () => {
         order to make it divisible by three.{' '}
       </Body>
       <Body>
-        Using the same strategies, the numbers that need to add one come down to
-        2, 5, 8, 2, 5, 8, 2, 5.{' '}
+        Using the same strategies, the numbers that need to add 1 are 2, 5, 8,
+        2, 5, 8, 2, 5.{' '}
       </Body>
       <Body>
-        So the general rule is this: When adding digits over and over until
-        there is one left,
+        <b>The general rule</b>: When adding digits over and over until there is
+        one left,
       </Body>
       <Indent>
         If the number is divisible by 3, the trail ends in 3, 6, or 9.

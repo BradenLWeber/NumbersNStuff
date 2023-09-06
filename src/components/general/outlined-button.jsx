@@ -11,6 +11,7 @@ const OutlinedButton = (props) => {
     hoverColor,
     hoverBorderColor,
     hoverBackgroundColor,
+    click,
     ...options
   } = props;
 
@@ -25,7 +26,12 @@ const OutlinedButton = (props) => {
   }));
 
   return (
-    <StyledButton variant='outlined' {...options} id='outlined-button'>
+    <StyledButton
+      variant='outlined'
+      {...options}
+      onClick={click}
+      id='outlined-button'
+    >
       {children}
     </StyledButton>
   );
@@ -38,6 +44,7 @@ OutlinedButton.propTypes = {
   hoverColor: PropTypes.string,
   hoverBorderColor: PropTypes.string,
   hoverBackgroundColor: PropTypes.string,
+  click: PropTypes.func,
   // other props are spread into "options"
 };
 
