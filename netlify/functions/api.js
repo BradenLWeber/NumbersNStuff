@@ -92,10 +92,9 @@ router.get('/hello', (req, res) => {
 });
 
 router.get('/test', async (req, res) => {
-  const db = await database;
   res.json({
     env: process.env,
-    db: db,
+    uri: process.env.MONGO_URI,
   });
 });
 
