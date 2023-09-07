@@ -2,14 +2,15 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const serverless = require('serverless-http');
 const express = require('express');
-const { MongoClient } = require('mongodb');
 const database = require('./database');
 const _ = require('lodash');
-const cancelJobs = require('./cancelJobs');
 require('dotenv').config();
 
 // We need to define our function name for express routes to set the correct base path
 const functionName = 'api';
+
+console.log('Starting!');
+console.log(JSON.stringify(process.env));
 
 // Initialize express app
 const app = express();
