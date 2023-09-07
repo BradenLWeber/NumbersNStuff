@@ -88,12 +88,12 @@ router.get('/comments', async (req, res) => {
 });
 
 router.get('/hello', (req, res) => {
-  res({ hello: 'hi!' });
+  res.json({ hello: 'hi!' });
 });
 
 router.get('/test', async (req, res) => {
   const db = await database;
-  res({
+  res.json({
     env: process.env,
     db: db,
   });
