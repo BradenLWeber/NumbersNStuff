@@ -1,39 +1,23 @@
-console.log('Starting!');
-console.log(JSON.stringify(process.env));
 const bodyParser = require('body-parser');
-console.log('Braden');
 const cors = require('cors');
-console.log('Braden');
 const serverless = require('serverless-http');
-console.log('Braden');
 const express = require('express');
-console.log('Braden');
 const database = require('./database');
-console.log('Braden');
 const _ = require('lodash');
-console.log('Braden');
 require('dotenv').config();
-console.log('Braden');
-
-// We need to define our function name for express routes to set the correct base path
-const functionName = 'api';
-console.log('Braden');
 
 // Initialize express app
 const app = express();
 const router = express.Router();
-console.log('Braden');
 
 // Apply express middlewares
 router.use(cors());
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
-console.log('Braden');
 
 // Set router base path for local dev
-const routerBasePath = `/.netlify/functions/${functionName}/`;
+const routerBasePath = `/.netlify/functions/api/`;
 app.use(routerBasePath, router);
-console.log('Braden');
 
 // normal return objects
 const success = { success: true };
@@ -41,7 +25,6 @@ const success = { success: true };
 const getErrorMessage = (e) => {
   return { success: false, message: e.message };
 };
-console.log('Braden');
 
 router.post('/subscribe', async (req, res) => {
   try {
@@ -56,7 +39,6 @@ router.post('/subscribe', async (req, res) => {
     res.json(getErrorMessage(e));
   }
 });
-console.log('Braden');
 
 router.post('/unsubscribe', async (req, res) => {
   try {
@@ -70,7 +52,6 @@ router.post('/unsubscribe', async (req, res) => {
     res.json(getErrorMessage(e));
   }
 });
-console.log('Braden');
 
 router.post('/comment', async (req, res) => {
   try {
@@ -93,7 +74,6 @@ router.post('/comment', async (req, res) => {
     res.json(getErrorMessage(e));
   }
 });
-console.log('Braden');
 
 router.get('/comments', async (req, res) => {
   try {
@@ -106,7 +86,18 @@ router.get('/comments', async (req, res) => {
     res.json(getErrorMessage(e));
   }
 });
-console.log('Braden');
+
+router.get('/hello', (req, res) => {
+  res({ hello: 'hi!' });
+});
+
+router.get('/test', async (req, res) => {
+  const db = await database;
+  res({
+    env: process.env,
+    db: db,
+  });
+});
 
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', 'http://localhost:8888');
@@ -116,6 +107,6 @@ app.use(function (req, res, next) {
   );
   next();
 });
-console.log('Braden');
+
 // Export lambda handler
 module.exports.handler = serverless(app);
