@@ -91,13 +91,6 @@ router.get('/hello', (req, res) => {
   res.json({ hello: 'hi!' });
 });
 
-router.get('/test', async (req, res) => {
-  res.json({
-    env: process.env,
-    uri: process.env.MONGO_URI,
-  });
-});
-
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', 'http://localhost:8888');
   res.header(
