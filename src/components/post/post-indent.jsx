@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { Color } from 'styles/Color';
 import { Font } from 'styles/Font';
@@ -55,11 +55,7 @@ const Indent = (props) => {
       height='fit-content'
       fontWeight={bold ? 'bold' : 'normal'}
     >
-      {separate ? (
-        <Fragment>{Children}</Fragment>
-      ) : (
-        <span width='100%'>{children}</span>
-      )}
+      {separate ? Children : <span width='100%'>{children}</span>}
     </Typography>
   );
 };
