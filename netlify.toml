@@ -1,3 +1,13 @@
 [build]
   command = "MONGO_URI=$MONGO_URI npm run build"
+# Get more than the base path to load
+[[redirects]]
+  force = true
+  from = '/api/*'
+  status = 200
+  to = '/.netlify/functions/'
 
+[[redirects]]
+  from = '/*'
+  status = 200
+  to = '/index.html'
