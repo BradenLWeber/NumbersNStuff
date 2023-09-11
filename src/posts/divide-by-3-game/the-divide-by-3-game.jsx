@@ -9,7 +9,7 @@ import NumberLineWithArrows from 'posts/divide-by-3-game/number-line-with-arrows
 import Title from 'components/post/post-title';
 import Wrapper from 'components/post/post-wrapper';
 
-export const theDivideBy3GameTitle = 'The divide by 3 game';
+export const theDivideBy3GameTitle = 'The Divide by 3 Game';
 export const theDivideBy3GameDate = '6/11/2023';
 
 export const TheDivideBy3Game = () => {
@@ -20,7 +20,7 @@ export const TheDivideBy3Game = () => {
         date={theDivideBy3GameDate}
         author='Braden Weber'
       >
-        The divide by 3 game
+        {theDivideBy3GameTitle}
       </Title>
       <Divider />
       <Body>
@@ -55,12 +55,12 @@ export const TheDivideBy3Game = () => {
         When I learned this, I utilized it during class when I didn't want to
         pay attention. I would type a string of random characters in my
         calculator and figure out if it was divisible by 3. Yes, I would rather
-        pass the time figuring out of random large numbers are divisible by 3
+        pass the time figuring out if random large numbers are divisible by 3
         than pay attention to my teacher. Guilty as charged.
       </Body>
       <Body>
         But it was very unsatisfying to check gigantic numbers and then have
-        them not divisible by 3. So I asked myself, what can I do to make a
+        them not be divisible by 3. So I asked myself, what can I do to make a
         number divisible by 3 if it isn't already?
       </Body>
       <Body>

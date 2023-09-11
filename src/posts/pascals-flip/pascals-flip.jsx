@@ -28,7 +28,7 @@ export const PascalsFlip = () => {
   return (
     <Wrapper>
       <Title date={pascalsFlipDate} author='Braden Weber'>
-        Pascal's flip
+        {pascalsFlipTitle}
       </Title>
       <Divider />
       <Body>
@@ -43,7 +43,7 @@ export const PascalsFlip = () => {
         changing those arbitrary decisions to something else?
       </Body>
       <Body>
-        In this case, I was sitting there thinking about pascal's triangle and I
+        In this case, I was sitting there thinking about Pascal's triangle and I
         thought, why does the pointed side have to be on the top? Why not start
         with a long line of numbers and work down to one at the bottom?
       </Body>
@@ -62,7 +62,7 @@ export const PascalsFlip = () => {
       <Image src={AddX} />
       <Body>
         This one was a little more interesting, but it still takes on a very
-        predictable quality. The thing I enjoyed about pascal's triangle is that
+        predictable quality. The thing I enjoyed about Pascal's triangle is that
         it had some chaos inside. I couldn't explain it in a technical way, but
         subjectively, the numbers in Pascal's triangle make you look at them
         quizzically and wonder what you've gotten yourself into. Y'know?
@@ -100,7 +100,7 @@ export const PascalsFlip = () => {
         line of 2s right before. What does it mean?
       </Body>
       <Body>
-        I held these observations in my head as a tried a much more complex
+        I held these observations in my head as I tried a much more complex
         example. I tried f(x) = 2x³ - 3x² + x - 5.
       </Body>
       <Image src={XComplex} />
@@ -303,7 +303,7 @@ export const PascalsFlip = () => {
         pyramid thing and land on the number 2, I run the integrals, and I
         figure out the first term is x².
       </Body>
-      <Image src={IntegralX2} />
+      <Image src={IntegralX2} width={800} />
       <Body>
         Theoretically, I should be able go through each number in the line I
         started with and subtract x² from it. Whatever is left will be all the

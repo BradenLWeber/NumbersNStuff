@@ -19,7 +19,7 @@ export const NumberPalindromes = () => {
         date={numberPalindromesDate}
         author='Braden Weber'
       >
-        Number Palindromes
+        {numberPalindromesTitle}
       </Title>
       <Divider />
       <Body>
@@ -73,8 +73,8 @@ export const NumberPalindromes = () => {
       </Indent>
       <Body>There are two routes of exploration my gut led me to.</Body>
       <Body>
-        <b>First route</b>: How often to palindromic whole numbers occur on the
-        numberline? Are the gaps between them predictable?
+        <b>First route</b>: How often do palindromic whole numbers occur on the
+        number line? Are the gaps between them predictable?
       </Body>
       <Body>
         <b>Second route</b>: What happens when we convert palindromic numbers to
@@ -584,8 +584,8 @@ export const NumberPalindromes = () => {
       </Body>
       <Divider />
       <Body>
-        The first thing do, of course, is to get a sense of the playing field.
-        What kinds of results should I be expecting?
+        The first thing to do, of course, is to get a sense of the playing
+        field. What kinds of results should I be expecting?
       </Body>
       <Body>
         Base 10 and base 2 are very commonly used bases, so they don't feel so
@@ -661,7 +661,7 @@ export const NumberPalindromes = () => {
       <Body>
         This is a start! It's particularly cool to find a larger number that's a
         palindrome in base 2 as well. It seems like they get less common the
-        larger the number gets. I smell and exponential relationship!
+        larger the number gets. I smell an exponential relationship!
       </Body>
       <Body>
         I sketched out some data on how many palindrome pairs there are, going
@@ -711,7 +711,7 @@ export const NumberPalindromes = () => {
         Let's increase by one more level before we go full blown. We've had our
         base case (pun intended); now let's see what happens when we add a few
         more bases in the mix. I mean, maybe checking for palindromes in
-        multiple bases is a little but a fools errand. Maybe they're too rare?
+        multiple bases is a bit of a fools errand. Maybe they're too rare?
       </Body>
       <Body>
         So let's start easy. I'll check the numbers from 1 to 1,000,000 for
@@ -771,7 +771,7 @@ export const NumberPalindromes = () => {
       <Body>
         Hmm. 3600 is pretty familiar. We use 360 as the number of degrees in a
         circle because it has so many divisors. I wonder if our two numbers have
-        an abnormal of divisors. Let's check.
+        an abnormal number of divisors. Let's check.
       </Body>
       <Indent separate={true}>
         2520|1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 15, 18, 20, 21, 24, 28, 30,

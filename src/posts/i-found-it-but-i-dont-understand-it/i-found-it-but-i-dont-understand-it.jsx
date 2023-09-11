@@ -13,14 +13,14 @@ import n21000000 from 'posts/i-found-it-but-i-dont-understand-it/n2-100000.png';
 import n210000000 from 'posts/i-found-it-but-i-dont-understand-it/n2-1000000.png';
 
 export const iFoundItButIDontUnderstandItTitle =
-  "I found it, but I don't understand it";
+  "I Found It, but I Don't Understand It";
 export const iFoundItButIDontUnderstandItDate = '6/13/2023';
 
 export const IFoundItButIDontUnderstandIt = () => {
   return (
     <Wrapper>
       <Title date={iFoundItButIDontUnderstandItDate} author='Braden Weber'>
-        I found it, but I don't understand it
+        {iFoundItButIDontUnderstandItTitle}
       </Title>
       <Divider />
       <Body>
@@ -107,7 +107,7 @@ export const IFoundItButIDontUnderstandIt = () => {
         With each new number, it looked more like I couldn't use the same
         strategy as the previous summation. The number didn't seem to be
         settling down. So I thought fine, I'll see if I can notice a pattern in
-        between the <i>difference</i> of each new summation. Perhaps the
+        the <i>difference</i> between each new summation. Perhaps the
         differences get closer and closer to zero, in which case, I could
         calculate the number that will end the infinite summation
         using...something, I wasn't sure yet.
@@ -156,7 +156,7 @@ export const IFoundItButIDontUnderstandIt = () => {
         I had already made.
       </Body>
       <Body>
-        But I too distracted by new, wonderful reality to be disappointed. I
+        But I was too distracted by new, wonderful reality to be disappointed. I
         couldn't prove it, but it sure looked like I had found a cool
         relationship between the summation of 1/n and ln(10). If we simplify the
         equations down a little bit, we get this hefty guy:
