@@ -1,4 +1,5 @@
 import Body from 'components/post/post-body';
+import { Color } from 'styles/Color';
 import Divider from 'components/post/post-divider';
 import Footer from 'components/post/post-footer';
 import Image from 'components/post/post-image';
@@ -24,9 +25,10 @@ export const IFoundItButIDontUnderstandIt = () => {
       </Title>
       <Divider />
       <Body>
-        Scientific calculators have so many buttons, and I just wanted to figure
-        out what they did without looking it up. I figured out very few, but I
-        tried to make some progress in learning on my own.
+        Scientific calculators have so many buttons, and in my early high school
+        years, I just wanted to figure out what they did without looking it up.
+        I figured out very few, but I tried to make some progress in learning on
+        my own.
       </Body>
       <Body>
         For example, there was one button labeled "ln". There was no indication
