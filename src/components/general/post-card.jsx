@@ -25,7 +25,6 @@ const PostCard = (props) => {
         flexDirection='row'
         height='fit-content'
         minHeight={220}
-        width='100%'
         maxWidth={1000}
         minWidth={450}
         mr={10}

@@ -47,7 +47,7 @@ const Posts = () => {
   };
 
   return (
-    <Box display='flex' flexDirection='row' width='100%'>
+    <Box display='flex' flexDirection='row' width='100%' minWidth={0}>
       <Box
         id='posts-wrapper'
         width='100%'

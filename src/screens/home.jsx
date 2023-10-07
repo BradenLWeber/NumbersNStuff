@@ -3,11 +3,41 @@ import { Box, Typography } from '@mui/material';
 import BlackBoard from 'assets/global/blackboard.jpg';
 import { Color } from 'styles/Color.jsx';
 import { Link } from 'react-router-dom';
+import { useMediaQuery } from '@uidotdev/usehooks';
 
 const sideMargin = 250;
 const boxHeight = 220;
 
 const Home = () => {
+  const isSmallDevice = useMediaQuery('only screen and (max-width : 868px)');
+  const isMediumDevice = useMediaQuery(
+    'only screen and (min-width : 868.1px) and (max-width : 992px)',
+  );
+  const isLargeDevice = useMediaQuery(
+    'only screen and (min-width : 992.1px) and (max-width : 1200px)',
+  );
+
+  const getTitleSize = () => {
+    if (isSmallDevice) return 30;
+    if (isMediumDevice) return 34;
+    if (isLargeDevice) return 38;
+    return 42;
+  };
+
+  const getNameSize = () => {
+    if (isSmallDevice) return 18;
+    if (isMediumDevice) return 20;
+    if (isLargeDevice) return 21;
+    return 22;
+  };
+
+  const getNameMargin = () => {
+    if (isSmallDevice) return 2;
+    if (isMediumDevice) return 4;
+    if (isLargeDevice) return 5;
+    return 6;
+  };
+
   const Banner = (props) => {
     const { text1, text2, margin, color, url } = props;
     return (
@@ -118,15 +148,21 @@ const Home = () => {
           >
             <Typography
               sx={{
-                fontSize: 50,
+                fontSize: getTitleSize(),
                 fontFamily: 'Fredericka the Great',
                 color: 'white',
+                mr: 30,
               }}
             >
               Mathematics for the addicts
             </Typography>
             <Typography
-              sx={{ fontSize: 22, color: 'white', mb: 10, fontWeight: 200 }}
+              sx={{
+                fontSize: getNameSize(),
+                color: 'white',
+                mb: getNameMargin(),
+                fontWeight: 200,
+              }}
             >
               Braden Weber
             </Typography>

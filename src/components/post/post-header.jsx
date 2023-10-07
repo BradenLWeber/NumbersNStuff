@@ -1,9 +1,9 @@
-import { Typography } from '@mui/material';
 import { Color } from 'styles/Color';
 import { Font } from 'styles/Font';
+import { Typography } from '@mui/material';
 
 const Header = (props) => {
-  const { children } = props;
+  const { children, ...sx } = props;
 
   return (
     <Typography
@@ -12,6 +12,7 @@ const Header = (props) => {
       mb={20}
       fontWeight='bold'
       color={Color.gray}
+      sx={sx}
     >
       {children}
     </Typography>

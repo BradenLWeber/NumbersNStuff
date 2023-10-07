@@ -14,6 +14,7 @@ const Image = (props) => {
     borderRadius,
     cred,
     credRef,
+    style,
   } = props;
 
   return (
@@ -28,6 +29,8 @@ const Image = (props) => {
           objectFit: keepRatio ? 'cover' : 'contain',
           border: border ? border : 'unset',
           borderRadius: borderRadius || 0,
+          maxWidth: style?.maxWidth || 'calc(100vw - 300px)',
+          ...style,
         }}
       />
       {cred && (

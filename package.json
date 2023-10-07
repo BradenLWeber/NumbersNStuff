@@ -9,6 +9,7 @@
     "@mui/icons-material": "^5.11.16",
     "@mui/lab": "^5.0.0-alpha.142",
     "@mui/material": "^5.14.7",
+    "@uidotdev/usehooks": "^2.3.1",
     "bad-words": "^3.0.4",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",

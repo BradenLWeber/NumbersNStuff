@@ -78,8 +78,9 @@ const PostTree = () => {
   return (
     <Box
       id='post-tree-wrapper'
-      width={300}
-      minWidth={300}
+      maxWidth={300}
+      width='25vw'
+      minWidth={200}
       height='100%'
       p={20}
       pt={50}

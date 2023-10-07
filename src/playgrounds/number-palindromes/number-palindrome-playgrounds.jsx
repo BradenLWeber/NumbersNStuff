@@ -27,10 +27,10 @@ const ButtonRow = (props) => (
     p={20}
     flexWrap='wrap'
     height='fit-content'
-    width='calc(100% - 140px)'
+    width='calc(100% - 40px)'
     columnGap={10}
     mt={props.mt || 0}
-    minWidth={650}
+    minWidth='calc(100% - 40px)'
   >
     {props.children}
   </Box>
@@ -389,24 +389,32 @@ const NumberPalindromesPlayground = () => {
               label='End'
               value={endNumber}
               onChange={(v) => setEndNumber(v)}
-              sx={{ width: 120 }}
+              sx={{ width: 120, mr: 10 }}
             />
-            <Typography ml={10}>Base range</Typography>
-            <TextInput
-              label='Start'
-              value={startBase}
-              onChange={(v) => setStartBase(v)}
-              sx={{ width: 80 }}
-            />
-            <TextInput
-              label='End'
-              value={endBase}
-              onChange={(v) => setEndBase(v)}
-              sx={{ width: 80 }}
-            />
+            <Box
+              display='flex'
+              flexDirection='row'
+              columnGap={10}
+              alignItems='center'
+              height={80}
+            >
+              <Typography>Base range</Typography>
+              <TextInput
+                label='Start'
+                value={startBase}
+                onChange={(v) => setStartBase(v)}
+                sx={{ width: 80 }}
+              />
+              <TextInput
+                label='End'
+                value={endBase}
+                onChange={(v) => setEndBase(v)}
+                sx={{ width: 80 }}
+              />
+            </Box>
           </ButtonRow>
           {startBase !== endBase && (
-            <ButtonRow mt={-10}>
+            <ButtonRow mt={-20}>
               <Typography>Display all numbers</Typography>
               <CheckedBox
                 checked={showAllNumbers}
@@ -418,12 +426,16 @@ const NumberPalindromesPlayground = () => {
                 checked={showOtherBases}
                 onChange={(v) => setShowOtherBases(v)}
               />
-              <Typography ml={10}>Show divisors</Typography>
-              <Toggle
-                checked={showDivisors}
-                onChange={(v) => setShowDivisors(v)}
-                sx={{ mr: 10 }}
-              />
+              <Box display='flex' flexDirection='row' alignItems='center'>
+                <Typography ml={10} mr={10}>
+                  Show divisors
+                </Typography>
+                <Toggle
+                  checked={showDivisors}
+                  onChange={(v) => setShowDivisors(v)}
+                  sx={{ mr: 10 }}
+                />
+              </Box>
             </ButtonRow>
           )}
           <Box display='flex' flexDirection='row'>

@@ -40,7 +40,7 @@ const About = () => {
   };
 
   return (
-    <Box display='flex' flexDirection='row'>
+    <Box display='flex' flexDirection='row' minWidth={0}>
       <Box
         id='about-wrapper'
         width='100%'
@@ -111,8 +111,8 @@ const About = () => {
             alt='Braden'
             src={Braden}
             width={400}
-            height={350}
-            style={{ marginTop: 114 }}
+            height='auto'
+            style={{ marginTop: 114, maxWidth: '25vw' }}
           />
           <Typography color={Color.midGray} fontSize={12}>
             Photo by my most wonderful wife
@@ -124,6 +124,7 @@ const About = () => {
             mt={50}
             cred='Heidi Musolff Photography'
             credRef='https://heidimusolff.com/'
+            style={{ maxWidth: '25vw' }}
           />
         </Box>
       </Box>

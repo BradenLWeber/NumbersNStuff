@@ -1,23 +1,34 @@
 import { Box, ButtonBase, Typography } from '@mui/material';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 import ChalkBrain from 'assets/global/ChalkBrain.png';
 import { Color } from 'styles/Color';
 import Error from './error';
+import Header from 'components/post/post-header';
 import PostTree from 'components/general/post-tree';
 import PropTypes from 'prop-types';
 import ReactLogo from 'assets/global/react-logo.png';
+import SmallScreen from './small-screen';
 import TextButton from 'components/general/text-button';
-import { useEffect } from 'react';
+import { useWindowSize } from 'utilities/useWindowSize';
 
 const RootNavigation = (props) => {
   const { page, showArchive } = props;
+
+  const [showPhoneMessage, setShowPhoneMessage] = useState(undefined);
+
   const location = useLocation();
   const navigate = useNavigate();
+  const windowSize = useWindowSize();
 
   useEffect(() => {
     if (location.pathname === '/') navigate('/home');
   }, [location]);
+
+  useEffect(() => {
+    setShowPhoneMessage(windowSize.width < 700);
+  }, [windowSize]);
 
   const showExtraItems =
     !location.pathname.includes('home') &&
@@ -28,6 +39,8 @@ const RootNavigation = (props) => {
       .open('https://github.com/BradenLWeber/NumbersNStuff', '_blank')
       .focus();
   };
+
+  if (showPhoneMessage) return <SmallScreen />;
 
   return (
     <Box
@@ -55,7 +68,7 @@ const RootNavigation = (props) => {
               width={60}
               style={{ borderRadius: 10 }}
             />
-            <Typography ml={12} fontSize={40}>
+            <Typography ml={12} fontSize={40} minWidth={320} id='blog-title'>
               Numbers 'n Stuff
             </Typography>
           </ButtonBase>
