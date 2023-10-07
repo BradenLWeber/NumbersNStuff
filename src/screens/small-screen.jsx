@@ -4,7 +4,6 @@ import Body from 'components/post/post-body';
 import { Color } from 'styles/Color';
 import Divider from 'components/post/post-divider';
 import Header from 'components/post/post-header';
-import OutlinedButton from 'components/general/outlined-button';
 import PropTypes from 'prop-types';
 
 const SmallScreen = (props) => {
