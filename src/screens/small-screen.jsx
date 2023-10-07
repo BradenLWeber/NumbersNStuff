@@ -32,7 +32,9 @@ const SmallScreen = (props) => {
         alignItems='center'
       >
         <Header textAlign='center'>Numbers 'n Stuff</Header>
-        <Body>Congratulations! You found the right blog!</Body>
+        <Body textAlign='center'>
+          Congratulations! You found the right blog!
+        </Body>
         <Body textAlign='center'>
           Unfortunately, this website is <b>not optimized for small screens</b>.
         </Body>
