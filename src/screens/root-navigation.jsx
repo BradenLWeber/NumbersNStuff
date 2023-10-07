@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import ReactLogo from 'assets/global/react-logo.png';
 import SmallScreen from './small-screen';
 import TextButton from 'components/general/text-button';
+import globalVars from 'utilities/globalVars';
 import { useWindowSize } from 'utilities/useWindowSize';
 
 const RootNavigation = (props) => {
@@ -26,8 +27,16 @@ const RootNavigation = (props) => {
   }, [location]);
 
   useEffect(() => {
-    setShowPhoneMessage(windowSize.width < 700);
+    if (showPhoneMessage === undefined)
+      setShowPhoneMessage(
+        windowSize.width && windowSize.width < globalVars.minScreenWidth,
+      );
   }, [windowSize]);
+
+  const clickContinue = () => {
+    console.log('yes');
+    setShowPhoneMessage(false);
+  };
 
   const showExtraItems =
     !location.pathname.includes('home') &&
@@ -39,12 +48,13 @@ const RootNavigation = (props) => {
       .focus();
   };
 
-  if (showPhoneMessage) return <SmallScreen />;
+  if (showPhoneMessage) return <SmallScreen clickContinue={clickContinue} />;
 
   return (
     <Box
       id='ScreenWrapper'
       width='100%'
+      minWidth={globalVars.minScreenWidth}
       height='100%'
       display='flex'
       flexDirection='column'

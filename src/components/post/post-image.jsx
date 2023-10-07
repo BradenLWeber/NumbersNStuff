@@ -1,6 +1,7 @@
 import { Color } from 'styles/Color';
 import PropTypes from 'prop-types';
 import { Typography } from '@mui/material';
+import globalVars from 'utilities/globalVars';
 
 const Image = (props) => {
   const {
@@ -29,7 +30,9 @@ const Image = (props) => {
           objectFit: keepRatio ? 'cover' : 'contain',
           border: border ? border : 'unset',
           borderRadius: borderRadius || 0,
-          maxWidth: style?.maxWidth || 'calc(100vw - 300px)',
+          maxWidth:
+            style?.maxWidth ||
+            `max(calc(-300px + 100vw), ${globalVars.minScreenWidth - 300}px)`,
           ...style,
         }}
       />

@@ -26,6 +26,7 @@ const PlaygroundCard = (props) => {
       display='flex'
       flexDirection='column'
       justifyContent='space-between'
+      alignItems='center'
       sx={{
         transition: 'box-shadow 0.5s',
         cursor: 'pointer',
@@ -42,6 +43,7 @@ const PlaygroundCard = (props) => {
         src={image.src}
         height={image.height}
         width={image.width}
+        style={{ maxWidth: 'unset' }}
         borderRadius='7px 7px 0px 0px'
       />
       <Typography
@@ -52,9 +54,12 @@ const PlaygroundCard = (props) => {
           transition: 'background-color 0.5s',
           cursor: 'pointer',
         }}
+        width='100%'
+        boxSizing='border-box'
         color={Color.black}
         borderRadius='0 0 7px 7px'
         py={5}
+        px={10}
       >
         {title}
       </Typography>

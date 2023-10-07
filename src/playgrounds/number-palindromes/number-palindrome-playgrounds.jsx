@@ -425,11 +425,10 @@ const NumberPalindromesPlayground = () => {
               <Toggle
                 checked={showOtherBases}
                 onChange={(v) => setShowOtherBases(v)}
+                sx={{ mr: 10 }}
               />
               <Box display='flex' flexDirection='row' alignItems='center'>
-                <Typography ml={10} mr={10}>
-                  Show divisors
-                </Typography>
+                <Typography mr={10}>Show divisors</Typography>
                 <Toggle
                   checked={showDivisors}
                   onChange={(v) => setShowDivisors(v)}

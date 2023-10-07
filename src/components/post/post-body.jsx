@@ -1,18 +1,19 @@
-import { Typography } from '@mui/material';
 import { Color } from 'styles/Color';
 import { Font } from 'styles/Font';
 import PropTypes from 'prop-types';
+import { Typography } from '@mui/material';
 
 const Body = (props) => {
-  const { children, mt, mb, color } = props;
+  const { children, mt, mb, color, ...sx } = props;
 
   return (
     <Typography
       fontSize={Font.size.body}
       marginBottom={10}
       color={color || Color.gray}
-      mt={mt || 20}
-      mb={mb || 0}
+      mt={mt === undefined ? 20 : mt}
+      mb={mb === undefined ? 0 : mb}
+      sx={sx}
     >
       {children}
     </Typography>

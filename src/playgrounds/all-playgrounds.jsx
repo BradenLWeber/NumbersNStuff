@@ -21,7 +21,7 @@ export const playgrounds = [
     image: {
       src: NumberPalindromes,
       height: 190,
-      width: 420,
+      width: 300,
     },
     createdDate: '8/20/2023',
     element: <NumberPalindromesPlayground />,
