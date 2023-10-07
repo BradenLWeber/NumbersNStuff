@@ -1,5 +1,4 @@
 import Body from 'components/post/post-body';
-import { Color } from 'styles/Color';
 import Divider from 'components/post/post-divider';
 import Footer from 'components/post/post-footer';
 import Image from 'components/post/post-image';

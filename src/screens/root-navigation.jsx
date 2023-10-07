@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 import ChalkBrain from 'assets/global/ChalkBrain.png';
 import { Color } from 'styles/Color';
 import Error from './error';
-import Header from 'components/post/post-header';
 import PostTree from 'components/general/post-tree';
 import PropTypes from 'prop-types';
 import ReactLogo from 'assets/global/react-logo.png';
