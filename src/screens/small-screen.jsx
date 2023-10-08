@@ -13,6 +13,7 @@ const SmallScreen = (props) => {
     <Box
       id='ScreenWrapper'
       width='100%'
+      minWidth={300}
       height='100%'
       display='flex'
       flexDirection='column'

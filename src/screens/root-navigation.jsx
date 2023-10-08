@@ -17,6 +17,7 @@ const RootNavigation = (props) => {
   const { page, showArchive } = props;
 
   const [showPhoneMessage, setShowPhoneMessage] = useState(undefined);
+  const [bypassPhoneMessage, setBypassPhoneMessage] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -27,14 +28,17 @@ const RootNavigation = (props) => {
   }, [location]);
 
   useEffect(() => {
-    if (showPhoneMessage === undefined)
+    if (bypassPhoneMessage) {
+      if (showPhoneMessage) setShowPhoneMessage(false);
+    } else {
       setShowPhoneMessage(
         windowSize.width && windowSize.width < globalVars.minScreenWidth,
       );
+    }
   }, [windowSize]);
 
   const clickContinue = () => {
-    console.log('yes');
+    setBypassPhoneMessage(true);
     setShowPhoneMessage(false);
   };
 
@@ -146,6 +150,3 @@ RootNavigation.propTypes = {
 };
 
 export default RootNavigation;
-
-// Optimize picture size in about section
-// Optimize post cards
