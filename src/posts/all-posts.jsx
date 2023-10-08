@@ -16,7 +16,7 @@ import TheDivideBy3Game, {
 } from './divide-by-3-game/the-divide-by-3-game';
 
 import ExamplePalindromes from 'posts/number-palindromes/examples.png';
-import NumberLineWithArrows from 'posts/divide-by-3-game/number-line-with-arrows.png';
+import NumberLineWithArrowsCut from 'posts/divide-by-3-game/number-line-with-arrows-cut.png';
 import PascalsTriangle from 'posts/pascals-flip/pascals-triangle.png';
 import SummationFull from 'posts/i-found-it-but-i-dont-understand-it/summation-full.png';
 
@@ -25,7 +25,7 @@ export const posts = [
     title: theDivideBy3GameTitle,
     description: "A nifty game to play when you're bored in class.",
     image: {
-      src: NumberLineWithArrows,
+      src: NumberLineWithArrowsCut,
       height: 120,
       width: 270,
     },

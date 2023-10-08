@@ -9,10 +9,13 @@ import KassiAndBraden from 'assets/global/kassi-and-braden.jpg';
 import SubscriptionApi from 'utilities/subscription';
 import TextInput from 'components/general/text-input';
 import Title from 'components/post/post-title';
+import globalVars from 'utilities/globalVars';
 import { useState } from 'react';
 import { validateEmail } from 'utilities/functions';
 
 const About = () => {
+  const imageMaxWidth = `max(calc(25vw), ${globalVars.minScreenWidth - 500}px)`;
+
   const [email, setEmail] = useState('');
   const [subscribeButtonText, setSubscribeButtonText] = useState('Subscribe');
   const [subscribeButtonDisabled, setSubscribeButtonDisabled] = useState(true);
@@ -112,7 +115,7 @@ const About = () => {
             src={Braden}
             width={400}
             height='auto'
-            style={{ marginTop: 114, maxWidth: '25vw' }}
+            style={{ marginTop: 114, maxWidth: imageMaxWidth }}
           />
           <Typography color={Color.midGray} fontSize={12}>
             Photo by my most wonderful wife
@@ -124,7 +127,7 @@ const About = () => {
             mt={50}
             cred='Heidi Musolff Photography'
             credRef='https://heidimusolff.com/'
-            style={{ maxWidth: '25vw' }}
+            style={{ maxWidth: imageMaxWidth }}
           />
         </Box>
       </Box>

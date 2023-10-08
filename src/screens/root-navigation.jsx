@@ -146,3 +146,6 @@ RootNavigation.propTypes = {
 };
 
 export default RootNavigation;
+
+// Optimize picture size in about section
+// Optimize post cards

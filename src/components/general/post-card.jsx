@@ -6,10 +6,15 @@ import { Font } from 'styles/Font';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { parseTitleToUrl } from 'utilities/functions';
+import { useWindowSize } from '@uidotdev/usehooks';
 
 const PostCard = (props) => {
   const { post, chipClick } = props;
   const { title, description, image, createdDate, tags } = post;
+
+  const windowSize = useWindowSize();
+  const imageMaxWidth =
+    windowSize.width > 1000 ? 'unset' : windowSize.width > 800 ? 200 : 150;
 
   const [url, setUrl] = useState('/');
 
@@ -88,10 +93,10 @@ const PostCard = (props) => {
         >
           <img
             src={image.src}
-            height={image.height || 150}
+            height={imageMaxWidth === 'unset' ? image.height || 150 : 'auto'}
             width={image.width || 'auto'}
             alt='Post icon'
-            style={{ objectFit: 'cover' }}
+            style={{ objectFit: 'cover', maxWidth: imageMaxWidth }}
           />
           <Typography color={Color.midGray} mb={-5}>
             {createdDate}
