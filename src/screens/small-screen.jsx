@@ -43,7 +43,7 @@ const SmallScreen = (props) => {
           width of the screen.
         </Body>
         <Divider />
-        <ButtonBase onClick={clickContinue} sx={{ marginTop: 50 }}>
+        <ButtonBase onClick={clickContinue} sx={{ marginTop: 10 }}>
           <Body color={Color.tertriaryDark} mt={0} textAlign='center'>
             Want to open up the blog anyway? Click here.
           </Body>
