@@ -10,6 +10,7 @@ import TextInput from 'components/general/text-input';
 import Title from 'components/post/post-title';
 import { parseTitleToUrl } from 'utilities/functions';
 import { posts } from 'posts/all-posts';
+import { testPost } from 'posts/test-post/i-found-it-but-i-dont-understand-it';
 import { useParams } from 'react-router-dom';
 
 const Post = () => {
@@ -24,11 +25,15 @@ const Post = () => {
 
   useEffect(() => {
     const allPosts = posts;
-    setPost(
-      allPosts.filter((post) => {
-        return parseTitleToUrl(post.title) === title;
-      })[0],
-    );
+    if (title === 'test') {
+      setPost(testPost);
+    } else {
+      setPost(
+        allPosts.filter((post) => {
+          return parseTitleToUrl(post.title) === title;
+        })[0],
+      );
+    }
     CommentApi.getAll(title).then((res) => {
       setComments(res || []);
     });
