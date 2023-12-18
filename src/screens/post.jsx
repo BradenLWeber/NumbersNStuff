@@ -6,11 +6,11 @@ import Comment from 'components/post/post-comment';
 import CommentApi from 'utilities/Comment';
 import Divider from 'components/post/post-divider';
 import FilledButton from 'components/general/filled-button';
+import HeFoundItAndNowHopefullyUnderstandsIt from 'posts/he-found-it-and-now-hopefully-understands-it/he-found-it-and-now-hopefully-understands-it';
 import TextInput from 'components/general/text-input';
 import Title from 'components/post/post-title';
 import { parseTitleToUrl } from 'utilities/functions';
 import { posts } from 'posts/all-posts';
-import { testPost } from 'posts/test-post/i-found-it-but-i-dont-understand-it';
 import { useParams } from 'react-router-dom';
 
 const Post = () => {
@@ -26,7 +26,7 @@ const Post = () => {
   useEffect(() => {
     const allPosts = posts;
     if (title === 'test') {
-      setPost(testPost);
+      setPost({ element: <HeFoundItAndNowHopefullyUnderstandsIt /> });
     } else {
       setPost(
         allPosts.filter((post) => {

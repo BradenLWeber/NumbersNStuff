@@ -42,15 +42,17 @@ const Footer = (props) => {
     if (!title)
       setMessage(
         <>
-          Thank you for reading! Feel free to contact the author at
-          bradenlweber@gmail.com.
+          Thank you for reading! Reader responses are welcomed and could be
+          featured on the blog. Email bradenlweber@gmail.com for more
+          information.
         </>,
       );
     else
       setMessage(
         <>
-          Thank you for reading! Feel free to contact the author at
-          bradenlweber@gmail.com, and don't forget to get your toes wet in the{' '}
+          Thank you for reading! Reader responses are welcomed and could be
+          featured on the blog. Email bradenlweber@gmail.com for more
+          information. Don't forget to get your toes wet in the{' '}
           <Link to={'/playground/' + parseTitleToUrl(title)}>playground</Link>{' '}
           for this post.
         </>,
