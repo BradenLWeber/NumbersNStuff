@@ -84,15 +84,15 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
       </Body>
       <Body>
         When looking at this problem, I happened to recall that{' '}
-        <MathJax inline>{'$ln(x)$'}</MathJax> is an antiderivative of{' '}
+        <MathJax inline>$ln(x)$</MathJax> is an antiderivative of{' '}
         <MathJax inline>{'$\\frac{1}{x}$'}</MathJax>. In other words, the area
         between the function
         <MathJax inline>{'$\\frac{1}{x}$'}</MathJax> and the horizontal axis
         over the interval from <i>0</i> to <i>b</i> is equal to{' '}
-        <MathJax inline>{'$ln(b)$'}</MathJax>. This fact is typically memorized
-        in one's first or second course in calculus, but the proof is a bit
-        tricky and will be omitted here. This fact lead me to try this technique
-        of comparing summations and integrals.
+        <MathJax inline>$ln(b)$</MathJax>. This fact is typically memorized in
+        one's first or second course in calculus, but the proof is a bit tricky
+        and will be omitted here. This fact lead me to try this technique of
+        comparing summations and integrals.
       </Body>
       <Header>Proof</Header>
       <Body>
@@ -108,10 +108,10 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
         Notice that the red (northeast lines) and blue (northwest lines)
         rectangles cover the same area, representing the summation, but the the
         blue rectangles show that the sum is less than the area under the curve
-        from <MathJax inline>{'$a^m$'}</MathJax> to{' '}
+        from <MathJax inline>$a^m$</MathJax> to{' '}
         <MathJax inline>{'$a^{m + 1}$'}</MathJax>, while the red rectangles show
         that the sum is greater than the area under the curve from{' '}
-        <MathJax inline>{'$a^m+1$'}</MathJax> to{' '}
+        <MathJax inline>$a^m+1$</MathJax> to{' '}
         <MathJax inline>{'$a^{m + 1}+1$'}</MathJax>.
       </Body>
       <Image src={Graph2} height={400} />
@@ -148,7 +148,7 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
         the added 1's, but it starts off similar. We may move the limit inside
         of the natural log because the natural log is a continuous function (it
         is smooth), and then we divide the numerator and denominator by{' '}
-        <MathJax inline>{'$a^m$'}</MathJax>, noting that{' '}
+        <MathJax inline>$a^m$</MathJax>, noting that{' '}
         <MathJax inline>{'$lim_{m \\to \\infty} \\frac{1}{a^m} = 0$'}</MathJax>,
         in order to evaluate the limit.
       </Body>
