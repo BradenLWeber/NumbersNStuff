@@ -22,6 +22,7 @@ const PlaygroundWrapper = (props) => {
       overflowY='auto'
       overflowX='hidden'
       position='relative'
+      flexDirection='column'
     >
       <Tooltip title='Help'>
         <IconButton

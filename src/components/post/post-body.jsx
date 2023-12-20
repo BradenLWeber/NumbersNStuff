@@ -9,7 +9,6 @@ const Body = (props) => {
   return (
     <Typography
       fontSize={Font.size.body}
-      marginBottom={10}
       color={color || Color.gray}
       mt={mt === undefined ? 20 : mt}
       mb={mb === undefined ? 0 : mb}
