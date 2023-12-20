@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 import { LinearProgress } from '@mui/material';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
 
 const MARGIN = 40;
@@ -73,7 +74,7 @@ const ProgressBar = (props) => (
   />
 );
 
-const PrimeSpiral = (props) => {
+const SpiralGap = (props) => {
   const { scale, ceil, floor, animate, dev } = props;
   const strokeWidth = Number(scale / 2);
 
@@ -219,4 +220,12 @@ const PrimeSpiral = (props) => {
   );
 };
 
-export default PrimeSpiral;
+SpiralGap.propTypes = {
+  scale: PropTypes.number,
+  ceil: PropTypes.number,
+  floor: PropTypes.number,
+  animate: PropTypes.bool,
+  dev: PropTypes.bool,
+};
+
+export default SpiralGap;

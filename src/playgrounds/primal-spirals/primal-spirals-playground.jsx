@@ -1,39 +1,24 @@
+import FilledButton from 'components/general/filled-button';
+import HandlerGap from './handler-gap';
+import HandlerGrid from './handler-grid';
 import PlaygroundWrapper from 'components/playground/playground-wrapper';
-import PrimeSpiral from './prime-spiral';
-import UI from './ui';
+import { Stack } from '@mui/material';
 import { primalSpiralsTitle } from 'posts/primal-spirals/primal-spirals';
 import { useState } from 'react';
 
-const DEV = true;
-
 const PrimalSpiralsPlayground = () => {
-  const [scale, setScale] = useState(0);
-  const [ceiling, setCeiling] = useState(0);
-  const [animate, setAnimate] = useState(0);
-  const [floor, setFloor] = useState(0);
-  const [key, setKey] = useState(0);
-
-  const reset = () => {
-    setKey(key + 1);
-  };
+  const [choice, setChoice] = useState(0);
 
   return (
     <PlaygroundWrapper postName={primalSpiralsTitle}>
-      <UI
-        setScale={setScale}
-        setCeiling={setCeiling}
-        setAnimate={setAnimate}
-        setFloor={setFloor}
-        reset={reset}
-      />
-      <PrimeSpiral
-        scale={scale}
-        ceil={ceiling}
-        floor={floor}
-        key={key}
-        animate={animate}
-        dev={DEV}
-      />
+      {choice === 0 && (
+        <Stack direction='horizontal'>
+          <FilledButton click={() => setChoice(1)}>Gap spiral</FilledButton>
+          <FilledButton click={() => setChoice(2)}>Grid spiral</FilledButton>
+        </Stack>
+      )}
+      {choice === 1 && <HandlerGap back={() => setChoice(0)} />}
+      {choice === 2 && <HandlerGrid back={() => setChoice(0)} />}
     </PlaygroundWrapper>
   );
 };

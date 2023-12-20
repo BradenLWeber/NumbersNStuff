@@ -1,14 +1,16 @@
-import { Box, Button, Checkbox, TextField, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 import CheckedBox from 'components/general/checked-box';
 import { Color } from 'styles/Color';
+import FilledButton from 'components/general/filled-button';
 import OutlinedButton from 'components/general/outlined-button';
+import PropTypes from 'prop-types';
 import { Stack } from '@mui/system';
 import TextInput from 'components/general/text-input';
 import { useState } from 'react';
 
-const UI = (props) => {
-  const { setScale, setCeiling, setAnimate, setFloor, reset } = props;
+const UIGap = (props) => {
+  const { setScale, setCeiling, setAnimate, setFloor, reset, back } = props;
   const [localScale, setLocalScale] = useState(4);
   const [localFloor, setLocalFloor] = useState(0);
   const [localCeiling, setLocalCeiling] = useState(700);
@@ -48,9 +50,11 @@ const UI = (props) => {
       : '';
 
   return (
-    <Stack mt={3.5} ml={3.5} spacing={3} direction='row'>
+    <Stack mt={3.5} ml={3.5} spacing={20} direction='row'>
+      <FilledButton click={back} sx={{ height: 55 }}>
+        Back
+      </FilledButton>
       <TextInput
-        id='outlined-basic'
         label='Scale'
         onChange={(e) => setLocalScale(e)}
         defaultValue={4}
@@ -58,20 +62,18 @@ const UI = (props) => {
         sx={{ width: { sm: 100, md: 100 } }}
       />
       <TextInput
-        id='outlined-basic'
         label='Floor'
         defaultValue={0}
         onEnter={onEnter}
         onChange={(e) => setLocalFloor(e)}
-        sx={{ width: { sm: 100, md: 100 } }}
+        sx={{ width: { sm: 130, md: 130 } }}
       />
       <TextInput
-        id='outlined-basic'
         label='Ceiling'
         defaultValue={700}
         onEnter={onEnter}
         onChange={(e) => setLocalCeiling(e)}
-        sx={{ width: { sm: 100, md: 100 } }}
+        sx={{ width: { sm: 130, md: 130 } }}
       />
       <Box
         id='animate-wrapper'
@@ -101,4 +103,13 @@ const UI = (props) => {
   );
 };
 
-export default UI;
+UIGap.propTypes = {
+  setScale: PropTypes.func,
+  setCeiling: PropTypes.func,
+  setAnimate: PropTypes.func,
+  setFloor: PropTypes.func,
+  reset: PropTypes.func,
+  back: PropTypes.func,
+};
+
+export default UIGap;
