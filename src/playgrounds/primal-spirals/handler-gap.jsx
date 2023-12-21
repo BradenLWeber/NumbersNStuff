@@ -10,6 +10,7 @@ const HandlerGap = (props) => {
   const [scale, setScale] = useState(0);
   const [ceiling, setCeiling] = useState(0);
   const [animate, setAnimate] = useState(0);
+  const [angle, setAngle] = useState(90);
   const [floor, setFloor] = useState(0);
   const [key, setKey] = useState(0);
 
@@ -24,6 +25,7 @@ const HandlerGap = (props) => {
         setCeiling={setCeiling}
         setAnimate={setAnimate}
         setFloor={setFloor}
+        setAngle={setAngle}
         reset={reset}
         back={back}
       />
@@ -31,6 +33,7 @@ const HandlerGap = (props) => {
         scale={scale}
         ceil={ceiling}
         floor={floor}
+        angle={angle}
         key={key}
         animate={animate}
         dev={DEV}

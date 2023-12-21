@@ -7,20 +7,55 @@ import _ from 'lodash';
 const MARGIN = 40;
 const POINTS_TO_SHOW = 100;
 
-const isPrime = (num) => {
-  for (let i = 2, ceiling = Math.sqrt(num); i <= ceiling; i++)
-    if (num % i === 0) return false;
-  return num > 1;
-};
+const sieveOfAtkin = (start, end) => {
+  // Adjust the sieve size to cover the specified range
+  const limit = end;
+  const sqrtLimit = Math.sqrt(limit);
 
-const getPrimes = (ceiling, floor) => {
-  const ceil = Number(ceiling);
-  const flo = Number(floor);
-  const primeList = [];
-  for (let i = flo; i < ceil; i++) {
-    if (isPrime(i)) primeList.push(i);
+  // Initialize the sieve array with false values
+  const sieve = Array(limit + 1).fill(false);
+
+  // Part 1: Mark sieve values for specific quadratic forms
+  for (let x = 1; x <= sqrtLimit; x++) {
+    for (let y = 1; y <= sqrtLimit; y++) {
+      const n = 4 * x * x + y * y;
+      if (n <= limit && (n % 12 === 1 || n % 12 === 5)) {
+        sieve[n] = !sieve[n];
+      }
+
+      const m = 3 * x * x + y * y;
+      if (m <= limit && m % 12 === 7) {
+        sieve[m] = !sieve[m];
+      }
+
+      const o = 3 * x * x - y * y;
+      if (x > y && o <= limit && o % 12 === 11) {
+        sieve[o] = !sieve[o];
+      }
+    }
   }
-  return primeList;
+
+  // Part 2: Mark sieve values for multiples of squares
+  for (let i = 5; i <= sqrtLimit; i++) {
+    if (sieve[i]) {
+      for (let j = i * i; j <= limit; j += i * i) {
+        sieve[j] = false;
+      }
+    }
+  }
+
+  // Mark 2 and 3 as prime
+  sieve[2] = sieve[3] = true;
+
+  // Collect the prime numbers within the specified range
+  const primes = [];
+  for (let i = Math.max(2, start); i <= limit; i++) {
+    if (sieve[i]) {
+      primes.push(i);
+    }
+  }
+
+  return primes;
 };
 
 const getGaps = (primes) => {
@@ -75,7 +110,7 @@ const ProgressBar = (props) => (
 );
 
 const SpiralGap = (props) => {
-  const { scale, ceil, floor, animate, dev } = props;
+  const { scale, ceil, floor, angle, animate, dev } = props;
   const strokeWidth = Number(scale / 2);
 
   const [delayedPoints, setDelayedPoints] = useState([]);
@@ -98,7 +133,7 @@ const SpiralGap = (props) => {
   pointsRef.current = points;
 
   useEffect(() => {
-    const primes = getPrimes(ceil, floor);
+    const primes = sieveOfAtkin(floor, ceil);
     const gaps = getGaps(primes);
     const rawPoints = getPoints(gaps);
     const points = normalizePoints(rawPoints);
@@ -134,19 +169,26 @@ const SpiralGap = (props) => {
     let x;
     let y;
     let gap;
+    let currentAngle = (angle + 180) % 360;
     for (let i = 0; i < gaps.length; i++) {
+      currentAngle = (currentAngle + angle) % 360;
+
       x = points[i][0];
       y = points[i][1];
       gap = gaps[i];
-      if (i % 4 === 0) {
-        points.push([x + gap * scale, y]);
-      } else if (i % 4 === 1) {
-        points.push([x, y + gap * scale]);
-      } else if (i % 4 === 2) {
-        points.push([x - gap * scale, y]);
-      } else {
-        points.push([x, y - gap * scale]);
-      }
+      points.push([
+        x + gap * scale * Math.cos((currentAngle * 2 * Math.PI) / 360),
+        y + gap * scale * Math.sin((currentAngle * 2 * Math.PI) / 360),
+      ]);
+      // if (i % 4 === 0) {
+      //   points.push([x + gap * scale, y]);
+      // } else if (i % 4 === 1) {
+      //   points.push([x, y + gap * scale]);
+      // } else if (i % 4 === 2) {
+      //   points.push([x - gap * scale, y]);
+      // } else {
+      //   points.push([x, y - gap * scale]);
+      // }
     }
     return points;
   };
@@ -224,6 +266,7 @@ SpiralGap.propTypes = {
   scale: PropTypes.number,
   ceil: PropTypes.number,
   floor: PropTypes.number,
+  angle: PropTypes.number,
   animate: PropTypes.bool,
   dev: PropTypes.bool,
 };

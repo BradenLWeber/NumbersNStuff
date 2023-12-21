@@ -10,11 +10,13 @@ import TextInput from 'components/general/text-input';
 import { useState } from 'react';
 
 const UIGap = (props) => {
-  const { setScale, setCeiling, setAnimate, setFloor, reset, back } = props;
+  const { setScale, setCeiling, setAnimate, setFloor, setAngle, reset, back } =
+    props;
   const [localScale, setLocalScale] = useState(4);
   const [localFloor, setLocalFloor] = useState(0);
   const [localCeiling, setLocalCeiling] = useState(700);
   const [localAnimate, setLocalAnimate] = useState(false);
+  const [localAngle, setLocalAngle] = useState(90);
 
   const submit = () => {
     reset();
@@ -22,6 +24,7 @@ const UIGap = (props) => {
     setScale(localScale || 4);
     setFloor(localFloor || 0);
     setCeiling(localCeiling || 700);
+    setAngle(localAngle || 90);
   };
 
   const getDisableDraw = () => {
@@ -55,25 +58,32 @@ const UIGap = (props) => {
         Back
       </FilledButton>
       <TextInput
+        id='scale-input'
         label='Scale'
         onChange={(e) => setLocalScale(e)}
-        defaultValue={4}
         onEnter={onEnter}
-        sx={{ width: { sm: 100, md: 100 } }}
+        sx={{ width: { sm: 100, md: 100 }, minWidth: 60 }}
       />
       <TextInput
+        id='floor-input'
         label='Floor'
-        defaultValue={0}
         onEnter={onEnter}
         onChange={(e) => setLocalFloor(e)}
-        sx={{ width: { sm: 130, md: 130 } }}
+        sx={{ width: { sm: 130, md: 130, minWidth: 80 } }}
       />
       <TextInput
+        id='ceiling-input'
         label='Ceiling'
-        defaultValue={700}
         onEnter={onEnter}
         onChange={(e) => setLocalCeiling(e)}
-        sx={{ width: { sm: 130, md: 130 } }}
+        sx={{ width: { sm: 130, md: 130 }, minWidth: 80 }}
+      />
+      <TextInput
+        id='angle-input'
+        label='Angle'
+        defaultValue={90}
+        onChange={(e) => setLocalAngle(Number(e))}
+        sx={{ width: { sm: 100, md: 100 }, minWidth: 60 }}
       />
       <Box
         id='animate-wrapper'
@@ -108,6 +118,7 @@ UIGap.propTypes = {
   setCeiling: PropTypes.func,
   setAnimate: PropTypes.func,
   setFloor: PropTypes.func,
+  setAngle: PropTypes.func,
   reset: PropTypes.func,
   back: PropTypes.func,
 };
