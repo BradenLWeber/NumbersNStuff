@@ -2,7 +2,7 @@ import Filter from 'bad-words';
 import Http from './http';
 
 export default class CommentApi {
-  static async add(text, name, post) {
+  static async add(text, name, post, date) {
     // Scrub text and mark for check if something doesn't check out
     const originalAsteriskCount = (text.match(/\*/g) || []).length;
     const filter = new Filter();
@@ -12,7 +12,7 @@ export default class CommentApi {
     return Http.post('comment', {
       text,
       name,
-      date: new Date(),
+      date,
       post,
       vulgar,
       flagged: false,

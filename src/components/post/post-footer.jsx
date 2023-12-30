@@ -2,6 +2,7 @@ import { Box, Typography } from '@mui/material';
 import { parseTitleToUrl, validateEmail } from 'utilities/functions';
 import { useEffect, useState } from 'react';
 
+import Alert from 'components/general/alert';
 import { Color } from 'styles/Color';
 import FilledButton from 'components/general/filled-button';
 import { Link } from 'react-router-dom';
@@ -13,13 +14,17 @@ const Footer = (props) => {
   const { title } = props;
   const [message, setMessage] = useState('');
   const [email, setEmail] = useState('');
+  const [openTooltip, setOpenTooltip] = useState(false);
   const [subscribeButtonText, setSubscribeButtonText] = useState('Subscribe');
   const [subscribeButtonDisabled, setSubscribeButtonDisabled] = useState(true);
+
+  const handleCloseTooltip = () => {
+    setOpenTooltip(false);
+  };
 
   const emailChange = (v) => {
     setEmail(v);
 
-    setSubscribeButtonText('Subscribe');
     setSubscribeButtonDisabled(!validateEmail(v));
   };
 
@@ -28,14 +33,20 @@ const Footer = (props) => {
 
     setSubscribeButtonText('Subscribing...');
     setSubscribeButtonDisabled(true);
-    SubscriptionApi.add(email).then((res) => {
-      if (res.success) {
-        setSubscribeButtonText('Subscribed!');
-      } else {
+    SubscriptionApi.add(email)
+      .then(() => {
+        setOpenTooltip(true);
+      })
+      .catch(() => {
+        alert(
+          'Subscribe failed for some reason. Please contact bradenlweber@gmail.com',
+        );
+      })
+      .finally((res) => {
         setSubscribeButtonText('Subscribe');
         setSubscribeButtonDisabled(false);
-      }
-    });
+        setEmail('');
+      });
   };
 
   useEffect(() => {
@@ -90,6 +101,9 @@ const Footer = (props) => {
           {subscribeButtonText}
         </FilledButton>
       </Box>
+      <Alert open={openTooltip} onClose={handleCloseTooltip}>
+        Successfully subscribed!
+      </Alert>
     </Box>
   );
 };

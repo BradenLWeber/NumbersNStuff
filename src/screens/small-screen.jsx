@@ -37,7 +37,8 @@ const SmallScreen = (props) => {
           Congratulations! You found the right blog!
         </Body>
         <Body textAlign='center'>
-          Unfortunately, this website is <b>not optimized for small screens</b>.
+          Unfortunately, this website is{' '}
+          <b>still being optimized for small screens</b>.
         </Body>
         <Body textAlign='center'>
           It is recommended you open this website on a laptop or increase the

@@ -1,6 +1,6 @@
-import { Box } from '@mui/material';
-
+import Alert from 'components/general/alert';
 import Body from 'components/post/post-body';
+import { Box } from '@mui/material';
 import FilledButton from 'components/general/filled-button';
 import Header from 'components/post/post-header';
 import SubscriptionApi from 'utilities/subscription';
@@ -10,10 +10,15 @@ import { validateEmail } from 'utilities/functions';
 
 const Unsubscribe = () => {
   const [email, setEmail] = useState('');
+  const [openTooltip, setOpenTooltip] = useState(false);
   const [unsubscribeButtonText, setUnsubscribeButtonText] =
     useState('Unsubscribe');
   const [unsubscribeButtonDisabled, setUnsubscribeButtonDisabled] =
     useState(true);
+
+  const handleCloseTooltip = () => {
+    setOpenTooltip(false);
+  };
 
   const emailChange = (v) => {
     setEmail(v);
@@ -27,14 +32,20 @@ const Unsubscribe = () => {
 
     setUnsubscribeButtonText('Unsubscribing...');
     setUnsubscribeButtonDisabled(true);
-    SubscriptionApi.delete(email).then((res) => {
-      if (res.success) {
-        setUnsubscribeButtonText('Unsubscribed!');
-      } else {
+    SubscriptionApi.delete(email)
+      .then(() => {
+        setOpenTooltip(true);
+      })
+      .catch(() => {
+        alert(
+          'Unsubscribe failed for some reason. Please contact bradenlweber@gmail.com',
+        );
+      })
+      .finally((res) => {
         setUnsubscribeButtonText('Unsubscribe');
         setUnsubscribeButtonDisabled(false);
-      }
-    });
+        setEmail('');
+      });
   };
 
   return (
@@ -57,6 +68,9 @@ const Unsubscribe = () => {
       >
         {unsubscribeButtonText}
       </FilledButton>
+      <Alert open={openTooltip} onClose={handleCloseTooltip}>
+        Successfully subscribed!
+      </Alert>
     </Box>
   );
 };

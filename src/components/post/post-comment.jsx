@@ -48,7 +48,7 @@ const Comment = (props) => {
 };
 
 Comment.propTypes = {
-  date: PropTypes.string,
+  date: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
   name: PropTypes.string,
   text: PropTypes.string,
 };

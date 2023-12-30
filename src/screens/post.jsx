@@ -44,9 +44,10 @@ const Post = () => {
 
     setSubmitCommentDisabled(true);
     setSubmitCommentText('Submitting...');
-    CommentApi.add(comment, name, title).then(() => {
+    const now = new Date();
+    CommentApi.add(comment, name, title, now).then(() => {
       setSubmitCommentText('Submitted!');
-      setComments([...comments, { text: comment, name, date: new Date() }]);
+      setComments([...comments, { text: comment, name, date: now }]);
       setComment('');
       setName('');
     });

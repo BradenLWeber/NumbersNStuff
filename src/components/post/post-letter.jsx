@@ -1,6 +1,6 @@
 import { MathJax } from 'better-react-mathjax';
 
-const PostLetter = (props) => {
+const Letter = (props) => {
   return (
     <span style={{ marginLeft: 1, marginRight: 1 }}>
       <MathJax inline>{'$' + props.children + '$'}</MathJax>
@@ -8,4 +8,4 @@ const PostLetter = (props) => {
   );
 };
 
-export default PostLetter;
+export default Letter;

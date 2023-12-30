@@ -6,9 +6,9 @@ import Graph2 from './graph2.png';
 import Graph3 from './graph3.png';
 import Header from 'components/post/post-header';
 import Image from 'components/post/post-image';
+import Letter from 'components/post/post-letter';
 import { Link } from 'react-router-dom';
 import { MathJax } from 'better-react-mathjax';
-import PostLetter from 'components/post/post-letter';
 import Title from 'components/post/post-title';
 import Wrapper from 'components/post/post-wrapper';
 
@@ -37,8 +37,8 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
       <Divider />
       <Header>Problem</Header>
       <Body>
-        We will show that for any positive integer <PostLetter>a</PostLetter>,
-        the following equation holds:
+        We will show that for any positive integer <Letter>a</Letter>, the
+        following equation holds:
       </Body>
       <MathJax>
         {
@@ -68,15 +68,11 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
         The key step in this proof is realizing the connection between
         summations and integrals, though this is a little bit different than how
         they are typically connected. The integral of a function{' '}
-        <PostLetter>f</PostLetter> from <PostLetter>a</PostLetter> to{' '}
-        <PostLetter>b</PostLetter>, that is{' '}
-        <MathJax inline>{'$\\int_a^b f(x) dx$'}</MathJax>, gives the area
-        between the function <PostLetter>f</PostLetter> and the horizontal axis
-        over the interval from <PostLetter>a</PostLetter> to{' '}
-        <PostLetter>b</PostLetter>, shaded in blue in the graph below.
-      </Body>
-      <Body>
-        We can consider the sum{' '}
+        <Letter>f</Letter> from <Letter>a</Letter> to <Letter>b</Letter>, that
+        is <MathJax inline>{'$\\int_a^b f(x) dx$'}</MathJax>, gives the area
+        between the function <Letter>f</Letter> and the horizontal axis over the
+        interval from <Letter>a</Letter> to <Letter>b</Letter>, shaded in blue
+        in the graph below. We can consider the sum{' '}
         <MathJax inline>{'$\\sum_{(n = a + 1)}^b f(n)$'}</MathJax> to give an
         approximation of this same area, covering the area with rectangles of
         width 1 and height the output of the function at the rectangles
@@ -85,21 +81,20 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
       <Image src={Graph1} height={400} />
       <Body>
         When looking at this problem, I happened to recall that ln(
-        <PostLetter>x</PostLetter>) is an antiderivative of{' '}
+        <Letter>x</Letter>) is an antiderivative of{' '}
         <MathJax inline>{'$\\frac{1}{x}$'}</MathJax>. In other words, the area
         between the function <MathJax inline>{'$\\frac{1}{x}$'}</MathJax> and
-        the horizontal axis over the interval from 0 to{' '}
-        <PostLetter>x</PostLetter> is equal to ln(
-        <PostLetter>b</PostLetter>). This fact is typically memorized in one's
-        first or second course in calculus, but the proof is a bit tricky and
-        will be omitted here. This fact lead me to try this technique of
-        comparing summations and integrals.
+        the horizontal axis over the interval from 0 to <Letter>x</Letter> is
+        equal to ln(
+        <Letter>b</Letter>). This fact is typically memorized in one's first or
+        second course in calculus, but the proof is a bit tricky and will be
+        omitted here. This fact lead me to try this technique of comparing
+        summations and integrals.
       </Body>
       <Header>Proof</Header>
       <Body>
         The graph below demonstrates that the following inequality holds for all
-        positive integers <PostLetter>a</PostLetter> and{' '}
-        <PostLetter>m</PostLetter>:
+        positive integers <Letter>a</Letter> and <Letter>m</Letter>:
       </Body>
       <MathJax>
         {
@@ -107,7 +102,7 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
         }
       </MathJax>
       <Body>
-        Notice that the red (northeast lines) and blue (northwest lines)
+        . Notice that the red (northeast lines) and blue (northwest lines)
         rectangles cover the same area, representing the summation, but the the
         blue rectangles show that the sum is less than the area under the curve
         from <MathJax inline>$a^m$</MathJax> to{' '}
@@ -127,8 +122,8 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
         }
       </MathJax>
       <Body>
-        If we can show that the limits of the integrals approach the same value,
-        namely ln(<PostLetter>a</PostLetter>), then the limit of the summation
+        . If we can show that the limits of the integrals approach the same
+        value, namely ln(<Letter>a</Letter>), then the limit of the summation
         must approach that same value, because it is stuck between the outer
         values.
       </Body>
@@ -193,7 +188,7 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
         }
       </MathJax>
       <Body>
-        Given what we have already shown with Braden's identity, this implies
+        . Given what we have already shown with Braden's identity, this implies
         that
       </Body>
       <MathJax>
@@ -202,9 +197,9 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
         }
       </MathJax>
       <Body>
-        That is, the area of the blue (northwest lines) region below approaches
-        the area of the red (northeast lines) region as{' '}
-        <PostLetter>m</PostLetter> approaches infinity.
+        . That is, the area of the blue (northwest lines) region below
+        approaches the area of the red (northeast lines) region as{' '}
+        <Letter>m</Letter> approaches infinity.
       </Body>
       <Image src={Graph3} height={400} />
       <Body>
@@ -213,7 +208,7 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
         added 1's here that makes it seem reasonable for this to be fairly
         inconsequential, however). One may wish to consider that{' '}
         <MathJax inline>{'$\\int_1^a \\frac{1}{x} dx$'}</MathJax> is just the
-        case from the limit when <PostLetter>m</PostLetter> = 0:
+        case from the limit when <Letter>m</Letter> = 0.
       </Body>
       <MathJax>
         {
@@ -222,9 +217,9 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
       </MathJax>
       <Body>
         I also wonder if Braden's summation would be a good way to approximate
-        the value of ln(<PostLetter>a</PostLetter>). One could perhaps calculate
-        an error bound and compare the performance to that of Taylor
-        polynomials, which I believe calculators generally use.
+        the value of ln(<Letter>a</Letter>). One could perhaps calculate an
+        error bound and compare the performance to that of Taylor polynomials,
+        which I believe calculators generally use.
       </Body>
       <Footer />
     </Wrapper>

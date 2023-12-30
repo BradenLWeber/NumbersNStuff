@@ -109,8 +109,8 @@ export const TheDivideBy3Game = () => {
         in 1, 4, or 7.
       </Indent>
       <Body>
-        Or, even more generally - when adding digits over and over until there
-        is one left, the same thing that is added to the end result to make it
+        Or, even more generally—when adding digits over and over until there is
+        one left, the same thing that is added to the end result to make it
         divisible by 3 can be added to the original number to make it divisible
         by 3. Read that again, because memorizing concepts is easier than
         memorizing straight facts!

@@ -1,5 +1,6 @@
 import { Box, Typography } from '@mui/material';
 
+import Alert from 'components/general/alert';
 import Body from 'components/post/post-body';
 import Braden from 'assets/global/me.jpg';
 import { Color } from 'styles/Color';
@@ -17,8 +18,13 @@ const About = () => {
   const imageMaxWidth = `max(calc(25vw), ${globalVars.minScreenWidth - 500}px)`;
 
   const [email, setEmail] = useState('');
+  const [openTooltip, setOpenTooltip] = useState(false);
   const [subscribeButtonText, setSubscribeButtonText] = useState('Subscribe');
   const [subscribeButtonDisabled, setSubscribeButtonDisabled] = useState(true);
+
+  const handleCloseTooltip = () => {
+    setOpenTooltip(false);
+  };
 
   const emailChange = (v) => {
     setEmail(v);
@@ -32,14 +38,20 @@ const About = () => {
 
     setSubscribeButtonText('Subscribing...');
     setSubscribeButtonDisabled(true);
-    SubscriptionApi.add(email).then((res) => {
-      if (res.success) {
-        setSubscribeButtonText('Subscribed!');
-      } else {
+    SubscriptionApi.add(email)
+      .then(() => {
+        setOpenTooltip(true);
+      })
+      .catch(() => {
+        alert(
+          'Subscribe failed for some reason. Please contact bradenlweber@gmail.com',
+        );
+      })
+      .finally((res) => {
         setSubscribeButtonText('Subscribe');
         setSubscribeButtonDisabled(false);
-      }
-    });
+        setEmail('');
+      });
   };
 
   return (
@@ -131,6 +143,9 @@ const About = () => {
           />
         </Box>
       </Box>
+      <Alert open={openTooltip} onClose={handleCloseTooltip}>
+        Successfully subscribed!
+      </Alert>
     </Box>
   );
 };
