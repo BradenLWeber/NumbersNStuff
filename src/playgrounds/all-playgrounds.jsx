@@ -28,14 +28,14 @@ export const playgrounds = [
     createdDate: '8/20/2023',
     element: <NumberPalindromesPlayground />,
   },
-  {
-    title: primalSpiralsTitle,
-    image: {
-      src: NumberPalindromes,
-      height: 190,
-      width: 300,
-    },
-    createdDate: '12/19/2023',
-    element: <PrimalSpiralsPlayground />,
-  },
+  // {
+  //   title: primalSpiralsTitle,
+  //   image: {
+  //     src: NumberPalindromes,
+  //     height: 190,
+  //     width: 300,
+  //   },
+  //   createdDate: '12/19/2023',
+  //   element: <PrimalSpiralsPlayground />,
+  // },
 ];
