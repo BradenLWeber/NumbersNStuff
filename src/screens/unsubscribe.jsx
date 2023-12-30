@@ -41,7 +41,7 @@ const Unsubscribe = () => {
           'Unsubscribe failed for some reason. Please contact bradenlweber@gmail.com',
         );
       })
-      .finally((res) => {
+      .finally(() => {
         setUnsubscribeButtonText('Unsubscribe');
         setUnsubscribeButtonDisabled(false);
         setEmail('');

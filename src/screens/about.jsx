@@ -47,7 +47,7 @@ const About = () => {
           'Subscribe failed for some reason. Please contact bradenlweber@gmail.com',
         );
       })
-      .finally((res) => {
+      .finally(() => {
         setSubscribeButtonText('Subscribe');
         setSubscribeButtonDisabled(false);
         setEmail('');
