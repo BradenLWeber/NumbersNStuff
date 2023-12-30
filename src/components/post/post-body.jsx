@@ -13,6 +13,7 @@ const Body = (props) => {
       mt={mt === undefined ? 20 : mt}
       mb={mb === undefined ? 0 : mb}
       sx={sx}
+      textAlign='justify'
     >
       {children}
     </Typography>

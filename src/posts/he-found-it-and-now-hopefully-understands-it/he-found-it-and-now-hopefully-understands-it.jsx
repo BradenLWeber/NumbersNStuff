@@ -5,10 +5,10 @@ import Graph1 from './graph1.png';
 import Graph2 from './graph2.png';
 import Graph3 from './graph3.png';
 import Header from 'components/post/post-header';
-import { I } from 'components/post/i';
 import Image from 'components/post/post-image';
 import { Link } from 'react-router-dom';
 import { MathJax } from 'better-react-mathjax';
+import PostLetter from 'components/post/post-letter';
 import Title from 'components/post/post-title';
 import Wrapper from 'components/post/post-wrapper';
 
@@ -21,7 +21,7 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
     <Wrapper>
       <Title
         date={heFoundItAndNowHopefullyUnderstandsItDate}
-        author='Jack Vandermolen'
+        author='Jack Van Der Molen'
       >
         {heFoundItAndNowHopefullyUnderstandsItTitle}
       </Title>
@@ -37,8 +37,8 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
       <Divider />
       <Header>Problem</Header>
       <Body>
-        We will show that for any positive integer <I>a</I>, the following
-        equation holds
+        We will show that for any positive integer <PostLetter>a</PostLetter>,
+        the following equation holds:
       </Body>
       <MathJax>
         {
@@ -67,36 +67,39 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
       <Body>
         The key step in this proof is realizing the connection between
         summations and integrals, though this is a little bit different than how
-        they are typically connected. The integral of a function <I>f</I> from{' '}
-        <I>a</I> to <I>b</I>, that is{' '}
+        they are typically connected. The integral of a function{' '}
+        <PostLetter>f</PostLetter> from <PostLetter>a</PostLetter> to{' '}
+        <PostLetter>b</PostLetter>, that is{' '}
         <MathJax inline>{'$\\int_a^b f(x) dx$'}</MathJax>, gives the area
-        between the function <I>f</I> and the horizontal axis over the interval
-        from <I>a</I> to <I>b</I>, shaded in blue in the graph below.
+        between the function <PostLetter>f</PostLetter> and the horizontal axis
+        over the interval from <PostLetter>a</PostLetter> to{' '}
+        <PostLetter>b</PostLetter>, shaded in blue in the graph below.
       </Body>
-      <Image src={Graph1} height={400} />
       <Body>
         We can consider the sum{' '}
         <MathJax inline>{'$\\sum_{(n = a + 1)}^b f(n)$'}</MathJax> to give an
         approximation of this same area, covering the area with rectangles of
-        width <I>1</I> and height the output of the function at the rectangles
-        location, shaded in red. Under the right conditions (when the function
-        changes gradually enough), the summation and the integral of the
-        function will approach the same value when we take the limit.
+        width 1 and height the output of the function at the rectangles
+        location, shaded in red.
       </Body>
+      <Image src={Graph1} height={400} />
       <Body>
-        When looking at this problem, I happened to recall that ln(<I>x</I>) is
-        an antiderivative of <MathJax inline>{'$\\frac{1}{x}$'}</MathJax>. In
-        other words, the area between the function{' '}
-        <MathJax inline>{'$\\frac{1}{x}$'}</MathJax> and the horizontal axis
-        over the interval from 0 to <I>b</I> is equal to ln(<I>b</I>). This fact
-        is typically memorized in one's first or second course in calculus, but
-        the proof is a bit tricky and will be omitted here. This fact lead me to
-        try this technique of comparing summations and integrals.
+        When looking at this problem, I happened to recall that ln(
+        <PostLetter>x</PostLetter>) is an antiderivative of{' '}
+        <MathJax inline>{'$\\frac{1}{x}$'}</MathJax>. In other words, the area
+        between the function <MathJax inline>{'$\\frac{1}{x}$'}</MathJax> and
+        the horizontal axis over the interval from 0 to{' '}
+        <PostLetter>x</PostLetter> is equal to ln(
+        <PostLetter>b</PostLetter>). This fact is typically memorized in one's
+        first or second course in calculus, but the proof is a bit tricky and
+        will be omitted here. This fact lead me to try this technique of
+        comparing summations and integrals.
       </Body>
       <Header>Proof</Header>
       <Body>
         The graph below demonstrates that the following inequality holds for all
-        positive integers <I>a</I> and <I>m</I>:
+        positive integers <PostLetter>a</PostLetter> and{' '}
+        <PostLetter>m</PostLetter>:
       </Body>
       <MathJax>
         {
@@ -125,8 +128,9 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
       </MathJax>
       <Body>
         If we can show that the limits of the integrals approach the same value,
-        namely ln(<I>a</I>), then the limit of the summation must approach that
-        same value, because it is stuck between the outer values.
+        namely ln(<PostLetter>a</PostLetter>), then the limit of the summation
+        must approach that same value, because it is stuck between the outer
+        values.
       </Body>
       <Body>
         Following, we evaluate the right side; a couple of the equalities are
@@ -145,11 +149,14 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
       <Body>
         The left side is a bit more complicated because we need to account for
         the added 1's, but it starts off similar. We may move the limit inside
-        of the natural log because the natural log is a continuous function (it
-        is smooth), and then we divide the numerator and denominator by{' '}
+        of the natural log because the natural log is a continuous function
+        (small changes in the input result in small changes in the output), and
+        then we divide the numerator and denominator by{' '}
         <MathJax inline>$a^m$</MathJax>, noting that{' '}
-        <MathJax inline>{'$lim_{m \\to \\infty} \\frac{1}{a^m} = 0$'}</MathJax>,
-        in order to evaluate the limit.
+        <MathJax inline>
+          {'$\\lim_{m \\to \\infty} \\frac{1}{a^m} = 0$'}
+        </MathJax>
+        , in order to evaluate the limit.
       </Body>
       <MathJax>
         {`\\begin{align*}
@@ -169,7 +176,7 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
           '$$\\ln(a) = \\lim_{m \\to \\infty} \\int_{a^m+1}^{a^{m+1}+1} \\frac{1}{x} dx \\leq \\lim_{m \\to \\infty} \\sum_{n=a^m+1}^{a^{m+1}} \\frac{1}{n} \\leq \\lim_{m \\to \\infty} \\int_{a^m}^{a^{m+1}} \\frac{1}{x} dx = \\ln(a)$$'
         }
       </MathJax>
-      <Body>and so we achieve our desired result</Body>
+      <Body>and so we achieve our desired result.</Body>
       <MathJax>
         {
           '$$\\lim_{m \\to \\infty} \\sum_{n=a^m+1}^{a^{m+1}} \\frac{1}{n} = \\ln(a).$$'
@@ -196,8 +203,8 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
       </MathJax>
       <Body>
         That is, the area of the blue (northwest lines) region below approaches
-        the area of the red (northeast lines) region as <I>m</I> approaches
-        infinity.
+        the area of the red (northeast lines) region as{' '}
+        <PostLetter>m</PostLetter> approaches infinity.
       </Body>
       <Image src={Graph3} height={400} />
       <Body>
@@ -206,7 +213,7 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
         added 1's here that makes it seem reasonable for this to be fairly
         inconsequential, however). One may wish to consider that{' '}
         <MathJax inline>{'$\\int_1^a \\frac{1}{x} dx$'}</MathJax> is just the
-        case from the limit when <I>m</I> = 0:
+        case from the limit when <PostLetter>m</PostLetter> = 0:
       </Body>
       <MathJax>
         {
@@ -215,9 +222,9 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
       </MathJax>
       <Body>
         I also wonder if Braden's summation would be a good way to approximate
-        the value of ln(<I>a</I>). One could perhaps calculate an error bound
-        and compare the performance to that of Taylor polynomials, which I
-        believe calculators generally use.
+        the value of ln(<PostLetter>a</PostLetter>). One could perhaps calculate
+        an error bound and compare the performance to that of Taylor
+        polynomials, which I believe calculators generally use.
       </Body>
       <Footer />
     </Wrapper>
