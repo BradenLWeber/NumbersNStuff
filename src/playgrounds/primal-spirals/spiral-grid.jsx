@@ -1,6 +1,4 @@
-import PropTypes from 'prop-types';
-
-const SpiralGrid = (props) => {
+const SpiralGrid = () => {
   return <p>spiral grid</p>;
 };
 
