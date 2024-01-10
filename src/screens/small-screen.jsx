@@ -41,13 +41,12 @@ const SmallScreen = (props) => {
           <b>still being optimized for small screens</b>.
         </Body>
         <Body textAlign='center'>
-          It is recommended you open this website on a laptop or increase the
-          width of the screen.
+          Please rotate your device so that the site displays horizontally.
         </Body>
         <Divider />
         <ButtonBase onClick={clickContinue} sx={{ marginTop: 10 }}>
           <Body color={Color.tertriaryDark} mt={0} textAlign='center'>
-            Continue anyway
+            Eh, continue anyway
           </Body>
         </ButtonBase>
       </Box>

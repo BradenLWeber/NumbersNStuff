@@ -113,7 +113,9 @@ const RootNavigation = (props) => {
           display='flex'
           flexDirection='row'
         >
-          {(showArchive || showExtraItems) && <PostTree />}
+          {(showArchive || showExtraItems) &&
+            windowSize.width &&
+            windowSize.width >= globalVars.minScreenWidth && <PostTree />}
           {page === 'Error' && <Error />}
           <Outlet />
         </Box>
