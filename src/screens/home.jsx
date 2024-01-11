@@ -1,14 +1,21 @@
 import { Box, Typography } from '@mui/material';
+import { useEffect, useState } from 'react';
 
 import BlackBoard from 'assets/global/blackboard.jpg';
 import { Color } from 'styles/Color.jsx';
 import { Link } from 'react-router-dom';
 import { useMediaQuery } from '@uidotdev/usehooks';
+import { useWindowSize } from 'utilities/useWindowSize';
 
 const sideMargin = 250;
 const boxHeight = 220;
 
 const Home = () => {
+  // eslint-disable-next-line
+  const [key, setKey] = useState(1);
+
+  const windowSize = useWindowSize();
+
   const isSmallDevice = useMediaQuery('only screen and (max-width : 868px)');
   const isMediumDevice = useMediaQuery(
     'only screen and (min-width : 868.1px) and (max-width : 992px)',
@@ -16,6 +23,10 @@ const Home = () => {
   const isLargeDevice = useMediaQuery(
     'only screen and (min-width : 992.1px) and (max-width : 1200px)',
   );
+
+  useEffect(() => {
+    setKey((k) => (k + 1) % 100);
+  }, [windowSize]);
 
   const getTitleSize = () => {
     if (isSmallDevice) return 30;
@@ -40,6 +51,7 @@ const Home = () => {
 
   const Banner = (props) => {
     const { text1, text2, margin, color, url } = props;
+    const offScreen = sideMargin * (margin + 1) + 250 > window.innerWidth;
     return (
       <Box
         id='play-around'
@@ -59,14 +71,18 @@ const Home = () => {
         }}
       >
         <Box
-          id='explore-posts-colored-area-border'
+          id='colored-area-border'
           borderBottom={`${boxHeight}px solid transparent`}
           borderLeft={`120px solid ${color}`}
           position='absolute'
-          right={sideMargin * margin + 380}
+          right={
+            offScreen
+              ? window.innerWidth - sideMargin + 130
+              : sideMargin * margin + 380
+          }
         />
         <Box
-          id='explore-posts-colored-area-rectangle'
+          id='colored-area-rectangle'
           height={boxHeight}
           width={`calc(100% - ${sideMargin * margin + 500}px)`}
           position='absolute'

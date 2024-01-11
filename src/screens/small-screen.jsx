@@ -46,7 +46,7 @@ const SmallScreen = (props) => {
         <Divider />
         <ButtonBase onClick={clickContinue} sx={{ marginTop: 10 }}>
           <Body color={Color.tertriaryDark} mt={0} textAlign='center'>
-            Eh, continue anyway
+            Or continue anyway
           </Body>
         </ButtonBase>
       </Box>
