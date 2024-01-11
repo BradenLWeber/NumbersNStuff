@@ -13,6 +13,7 @@ const PlaygroundWrapper = (props) => {
 
   return (
     <Box
+      id='playground-wrapper'
       width='100%'
       display='flex'
       flex={1}
@@ -23,6 +24,7 @@ const PlaygroundWrapper = (props) => {
       overflowX='hidden'
       position='relative'
       flexDirection='column'
+      boxSizing='border-box'
     >
       <Tooltip title='Help'>
         <IconButton
