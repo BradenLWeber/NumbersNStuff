@@ -1,6 +1,6 @@
 import { Box, ButtonBase, Typography } from '@mui/material';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import ChalkBrain from 'assets/global/ChalkBrain.png';
 import { Color } from 'styles/Color';
@@ -13,11 +13,18 @@ import TextButton from 'components/general/text-button';
 import globalVars from 'utilities/globalVars';
 import { useWindowSize } from 'utilities/useWindowSize';
 
+const navbarNormalHeight = 70;
+
 const RootNavigation = (props) => {
   const { page, showArchive } = props;
 
   const [showPhoneMessage, setShowPhoneMessage] = useState(undefined);
   const [bypassPhoneMessage, setBypassPhoneMessage] = useState(false);
+  const [previousScrollPos, setPreviousScrollPos] = useState(0);
+  const [navbarHeight, setNavbarHeight] = useState(navbarNormalHeight);
+
+  const previousScrollRef = useRef(previousScrollPos);
+  const navbarHeightRef = useRef(navbarHeight);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -35,7 +42,43 @@ const RootNavigation = (props) => {
         windowSize.width && windowSize.width < globalVars.minScreenWidth,
       );
     }
+
+    if (windowSize.height < 500) {
+      const bodyWrapper = document.getElementById('main-body-wrapper');
+      bodyWrapper.addEventListener('scroll', handleScroll);
+
+      return () => bodyWrapper.removeEventListener('scroll', handleScroll);
+    } else {
+      navbarHeightRef.current = navbarNormalHeight;
+      setNavbarHeight(navbarNormalHeight);
+    }
   }, [windowSize]);
+
+  const handleScroll = () => {
+    const bodyWrapper = document.getElementById('main-body-wrapper');
+    const currentScrollY = bodyWrapper.scrollTop;
+    const previousScrollY = previousScrollRef.current;
+
+    if (currentScrollY > previousScrollY) {
+      const height = Math.max(
+        navbarHeightRef.current - currentScrollY + previousScrollY,
+        10,
+      );
+      navbarHeightRef.current = height;
+      setNavbarHeight(height);
+    } else if (currentScrollY < previousScrollY) {
+      const height = Math.min(
+        navbarHeightRef.current - currentScrollY + previousScrollY,
+        navbarNormalHeight,
+      );
+      navbarHeightRef.current = height;
+      setNavbarHeight(height);
+    }
+
+    previousScrollRef.current = currentScrollY;
+    setPreviousScrollPos(currentScrollY);
+    console.log(currentScrollY, previousScrollY, navbarHeightRef.current);
+  };
 
   const clickContinue = () => {
     setBypassPhoneMessage(true);
@@ -66,6 +109,7 @@ const RootNavigation = (props) => {
       <Box
         id="'NavigationBar'"
         height={70}
+        marginTop={navbarHeightRef.current - 70}
         backgroundColor={Color.primary}
         display='flex'
         flexDirection='row'

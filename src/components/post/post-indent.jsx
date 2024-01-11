@@ -25,6 +25,7 @@ const Indent = (props) => {
               (splitChildren.length - 1 === i ? 'fit-content' : 80),
             flex: splitChildren.length - 1 === i ? 1 : 'unset',
           }}
+          key={text + i}
         >
           {text}
         </span>
