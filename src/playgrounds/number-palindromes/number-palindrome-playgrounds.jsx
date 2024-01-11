@@ -353,7 +353,6 @@ const NumberPalindromesPlayground = () => {
               whiteSpace: 'nowrap',
               marginLeft: 10,
               width: 300,
-              minWidth: 300,
               overflowX: 'auto',
               flex: 3,
             }}
@@ -533,7 +532,7 @@ const NumberPalindromesPlayground = () => {
               <Box ml={20}>
                 <FixedSizeList
                   id='scroll-list-wrapper'
-                  height={window.innerHeight - 390}
+                  height={Math.max(window.innerHeight - 390, 200)}
                   width={window.innerWidth - 60}
                   itemSize={43 + 1 / 3}
                   itemCount={result.length}
