@@ -47,9 +47,11 @@ const RootNavigation = (props) => {
     if (windowSize.height < 500) {
       const bodyWrapper = document.getElementById('main-body-wrapper');
       if (bodyWrapper) {
-        bodyWrapper.addEventListener('scroll', handleScroll);
+        if (page !== 'Error') {
+          bodyWrapper.addEventListener('scroll', handleScroll);
 
-        return () => bodyWrapper.removeEventListener('scroll', handleScroll);
+          return () => bodyWrapper.removeEventListener('scroll', handleScroll);
+        }
       } else {
         setReload((reload) => reload + 1);
       }
