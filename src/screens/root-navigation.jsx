@@ -22,6 +22,7 @@ const RootNavigation = (props) => {
   const [bypassPhoneMessage, setBypassPhoneMessage] = useState(false);
   const [previousScrollPos, setPreviousScrollPos] = useState(0);
   const [navbarHeight, setNavbarHeight] = useState(navbarNormalHeight);
+  const [reload, setReload] = useState(0);
 
   const previousScrollRef = useRef(previousScrollPos);
   const navbarHeightRef = useRef(navbarHeight);
@@ -45,14 +46,18 @@ const RootNavigation = (props) => {
 
     if (windowSize.height < 500) {
       const bodyWrapper = document.getElementById('main-body-wrapper');
-      bodyWrapper.addEventListener('scroll', handleScroll);
+      if (bodyWrapper) {
+        bodyWrapper.addEventListener('scroll', handleScroll);
 
-      return () => bodyWrapper.removeEventListener('scroll', handleScroll);
+        return () => bodyWrapper.removeEventListener('scroll', handleScroll);
+      } else {
+        setReload((reload) => reload + 1);
+      }
     } else {
       navbarHeightRef.current = navbarNormalHeight;
       setNavbarHeight(navbarNormalHeight);
     }
-  }, [windowSize]);
+  }, [windowSize, reload]);
 
   const handleScroll = () => {
     const bodyWrapper = document.getElementById('main-body-wrapper');
