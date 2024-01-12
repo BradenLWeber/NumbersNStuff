@@ -9,6 +9,7 @@ import { useWindowSize } from 'utilities/useWindowSize';
 
 const sideMargin = 250;
 const boxHeight = 220;
+const minScreenWidth = 700;
 
 const Home = () => {
   // eslint-disable-next-line
@@ -51,7 +52,8 @@ const Home = () => {
 
   const Banner = (props) => {
     const { text1, text2, margin, color, url } = props;
-    const offScreen = sideMargin * (margin + 1) + 250 > window.innerWidth;
+    const offScreen =
+      sideMargin * (margin + 2) > Math.max(window.innerWidth, minScreenWidth);
     return (
       <Box
         id='play-around'
@@ -77,7 +79,7 @@ const Home = () => {
           position='absolute'
           right={
             offScreen
-              ? window.innerWidth - sideMargin + 130
+              ? Math.max(window.innerWidth, minScreenWidth) - sideMargin + 130
               : sideMargin * margin + 380
           }
         />
