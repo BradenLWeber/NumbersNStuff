@@ -9,7 +9,7 @@ const Error = () => {
   const [message, setMessage] = useState(0);
 
   return (
-    <Box display='flex' flexDirection='column' pr={20} pb={50}>
+    <Box display='flex' flexDirection='column' pr={20} pb={100}>
       <Typography mt={50} fontSize={Font.size.title} fontWeight={500}>
         The page you are looking for does not exist.
       </Typography>
