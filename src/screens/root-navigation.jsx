@@ -84,7 +84,6 @@ const RootNavigation = (props) => {
 
     previousScrollRef.current = currentScrollY;
     setPreviousScrollPos(currentScrollY);
-    console.log(currentScrollY, previousScrollY, navbarHeightRef.current);
   };
 
   const clickContinue = () => {

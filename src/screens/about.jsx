@@ -66,12 +66,13 @@ const About = () => {
         boxSizing='border-box'
       >
         <Box flex={1} minWidth={0} mr={50}>
-          <Title>Welcome!</Title>
-          <Body mt={-10}>
-            I am just a friendly, neighborhood mathematician. I do math because
-            I enjoy it, though I only sometimes understand it. I am not
-            decorated educationally in the mathematical sphere, but I can't
-            shake my drive to discover new mathematical concepts.
+          <Title>About Me</Title>
+          <Body mt={0}>
+            My name is Braden Weber. I am just a friendly, neighborhood
+            mathematician. I do math because I enjoy it, though I only sometimes
+            understand it. I am not decorated educationally in the mathematical
+            sphere, but I can't shake my drive to discover new mathematical
+            concepts.
           </Body>
           <Body mt={20}>
             This blog started to solve a simple problem. All my math adventures
@@ -80,8 +81,7 @@ const About = () => {
             keep it all to myself, so this is my attempt to get everything into
             a public space.
           </Body>
-          <Title>Personal Life</Title>
-          <Body mt={-10}>
+          <Body mt={20}>
             I am a native Michigander who still lives in this state for reasons
             that don't always feel good enough (who would ever purposely choose
             Michigan weather?). I graduated from Calvin University with a
@@ -98,7 +98,7 @@ const About = () => {
             Catan.
           </Body>
           <Title>Contact Me</Title>
-          <Body mt={-10}>
+          <Body mt={0}>
             Email me at bradenlweber@gmail.com, or message me on{' '}
             <a href='https://www.linkedin.com/in/braden-weber/'>LinkedIn</a>.
           </Body>
@@ -110,6 +110,7 @@ const About = () => {
             size='small'
             fullWidth={true}
             onEnter={subscribe}
+            sx={{ mt: 10 }}
           />
           <FilledButton
             variant='contained'

@@ -5,6 +5,7 @@ import CalculateIcon from '@mui/icons-material/Calculate';
 import { Color } from 'styles/Color';
 import { Font } from 'styles/Font';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
 import { parseTitleToUrl } from 'utilities/functions';
@@ -62,6 +63,13 @@ const Title = (props) => {
       )}
     </>
   );
+};
+
+Title.propTypes = {
+  children: PropTypes.string,
+  playgroundName: PropTypes.string,
+  date: PropTypes.string,
+  author: PropTypes.string,
 };
 
 export default Title;
