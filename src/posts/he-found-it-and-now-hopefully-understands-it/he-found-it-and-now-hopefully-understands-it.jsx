@@ -98,11 +98,11 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
       </Body>
       <MathJax>
         {
-          '$$\\int_{a^m+1}^{a^{m+1}+1} \\frac{1}{x} dx \\leq \\sum_{n=a^m+1}^{a^{m+1}} \\frac{1}{n} \\leq \\int_{a^m}^{a^{m+1}} \\frac{1}{x} dx $$'
+          '$$\\int_{a^m+1}^{a^{m+1}+1} \\frac{1}{x} dx \\leq \\sum_{n=a^m+1}^{a^{m+1}} \\frac{1}{n} \\leq \\int_{a^m}^{a^{m+1}} \\frac{1}{x} dx .$$'
         }
       </MathJax>
       <Body>
-        . Notice that the red (northeast lines) and blue (northwest lines)
+        Notice that the red (northeast lines) and blue (northwest lines)
         rectangles cover the same area, representing the summation, but the the
         blue rectangles show that the sum is less than the area under the curve
         from <MathJax inline>$a^m$</MathJax> to{' '}
@@ -118,14 +118,13 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
       </Body>
       <MathJax>
         {
-          '$$\\lim_{m \\to \\infty} \\int_{a^m+1}^{a^{m+1}+1} \\frac{1}{x} dx \\leq \\lim_{m \\to \\infty} \\sum_{n=a^m+1}^{a^{m+1}} \\frac{1}{n} \\leq \\lim_{m \\to \\infty} \\int_{a^m}^{a^{m+1}} \\frac{1}{x} dx $$'
+          '$$\\lim_{m \\to \\infty} \\int_{a^m+1}^{a^{m+1}+1} \\frac{1}{x} dx \\leq \\lim_{m \\to \\infty} \\sum_{n=a^m+1}^{a^{m+1}} \\frac{1}{n} \\leq \\lim_{m \\to \\infty} \\int_{a^m}^{a^{m+1}} \\frac{1}{x} dx .$$'
         }
       </MathJax>
       <Body>
-        . If we can show that the limits of the integrals approach the same
-        value, namely ln(<Letter>a</Letter>), then the limit of the summation
-        must approach that same value, because it is stuck between the outer
-        values.
+        If we can show that the limits of the integrals approach the same value,
+        namely ln(<Letter>a</Letter>), then the limit of the summation must
+        approach that same value, because it is stuck between the outer values.
       </Body>
       <Body>
         Following, we evaluate the right side; a couple of the equalities are
@@ -184,11 +183,11 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
       </Body>
       <MathJax>
         {
-          '$$\\int_1^a \\frac{1}{x} dx = \\ln(x)|_1^a = \\ln(a) - \\ln(1) = \\ln(a)$$'
+          '$$\\int_1^a \\frac{1}{x} dx = \\ln(x)|_1^a = \\ln(a) - \\ln(1) = \\ln(a) .$$'
         }
       </MathJax>
       <Body>
-        . Given what we have already shown with Braden's identity, this implies
+        Given what we have already shown with Braden's identity, this implies
         that
       </Body>
       <MathJax>
@@ -197,9 +196,9 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
         }
       </MathJax>
       <Body>
-        . That is, the area of the blue (northwest lines) region below
-        approaches the area of the red (northeast lines) region as{' '}
-        <Letter>m</Letter> approaches infinity.
+        That is, the area of the blue (northwest lines) region below approaches
+        the area of the red (northeast lines) region as <Letter>m</Letter>{' '}
+        approaches infinity.
       </Body>
       <Image src={Graph3} height={400} />
       <Body>
@@ -212,7 +211,7 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
       </Body>
       <MathJax>
         {
-          '$$\\int_{a^0}^{a^{0+1}} \\frac{1}{x} dx = \\int_1^a \\frac{1}{x} dx.$$'
+          '$$\\int_{a^0}^{a^{0+1}} \\frac{1}{x} dx = \\int_1^a \\frac{1}{x} dx$$'
         }
       </MathJax>
       <Body>
