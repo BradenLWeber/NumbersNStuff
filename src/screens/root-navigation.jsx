@@ -66,21 +66,21 @@ const RootNavigation = (props) => {
     const currentScrollY = bodyWrapper.scrollTop;
     const previousScrollY = previousScrollRef.current;
 
+    let height = 0;
     if (currentScrollY > previousScrollY) {
-      const height = Math.max(
-        navbarHeightRef.current - currentScrollY + previousScrollY,
+      height = Math.max(
+        navbarHeightRef.current + (previousScrollY - currentScrollY) / 2,
         10,
       );
-      navbarHeightRef.current = height;
-      setNavbarHeight(height);
-    } else if (currentScrollY < previousScrollY) {
-      const height = Math.min(
-        navbarHeightRef.current - currentScrollY + previousScrollY,
+    } else {
+      height = Math.min(
+        navbarHeightRef.current + (previousScrollY - currentScrollY) / 2,
         navbarNormalHeight,
       );
-      navbarHeightRef.current = height;
-      setNavbarHeight(height);
     }
+
+    navbarHeightRef.current = height;
+    setNavbarHeight(height);
 
     previousScrollRef.current = currentScrollY;
     setPreviousScrollPos(currentScrollY);
