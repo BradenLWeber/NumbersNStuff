@@ -29,7 +29,7 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
         <i>
           A reader's response to the post{' '}
           <Link to='/post/i-found-it-but-i-dont-understand-it'>
-            I found it but I don't understand it
+            I Found It, but I Don't Understand It
           </Link>
           .
         </i>
@@ -46,11 +46,11 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
         }
       </MathJax>
       <Body>
-        as presented in Braden's June post, “
+        as presented in Braden's June post,{' '}
         <Link to='/post/i-found-it-but-i-dont-understand-it'>
-          I Found It but I Don't Understand It
+          I Found It, but I Don't Understand It
         </Link>
-        .”
+        .
       </Body>
       <Header>Background</Header>
       <Body>
