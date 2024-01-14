@@ -68,20 +68,25 @@ const PostCard = (props) => {
             </Typography>
           </Box>
           <Box display='flex' flexDirection='row' mt={20}>
-            {tags.map((tag) => (
-              <Chip
-                label={tag}
-                key={tag}
-                sx={{
-                  mr: 10,
-                  backgroundColor: Color.secondary,
-                  '&:hover': {
-                    backgroundColor: Color.secondaryDark,
-                  },
-                }}
-                onClick={(e) => chipClick(tag, e)}
-              />
-            ))}
+            {tags.map((tag) => {
+              const isGreen = tag === 'reader response';
+              return (
+                <Chip
+                  label={tag}
+                  key={tag}
+                  sx={{
+                    mr: 10,
+                    backgroundColor: isGreen ? Color.primary : Color.secondary,
+                    '&:hover': {
+                      backgroundColor: isGreen
+                        ? Color.primaryDark
+                        : Color.secondaryDark,
+                    },
+                  }}
+                  onClick={(e) => chipClick(tag, e)}
+                />
+              );
+            })}
           </Box>
         </Box>
         <Box

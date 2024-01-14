@@ -14,7 +14,7 @@ import Wrapper from 'components/post/post-wrapper';
 
 export const heFoundItAndNowHopefullyUnderstandsItTitle =
   'He Found It and Now Hopefully Understands It';
-export const heFoundItAndNowHopefullyUnderstandsItDate = '12/17/2023';
+export const heFoundItAndNowHopefullyUnderstandsItDate = '1/13/2023';
 
 export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
   return (
@@ -25,15 +25,6 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
       >
         {heFoundItAndNowHopefullyUnderstandsItTitle}
       </Title>
-      <Body>
-        <i>
-          A reader's response to the post{' '}
-          <Link to='/post/i-found-it-but-i-dont-understand-it'>
-            I Found It, but I Don't Understand It
-          </Link>
-          .
-        </i>
-      </Body>
       <Divider />
       <Header>Problem</Header>
       <Body>

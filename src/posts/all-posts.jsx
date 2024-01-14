@@ -65,4 +65,15 @@ export const posts = [
     tags: ['palindrome', 'bases'],
     element: <NumberPalindromes />,
   },
+  // {
+  //   title: heFoundItAndNowHopefullyUnderstandsItTitle,
+  //   description:
+  //     'My old college roommate solves a problem I've had since high school.',
+  //   image: {
+  //     src: HeFoundItGraphWhite,
+  //   },
+  //   createdDate: heFoundItAndNowHopefullyUnderstandsItDate,
+  //   tags: ['reader response', 'summation', 'calculus'],
+  //   element: <HeFoundItAndNowHopefullyUnderstandsIt />,
+  // },
 ];

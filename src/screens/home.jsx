@@ -10,6 +10,7 @@ import { useWindowSize } from 'utilities/useWindowSize';
 const sideMargin = 250;
 const boxHeight = 220;
 const minScreenWidth = 700;
+const minBannerWidth = 530;
 
 const Home = () => {
   // eslint-disable-next-line
@@ -52,15 +53,32 @@ const Home = () => {
 
   const Banner = (props) => {
     const { text1, text2, margin, color, url } = props;
+    // If it's a wide screen, the banners can pop out a bit
+    const isWideScreen = minBannerWidth + sideMargin * 3 <= window.innerWidth;
+    const marginModifier = isWideScreen
+      ? 1
+      : Math.max(
+          (window.innerWidth - minBannerWidth - sideMargin) / (2 * sideMargin),
+          0,
+        );
     const offScreen =
-      sideMargin * (margin + 2) > Math.max(window.innerWidth, minScreenWidth);
+      sideMargin * (margin * marginModifier + 3) >
+      Math.max(window.innerWidth, minScreenWidth);
+    const widthExtendsScreen = window.innerWidth < minScreenWidth;
+    const triangleRight = offScreen
+      ? widthExtendsScreen
+        ? minScreenWidth - sideMargin + 130
+        : window.innerWidth - sideMargin + 130
+      : sideMargin * (margin * marginModifier + 1) + 381;
     return (
       <Box
         id='play-around'
         mt={100}
         height={boxHeight}
         backgroundColor='white'
-        width={`calc(100% - ${sideMargin * margin}px)`}
+        width={`calc(100% - ${
+          sideMargin + sideMargin * margin * marginModifier
+        }px)`}
         minWidth={530}
         borderRadius='0px 10px 10px 0px'
         display='flex'
@@ -77,16 +95,14 @@ const Home = () => {
           borderBottom={`${boxHeight}px solid transparent`}
           borderLeft={`120px solid ${color}`}
           position='absolute'
-          right={
-            offScreen
-              ? Math.max(window.innerWidth, minScreenWidth) - sideMargin + 130
-              : sideMargin * margin + 380
-          }
+          right={triangleRight}
         />
         <Box
           id='colored-area-rectangle'
           height={boxHeight}
-          width={`calc(100% - ${sideMargin * margin + 500}px)`}
+          width={`calc(100% - ${
+            sideMargin + sideMargin * margin * marginModifier + 500
+          }px)`}
           position='absolute'
           left={0}
           backgroundColor={color}
@@ -194,21 +210,21 @@ const Home = () => {
               </>
             }
             color={Color.tertriaryDark}
-            margin={3}
+            margin={2}
             url='/posts'
           />
           <Banner
             text1='Play Around'
             text2='Try the interactive playgrounds and bring mathematical concepts to life'
             color={Color.secondaryDark}
-            margin={2}
+            margin={1}
             url='/playgrounds'
           />
           <Banner
             text1='Contact Me'
             text2='Help me take these mathematical concepts to the next level'
             color={Color.primaryDark}
-            margin={1}
+            margin={0}
             url='/about'
           />
           <Box id='bottom-margin' mt={100} />
