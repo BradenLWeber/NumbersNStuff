@@ -1,3 +1,7 @@
+import HeFoundItAndNowHopefullyUnderstandsIt, {
+  heFoundItAndNowHopefullyUnderstandsItDate,
+  heFoundItAndNowHopefullyUnderstandsItTitle,
+} from './he-found-it-and-now-hopefully-understands-it/he-found-it-and-now-hopefully-understands-it';
 import IFoundItButIDontUnderstandIt, {
   iFoundItButIDontUnderstandItDate,
   iFoundItButIDontUnderstandItTitle,
@@ -16,6 +20,7 @@ import TheDivideBy3Game, {
 } from './divide-by-3-game/the-divide-by-3-game';
 
 import ExamplePalindromes from 'posts/number-palindromes/examples.png';
+import HeFoundItGraphWhite from 'posts/he-found-it-and-now-hopefully-understands-it/heFoundItGraphWhite.png';
 import NumberLineWithArrowsCut from 'posts/divide-by-3-game/number-line-with-arrows-cut.png';
 import PascalsTriangle from 'posts/pascals-flip/pascals-triangle.png';
 import SummationFull from 'posts/i-found-it-but-i-dont-understand-it/summation-full.png';
@@ -65,15 +70,15 @@ export const posts = [
     tags: ['palindrome', 'bases'],
     element: <NumberPalindromes />,
   },
-  // {
-  //   title: heFoundItAndNowHopefullyUnderstandsItTitle,
-  //   description:
-  //     'My old college roommate solves a problem I've had since high school.',
-  //   image: {
-  //     src: HeFoundItGraphWhite,
-  //   },
-  //   createdDate: heFoundItAndNowHopefullyUnderstandsItDate,
-  //   tags: ['reader response', 'summation', 'calculus'],
-  //   element: <HeFoundItAndNowHopefullyUnderstandsIt />,
-  // },
+  {
+    title: heFoundItAndNowHopefullyUnderstandsItTitle,
+    description:
+      "My old college roommate solves a problem I've had since high school.",
+    image: {
+      src: HeFoundItGraphWhite,
+    },
+    createdDate: heFoundItAndNowHopefullyUnderstandsItDate,
+    tags: ['reader response', 'summation', 'calculus'],
+    element: <HeFoundItAndNowHopefullyUnderstandsIt />,
+  },
 ];
