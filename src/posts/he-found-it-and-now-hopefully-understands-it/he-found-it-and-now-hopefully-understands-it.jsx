@@ -14,7 +14,7 @@ import Wrapper from 'components/post/post-wrapper';
 
 export const heFoundItAndNowHopefullyUnderstandsItTitle =
   'He Found It and Now Hopefully Understands It';
-export const heFoundItAndNowHopefullyUnderstandsItDate = '1/15/2023';
+export const heFoundItAndNowHopefullyUnderstandsItDate = '1/15/2024';
 
 export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
   return (
