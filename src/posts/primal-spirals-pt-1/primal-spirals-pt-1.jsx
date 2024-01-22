@@ -9,18 +9,18 @@ import Title from 'components/post/post-title';
 import UlamSpiral from './ulam-spiral.png';
 import Wrapper from 'components/post/post-wrapper';
 
-export const primalSpiralsTitle = 'Primal Spirals';
-export const primalSpiralsDate = '12/16/2023';
+export const primalSpiralsPt1Title = 'Primal Spirals - Part 1';
+export const primalSpiralsPt1Date = '1/23/2024';
 
-export const PrimalSpirals = () => {
+export const PrimalSpiralsPt1 = () => {
   return (
     <Wrapper>
       <Title
-        playgroundName={primalSpiralsTitle}
-        date={primalSpiralsDate}
+        playgroundName={primalSpiralsPt1Title}
+        date={primalSpiralsPt1Date}
         author='Braden Weber'
       >
-        {primalSpiralsTitle}
+        {primalSpiralsPt1Title}
       </Title>
       <Divider />
       <Header>Introduction to Prime Spirals</Header>
@@ -82,9 +82,9 @@ export const PrimalSpirals = () => {
         credRef='https://en.wikipedia.org/wiki/Ulam_spiral'
       />
       <Header>The Question</Header>
-      <Footer title={primalSpiralsTitle} />
+      <Footer title={primalSpiralsPt1Title} />
     </Wrapper>
   );
 };
 
-export default PrimalSpirals;
+export default PrimalSpiralsPt1;

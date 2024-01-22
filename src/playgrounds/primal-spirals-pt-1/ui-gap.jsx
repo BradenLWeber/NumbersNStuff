@@ -2,7 +2,6 @@ import { Box, Typography } from '@mui/material';
 
 import CheckedBox from 'components/general/checked-box';
 import { Color } from 'styles/Color';
-import FilledButton from 'components/general/filled-button';
 import OutlinedButton from 'components/general/outlined-button';
 import PropTypes from 'prop-types';
 import { Stack } from '@mui/system';
@@ -10,8 +9,7 @@ import TextInput from 'components/general/text-input';
 import { useState } from 'react';
 
 const UIGap = (props) => {
-  const { setScale, setCeiling, setAnimate, setFloor, setAngle, reset, back } =
-    props;
+  const { setScale, setCeiling, setAnimate, setFloor, setAngle, reset } = props;
   const [localScale, setLocalScale] = useState(4);
   const [localFloor, setLocalFloor] = useState(0);
   const [localCeiling, setLocalCeiling] = useState(700);
@@ -21,10 +19,10 @@ const UIGap = (props) => {
   const submit = () => {
     reset();
     setAnimate(localAnimate || false);
-    setScale(localScale || 4);
-    setFloor(localFloor || 0);
-    setCeiling(localCeiling || 700);
-    setAngle(localAngle || 90);
+    setScale(Number(localScale) || 4);
+    setFloor(Number(localFloor) || 0);
+    setCeiling(Number(localCeiling) || 700);
+    setAngle(Number(localAngle) || 90);
   };
 
   const getDisableDraw = () => {
@@ -32,11 +30,12 @@ const UIGap = (props) => {
       localFloor === '' ||
       localCeiling === '' ||
       localScale === '' ||
-      localCeiling - localFloor > 10000000 ||
-      localScale > 20 ||
-      localFloor < 0 ||
-      localCeiling > Number.MAX_SAFE_INTEGER ||
-      localFloor >= localCeiling
+      localAngle === '' ||
+      Number(localCeiling) - Number(localFloor) > 10000000 ||
+      Number(localScale) > 20 ||
+      Number(localCeiling) > Number.MAX_SAFE_INTEGER ||
+      Number(localFloor) >= localCeiling ||
+      Number(localAngle) > 360
     );
   };
 
@@ -54,12 +53,11 @@ const UIGap = (props) => {
 
   return (
     <Stack mt={3.5} ml={3.5} spacing={20} direction='row'>
-      <FilledButton click={back} sx={{ height: 55 }}>
-        Back
-      </FilledButton>
       <TextInput
         id='scale-input'
         label='Scale'
+        value={localScale}
+        trimChars={/[^0-9\.]/}
         onChange={(e) => setLocalScale(e)}
         onEnter={onEnter}
         sx={{ width: { sm: 100, md: 100 }, minWidth: 60 }}
@@ -67,6 +65,8 @@ const UIGap = (props) => {
       <TextInput
         id='floor-input'
         label='Floor'
+        value={localFloor}
+        trimChars={/[^0-9]/}
         onEnter={onEnter}
         onChange={(e) => setLocalFloor(e)}
         sx={{ width: { sm: 130, md: 130, minWidth: 80 } }}
@@ -74,6 +74,8 @@ const UIGap = (props) => {
       <TextInput
         id='ceiling-input'
         label='Ceiling'
+        value={localCeiling}
+        trimChars={/[^0-9]/}
         onEnter={onEnter}
         onChange={(e) => setLocalCeiling(e)}
         sx={{ width: { sm: 130, md: 130 }, minWidth: 80 }}
@@ -81,8 +83,10 @@ const UIGap = (props) => {
       <TextInput
         id='angle-input'
         label='Angle'
+        value={localAngle}
+        trimChars={/[^0-9\.]/}
         defaultValue={90}
-        onChange={(e) => setLocalAngle(Number(e))}
+        onChange={(e) => setLocalAngle(e)}
         sx={{ width: { sm: 100, md: 100 }, minWidth: 60 }}
       />
       <Box
@@ -120,7 +124,6 @@ UIGap.propTypes = {
   setFloor: PropTypes.func,
   setAngle: PropTypes.func,
   reset: PropTypes.func,
-  back: PropTypes.func,
 };
 
 export default UIGap;

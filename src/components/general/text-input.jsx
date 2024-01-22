@@ -13,6 +13,7 @@ const TextInput = (props) => {
     sx,
     backgroundColor,
     borderColor,
+    trimChars,
     ...options
   } = props;
 
@@ -20,6 +21,13 @@ const TextInput = (props) => {
     if (e.keyCode === 13 && onEnter) {
       onEnter(e.target.value);
     }
+  };
+
+  const onLocalChange = (e) => {
+    const value = trimChars
+      ? e.target.value.replace(trimChars, '')
+      : e.target.value;
+    onChange(value, e);
   };
 
   const StyledTextField = useMemo(
@@ -41,7 +49,7 @@ const TextInput = (props) => {
     <StyledTextField
       id='text-input'
       value={value}
-      onChange={(e) => onChange(e.target.value, e)}
+      onChange={(e) => onLocalChange(e)}
       label={label}
       onKeyDown={keyPress}
       sx={{ backgroundColor: backgroundColor || 'white', ...sx }}
@@ -58,6 +66,7 @@ TextInput.propTypes = {
   sx: PropTypes.object,
   backgroundColor: PropTypes.string,
   borderColor: PropTypes.string,
+  trimChars: PropTypes.instanceOf(RegExp),
 };
 
 export default TextInput;

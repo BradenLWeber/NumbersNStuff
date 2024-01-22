@@ -180,15 +180,6 @@ const SpiralGap = (props) => {
         x + gap * scale * Math.cos((currentAngle * 2 * Math.PI) / 360),
         y + gap * scale * Math.sin((currentAngle * 2 * Math.PI) / 360),
       ]);
-      // if (i % 4 === 0) {
-      //   points.push([x + gap * scale, y]);
-      // } else if (i % 4 === 1) {
-      //   points.push([x, y + gap * scale]);
-      // } else if (i % 4 === 2) {
-      //   points.push([x - gap * scale, y]);
-      // } else {
-      //   points.push([x, y - gap * scale]);
-      // }
     }
     return points;
   };

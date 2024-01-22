@@ -1,3 +1,4 @@
+import PlaygroundWrapper from 'components/playground/playground-wrapper';
 import PropTypes from 'prop-types';
 import SpiralGrid from './spiral-grid';
 import UIGrid from './ui-grid';
@@ -16,7 +17,7 @@ const HandlerGrid = (props) => {
   };
 
   return (
-    <>
+    <PlaygroundWrapper postName=''>
       <UIGrid
         setStart={setStart}
         setGap={setGap}
@@ -32,7 +33,7 @@ const HandlerGrid = (props) => {
         key={key}
         useSequence={useSequence}
       />
-    </>
+    </PlaygroundWrapper>
   );
 };
 
