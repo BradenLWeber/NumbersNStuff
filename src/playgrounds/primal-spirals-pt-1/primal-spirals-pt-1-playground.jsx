@@ -1,19 +1,26 @@
+import { useEffect, useState } from 'react';
+
 import Body from 'components/post/post-body';
 import PlaygroundWrapper from 'components/playground/playground-wrapper';
 import SpiralGap from './spiral-gap';
 import UIGap from './ui-gap';
+import { parseTitleToUrl } from 'utilities/functions';
 import { primalSpiralsPt1Title } from 'posts/primal-spirals-pt-1/primal-spirals-pt-1';
-import { useState } from 'react';
 
 const DEV = false;
 
 const PrimalSpiralsPt1Playground = () => {
+  const [postName, setPostName] = useState('');
   const [scale, setScale] = useState(0);
   const [ceiling, setCeiling] = useState(0);
   const [animate, setAnimate] = useState(0);
   const [angle, setAngle] = useState(90);
   const [floor, setFloor] = useState(0);
   const [key, setKey] = useState(0);
+
+  useEffect(() => {
+    setPostName(parseTitleToUrl(primalSpiralsPt1Title));
+  }, []);
 
   const reset = () => {
     setKey(key + 1);
@@ -22,9 +29,10 @@ const PrimalSpiralsPt1Playground = () => {
   const Explanation = () => (
     <>
       <Body>
-        Prime spirals are made by taking the gaps between primes and generating
-        spirals where the line length of the next prong is equal to the next gap
-        between primes. The angle at which each prong turns can be varied.
+        Prime spirals are made by looking at the gaps between primes in a
+        certain range of numbers. The length of the next line is always equal to
+        the next gap between primes. The angle at which each line turns can be
+        varied.
       </Body>
       <Body>
         The <b>floor</b> and <b>ceiling</b> determine the interval that the
@@ -39,17 +47,14 @@ const PrimalSpiralsPt1Playground = () => {
         might fit on the screen better if they are scaled down.
       </Body>
       <Body>
-        Animate will show the lines being drawn. Be warned, for larger spirals,
-        this may take a long time to complete.
+        <b>Animate</b> will show the lines being drawn. Be warned, for larger
+        spirals, this may take a long time to complete.
       </Body>
     </>
   );
 
   return (
-    <PlaygroundWrapper
-      postName={primalSpiralsPt1Title}
-      explanation={<Explanation />}
-    >
+    <PlaygroundWrapper postName={postName} explanation={<Explanation />}>
       <UIGap
         setScale={setScale}
         setCeiling={setCeiling}

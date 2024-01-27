@@ -34,7 +34,7 @@ const ExplanationModal = (props) => {
           position='absolute'
           top={0}
           width='100%'
-          height={100}
+          height={88}
           backgroundColor={Color.secondaryLight}
           zIndex={1}
           ml={-20}
@@ -55,6 +55,7 @@ const ExplanationModal = (props) => {
           flex={1}
           minHeight={0}
           pr={14}
+          pb={10}
           sx={{
             overflowY: 'auto',
             overflowX: 'hidden',
