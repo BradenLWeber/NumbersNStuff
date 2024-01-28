@@ -111,7 +111,9 @@ const ProgressBar = (props) => (
 
 const SpiralGap = (props) => {
   const { scale, ceil, floor, angle, animate, dev } = props;
-  const strokeWidth = Number(scale / 2);
+  let strokeWidth = scale / 2;
+  if (scale < 0.5) strokeWidth = scale / 1.5;
+  if (scale < 0.1) strokeWidth = scale;
 
   const [delayedPoints, setDelayedPoints] = useState([]);
   const delayedPointsRef = useRef(delayedPoints);
@@ -169,9 +171,10 @@ const SpiralGap = (props) => {
     let x;
     let y;
     let gap;
-    let currentAngle = (angle + 180) % 360;
+    const normalizedAngle = 180 - angle;
+    let currentAngle = (normalizedAngle + 180) % 360;
     for (let i = 0; i < gaps.length; i++) {
-      currentAngle = (currentAngle + angle) % 360;
+      currentAngle = (currentAngle + normalizedAngle) % 360;
 
       x = points[i][0];
       y = points[i][1];
@@ -240,12 +243,49 @@ const SpiralGap = (props) => {
               );
             }
           })
+        ) : ceil - floor < 300001 ? (
+          points.map((point, i) => {
+            if (i) {
+              return (
+                <line
+                  x1={points[i - 1][0]}
+                  y1={points[i - 1][1]}
+                  x2={point[0]}
+                  y2={point[1]}
+                  stroke={getRgb(i)}
+                  fill='transparent'
+                  strokeWidth={strokeWidth}
+                  key={i}
+                />
+              );
+            }
+          })
         ) : (
           <polyline
             stroke='orange'
             fill='transparent'
             strokeWidth={strokeWidth}
             points={pointsToString(points)}
+          />
+        )}
+        {points.length && (
+          <circle
+            cx={points[0][0]}
+            cy={points[0][1]}
+            r={scale / 2}
+            stroke='black'
+            strokeWidth={scale / 4}
+            fill='green'
+          />
+        )}
+        {points.length && (
+          <circle
+            cx={points[points.length - 1][0]}
+            cy={points[points.length - 1][1]}
+            r={scale / 2}
+            stroke='black'
+            strokeWidth={scale / 4}
+            fill='red'
           />
         )}
       </svg>

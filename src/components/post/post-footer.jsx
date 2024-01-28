@@ -50,20 +50,11 @@ const Footer = (props) => {
   };
 
   useEffect(() => {
-    if (!title)
-      setMessage(
-        <>
-          Thank you for reading! Reader responses are welcomed and could be
-          featured on the blog. Email bradenlweber@gmail.com for more
-          information.
-        </>,
-      );
+    if (!title) setMessage('');
     else
       setMessage(
         <>
-          Thank you for reading! Reader responses are welcomed and could be
-          featured on the blog. Email bradenlweber@gmail.com for more
-          information. Don't forget to get your toes wet in the{' '}
+          Thank you for reading! Don't forget to get your toes wet in the{' '}
           <Link to={'/playground/' + parseTitleToUrl(title)}>playground</Link>{' '}
           for this post.
         </>,
@@ -80,7 +71,7 @@ const Footer = (props) => {
         flexDirection='row'
         columnGap={20}
         alignItems='center'
-        mt={20}
+        mt={message ? 20 : 0}
       >
         <Typography fontStyle='italic' color={Color.gray}>
           Subscribe and be the first to hear about every new post!

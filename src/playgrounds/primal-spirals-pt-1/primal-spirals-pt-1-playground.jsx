@@ -50,6 +50,10 @@ const PrimalSpiralsPt1Playground = () => {
         <b>Animate</b> will show the lines being drawn. Be warned, for larger
         spirals, this may take a long time to complete.
       </Body>
+      <Body>
+        For number gaps of more than 300,000, all lines will be drawn in the
+        same color to save rendering time.
+      </Body>
     </>
   );
 

@@ -1,6 +1,7 @@
+import { Box, Typography } from '@mui/material';
+
 import { Color } from 'styles/Color';
 import PropTypes from 'prop-types';
-import { Typography } from '@mui/material';
 import globalVars from 'utilities/globalVars';
 
 const Image = (props) => {
@@ -19,7 +20,7 @@ const Image = (props) => {
   } = props;
 
   return (
-    <>
+    <Box width='100%' alignItems='center' display='flex' flexDirection='column'>
       <img
         src={src}
         height={height ? height + 'px' : 'auto'}
@@ -41,6 +42,7 @@ const Image = (props) => {
           color={Color.midGray}
           fontSize={12}
           mb={mb === undefined ? 20 : 0}
+          width='fit-content'
         >
           Photo by{' '}
           {credRef ? (
@@ -57,7 +59,7 @@ const Image = (props) => {
           )}
         </Typography>
       )}
-    </>
+    </Box>
   );
 };
 
