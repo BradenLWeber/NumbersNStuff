@@ -9,12 +9,21 @@ import TextInput from 'components/general/text-input';
 import { useState } from 'react';
 
 const UIGap = (props) => {
-  const { setScale, setCeiling, setAnimate, setFloor, setAngle, reset } = props;
+  const {
+    setScale,
+    setCeiling,
+    setAnimate,
+    setFloor,
+    setAngle,
+    setColorize,
+    reset,
+  } = props;
   const [localScale, setLocalScale] = useState(4);
   const [localFloor, setLocalFloor] = useState(0);
   const [localCeiling, setLocalCeiling] = useState(700);
   const [localAnimate, setLocalAnimate] = useState(false);
   const [localAngle, setLocalAngle] = useState(90);
+  const [localColorize, setLocalColorize] = useState(false);
 
   const submit = () => {
     reset();
@@ -23,6 +32,7 @@ const UIGap = (props) => {
     setFloor(Number(localFloor) || 0);
     setCeiling(Number(localCeiling) || 700);
     setAngle(Number(localAngle) || 90);
+    setColorize(colorizeIsOption() && (localColorize || localAnimate));
   };
 
   const getDisableDraw = () => {
@@ -41,6 +51,14 @@ const UIGap = (props) => {
 
   const onEnter = () => {
     if (!getDisableDraw()) submit();
+  };
+
+  const colorizeIsOption = () => {
+    return (
+      localCeiling === '' ||
+      localFloor === '' ||
+      Number(localCeiling) - Number(localFloor) < 500001
+    );
   };
 
   const range = localCeiling - localFloor;
@@ -103,6 +121,21 @@ const UIGap = (props) => {
           onChange={(e) => setLocalAnimate(e)}
         />
       </Box>
+      <Box
+        id='colorize-wrapper'
+        display='flex'
+        flexDirection='column'
+        alignItems='center'
+        pl={10}
+        pr={10}
+      >
+        <Typography>Colorize</Typography>
+        <CheckedBox
+          disabled={!colorizeIsOption() || localAnimate}
+          checked={colorizeIsOption() && (localColorize || localAnimate)}
+          onChange={(e) => setLocalColorize(e)}
+        />
+      </Box>
       <OutlinedButton
         click={submit}
         sx={{ height: 56 }}
@@ -123,7 +156,10 @@ UIGap.propTypes = {
   setAnimate: PropTypes.func,
   setFloor: PropTypes.func,
   setAngle: PropTypes.func,
+  setColorize: PropTypes.func,
   reset: PropTypes.func,
 };
 
 export default UIGap;
+
+// TODO: Tooltip for colorize

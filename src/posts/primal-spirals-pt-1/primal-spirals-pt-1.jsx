@@ -46,8 +46,7 @@ export const PrimalSpiralsPt1 = () => {
         of being prime seems to be intrinsic to numbers, yet the pattern of
         prime numbers remains elusive. There is no equation that can determine
         if a number is prime; the only way to know if a number is prime is
-        through brute-force testing. There is no easy equation that can tell you
-        whether or not a number is prime.
+        through brute-force testing.
       </Body>
       <Body>
         For all the mysteries surrounding prime numbers, there are a few things
@@ -59,13 +58,14 @@ export const PrimalSpiralsPt1 = () => {
         We also know that prime numbers seem to congregate along certain
         functions. <MathJax inline>$n^2$</MathJax> + <Letter>n</Letter> +
         3399714628553118047 is a prime example (pun intended), where{' '}
-        <Letter>n</Letter> is a positive integer.
-      </Body>
-      <Body>
-        There are other equations out there that seem to generate primes more
-        consistently than other equations. These equations can be difficult to
-        find, but one strategy for finding them is to visualize the primes
-        geometrically.
+        <Letter>n</Letter> is a positive integer (source:{' '}
+        <a href='https://www.youtube.com/watch?v=iFuR97YcSLM' target='_blank'>
+          Numberphile
+        </a>
+        ). Functions like this can be difficult to find, but the task becomes
+        easier when we find ways to represent the primes geometrically. The
+        human eye is good at spotting patterns, even if they aren't perfectly
+        consistent.
       </Body>
       <Body>
         One of the most popular visualizations for primes is called the{' '}
@@ -83,9 +83,9 @@ export const PrimalSpiralsPt1 = () => {
       </Body>
       <Image src={ExampleSpiralShaded} height={200} />
       <Body>
-        If you carry this out far enough, you will start to see diagonal lines
-        magically appear. It is amazing that the randomness of primes can
-        produce apparent patterns like this.
+        If you carry this out far enough, diagonal lines will seem to magically
+        appear. It is amazing that the randomness of primes can produce apparent
+        patterns like this.
       </Body>
       <Image
         src={UlamSpiral}
@@ -93,7 +93,7 @@ export const PrimalSpiralsPt1 = () => {
         cred='Thanassis.space'
         credRef='https://www.thanassis.space/primes.html'
       />
-      <Header>The Question</Header>
+      <Header>My Own Spin</Header>
       <Body>
         One of my favorite methods of mathematical exploration can be described
         with this simple algorithm:
@@ -109,7 +109,7 @@ export const PrimalSpiralsPt1 = () => {
       </Body>
       <Body>
         I like the focus on primes, so I'm not going to mess with that. But the
-        construction of this spiral seems like something that could easily
+        construction of the Ulam spiral seems like something that could easily
         change. This spiral was constructed very predictably. The lines always
         turn left once there is room to do so, and in this way, the spiral fills
         up all the available space.
@@ -198,7 +198,7 @@ export const PrimalSpiralsPt1 = () => {
       </Body>
       <Body>
         But it strikes me that I made one more arbitrary decision. At the end of
-        each line, I choose to turn left 90 degrees. What happens if I change
+        each line, I chose to turn left 90 degrees. What happens if I change
         that angle?
       </Body>
       <Body>
