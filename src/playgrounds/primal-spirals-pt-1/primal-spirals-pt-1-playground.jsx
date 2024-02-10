@@ -63,6 +63,27 @@ const PrimalSpiralsPt1Playground = () => {
         For number gaps of more than 500,000, all lines will be drawn in solid
         orange to save rendering time.
       </Body>
+      <Body>
+        <b>My personal favorite patterns:</b>
+      </Body>
+      <Body>
+        Giraffe &nbsp;--{'>'}&nbsp; 0 - 700 at 90 degrees <i>(scale 4)</i>
+      </Body>
+      <Body mt={0}>
+        Cartoon seahorse &nbsp;--{'>'}&nbsp; 0 - 10000000 at 90 degrees{' '}
+        <i>(scale 0.1)</i>
+      </Body>
+      <Body mt={0}>
+        Explosion &nbsp;--{'>'}&nbsp; 0 - 100000 at 1 degree <i>(scale 1.5)</i>
+      </Body>
+      <Body mt={0}>
+        Rollerblading chicken &nbsp;--{'>'}&nbsp; 21400 - 48000 at 108 degrees{' '}
+        <i>(scale 1)</i>
+      </Body>
+      <Body mt={0}>
+        Horse's head &nbsp;--{'>'}&nbsp; 85000 - 121000 at 167.01 degrees{' '}
+        <i>(scale 1)</i>
+      </Body>
     </>
   );
 

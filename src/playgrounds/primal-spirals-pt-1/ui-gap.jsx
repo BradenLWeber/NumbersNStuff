@@ -79,13 +79,7 @@ const UIGap = (props) => {
       flexWrap='wrap'
       mr={100}
     >
-      <Stack
-        id='first-section'
-        direction='row'
-        spacing={20}
-        height={75}
-        mr={3.5}
-      >
+      <Stack id='first-section' direction='row' spacing={20} height={75}>
         <TextInput
           id='scale-input'
           label='Scale'
