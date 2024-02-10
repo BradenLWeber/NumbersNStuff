@@ -145,7 +145,7 @@ export const PrimalSpiralsPt1 = () => {
       </Body>
       <Image src={Spiral13} width={200} />
       <Body>
-        Hm, it looks like the last line is going to cause some overlap to the
+        Hm, it looks like the last line is going to overlap with some of the
         previous lines.
       </Body>
       <Image src={Spiral17} width={200} />
@@ -170,7 +170,7 @@ export const PrimalSpiralsPt1 = () => {
       </Body>
       <Body>
         Okay, I have to test my limits, right? Let's try all the primes up to
-        10,000,000
+        10,000,000.
       </Body>
       <Image src={Spiral10000000} width={220} />
       <Body>
@@ -234,8 +234,7 @@ export const PrimalSpiralsPt1 = () => {
           playground
         </Link>{' '}
         and make your own spirals. You can change the range of numbers and the
-        angle of the spiral. Comment the best combinations you can find to
-        generate cool spirals!
+        angle of the spiral. Comment the best combinations you can find!
       </Body>
       <Footer title={primalSpiralsPt1Title} />
     </Wrapper>

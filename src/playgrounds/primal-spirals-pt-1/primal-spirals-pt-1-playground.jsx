@@ -16,7 +16,7 @@ const PrimalSpiralsPt1Playground = () => {
   const [animate, setAnimate] = useState(0);
   const [angle, setAngle] = useState(90);
   const [floor, setFloor] = useState(0);
-  const [colorize, setColorize] = useState(0);
+  const [colorType, setColorType] = useState('default');
   const [key, setKey] = useState(0);
 
   useEffect(() => {
@@ -52,11 +52,16 @@ const PrimalSpiralsPt1Playground = () => {
         spirals, this may take a long time to complete.
       </Body>
       <Body>
-        <b>Colorize</b> will make the color gradually change along the spiral.
+        <b>Color</b> decides the color scheme for the spiral. <i>Default</i>{' '}
+        will use a slightly varying shade of orange. <i>Random</i> will change
+        the color randomly but gradually, which highlights the behavior of the
+        spiral in localized areas. <i>Rainbow</i> will use all the colors of the
+        rainbow gradually from start to finish, which highlights the behavior of
+        the spiral as a whole.
       </Body>
       <Body>
-        For number gaps of more than 300,000, all lines will be drawn in the
-        same color to save rendering time.
+        For number gaps of more than 500,000, all lines will be drawn in solid
+        orange to save rendering time.
       </Body>
     </>
   );
@@ -69,7 +74,7 @@ const PrimalSpiralsPt1Playground = () => {
         setAnimate={setAnimate}
         setFloor={setFloor}
         setAngle={setAngle}
-        setColorize={setColorize}
+        setColorType={setColorType}
         reset={reset}
       />
       <SpiralGap
@@ -79,7 +84,7 @@ const PrimalSpiralsPt1Playground = () => {
         angle={angle}
         key={key}
         animate={animate}
-        colorize={colorize}
+        colorType={colorType}
         dev={DEV}
       />
     </PlaygroundWrapper>

@@ -90,17 +90,51 @@ const normalizePoints = (pointList) => {
   return pointList;
 };
 
-const getRgb = (i, colorize) => {
-  if (!colorize) {
+const getRgb = (i, colorType, totalPoints) => {
+  if (colorType === 'rainbow') {
+    const red = [255, 0, 0];
+    const orange = [255, 165, 0];
+    const yellow = [222, 222, 0];
+    const green = [0, 255, 0];
+    const blue = [0, 0, 255];
+    const violet = [138, 43, 226];
+    const wave = [red, orange, yellow, green, blue, violet];
+
+    if (i === totalPoints) return 'rgb(138, 43, 226)';
+
+    const sectionSize = Math.ceil(totalPoints / 5);
+    const section = Math.floor(i / sectionSize);
+    const sectionDistance = i - sectionSize * section;
+    const startColor = wave[section];
+    const endColor = wave[section + 1];
+
+    return `rgb(${
+      startColor[0] +
+      Math.round(
+        ((endColor[0] - startColor[0]) / sectionSize) * sectionDistance,
+      )
+    }, ${
+      startColor[1] +
+      Math.round(
+        ((endColor[1] - startColor[1]) / sectionSize) * sectionDistance,
+      )
+    }, ${
+      startColor[2] +
+      Math.round(
+        ((endColor[2] - startColor[2]) / sectionSize) * sectionDistance,
+      )
+    })`;
+  } else if (colorType === 'random') {
+    const slowDifference = Math.round(Math.cos((i + 100) / 120) * 100);
+    const slowerDifference = Math.round(Math.cos((i + 20) / 179) * 100);
+    const slowestDifference = Math.round(Math.cos((i + 180) / 257) * 100);
+    return `rgb(${125 + slowDifference}, ${125 + slowerDifference}, ${
+      125 + slowestDifference
+    })`;
+  } else {
     const difference = Math.round(Math.cos(i / 15) * 25);
     return `rgb(${225 + difference}, ${125 + difference}, ${25 + difference})`;
   }
-  const slowDifference = Math.round(Math.cos((i + 100) / 120) * 100);
-  const slowerDifference = Math.round(Math.cos((i + 20) / 179) * 100);
-  const slowestDifference = Math.round(Math.cos((i + 180) / 257) * 100);
-  return `rgb(${125 + slowDifference}, ${125 + slowerDifference}, ${
-    125 + slowestDifference
-  })`;
 };
 
 const ProgressBar = (props) => (
@@ -118,7 +152,7 @@ const ProgressBar = (props) => (
 );
 
 const SpiralGap = (props) => {
-  const { scale, ceil, floor, angle, animate, colorize, dev } = props;
+  const { scale, ceil, floor, angle, animate, colorType, dev } = props;
   let strokeWidth = scale / 2;
   if (scale < 0.5) strokeWidth = scale / 1.5;
   if (scale < 0.1) strokeWidth = scale;
@@ -243,7 +277,7 @@ const SpiralGap = (props) => {
                   y1={slicedDelayedPoints[i - 1][1]}
                   x2={point[0]}
                   y2={point[1]}
-                  stroke={getRgb(i, colorize)}
+                  stroke={getRgb(i, colorType, points.length)}
                   fill='transparent'
                   strokeWidth={strokeWidth}
                   key={i}
@@ -260,7 +294,7 @@ const SpiralGap = (props) => {
                   y1={points[i - 1][1]}
                   x2={point[0]}
                   y2={point[1]}
-                  stroke={getRgb(i, colorize)}
+                  stroke={getRgb(i, colorType, points.length)}
                   fill='transparent'
                   strokeWidth={strokeWidth}
                   key={i}
@@ -307,7 +341,7 @@ SpiralGap.propTypes = {
   floor: PropTypes.number,
   angle: PropTypes.number,
   animate: PropTypes.bool,
-  colorize: PropTypes.bool,
+  colorType: PropTypes.string,
   dev: PropTypes.bool,
 };
 

@@ -1,10 +1,9 @@
-import { Box, Typography } from '@mui/material';
+import { Box, MenuItem, Stack, Typography } from '@mui/material';
 
 import CheckedBox from 'components/general/checked-box';
 import { Color } from 'styles/Color';
 import OutlinedButton from 'components/general/outlined-button';
 import PropTypes from 'prop-types';
-import { Stack } from '@mui/system';
 import TextInput from 'components/general/text-input';
 import { useState } from 'react';
 
@@ -15,7 +14,7 @@ const UIGap = (props) => {
     setAnimate,
     setFloor,
     setAngle,
-    setColorize,
+    setColorType,
     reset,
   } = props;
   const [localScale, setLocalScale] = useState(4);
@@ -23,7 +22,7 @@ const UIGap = (props) => {
   const [localCeiling, setLocalCeiling] = useState(700);
   const [localAnimate, setLocalAnimate] = useState(false);
   const [localAngle, setLocalAngle] = useState(90);
-  const [localColorize, setLocalColorize] = useState(false);
+  const [localColorType, setLocalColorType] = useState('default');
 
   const submit = () => {
     reset();
@@ -32,7 +31,7 @@ const UIGap = (props) => {
     setFloor(Number(localFloor) || 0);
     setCeiling(Number(localCeiling) || 700);
     setAngle(Number(localAngle) || 90);
-    setColorize(colorizeIsOption() && (localColorize || localAnimate));
+    setColorType(colorizeIsOption() && localColorType);
   };
 
   const getDisableDraw = () => {
@@ -70,72 +69,98 @@ const UIGap = (props) => {
       : '';
 
   return (
-    <Stack mt={3.5} ml={3.5} spacing={20} direction='row'>
-      <TextInput
-        id='scale-input'
-        label='Scale'
-        value={localScale}
-        trimChars={/[^0-9\.]/}
-        onChange={(e) => setLocalScale(e)}
-        onEnter={onEnter}
-        sx={{ width: { sm: 100, md: 100 }, minWidth: 60 }}
-      />
-      <TextInput
-        id='floor-input'
-        label='Floor'
-        value={localFloor}
-        trimChars={/[^0-9]/}
-        onEnter={onEnter}
-        onChange={(e) => setLocalFloor(e)}
-        sx={{ width: { sm: 130, md: 130, minWidth: 80 } }}
-      />
-      <TextInput
-        id='ceiling-input'
-        label='Ceiling'
-        value={localCeiling}
-        trimChars={/[^0-9]/}
-        onEnter={onEnter}
-        onChange={(e) => setLocalCeiling(e)}
-        sx={{ width: { sm: 130, md: 130 }, minWidth: 80 }}
-      />
-      <TextInput
-        id='angle-input'
-        label='Angle'
-        value={localAngle}
-        trimChars={/[^0-9\.]/}
-        defaultValue={90}
-        onChange={(e) => setLocalAngle(e)}
-        sx={{ width: { sm: 100, md: 100 }, minWidth: 60 }}
-      />
-      <Box
-        id='animate-wrapper'
-        display='flex'
-        flexDirection='column'
-        alignItems='center'
-        pl={10}
-        pr={10}
+    <Stack
+      id='ui-bar'
+      mt={3.5}
+      columnGap={20}
+      direction='row'
+      display='flex'
+      flexWrap='wrap'
+      mr={100}
+    >
+      <Stack
+        id='first-section'
+        direction='row'
+        spacing={20}
+        height={75}
+        mr={3.5}
       >
-        <Typography>Animate</Typography>
-        <CheckedBox
-          checked={localAnimate}
-          onChange={(e) => setLocalAnimate(e)}
+        <TextInput
+          id='scale-input'
+          label='Scale'
+          value={localScale}
+          trimChars={/[^0-9\.]/}
+          onChange={(e) => setLocalScale(e)}
+          onEnter={onEnter}
+          sx={{ width: { sm: 100, md: 100 }, minWidth: 60 }}
         />
-      </Box>
-      <Box
-        id='colorize-wrapper'
-        display='flex'
-        flexDirection='column'
-        alignItems='center'
-        pl={10}
-        pr={10}
+        <TextInput
+          id='floor-input'
+          label='Floor'
+          value={localFloor}
+          trimChars={/[^0-9]/}
+          onEnter={onEnter}
+          onChange={(e) => setLocalFloor(e)}
+          sx={{ width: { sm: 130, md: 130, minWidth: 80 } }}
+        />
+      </Stack>
+      <Stack
+        id='second-section'
+        direction='row'
+        spacing={20}
+        height={75}
+        sx={{
+          marginLeft: '0px !important',
+        }}
       >
-        <Typography>Colorize</Typography>
-        <CheckedBox
-          disabled={!colorizeIsOption() || localAnimate}
-          checked={colorizeIsOption() && (localColorize || localAnimate)}
-          onChange={(e) => setLocalColorize(e)}
+        <TextInput
+          id='ceiling-input'
+          label='Ceiling'
+          value={localCeiling}
+          trimChars={/[^0-9]/}
+          onEnter={onEnter}
+          onChange={(e) => setLocalCeiling(e)}
+          sx={{ width: { sm: 130, md: 130 }, minWidth: 80 }}
         />
-      </Box>
+        <TextInput
+          id='angle-input'
+          label='Angle'
+          value={localAngle}
+          trimChars={/[^0-9\.]/}
+          defaultValue={90}
+          onChange={(e) => setLocalAngle(e)}
+          sx={{ width: { sm: 100, md: 100 }, minWidth: 60 }}
+        />
+      </Stack>
+      <Stack id='third-section' direction='row' spacing={20} height={75}>
+        <Box
+          id='animate-wrapper'
+          display='flex'
+          flexDirection='column'
+          alignItems='center'
+          pl={10}
+          pr={10}
+        >
+          <Typography>Animate</Typography>
+          <CheckedBox
+            checked={localAnimate}
+            onChange={(e) => setLocalAnimate(e)}
+          />
+        </Box>
+        <TextInput
+          id='color-text-input'
+          select
+          label='Color'
+          value={colorizeIsOption() ? localColorType : 'default'}
+          disabled={!colorizeIsOption()}
+          onChange={(e) => setLocalColorType(e)}
+          sx={{ width: 120, minWidth: 120, ml: 10 }}
+        >
+          <MenuItem value='default'>Default</MenuItem>
+          <MenuItem value='random'>Random</MenuItem>
+          <MenuItem value='rainbow'>Rainbow</MenuItem>
+        </TextInput>
+      </Stack>
       <OutlinedButton
         click={submit}
         sx={{ height: 56 }}
@@ -156,10 +181,9 @@ UIGap.propTypes = {
   setAnimate: PropTypes.func,
   setFloor: PropTypes.func,
   setAngle: PropTypes.func,
-  setColorize: PropTypes.func,
+  setColorize1: PropTypes.func,
+  setColorize2: PropTypes.func,
   reset: PropTypes.func,
 };
 
 export default UIGap;
-
-// TODO: Tooltip for colorize
