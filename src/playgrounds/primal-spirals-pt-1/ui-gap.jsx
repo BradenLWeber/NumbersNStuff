@@ -5,6 +5,7 @@ import { Color } from 'styles/Color';
 import OutlinedButton from 'components/general/outlined-button';
 import PropTypes from 'prop-types';
 import TextInput from 'components/general/text-input';
+import { isNullish } from 'utilities/functions';
 import { useState } from 'react';
 
 const UIGap = (props) => {
@@ -30,7 +31,7 @@ const UIGap = (props) => {
     setScale(Number(localScale) || 4);
     setFloor(Number(localFloor) || 0);
     setCeiling(Number(localCeiling) || 700);
-    setAngle(Number(localAngle) || 90);
+    setAngle(!isNullish(Number(localAngle)) ? Number(localAngle) : 90);
     setColorType(colorizeIsOption() && localColorType);
   };
 

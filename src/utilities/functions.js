@@ -69,3 +69,7 @@ export function findDivisors(number) {
     return a - b;
   });
 }
+
+export function isNullish(o) {
+  return o === null || o === undefined || o !== o;
+}
