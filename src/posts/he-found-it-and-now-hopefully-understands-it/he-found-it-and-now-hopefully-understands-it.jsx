@@ -26,6 +26,29 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
         {heFoundItAndNowHopefullyUnderstandsItTitle}
       </Title>
       <Divider />
+      <Header>About the Author</Header>
+      <Body>
+        Hi, I am Braden's old college roommate, Jack. I am now studying
+        mathematics in graduate school at University of Wisconsin-Milwaukee, so
+        you can imagine I was really excited to hear about Numbers 'n Stuff. I
+        love reading all of Braden's posts, but when I read{' '}
+        <Link to='/post/i-found-it-but-i-dont-understand-it'>
+          I Found It, but I Don't Understand It
+        </Link>
+        , I realized I might have a solution to the problem posed there. So, I
+        emailed in my response, and Braden was kind enough to allow me to
+        contribute this post!
+      </Body>
+      <Body>
+        If you have any comments, questions, solutions, or suggestions, feel
+        free to leave a comment on the relevant post, message Braden on{' '}
+        <a target='_blank' href='https://www.linkedin.com/in/braden-weber/'>
+          LinkedIn
+        </a>
+        , or email him at bradenlweber@gmail.com. You might even get featured on
+        the blog!
+      </Body>
+      <Divider mt={40} />
       <Header>Problem</Header>
       <Body>
         We will show that for any positive integer <Letter>a</Letter>, the
