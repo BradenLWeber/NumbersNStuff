@@ -346,3 +346,5 @@ SpiralGap.propTypes = {
 };
 
 export default SpiralGap;
+
+// Deal with all those console errors
