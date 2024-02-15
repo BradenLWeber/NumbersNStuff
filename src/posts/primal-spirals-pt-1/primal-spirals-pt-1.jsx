@@ -27,7 +27,7 @@ import Wrapper from 'components/post/post-wrapper';
 import { parseTitleToUrl } from 'utilities/functions';
 
 export const primalSpiralsPt1Title = 'Primal Spirals - Part 1';
-export const primalSpiralsPt1Date = '1/23/2024';
+export const primalSpiralsPt1Date = '2/15/2024';
 
 export const PrimalSpiralsPt1 = () => {
   return (

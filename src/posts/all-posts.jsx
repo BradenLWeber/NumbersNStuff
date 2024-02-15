@@ -30,17 +30,6 @@ import PascalsTriangle from 'posts/pascals-flip/pascals-triangle.png';
 import PrimeSpiralGiraffe from 'playgrounds/primal-spirals-pt-1/prime-giraffe.png';
 import SummationFull from 'posts/i-found-it-but-i-dont-understand-it/summation-full.png';
 
-console.log({
-  title: primalSpiralsPt1Title,
-  description: 'Taking the prime numbers to dizzying places.',
-  image: {
-    src: PrimeSpiralGiraffe,
-  },
-  createdDate: primalSpiralsPt1Date,
-  tags: ['prime', 'spiral'],
-  element: <PrimalSpiralsPt1 />,
-});
-
 export const posts = [
   {
     title: theDivideBy3GameTitle,
@@ -96,5 +85,15 @@ export const posts = [
     createdDate: heFoundItAndNowHopefullyUnderstandsItDate,
     tags: ['reader response', 'summation', 'calculus'],
     element: <HeFoundItAndNowHopefullyUnderstandsIt />,
+  },
+  {
+    title: primalSpiralsPt1Title,
+    description: 'Taking the prime numbers to dizzying places.',
+    image: {
+      src: PrimeSpiralGiraffe,
+    },
+    createdDate: primalSpiralsPt1Date,
+    tags: ['prime', 'spiral'],
+    element: <PrimalSpiralsPt1 />,
   },
 ];
