@@ -8,7 +8,6 @@ import OutlinedButton from 'components/general/outlined-button';
 import PlaygroundWrapper from 'components/playground/playground-wrapper';
 import TextInput from 'components/general/text-input';
 import Title from 'components/post/post-title';
-import { parseTitleToUrl } from 'utilities/functions';
 import { theDivideBy3GameTitle } from 'posts/divide-by-3-game/the-divide-by-3-game';
 
 const DivideBy3Playground = () => {
@@ -26,11 +25,6 @@ const DivideBy3Playground = () => {
   const [chooseNumberButtonTextColor, setChooseNumberButtonTextColor] =
     useState(Color.black);
   const [history, setHistory] = useState([]);
-  const [postName, setPostName] = useState('');
-
-  useEffect(() => {
-    setPostName(parseTitleToUrl(theDivideBy3GameTitle));
-  }, []);
 
   const numberChange = (num) => {
     setNumber(num.replaceAll(/[^0-9]/g, ''));
@@ -156,7 +150,10 @@ const DivideBy3Playground = () => {
   );
 
   return (
-    <PlaygroundWrapper explanation={<Explanation />} postName={postName}>
+    <PlaygroundWrapper
+      explanation={<Explanation />}
+      postTitle={theDivideBy3GameTitle}
+    >
       {phase === 1 && (
         <Box display='flex' flexDirection='column'>
           <Title>Choose a large number</Title>

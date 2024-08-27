@@ -1,16 +1,13 @@
-import { useEffect, useState } from 'react';
-
 import Body from 'components/post/post-body';
 import PlaygroundWrapper from 'components/playground/playground-wrapper';
 import SpiralGap from './spiral-gap';
 import UIGap from './ui-gap';
-import { parseTitleToUrl } from 'utilities/functions';
 import { primalSpiralsPt1Title } from 'posts/primal-spirals-pt-1/primal-spirals-pt-1';
+import { useState } from 'react';
 
 const DEV = false;
 
 const PrimalSpiralsPt1Playground = () => {
-  const [postName, setPostName] = useState('');
   const [scale, setScale] = useState(0);
   const [ceiling, setCeiling] = useState(0);
   const [animate, setAnimate] = useState(0);
@@ -18,10 +15,6 @@ const PrimalSpiralsPt1Playground = () => {
   const [floor, setFloor] = useState(0);
   const [colorType, setColorType] = useState('default');
   const [key, setKey] = useState(0);
-
-  useEffect(() => {
-    setPostName(parseTitleToUrl(primalSpiralsPt1Title));
-  }, []);
 
   const reset = () => {
     setKey(key + 1);
@@ -88,7 +81,10 @@ const PrimalSpiralsPt1Playground = () => {
   );
 
   return (
-    <PlaygroundWrapper postName={postName} explanation={<Explanation />}>
+    <PlaygroundWrapper
+      postTitle={primalSpiralsPt1Title}
+      explanation={<Explanation />}
+    >
       <UIGap
         setScale={setScale}
         setCeiling={setCeiling}

@@ -1,11 +1,6 @@
 import { Box, ListItem, Typography } from '@mui/material';
 import React, { useEffect, useMemo, useState } from 'react';
-import {
-  baseToString,
-  findDivisors,
-  parseTitleToUrl,
-  toBaseX,
-} from 'utilities/functions';
+import { baseToString, findDivisors, toBaseX } from 'utilities/functions';
 
 import Body from 'components/post/post-body';
 import CheckedBox from 'components/general/checked-box';
@@ -37,7 +32,6 @@ const ButtonRow = (props) => (
 );
 
 const NumberPalindromesPlayground = () => {
-  const [postName, setPostName] = useState('');
   const [startNumber, setStartNumber] = useState('1');
   const [endNumber, setEndNumber] = useState('10000');
   const [startBase, setStartBase] = useState('2');
@@ -52,7 +46,6 @@ const NumberPalindromesPlayground = () => {
 
   useEffect(() => {
     window.stopNumberPalindromeComputation = false;
-    setPostName(parseTitleToUrl(numberPalindromesTitle));
     return () => {
       window.stopNumberPalindromeComputation = true;
     };
@@ -365,7 +358,10 @@ const NumberPalindromesPlayground = () => {
   };
 
   return (
-    <PlaygroundWrapper postName={postName} explanation={<Explanation />}>
+    <PlaygroundWrapper
+      postTitle={numberPalindromesTitle}
+      explanation={<Explanation />}
+    >
       <Box display='flex' flexDirection='column' width='100%'>
         {/* Gotta leave some room in the width so this doesn't cover the top right buttons */}
         <Box

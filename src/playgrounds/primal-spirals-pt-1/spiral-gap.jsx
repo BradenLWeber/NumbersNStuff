@@ -3,60 +3,10 @@ import { useEffect, useRef, useState } from 'react';
 import { LinearProgress } from '@mui/material';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
+import { sieveOfAtkin } from 'utilities/functions';
 
 const MARGIN = 40;
 const POINTS_TO_SHOW = 100;
-
-const sieveOfAtkin = (start, end) => {
-  // Adjust the sieve size to cover the specified range
-  const limit = end;
-  const sqrtLimit = Math.sqrt(limit);
-
-  // Initialize the sieve array with false values
-  const sieve = Array(limit + 1).fill(false);
-
-  // Part 1: Mark sieve values for specific quadratic forms
-  for (let x = 1; x <= sqrtLimit; x++) {
-    for (let y = 1; y <= sqrtLimit; y++) {
-      const n = 4 * x * x + y * y;
-      if (n <= limit && (n % 12 === 1 || n % 12 === 5)) {
-        sieve[n] = !sieve[n];
-      }
-
-      const m = 3 * x * x + y * y;
-      if (m <= limit && m % 12 === 7) {
-        sieve[m] = !sieve[m];
-      }
-
-      const o = 3 * x * x - y * y;
-      if (x > y && o <= limit && o % 12 === 11) {
-        sieve[o] = !sieve[o];
-      }
-    }
-  }
-
-  // Part 2: Mark sieve values for multiples of squares
-  for (let i = 5; i <= sqrtLimit; i++) {
-    if (sieve[i]) {
-      for (let j = i * i; j <= limit; j += i * i) {
-        sieve[j] = false;
-      }
-    }
-  }
-
-  // Mark 2 and 3 as prime
-  sieve[2] = sieve[3] = true;
-
-  // Collect the prime numbers within the specified range
-  const primes = [];
-  for (let i = Math.max(2, start); i <= limit; i++) {
-    if (sieve[i]) {
-      primes.push(i);
-    }
-  }
-
-  return primes;
-};
 
 const getGaps = (primes) => {
   const gaps = [];

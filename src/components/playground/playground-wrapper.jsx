@@ -1,15 +1,21 @@
 import { Box, IconButton, Tooltip } from '@mui/material';
+import { useEffect, useState } from 'react';
 
 import ArticleIcon from '@mui/icons-material/Article';
 import ExplanationModal from './explanation-modal';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { parseTitleToUrl } from 'utilities/functions';
 
 const PlaygroundWrapper = (props) => {
-  const { children, explanation, postName } = props;
+  const { children, explanation, postTitle } = props;
   const [helpModalOpen, setHelpModalOpen] = useState(false);
+  const [postUrl, setPostUrl] = useState('');
+
+  useEffect(() => {
+    setPostUrl('/post/' + parseTitleToUrl(postTitle));
+  }, []);
 
   return (
     <Box
@@ -20,11 +26,11 @@ const PlaygroundWrapper = (props) => {
       minHeight={0}
       backgroundColor='white'
       p={20}
-      overflowY='auto'
       overflowX='hidden'
       position='relative'
       flexDirection='column'
       boxSizing='border-box'
+      sx={{ overflowY: 'auto' }}
     >
       <Tooltip title='Help'>
         <IconButton
@@ -34,7 +40,7 @@ const PlaygroundWrapper = (props) => {
           <HelpOutlineIcon />
         </IconButton>
       </Tooltip>
-      <Link to={'/post/' + postName}>
+      <Link to={postUrl}>
         <Tooltip title='Post'>
           <IconButton sx={{ position: 'absolute', right: 60, top: 20 }}>
             <ArticleIcon />
@@ -53,7 +59,7 @@ const PlaygroundWrapper = (props) => {
 
 PlaygroundWrapper.propTypes = {
   explanation: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
-  postName: PropTypes.string,
+  postTitle: PropTypes.string,
 };
 
 export default PlaygroundWrapper;

@@ -1,4 +1,5 @@
-import { Box, Typography } from '@mui/material';
+import { Box, MenuItem, Typography } from '@mui/material';
+import { strCount, sumArray } from 'utilities/functions';
 
 import CheckedBox from 'components/general/checked-box';
 import FilledButton from 'components/general/filled-button';
@@ -9,22 +10,43 @@ import TextInput from 'components/general/text-input';
 import { useState } from 'react';
 
 const UIGrid = (props) => {
-  const { setStart, setGap, setSequence, setUseSequence, reset, back } = props;
+  const {
+    setStart,
+    setGap,
+    setSequence,
+    setUseSequence,
+    setSize,
+    reset,
+    back,
+  } = props;
   const [localStart, setLocalStart] = useState(1);
   const [localGap, setLocalGap] = useState(1);
   const [localUseSequence, setLocalUseSequence] = useState(false);
   const [localSequence, setLocalSequence] = useState('1,2,3');
+  const [localSize, setLocalSize] = useState('2');
 
   const submit = () => {
     reset();
-    setStart(localStart || 1);
-    setGap(localGap || 1);
-    setSequence(localSequence || '');
-    setUseSequence(localUseSequence || false);
+    setStart(Number(localStart) || 1);
+    setGap(Number(localGap) || 1);
+    setSequence(localSequence?.split(',')?.map((n) => Number(n)) || []);
+    setUseSequence(Boolean(localUseSequence) || false);
+    setSize(Number(localSize));
   };
 
   const getDisableDraw = () => {
-    return !localStart || (localUseSequence ? !localSequence : !localGap);
+    return (
+      !localStart ||
+      (localUseSequence ? !localSequence : !localGap) ||
+      (localUseSequence && !/^[0-9, ]+$/.test(localSequence)) ||
+      (localUseSequence && /,,/.test(localSequence)) ||
+      (localUseSequence && strCount(localSequence, ',') > 100) ||
+      (localUseSequence &&
+        localSequence.split(',').some((n) => !n || !n.trim())) ||
+      (localUseSequence &&
+        sumArray(localSequence.split(',').map((n) => Number(n))) > 10000) ||
+      (localGap && Number(localGap) > 10000)
+    );
   };
 
   const onEnter = () => {
@@ -32,7 +54,16 @@ const UIGrid = (props) => {
   };
 
   return (
-    <Stack mt={3.5} ml={3.5} spacing={20} direction='row'>
+    <Stack
+      id='ui-bar'
+      direction='row'
+      columnGap={20}
+      display='flex'
+      flexWrap='wrap'
+      mr={100}
+      mt={3.5}
+      ml={3.5}
+    >
       <FilledButton click={back} sx={{ height: 55 }}>
         Back
       </FilledButton>
@@ -65,8 +96,6 @@ const UIGrid = (props) => {
         display='flex'
         flexDirection='column'
         alignItems='center'
-        pl={10}
-        pr={10}
       >
         <Typography>Use Sequence</Typography>
         <CheckedBox
@@ -74,6 +103,19 @@ const UIGrid = (props) => {
           onChange={(e) => setLocalUseSequence(e)}
         />
       </Box>
+      <TextInput
+        id='size-text-input'
+        select
+        label='Size'
+        value={localSize}
+        onChange={(e) => setLocalSize(e)}
+        sx={{ width: 120, minWidth: 120 }}
+      >
+        <MenuItem value='1'>1</MenuItem>
+        <MenuItem value='2'>2</MenuItem>
+        <MenuItem value='3'>3</MenuItem>
+        <MenuItem value='4'>4</MenuItem>
+      </TextInput>
       <OutlinedButton
         click={submit}
         sx={{ height: 56 }}
@@ -89,6 +131,7 @@ UIGrid.propTypes = {
   setStart: PropTypes.func,
   setGap: PropTypes.func,
   setUseSequence: PropTypes.func,
+  setSize: PropTypes.func,
   reset: PropTypes.func,
   back: PropTypes.func,
 };

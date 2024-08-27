@@ -25,7 +25,7 @@
     "unused-imports"
   ],
   "rules": {
-    "prettier/prettier": "warn",
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
     "react/hook-use-state": "warn",
     "react/no-deprecated": "error",
     "react/no-typos": "error",
@@ -34,8 +34,8 @@
     "react/no-unused-state": "warn",
     "react/jsx-curly-brace-presence": "warn",
     "react/jsx-no-duplicate-props": "error",
-    "react/jsx-uses-react": "warn", // These two lines are necessary
-    "react/jsx-uses-vars": "warn", // to make unused-imports work
+    "react/jsx-uses-react": "warn",
+    "react/jsx-uses-vars": "warn",
     "react/self-closing-comp": "warn",
     "react/jsx-fragments": ["warn", "syntax"],
     "react/jsx-no-useless-fragment": "warn",

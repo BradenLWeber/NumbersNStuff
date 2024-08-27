@@ -54,7 +54,7 @@ const ExplanationModal = (props) => {
           position='relative'
           flex={1}
           minHeight={0}
-          pr={14}
+          pr={20}
           pb={10}
           sx={{
             overflowY: 'auto',

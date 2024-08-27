@@ -18,6 +18,10 @@ import PrimalSpiralsPt1, {
   primalSpiralsPt1Date,
   primalSpiralsPt1Title,
 } from './primal-spirals-pt-1/primal-spirals-pt-1';
+import PrimalSpiralsPt2, {
+  primalSpiralsPt2Date,
+  primalSpiralsPt2Title,
+} from './primal-spirals-pt-2/primal-spirals-pt-2';
 import TheDivideBy3Game, {
   theDivideBy3GameDate,
   theDivideBy3GameTitle,
@@ -29,6 +33,7 @@ import NumberLineWithArrowsCut from 'posts/divide-by-3-game/number-line-with-arr
 import PascalsTriangle from 'posts/pascals-flip/pascals-triangle.png';
 import PrimeSpiralGiraffe from 'playgrounds/primal-spirals-pt-1/prime-giraffe.png';
 import SummationFull from 'posts/i-found-it-but-i-dont-understand-it/summation-full.png';
+import UlamSpiralGap1_2 from 'posts/primal-spirals-pt-2/UlamSpiralGap1-2.png';
 
 export const posts = [
   {
@@ -95,5 +100,16 @@ export const posts = [
     createdDate: primalSpiralsPt1Date,
     tags: ['prime', 'spiral'],
     element: <PrimalSpiralsPt1 />,
+  },
+  {
+    title: primalSpiralsPt2Title,
+    description:
+      'The Ulam spiral has been around for a while, but do the primes have more to say?',
+    image: {
+      src: UlamSpiralGap1_2,
+    },
+    createdDate: primalSpiralsPt2Date,
+    tags: ['prime', 'spiral'],
+    element: <PrimalSpiralsPt2 />,
   },
 ];
