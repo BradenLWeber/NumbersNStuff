@@ -87,6 +87,22 @@ router.get('/comments', async (req, res) => {
   }
 });
 
+router.post('/view', async (req, res) => {
+  if (process.env.ENVIRONMENT === 'DEV') {
+    console.log(req.body);
+    res.json(success);
+    return;
+  }
+
+  try {
+    const db = await database;
+    db.collection('Views').insertOne(req.body);
+    res.json(success);
+  } catch (e) {
+    res.json(getErrorMessage(e));
+  }
+});
+
 router.get('/hello', (req, res) => {
   res.json({ hello: 'hi!' });
 });

@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import ReactLogo from 'assets/global/react-logo.png';
 import SmallScreen from './small-screen';
 import TextButton from 'components/general/text-button';
+import ViewApi from 'utilities/View';
 import globalVars from 'utilities/globalVars';
 import { useWindowSize } from 'utilities/useWindowSize';
 
@@ -24,6 +25,8 @@ const RootNavigation = (props) => {
   const [navbarHeight, setNavbarHeight] = useState(navbarNormalHeight);
   const [reload, setReload] = useState(0);
   const [archivePosition, setArchivePosition] = useState('left');
+  const [previousUrl, setPreviousUrl] = useState(undefined);
+  const [myUUID, setMyUUID] = useState(null);
 
   const previousScrollRef = useRef(previousScrollPos);
   const navbarHeightRef = useRef(navbarHeight);
@@ -34,6 +37,15 @@ const RootNavigation = (props) => {
 
   useEffect(() => {
     if (location.pathname === '/') navigate('/home');
+    if (window.location.href !== previousUrl) {
+      let uuid = myUUID;
+      if (uuid === null) {
+        uuid = crypto.randomUUID();
+        setMyUUID(uuid);
+      }
+      ViewApi.add(window.location.href, uuid);
+      setPreviousUrl(window.location.href);
+    }
   }, [location]);
 
   useEffect(() => {
