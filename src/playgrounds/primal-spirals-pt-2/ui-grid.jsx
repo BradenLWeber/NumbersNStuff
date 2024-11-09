@@ -7,6 +7,7 @@ import OutlinedButton from 'components/general/outlined-button';
 import PropTypes from 'prop-types';
 import { Stack } from '@mui/system';
 import TextInput from 'components/general/text-input';
+import html2canvas from 'html2canvas';
 import { useState } from 'react';
 
 const UIGrid = (props) => {
@@ -24,6 +25,30 @@ const UIGrid = (props) => {
   const [localUseSequence, setLocalUseSequence] = useState(false);
   const [localSequence, setLocalSequence] = useState('1,2,3');
   const [localSize, setLocalSize] = useState('2');
+  const [loadingPng, setLoadingPng] = useState(false);
+
+  const makePdf = () => {
+    setLoadingPng(true);
+    html2canvas(document.querySelector('#spiral-grid')).then((canvas) => {
+      const MIME_TYPE = 'image/png';
+
+      const imgURL = canvas.toDataURL(MIME_TYPE);
+
+      const dlLink = document.createElement('a');
+      dlLink.download = 'Prime_spiral';
+      dlLink.href = imgURL;
+      dlLink.dataset.downloadurl = [
+        MIME_TYPE,
+        dlLink.download,
+        dlLink.href,
+      ].join(':');
+
+      document.body.appendChild(dlLink);
+      dlLink.click();
+      document.body.removeChild(dlLink);
+      setLoadingPng(false);
+    });
+  };
 
   const submit = () => {
     reset();
@@ -123,6 +148,9 @@ const UIGrid = (props) => {
       >
         Draw it!
       </OutlinedButton>
+      <FilledButton click={makePdf} sx={{ height: 55 }} loading={loadingPng}>
+        Download PNG
+      </FilledButton>
     </Stack>
   );
 };

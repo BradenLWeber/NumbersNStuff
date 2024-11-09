@@ -101,15 +101,15 @@ export const posts = [
     tags: ['prime', 'spiral'],
     element: <PrimalSpiralsPt1 />,
   },
-  {
-    title: primalSpiralsPt2Title,
-    description:
-      'The Ulam spiral has been around for a while, but do the primes have more to say?',
-    image: {
-      src: UlamSpiralGap1_2,
-    },
-    createdDate: primalSpiralsPt2Date,
-    tags: ['prime', 'spiral'],
-    element: <PrimalSpiralsPt2 />,
-  },
+  // {
+  //   title: primalSpiralsPt2Title,
+  //   description:
+  //     'The Ulam spiral has been around for a while, but do the primes have more to say?',
+  //   image: {
+  //     src: UlamSpiralGap1_2,
+  //   },
+  //   createdDate: primalSpiralsPt2Date,
+  //   tags: ['prime', 'spiral'],
+  //   element: <PrimalSpiralsPt2 />,
+  // },
 ];

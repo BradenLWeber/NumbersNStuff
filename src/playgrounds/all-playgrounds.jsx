@@ -55,14 +55,14 @@ export const playgrounds = [
     createdDate: primalSpiralsPt1Date,
     element: <PrimalSpiralsPt1Playground />,
   },
-  {
-    title: primalSpiralsPt2Title,
-    image: {
-      src: PrimalSpiralsP2PlaygroundImage,
-      height: 190,
-      width: 300,
-    },
-    createdDate: primalSpiralsPt2Date,
-    element: <PrimalSpiralsPt2Playground />,
-  },
+  // {
+  //   title: primalSpiralsPt2Title,
+  //   image: {
+  //     src: PrimalSpiralsP2PlaygroundImage,
+  //     height: 190,
+  //     width: 300,
+  //   },
+  //   createdDate: primalSpiralsPt2Date,
+  //   element: <PrimalSpiralsPt2Playground />,
+  // },
 ];

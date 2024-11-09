@@ -1,7 +1,7 @@
 import { Navigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-import PrimalSpiralsPt1Playground from 'playgrounds/primal-spirals-pt-1/primal-spirals-pt-1-playground';
+import PrimalSpiralsPt2Playground from 'playgrounds/primal-spirals-pt-2/primal-spirals-pt-2-playground';
 import { parseTitleToUrl } from 'utilities/functions';
 import { playgrounds } from 'playgrounds/all-playgrounds';
 
@@ -12,7 +12,7 @@ const Playground = () => {
 
   useEffect(() => {
     if (title === 'test') {
-      setPlayground({ element: <PrimalSpiralsPt1Playground /> });
+      setPlayground({ element: <PrimalSpiralsPt2Playground /> });
     } else {
       const allPlaygrounds = playgrounds;
       setPlayground(

@@ -70,6 +70,7 @@ const SpiralGrid = (props) => {
   const { start, gap, sequence, key, useSequence, size } = props;
   const [grid, setGrid] = useState(null);
   const [boxSize, setBoxSize] = useState(5);
+  const [firstRowMarginTop, setFirstRowMarginTop] = useState(0);
 
   useEffect(() => {
     let totalBoxes = 1;
@@ -122,13 +123,29 @@ const SpiralGrid = (props) => {
 
     const grid = getGrid(numbersToUse.reverse(), totalBoxes);
 
+    if (size === 1) {
+      setFirstRowMarginTop(-8);
+    } else if (size === 2) {
+      setFirstRowMarginTop(-13);
+    } else if (size === 3) {
+      setFirstRowMarginTop(-14);
+    } else {
+      setFirstRowMarginTop(-15);
+    }
+
     setGrid(grid);
   }, [key]);
 
   return (
-    <div>
+    <div id='spiral-grid' style={{ width: 'fit-content', marginTop: 20 }}>
       {grid?.map((obj, i) => (
-        <div style={{ height: boxSize }} key={i}>
+        <div
+          style={{
+            height: i === grid.length - 1 ? 17 : boxSize,
+            marginTop: i === 0 ? firstRowMarginTop : 0,
+          }}
+          key={i}
+        >
           {obj.map((o) => (
             <div
               style={{
@@ -156,6 +173,7 @@ SpiralGrid.propTypes = {
   sequence: PropTypes.array,
   key: PropTypes.number,
   useSequence: PropTypes.bool,
+  size: PropTypes.number,
 };
 
 export default SpiralGrid;
