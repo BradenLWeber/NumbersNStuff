@@ -16,13 +16,14 @@ import { useWindowSize } from 'utilities/useWindowSize';
 const navbarNormalHeight = 70;
 
 const RootNavigation = (props) => {
-  const { page, showArchive } = props;
+  const { page } = props;
 
   const [showPhoneMessage, setShowPhoneMessage] = useState(undefined);
   const [bypassPhoneMessage, setBypassPhoneMessage] = useState(false);
   const [previousScrollPos, setPreviousScrollPos] = useState(0);
   const [navbarHeight, setNavbarHeight] = useState(navbarNormalHeight);
   const [reload, setReload] = useState(0);
+  const [archivePosition, setArchivePosition] = useState('left');
 
   const previousScrollRef = useRef(previousScrollPos);
   const navbarHeightRef = useRef(navbarHeight);
@@ -59,6 +60,10 @@ const RootNavigation = (props) => {
       navbarHeightRef.current = navbarNormalHeight;
       setNavbarHeight(navbarNormalHeight);
     }
+
+    setArchivePosition(
+      windowSize.width < globalVars.archiveRepositionWidth ? 'bottom' : 'left',
+    );
   }, [windowSize, reload]);
 
   const handleScroll = () => {
@@ -161,11 +166,9 @@ const RootNavigation = (props) => {
           minWidth={0}
           backgroundColor={Color.light}
           display='flex'
-          flexDirection='row'
+          flexDirection={archivePosition === 'left' ? 'row' : 'column-reverse'}
         >
-          {(showArchive || showExtraItems) &&
-            windowSize.width &&
-            windowSize.width >= globalVars.minScreenWidth && <PostTree />}
+          {showExtraItems && <PostTree />}
           {page === 'Error' && <Error />}
           <Outlet />
         </Box>
@@ -197,7 +200,6 @@ const RootNavigation = (props) => {
 };
 
 RootNavigation.propTypes = {
-  showArchive: PropTypes.bool,
   page: PropTypes.string,
 };
 

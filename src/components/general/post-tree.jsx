@@ -4,7 +4,9 @@ import { useEffect, useState } from 'react';
 import { Color } from 'styles/Color';
 import Node from 'classes/node';
 import TreeNode from './tree-node';
+import globalVars from 'utilities/globalVars';
 import { posts } from 'posts/all-posts';
+import { useWindowSize } from 'utilities/useWindowSize';
 
 const getMonthFromNumber = (num) => {
   num = Number(num);
@@ -40,6 +42,11 @@ const getMonthFromNumber = (num) => {
 
 const PostTree = () => {
   const [postList, setPostList] = useState([]);
+  const [maxWidth, setMaxWidth] = useState(300);
+  const [width, setWidth] = useState('25vw');
+  const [paddingRight, setPaddingRight] = useState(0);
+
+  const windowSize = useWindowSize();
 
   useEffect(() => {
     const p = posts;
@@ -75,15 +82,29 @@ const PostTree = () => {
     setPostList(pl);
   }, []);
 
+  useEffect(() => {
+    if (windowSize.width < globalVars.archiveRepositionWidth) {
+      setMaxWidth('100%');
+      setWidth('100%');
+      setPaddingRight(20);
+    } else {
+      setMaxWidth(300);
+      setWidth('25vw');
+      setPaddingRight(0);
+    }
+  }, [windowSize]);
+
   return (
     <Box
       id='post-tree-wrapper'
-      maxWidth={300}
-      width='25vw'
+      maxWidth={maxWidth}
+      width={width}
       minWidth={200}
       height='100%'
-      p={20}
+      pb={20}
+      pl={20}
       pt={50}
+      pr={paddingRight}
       boxSizing='border-box'
     >
       <Typography color={Color.gray} mb={5}>

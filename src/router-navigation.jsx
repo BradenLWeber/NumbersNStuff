@@ -14,7 +14,7 @@ const RouterNavigation = () => {
     {
       path: '/',
       element: <RootNavigation />,
-      errorElement: <RootNavigation showArchive={true} page='Error' />,
+      errorElement: <RootNavigation page='Error' />,
       children: [
         {
           path: 'home',
