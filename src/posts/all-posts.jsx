@@ -18,10 +18,6 @@ import PrimalSpiralsPt1, {
   primalSpiralsPt1Date,
   primalSpiralsPt1Title,
 } from './primal-spirals-pt-1/primal-spirals-pt-1';
-import PrimalSpiralsPt2, {
-  primalSpiralsPt2Date,
-  primalSpiralsPt2Title,
-} from './primal-spirals-pt-2/primal-spirals-pt-2';
 import TheDivideBy3Game, {
   theDivideBy3GameDate,
   theDivideBy3GameTitle,
@@ -33,7 +29,13 @@ import NumberLineWithArrowsCut from 'posts/divide-by-3-game/number-line-with-arr
 import PascalsTriangle from 'posts/pascals-flip/pascals-triangle.png';
 import PrimeSpiralGiraffe from 'playgrounds/primal-spirals-pt-1/prime-giraffe.png';
 import SummationFull from 'posts/i-found-it-but-i-dont-understand-it/summation-full.png';
-import UlamSpiralGap1_2 from 'posts/primal-spirals-pt-2/UlamSpiralGap1-2.png';
+
+// import PrimalSpiralsPt2, {
+//   primalSpiralsPt2Date,
+//   primalSpiralsPt2Title,
+// } from './primal-spirals-pt-2/primal-spirals-pt-2';
+
+// import UlamSpiralGap1_2 from 'posts/primal-spirals-pt-2/UlamSpiralGap1-2.png';
 
 export const posts = [
   {
