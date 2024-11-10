@@ -43,7 +43,12 @@ const RootNavigation = (props) => {
         uuid = crypto.randomUUID();
         setMyUUID(uuid);
       }
-      ViewApi.add(window.location.href, uuid);
+      ViewApi.add(
+        window.location.href,
+        uuid,
+        window.innerWidth,
+        window.innerHeight,
+      );
       setPreviousUrl(window.location.href);
     }
   }, [location]);
