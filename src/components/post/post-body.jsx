@@ -1,14 +1,16 @@
 import { Color } from 'styles/Color';
-import { Font } from 'styles/Font';
 import PropTypes from 'prop-types';
 import { Typography } from '@mui/material';
+import { useFont } from 'utilities/useFont';
 
 const Body = (props) => {
   const { children, mt, mb, color, ...sx } = props;
 
+  const font = useFont();
+
   return (
     <Typography
-      fontSize={Font.size.body}
+      fontSize={font.body}
       color={color || Color.gray}
       mt={mt === undefined ? 20 : mt}
       mb={mb === undefined ? 0 : mb}

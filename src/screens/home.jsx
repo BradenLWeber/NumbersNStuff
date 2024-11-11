@@ -9,7 +9,6 @@ import { useWindowSize } from 'utilities/useWindowSize';
 
 const sideMargin = 250;
 const boxHeight = 220;
-const minScreenWidth = 700;
 const minBannerWidth = 530;
 
 const Home = () => {
@@ -63,11 +62,11 @@ const Home = () => {
         );
     const offScreen =
       sideMargin * (margin * marginModifier + 3) >
-      Math.max(window.innerWidth, minScreenWidth);
-    const widthExtendsScreen = window.innerWidth < minScreenWidth;
+      Math.max(window.innerWidth, globalVars.mobileScreenWidth);
+    const widthExtendsScreen = window.innerWidth < globalVars.mobileScreenWidth;
     const triangleRight = offScreen
       ? widthExtendsScreen
-        ? minScreenWidth - sideMargin + 130
+        ? globalVars.mobileScreenWidth - sideMargin + 130
         : window.innerWidth - sideMargin + 130
       : sideMargin * (margin * marginModifier + 1) + 381;
     return (
@@ -208,7 +207,7 @@ const Home = () => {
                 <b style={{ fontWeight: 500 }}>curiosity</b>
               </>
             }
-            color={Color.tertriaryDark}
+            color={Color.tertiaryDark}
             margin={2}
             url='/posts'
           />

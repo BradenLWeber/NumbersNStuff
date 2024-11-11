@@ -1,10 +1,12 @@
 import { ButtonBase, Typography } from '@mui/material';
 
-import { Font } from 'styles/Font';
 import PropTypes from 'prop-types';
+import { useFont } from 'utilities/useFont';
 
 const TextButton = (props) => {
   const { children, onClick } = props;
+
+  const font = useFont();
 
   return (
     <ButtonBase
@@ -12,7 +14,7 @@ const TextButton = (props) => {
       sx={{ px: 10, py: 5, borderRadius: 2 }}
       onClick={onClick}
     >
-      <Typography fontSize={Font.size.button}>{children}</Typography>
+      <Typography fontSize={font.button}>{children}</Typography>
     </ButtonBase>
   );
 };

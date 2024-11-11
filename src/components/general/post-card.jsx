@@ -2,19 +2,22 @@ import { Box, Chip, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 
 import { Color } from 'styles/Color';
-import { Font } from 'styles/Font';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { parseTitleToUrl } from 'utilities/functions';
-import { useWindowSize } from '@uidotdev/usehooks';
+import { useFont } from 'utilities/useFont';
+import { useWindowSize } from 'utilities/useWindowSize';
 
 const PostCard = (props) => {
   const { post, chipClick } = props;
   const { title, description, image, createdDate, tags } = post;
 
+  const font = useFont();
   const windowSize = useWindowSize();
-  const imageMaxWidth =
-    windowSize.width > 1000 ? 'unset' : windowSize.width > 800 ? 200 : 150;
+  let imageMaxWidth = 'unset';
+  if (windowSize.width <= 1000 && !windowSize.isMobile) imageMaxWidth = 200;
+  else if (windowSize.isSmallMobile) imageMaxWidth = '100%';
+  else if (windowSize.isMobile) imageMaxWidth = 150;
 
   const [url, setUrl] = useState('/');
 
@@ -27,11 +30,10 @@ const PostCard = (props) => {
       <Box
         id='post-card-wrapper'
         display='flex'
-        flexDirection='row'
+        flexDirection={windowSize.isMobile ? 'column' : 'row'}
         height='fit-content'
         minHeight={220}
         maxWidth={1000}
-        minWidth={450}
         mr={10}
         mb={20}
         boxSizing='border-box'
@@ -55,19 +57,21 @@ const PostCard = (props) => {
           justifyContent='space-between'
         >
           <Box>
-            <Typography fontSize={Font.size.title} lineHeight={1} mr={20}>
+            <Typography fontSize={font.title} lineHeight={1} mr={20}>
               {title}
             </Typography>
-            <Typography
-              fontSize={Font.size.body}
-              mt={10}
-              mr={10}
-              color={Color.gray}
-            >
+            <Typography fontSize={font.body} mt={10} mr={10} color={Color.gray}>
               {description}
             </Typography>
           </Box>
-          <Box display='flex' flexDirection='row' mt={20}>
+          <Box
+            id='post-card-chip-wrapper'
+            display='flex'
+            flexDirection='row'
+            mt={20}
+            flexWrap='wrap'
+            rowGap={10}
+          >
             {tags.map((tag) => {
               const isGreen = tag === 'reader response';
               return (
@@ -90,11 +94,12 @@ const PostCard = (props) => {
           </Box>
         </Box>
         <Box
-          width='fit-content'
+          width={windowSize.isMobile ? '100%' : 'fit-content'}
           display='flex'
           flexDirection='column'
           justifyContent='space-between'
-          alignItems='flex-end'
+          alignItems={windowSize.isMobile ? 'flex-start' : 'flex-end'}
+          mt={windowSize.isMobile ? 20 : 0}
         >
           <img
             src={image.src}
@@ -103,7 +108,11 @@ const PostCard = (props) => {
             alt='Post icon'
             style={{ objectFit: 'cover', maxWidth: imageMaxWidth }}
           />
-          <Typography color={Color.midGray} mb={-5}>
+          <Typography
+            color={Color.midGray}
+            mb={-5}
+            mt={windowSize.isMobile ? 10 : 0}
+          >
             {createdDate}
           </Typography>
         </Box>

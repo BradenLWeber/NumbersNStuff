@@ -11,7 +11,7 @@ const SmallScreen = (props) => {
 
   return (
     <Box
-      id='ScreenWrapper'
+      id='small-screen-wrapper'
       width='100%'
       minWidth={300}
       height='100%'
@@ -45,14 +45,14 @@ const SmallScreen = (props) => {
         </Body>
         <Divider />
         <ButtonBase onClick={clickContinue} sx={{ marginTop: 10 }}>
-          <Body color={Color.tertriaryDark} mt={0} textAlign='center'>
+          <Body color={Color.tertiaryDark} mt={0} textAlign='center'>
             Or continue anyway
           </Body>
         </ButtonBase>
       </Box>
-      <Box flex={1} width='100%' backgroundColor={Color.tertriaryLight} />
-      <Box flex={1} width='100%' backgroundColor={Color.tertriary} />
-      <Box flex={1} width='100%' backgroundColor={Color.tertriaryDark} />
+      <Box flex={1} width='100%' backgroundColor={Color.tertiaryLight} />
+      <Box flex={1} width='100%' backgroundColor={Color.tertiary} />
+      <Box flex={1} width='100%' backgroundColor={Color.tertiaryDark} />
     </Box>
   );
 };

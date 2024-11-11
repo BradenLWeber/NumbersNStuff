@@ -58,7 +58,7 @@ const RootNavigation = (props) => {
       if (showPhoneMessage) setShowPhoneMessage(false);
     } else {
       setShowPhoneMessage(
-        windowSize.width && windowSize.width < globalVars.minScreenWidth,
+        windowSize.width && windowSize.width < globalVars.mobileScreenWidth,
       );
     }
 
@@ -127,9 +127,8 @@ const RootNavigation = (props) => {
 
   return (
     <Box
-      id='ScreenWrapper'
+      id='screen-wrapper'
       width='100%'
-      minWidth={globalVars.minScreenWidth}
       height='100%'
       display='flex'
       flexDirection='column'

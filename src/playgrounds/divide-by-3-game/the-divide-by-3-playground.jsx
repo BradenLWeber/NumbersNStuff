@@ -55,8 +55,8 @@ const DivideBy3Playground = () => {
       setChooseNumberButtonTextColor(Color.black);
     } else if (number.length < 30) {
       setChooseNumberButtonText('Looking into my soul');
-      setChooseNumberButtonColor(Color.tertriary);
-      setChooseNumberButtonHoverColor(Color.tertriaryDark);
+      setChooseNumberButtonColor(Color.tertiary);
+      setChooseNumberButtonHoverColor(Color.tertiaryDark);
       setChooseNumberButtonTextColor(Color.black);
     } else {
       setChooseNumberButtonText('I eat numbers for breakfast');

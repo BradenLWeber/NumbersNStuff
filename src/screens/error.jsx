@@ -1,19 +1,21 @@
 import { Box, Typography } from '@mui/material';
 
 import { Color } from 'styles/Color';
-import { Font } from 'styles/Font';
 import OutlinedButton from 'components/general/outlined-button';
+import { useFont } from 'utilities/useFont';
 import { useState } from 'react';
 
 const Error = () => {
   const [message, setMessage] = useState(0);
 
+  const font = useFont();
+
   return (
     <Box display='flex' flexDirection='column' pr={20} pb={100}>
-      <Typography mt={50} fontSize={Font.size.title} fontWeight={500}>
+      <Typography mt={50} fontSize={font.title} fontWeight={500}>
         The page you are looking for does not exist.
       </Typography>
-      <Typography mt={10} fontSize={Font.size.body}>
+      <Typography mt={10} fontSize={font.body}>
         Or else it's doing a really good job hiding.
       </Typography>
       {message < 126 && (

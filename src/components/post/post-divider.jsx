@@ -6,6 +6,7 @@ const Divider = (props) => {
   const { sx, mt, mb } = props;
   return (
     <Box
+      id='post-divider'
       height='1px'
       borderTop={`1px solid ${Color.gray}`}
       mt={mt === undefined ? 20 : mt}

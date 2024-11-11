@@ -4,11 +4,13 @@ import { useEffect, useState } from 'react';
 
 import Alert from 'components/general/alert';
 import { Color } from 'styles/Color';
+import Divider from './post-divider';
 import FilledButton from 'components/general/filled-button';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import SubscriptionApi from 'utilities/subscription';
 import TextInput from 'components/general/text-input';
+import { useWindowSize } from 'utilities/useWindowSize';
 
 const Footer = (props) => {
   const { title } = props;
@@ -17,6 +19,8 @@ const Footer = (props) => {
   const [openTooltip, setOpenTooltip] = useState(false);
   const [subscribeButtonText, setSubscribeButtonText] = useState('Subscribe');
   const [subscribeButtonDisabled, setSubscribeButtonDisabled] = useState(true);
+
+  const windowSize = useWindowSize();
 
   const handleCloseTooltip = () => {
     setOpenTooltip(false);
@@ -67,17 +71,20 @@ const Footer = (props) => {
         {message}
       </Typography>
       <Box
+        id='subscribe-box-wrapper'
         display='flex'
-        flexDirection='row'
+        flexDirection={windowSize.isMobile ? 'column' : 'row'}
         columnGap={20}
-        alignItems='center'
+        alignItems={windowSize.isMobile ? 'flex-start' : 'center'}
         mt={message ? 20 : 0}
+        mb={40}
+        rowGap={20}
       >
         <Typography fontStyle='italic' color={Color.gray}>
           Subscribe and be the first to hear about every new post!
         </Typography>
         <TextInput
-          sx={{ ml: 20 }}
+          sx={{ ml: windowSize.isMobile ? 0 : 20 }}
           size='small'
           placeholder='Email'
           value={email}
@@ -92,6 +99,7 @@ const Footer = (props) => {
           {subscribeButtonText}
         </FilledButton>
       </Box>
+      <Divider />
       <Alert open={openTooltip} onClose={handleCloseTooltip}>
         Successfully subscribed!
       </Alert>

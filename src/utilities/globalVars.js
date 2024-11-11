@@ -1,4 +1,6 @@
 export default {
-  minScreenWidth: 700,
+  mobileScreenWidth: 700,
   archiveRepositionWidth: 800,
+  smallMobileScreenWidth: 400,
+  smallMobilePostPadding: 15,
 };

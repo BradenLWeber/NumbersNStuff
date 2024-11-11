@@ -3,16 +3,18 @@ import { useEffect, useState } from 'react';
 
 import CalculateIcon from '@mui/icons-material/Calculate';
 import { Color } from 'styles/Color';
-import { Font } from 'styles/Font';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
 import { parseTitleToUrl } from 'utilities/functions';
+import { useFont } from 'utilities/useFont';
 
 const Title = (props) => {
   const { children, playgroundName, date, author } = props;
   const [playgroundUrl, setPlaygroundUrl] = useState('');
+
+  const font = useFont();
 
   useEffect(() => {
     if (playgroundName)
@@ -32,7 +34,7 @@ const Title = (props) => {
         alignItems='center'
       >
         <Typography
-          fontSize={Font.size.title}
+          fontSize={font.title}
           marginY={20}
           color={Color.gray}
           fontWeight={500}

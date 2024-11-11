@@ -9,9 +9,11 @@ import FilledButton from 'components/general/filled-button';
 import PrimalSpiralsPt2 from 'posts/primal-spirals-pt-2/primal-spirals-pt-2';
 import TextInput from 'components/general/text-input';
 import Title from 'components/post/post-title';
+import globalVars from 'utilities/globalVars';
 import { parseTitleToUrl } from 'utilities/functions';
 import { posts } from 'posts/all-posts';
 import { useParams } from 'react-router-dom';
+import { useWindowSize } from 'utilities/useWindowSize';
 
 const Post = () => {
   const { title } = useParams();
@@ -22,6 +24,8 @@ const Post = () => {
   const [name, setName] = useState('');
   const [submitCommentText, setSubmitCommentText] = useState('Submit');
   const [submitCommentDisabled, setSubmitCommentDisabled] = useState(true);
+
+  const windowSize = useWindowSize();
 
   useEffect(() => {
     const allPosts = posts;
@@ -76,8 +80,14 @@ const Post = () => {
   return (
     <Box id='post-wrapper' mt={10} flex={1} minWidth={0}>
       {post.element}
-      <Divider />
-      <Box p={10} mt={0} mb={50} display='flex' flexDirection='column'>
+      <Box
+        p={10}
+        px={windowSize.isSmallMobile ? globalVars.smallMobilePostPadding : 30}
+        mt={0}
+        mb={50}
+        display='flex'
+        flexDirection='column'
+      >
         <Title>Comments</Title>
         <Stack direction='column' spacing={20} mb={40}>
           {comments?.map((c) => (
