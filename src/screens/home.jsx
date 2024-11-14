@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import BlackBoard from 'assets/global/blackboard.jpg';
 import { Color } from 'styles/Color.jsx';
 import { Link } from 'react-router-dom';
+import globalVars from 'utilities/globalVars';
 import { useMediaQuery } from '@uidotdev/usehooks';
 import { useWindowSize } from 'utilities/useWindowSize';
 
@@ -30,6 +31,7 @@ const Home = () => {
   }, [windowSize]);
 
   const getTitleSize = () => {
+    if (windowSize.isSmallMobile) return 26;
     if (isSmallDevice) return 30;
     if (isMediumDevice) return 34;
     if (isLargeDevice) return 38;
@@ -37,6 +39,7 @@ const Home = () => {
   };
 
   const getNameSize = () => {
+    if (windowSize.isSmallMobile) return 16;
     if (isSmallDevice) return 18;
     if (isMediumDevice) return 20;
     if (isLargeDevice) return 21;
@@ -76,9 +79,12 @@ const Home = () => {
         height={boxHeight}
         backgroundColor='white'
         width={`calc(100% - ${
-          sideMargin + sideMargin * margin * marginModifier
+          windowSize.isMobile
+            ? 70
+            : sideMargin + sideMargin * margin * marginModifier
         }px)`}
-        minWidth={530}
+        minWidth={windowSize.isMobile ? 'unset' : 530}
+        maxWidth={windowSize.isMobile ? 500 : 'unset'}
         borderRadius='0px 10px 10px 0px'
         display='flex'
         justifyContent='flex-end'
@@ -107,6 +113,7 @@ const Home = () => {
           backgroundColor={color}
         />
         <Box
+          id='banner-text-wrapper'
           height='100%'
           padding='26px 36px'
           boxSizing='border-box'
@@ -116,10 +123,11 @@ const Home = () => {
           width={450}
           position='relative'
           right={0}
+          borderLeft={windowSize.width < 500 ? `24px solid ${color}` : 'unset'}
         >
           <Link to={url} style={{ textDecoration: 'none' }}>
             <Typography
-              fontSize={34}
+              fontSize={windowSize.isSmallMobile ? 28 : 34}
               fontWeight={300}
               color={Color.gray}
               textAlign='right'
@@ -133,7 +141,11 @@ const Home = () => {
               {text1}
             </Typography>
           </Link>
-          <Typography fontSize={22} fontWeight={300} textAlign='right'>
+          <Typography
+            fontSize={windowSize.isSmallMobile ? 18 : 22}
+            fontWeight={300}
+            textAlign='right'
+          >
             {text2}
           </Typography>
         </Box>
@@ -172,11 +184,12 @@ const Home = () => {
           <Box
             id='title-bar'
             display='flex'
-            flexDirection='row'
+            flexDirection={windowSize.isMobile ? 'column' : 'row'}
             justifyContent='space-between'
-            p={60}
+            p={windowSize.isMobile ? 40 : 60}
             pb={0}
-            alignItems='flex-end'
+            alignItems={windowSize.isMobile ? 'flex-start' : 'flex-end'}
+            rowGap={20}
           >
             <Typography
               sx={{
@@ -184,6 +197,7 @@ const Home = () => {
                 fontFamily: 'Fredericka the Great',
                 color: 'white',
                 mr: 30,
+                maxWidth: windowSize.width < 512 ? 250 : 'unset',
               }}
             >
               Mathematics for the addicts

@@ -1,14 +1,14 @@
-import { Box, ButtonBase, Typography } from '@mui/material';
+import { Box, ButtonBase, Drawer, IconButton, Typography } from '@mui/material';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 
 import ChalkBrain from 'assets/global/ChalkBrain.png';
 import { Color } from 'styles/Color';
 import Error from './error';
+import MenuIcon from '@mui/icons-material/Menu';
 import PostTree from 'components/general/post-tree';
 import PropTypes from 'prop-types';
 import ReactLogo from 'assets/global/react-logo.png';
-import SmallScreen from './small-screen';
 import TextButton from 'components/general/text-button';
 import ViewApi from 'utilities/View';
 import globalVars from 'utilities/globalVars';
@@ -19,14 +19,13 @@ const navbarNormalHeight = 70;
 const RootNavigation = (props) => {
   const { page } = props;
 
-  const [showPhoneMessage, setShowPhoneMessage] = useState(undefined);
-  const [bypassPhoneMessage, setBypassPhoneMessage] = useState(false);
   const [previousScrollPos, setPreviousScrollPos] = useState(0);
   const [navbarHeight, setNavbarHeight] = useState(navbarNormalHeight);
   const [reload, setReload] = useState(0);
   const [archivePosition, setArchivePosition] = useState('left');
   const [previousUrl, setPreviousUrl] = useState(undefined);
   const [myUUID, setMyUUID] = useState(null);
+  const [openMobileMenu, setOpenMobileMenu] = useState(false);
 
   const previousScrollRef = useRef(previousScrollPos);
   const navbarHeightRef = useRef(navbarHeight);
@@ -54,14 +53,6 @@ const RootNavigation = (props) => {
   }, [location]);
 
   useEffect(() => {
-    if (bypassPhoneMessage) {
-      if (showPhoneMessage) setShowPhoneMessage(false);
-    } else {
-      setShowPhoneMessage(
-        windowSize.width && windowSize.width < globalVars.mobileScreenWidth,
-      );
-    }
-
     if (windowSize.height < 500) {
       const bodyWrapper = document.getElementById('main-body-wrapper');
       if (bodyWrapper) {
@@ -108,11 +99,6 @@ const RootNavigation = (props) => {
     setPreviousScrollPos(currentScrollY);
   };
 
-  const clickContinue = () => {
-    setBypassPhoneMessage(true);
-    setShowPhoneMessage(false);
-  };
-
   const showExtraItems =
     !location.pathname.includes('home') &&
     !location.pathname.includes('playground/');
@@ -122,8 +108,6 @@ const RootNavigation = (props) => {
       .open('https://github.com/BradenLWeber/NumbersNStuff', '_blank')
       .focus();
   };
-
-  if (showPhoneMessage) return <SmallScreen clickContinue={clickContinue} />;
 
   return (
     <Box
@@ -152,21 +136,77 @@ const RootNavigation = (props) => {
               width={60}
               style={{ borderRadius: 10 }}
             />
-            <Typography ml={12} fontSize={40} minWidth={320} id='blog-title'>
-              Numbers 'n Stuff
-            </Typography>
+            {!windowSize.isMobile && (
+              <Typography ml={12} fontSize={40} minWidth={320} id='blog-title'>
+                Numbers 'n Stuff
+              </Typography>
+            )}
           </ButtonBase>
         </Link>
         <Box mr={14} display='flex' flexDirection='row' columnGap={5}>
-          <Link to='/posts' style={{ color: 'unset' }}>
-            <TextButton>Posts</TextButton>
-          </Link>
-          <Link to='/playgrounds' style={{ color: 'unset' }}>
-            <TextButton>Playgrounds</TextButton>
-          </Link>
-          <Link to='/about' style={{ color: 'unset' }}>
-            <TextButton>About</TextButton>
-          </Link>
+          {windowSize.isSmallMobile ? (
+            <>
+              <IconButton onClick={() => setOpenMobileMenu(true)}>
+                <MenuIcon sx={{ fontSize: 30, color: Color.black }} />
+              </IconButton>
+              <Drawer
+                anchor='right'
+                open={openMobileMenu}
+                onClose={() => setOpenMobileMenu(false)}
+              >
+                <Box
+                  id='mobile-menu-wrapper'
+                  width={250}
+                  maxWidth={'80vw'}
+                  backgroundColor={Color.primaryLight}
+                  height={'100%'}
+                >
+                  {['Posts', 'Playgrounds', 'About'].map((text, i) => (
+                    <>
+                      <a
+                        href={'/' + text.toLowerCase()}
+                        style={{
+                          color: Color.black,
+                          textDecoration: 'none',
+                        }}
+                      >
+                        <Box
+                          id='mobile-menu-item-wrapper'
+                          padding={20}
+                          display='flex'
+                          alignContent='center'
+                          textDecoration='none'
+                        >
+                          <Typography id='mobile-menu-item-text' fontSize={20}>
+                            {text}
+                          </Typography>
+                        </Box>
+                      </a>
+                      <Box
+                        id='mobile-menu-item-divider'
+                        width='calc(100% - 40px)'
+                        height={2}
+                        backgroundColor={Color.primaryDark}
+                        ml={20}
+                      />
+                    </>
+                  ))}
+                </Box>
+              </Drawer>
+            </>
+          ) : (
+            <>
+              <Link to='/posts' style={{ color: 'unset' }}>
+                <TextButton>Posts</TextButton>
+              </Link>
+              <Link to='/playgrounds' style={{ color: 'unset' }}>
+                <TextButton>Playgrounds</TextButton>
+              </Link>
+              <Link to='/about' style={{ color: 'unset' }}>
+                <TextButton>About</TextButton>
+              </Link>
+            </>
+          )}
         </Box>
       </Box>
       <Box

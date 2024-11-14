@@ -72,7 +72,8 @@ const About = () => {
         id='about-wrapper'
         width='100%'
         height='100%'
-        p={30}
+        py={30}
+        px={windowSize.isSmallMobile ? globalVars.smallMobilePostPadding : 30}
         display='flex'
         flexDirection='row'
         boxSizing='border-box'

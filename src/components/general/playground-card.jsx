@@ -21,7 +21,7 @@ const PlaygroundCard = (props) => {
     <Box
       id='playground-card-wrapper'
       height='fit-content'
-      width='fit-content'
+      width={windowSize.isSmallMobile ? '100%' : 'fit-content'}
       maxWidth='100%'
       mb={mb || 0}
       mr={windowSize.isSmallMobile ? 0 : 10}
