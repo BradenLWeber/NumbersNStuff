@@ -33,5 +33,6 @@ html {
 @media (min-height: 500px) {
   #NavigationBar {
     height: 70px !important;
+    margin-top: 0px !important;
   }
 }
