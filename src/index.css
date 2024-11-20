@@ -29,3 +29,9 @@ html {
   min-width: 540px !important;
   padding-bottom: 20px !important;
 }
+
+@media (min-height: 500px) {
+  #NavigationBar {
+    height: 70px !important;
+  }
+}

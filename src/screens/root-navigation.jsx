@@ -124,7 +124,7 @@ const RootNavigation = (props) => {
       flexDirection='column'
     >
       <Box
-        id="'NavigationBar'"
+        id='NavigationBar'
         height={70}
         marginTop={navbarHeightRef.current - 70}
         backgroundColor={Color.primary}
