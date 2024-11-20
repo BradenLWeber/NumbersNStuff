@@ -75,6 +75,11 @@ const RootNavigation = (props) => {
   }, [windowSize, reload]);
 
   const handleScroll = () => {
+    if (windowSize.height >= 500) {
+      navbarHeightRef.current = navbarNormalHeight;
+      setNavbarHeight(navbarNormalHeight);
+    }
+
     const bodyWrapper = document.getElementById('main-body-wrapper');
     const currentScrollY = bodyWrapper.scrollTop;
     const previousScrollY = previousScrollRef.current;
