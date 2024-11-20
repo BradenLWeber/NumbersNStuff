@@ -78,6 +78,7 @@ const RootNavigation = (props) => {
     if (windowSize.height >= 500) {
       navbarHeightRef.current = navbarNormalHeight;
       setNavbarHeight(navbarNormalHeight);
+      return;
     }
 
     const bodyWrapper = document.getElementById('main-body-wrapper');
