@@ -6,11 +6,17 @@ import { useWindowSize } from 'utilities/useWindowSize';
 
 const Wrapper = (props) => {
   const [paddingRight, setPaddingRight] = useState(50);
+  const [paddingLeft, setPaddingLeft] = useState(50);
 
   const windowSize = useWindowSize();
 
   useEffect(() => {
-    if (windowSize.width < globalVars.archiveRepositionWidth) {
+    setPaddingLeft(
+      windowSize.getVal(30, 30, globalVars.smallMobilePostPadding),
+    );
+    if (windowSize.isSmallMobile) {
+      setPaddingRight(globalVars.smallMobilePostPadding);
+    } else if (windowSize.width < globalVars.archiveRepositionWidth) {
       setPaddingRight(30);
     } else {
       setPaddingRight(50);
@@ -25,7 +31,7 @@ const Wrapper = (props) => {
       pr={paddingRight}
       pb={25}
       pt={10}
-      pl={30}
+      pl={paddingLeft}
       maxWidth={1000}
     >
       {children}

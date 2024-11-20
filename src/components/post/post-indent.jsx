@@ -1,14 +1,17 @@
 import { useEffect, useMemo, useState } from 'react';
 
 import { Color } from 'styles/Color';
-import { Font } from 'styles/Font';
 import PropTypes from 'prop-types';
 import { Typography } from '@mui/material';
+import { useFont } from 'utilities/useFont';
 
 const Indent = (props) => {
   const { children, mt, mb, separate, widths, bold } = props;
   const [marginTop, setMarginTop] = useState(20);
   const [marginBottom, setMarginBottom] = useState(20);
+
+  const font = useFont();
+
   const Children = useMemo(() => {
     if (!children || !children.includes || !children.includes('|')) return '';
 
@@ -43,7 +46,7 @@ const Indent = (props) => {
 
   return (
     <Typography
-      fontSize={Font.size.body}
+      fontSize={font.body}
       color={Color.gray}
       mb={marginBottom}
       mt={marginTop}

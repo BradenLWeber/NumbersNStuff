@@ -31,13 +31,13 @@ const Image = (props) => {
         width={width ? width + 'px' : 'auto'}
         style={{
           marginTop: mt === undefined ? 40 : mt,
-          marginBottom: mb === undefined ? (cred ? 0 : 20) : mt,
+          marginBottom: mb === undefined ? (cred ? 5 : 20) : mt,
           objectFit: keepRatio ? 'cover' : 'contain',
           border: border ? border : 'unset',
           borderRadius: borderRadius || 0,
           maxWidth:
             style?.maxWidth ||
-            `max(calc(-300px + 100vw), ${globalVars.minScreenWidth - 300}px)`,
+            `calc(100vw - ${globalVars.smallMobilePostPadding * 2}px)`,
           ...style,
         }}
       />
@@ -47,6 +47,9 @@ const Image = (props) => {
           fontSize={textSize}
           mb={mb === undefined ? 20 : 0}
           width='fit-content'
+          sx={{
+            textAlign: 'center',
+          }}
         >
           {cred && 'Photo By '}
           {credRef ? (

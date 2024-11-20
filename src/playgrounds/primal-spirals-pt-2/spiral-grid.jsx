@@ -70,7 +70,6 @@ const SpiralGrid = (props) => {
   const { start, gap, sequence, key, useSequence, size } = props;
   const [grid, setGrid] = useState(null);
   const [boxSize, setBoxSize] = useState(5);
-  const [firstRowMarginTop, setFirstRowMarginTop] = useState(0);
 
   useEffect(() => {
     let totalBoxes = 1;
@@ -123,46 +122,51 @@ const SpiralGrid = (props) => {
 
     const grid = getGrid(numbersToUse.reverse(), totalBoxes);
 
-    if (size === 1) {
-      setFirstRowMarginTop(-8);
-    } else if (size === 2) {
-      setFirstRowMarginTop(-13);
-    } else if (size === 3) {
-      setFirstRowMarginTop(-14);
-    } else {
-      setFirstRowMarginTop(-15);
-    }
-
     setGrid(grid);
   }, [key]);
 
+  const getGridWidth = () => {
+    if (size === 1) return 410;
+    if (size === 2) return 505;
+    if (size === 3) return 1124;
+    if (size === 4) return 1203;
+  };
+
   return (
-    <div id='spiral-grid' style={{ width: 'fit-content', marginTop: 20 }}>
-      {grid?.map((obj, i) => (
-        <div
-          style={{
-            height: i === grid.length - 1 ? 17 : boxSize,
-            marginTop: i === 0 ? firstRowMarginTop : 0,
-          }}
-          key={i}
-        >
-          {obj.map((o) => (
-            <div
-              style={{
-                width: boxSize,
-                height: boxSize,
-                backgroundColor: o.color,
-                display: 'inline-block',
-                color: 'gray',
-              }}
-              title={o.num}
-              key={o.num}
-            >
-              {' '}
-            </div>
-          ))}
-        </div>
-      ))}
+    <div style={{ marginTop: 20, paddingRight: 20, width: 'fit-content' }}>
+      <div
+        id='spiral-grid'
+        style={{
+          width: 'fit-content',
+          minWidth: getGridWidth(),
+        }}
+      >
+        {grid?.map((obj, i) => (
+          <div
+            style={{
+              height: boxSize,
+              display: 'flex',
+            }}
+            key={i}
+          >
+            {obj.map((o) => (
+              <div
+                style={{
+                  width: boxSize,
+                  height: boxSize,
+                  backgroundColor: o.color,
+                  display: 'inline-block',
+                  color: 'gray',
+                }}
+                title={o.num}
+                key={o.num}
+              >
+                {' '}
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

@@ -33,7 +33,7 @@ export const playgrounds = [
     image: {
       src: DivideBy3,
       height: 190,
-      width: 420,
+      width: 330,
     },
     createdDate: theDivideBy3GameDate,
     element: <DivideBy3Playground />,
@@ -43,7 +43,7 @@ export const playgrounds = [
     image: {
       src: NumberPalindromes,
       height: 190,
-      width: 300,
+      width: 260,
     },
     createdDate: numberPalindromesDate,
     element: <NumberPalindromesPlayground />,
@@ -53,7 +53,7 @@ export const playgrounds = [
     image: {
       src: PrimeGiraffe,
       height: 190,
-      width: 300,
+      width: 240,
     },
     createdDate: primalSpiralsPt1Date,
     element: <PrimalSpiralsPt1Playground />,
@@ -63,7 +63,7 @@ export const playgrounds = [
   //   image: {
   //     src: PrimalSpiralsP2PlaygroundImage,
   //     height: 190,
-  //     width: 300,
+  //     width: 364,
   //   },
   //   createdDate: primalSpiralsPt2Date,
   //   element: <PrimalSpiralsPt2Playground />,

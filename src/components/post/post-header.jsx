@@ -1,13 +1,15 @@
 import { Color } from 'styles/Color';
-import { Font } from 'styles/Font';
 import { Typography } from '@mui/material';
+import { useFont } from 'utilities/useFont';
 
 const Header = (props) => {
   const { children, ...sx } = props;
 
+  const font = useFont();
+
   return (
     <Typography
-      fontSize={Font.size.header}
+      fontSize={font.header}
       mt={40}
       mb={20}
       fontWeight='bold'

@@ -17,11 +17,11 @@ const OutlinedButton = (props) => {
 
   const StyledButton = styled(Button)(() => ({
     color: color || Color.black,
-    borderColor: borderColor || Color.tertriaryDark,
+    borderColor: borderColor || Color.tertiaryDark,
     '&:hover': {
-      borderColor: hoverBorderColor || Color.tertriaryDark,
+      borderColor: hoverBorderColor || Color.tertiaryDark,
       color: hoverColor || Color.black,
-      backgroundColor: hoverBackgroundColor || Color.tertriaryLight,
+      backgroundColor: hoverBackgroundColor || Color.tertiaryLight,
     },
   }));
 

@@ -16,10 +16,10 @@ const FilledButton = (props) => {
 
   const StyledButton = styled(LoadingButton)(() => ({
     color: color || Color.black,
-    backgroundColor: backgroundColor || Color.tertriary,
+    backgroundColor: backgroundColor || Color.tertiary,
     borderColor: color || Color.black,
     '&:hover': {
-      backgroundColor: hoverBackgroundColor || Color.tertriaryDark,
+      backgroundColor: hoverBackgroundColor || Color.tertiaryDark,
       color: hoverColor || Color.black,
     },
   }));

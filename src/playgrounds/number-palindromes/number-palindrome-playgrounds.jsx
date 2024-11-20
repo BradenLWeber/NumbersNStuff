@@ -12,6 +12,7 @@ import TextInput from 'components/general/text-input';
 import Toggle from 'components/general/toggle';
 import _ from 'lodash';
 import { numberPalindromesTitle } from 'posts/number-palindromes/number-palindromes';
+import { useWindowSize } from 'utilities/useWindowSize';
 
 const ButtonRow = (props) => (
   <Box
@@ -19,13 +20,14 @@ const ButtonRow = (props) => (
     display='flex'
     flexDirection='row'
     alignItems='center'
-    p={20}
+    p={props.windowSize.getVal(20, 0)}
+    pt={0}
     flexWrap='wrap'
     height='fit-content'
-    width='calc(100% - 40px)'
+    width={props.windowSize.getVal(`calc(100% - 40px)`, '100%', 240)}
     columnGap={10}
     mt={props.mt || 0}
-    minWidth='calc(100% - 40px)'
+    minWidth={props.windowSize.getVal(`calc(100% - 40px)`, '100%', 0)}
   >
     {props.children}
   </Box>
@@ -43,6 +45,8 @@ const NumberPalindromesPlayground = () => {
   const [result, setResult] = useState([]);
   const [loading, setLoading] = useState(false);
   const [loadingPercent, setLoadingPercent] = useState(0);
+
+  const windowSize = useWindowSize();
 
   useEffect(() => {
     window.stopNumberPalindromeComputation = false;
@@ -88,13 +92,23 @@ const NumberPalindromesPlayground = () => {
         hoverBackgroundColor={Color.redDark}
         hoverColor={Color.white}
         click={stopNumberPalindromeComputation}
-        sx={{ ml: 20, width: 80, minWidth: 80 }}
+        sx={{
+          ml: windowSize.getVal(20, 0),
+          mt: windowSize.getVal(0, 20),
+          width: 80,
+          minWidth: 80,
+        }}
       >
         Stop
       </FilledButton>
     ) : (
       <FilledButton
-        sx={{ ml: 20, width: 100, minWidth: 100 }}
+        sx={{
+          ml: windowSize.getVal(20, 0),
+          mt: windowSize.getVal(0, 20),
+          width: 100,
+          minWidth: 100,
+        }}
         click={calculate}
       >
         Calculate
@@ -109,6 +123,7 @@ const NumberPalindromesPlayground = () => {
     showDivisors,
     showAllNumbers,
     showOtherBases,
+    windowSize,
   ]);
 
   const calculateGap = (numBaseArray) => {
@@ -322,6 +337,7 @@ const NumberPalindromesPlayground = () => {
             minWidth: 100,
             overflowX: 'auto',
             flex: 1,
+            paddingBottom: 5,
           }}
         >
           {res.bases}
@@ -335,6 +351,7 @@ const NumberPalindromesPlayground = () => {
               minWidth: 200,
               overflowX: 'auto',
               flex: 2,
+              paddingBottom: 5,
             }}
           >
             {res.otherBases}
@@ -348,6 +365,7 @@ const NumberPalindromesPlayground = () => {
               width: 300,
               overflowX: 'auto',
               flex: 3,
+              paddingBottom: 5,
             }}
           >
             {res.divisors}
@@ -368,60 +386,77 @@ const NumberPalindromesPlayground = () => {
           position='relative'
           display='flex'
           flexDirection='column'
-          width='calc(100% - 90px)'
+          width={`calc(100% - ${windowSize.getVal(90, 0)}px)`}
           mb={50}
           id='button-rows-wrapper'
         >
-          <ButtonRow>
-            <Typography>Number range</Typography>
-            <TextInput
-              label='Start'
-              value={startNumber}
-              onChange={(v) => setStartNumber(v)}
-              sx={{ width: 80 }}
-            />
-            <TextInput
-              label='End'
-              value={endNumber}
-              onChange={(v) => setEndNumber(v)}
-              sx={{ width: 120, mr: 10 }}
-            />
-            <Box
-              display='flex'
-              flexDirection='row'
-              columnGap={10}
-              alignItems='center'
-              height={80}
-            >
-              <Typography>Base range</Typography>
+          <ButtonRow windowSize={windowSize}>
+            <Typography sx={{ mt: windowSize.getVal(20, 20, 0) }}>
+              Number range
+            </Typography>
+            <Box mt={20}>
               <TextInput
                 label='Start'
-                value={startBase}
-                onChange={(v) => setStartBase(v)}
-                sx={{ width: 80 }}
+                value={startNumber}
+                onChange={(v) => setStartNumber(v)}
+                sx={{ width: 80, mr: 10 }}
               />
               <TextInput
                 label='End'
-                value={endBase}
-                onChange={(v) => setEndBase(v)}
-                sx={{ width: 80 }}
+                value={endNumber}
+                onChange={(v) => setEndNumber(v)}
+                sx={{ width: 120, mr: 10 }}
               />
+            </Box>
+            <Box
+              display='flex'
+              flexDirection='row'
+              alignItems='center'
+              flexWrap='wrap'
+              mt={windowSize.getVal(20, 20, 0)}
+            >
+              <Typography sx={{ minWidth: 81, mr: 10, mb: 20, mt: 20 }}>
+                Base range
+              </Typography>
+              <div>
+                <TextInput
+                  label='Start'
+                  value={startBase}
+                  onChange={(v) => setStartBase(v)}
+                  sx={{ width: 80, mr: 10 }}
+                />
+                <TextInput
+                  label='End'
+                  value={endBase}
+                  onChange={(v) => setEndBase(v)}
+                  sx={{ width: 80 }}
+                />
+              </div>
             </Box>
           </ButtonRow>
           {startBase !== endBase && (
-            <ButtonRow mt={-20}>
-              <Typography>Display all numbers</Typography>
-              <CheckedBox
-                checked={showAllNumbers}
-                onChange={(v) => setShowAllNumbers(v)}
-                sx={{ mr: 10 }}
-              />
-              <Typography ml={10}>Show other bases</Typography>
-              <Toggle
-                checked={showOtherBases}
-                onChange={(v) => setShowOtherBases(v)}
-                sx={{ mr: 10 }}
-              />
+            <ButtonRow
+              windowSize={windowSize}
+              mt={windowSize.getVal(-10, 10, 20)}
+            >
+              <Box display='flex' flexDirection='row' alignItems='center'>
+                <Typography>Display all numbers</Typography>
+                <CheckedBox
+                  checked={showAllNumbers}
+                  onChange={(v) => setShowAllNumbers(v)}
+                  sx={{ mr: 10 }}
+                />
+              </Box>
+              <Box display='flex' flexDirection='row' alignItems='center'>
+                <Typography ml={windowSize.getVal(10, 0)}>
+                  Show other bases
+                </Typography>
+                <Toggle
+                  checked={showOtherBases}
+                  onChange={(v) => setShowOtherBases(v)}
+                  sx={{ mr: 10 }}
+                />
+              </Box>
               <Box display='flex' flexDirection='row' alignItems='center'>
                 <Typography mr={10}>Show divisors</Typography>
                 <Toggle
@@ -450,18 +485,20 @@ const NumberPalindromesPlayground = () => {
             <>
               <Box
                 height={6}
-                width={600}
+                width={Math.min(600, windowSize.width - 40)}
                 position='absolute'
                 bottom={-30}
-                left={20}
+                left={windowSize.getVal(20, 0)}
                 backgroundColor={Color.secondaryLight}
               />
               <Box
                 height={6}
-                width={(600 * loadingPercent) / 100}
+                width={
+                  (Math.min(600, windowSize.width - 40) * loadingPercent) / 100
+                }
                 position='absolute'
                 bottom={-30}
-                left={20}
+                left={windowSize.getVal(20, 0)}
                 backgroundColor={Color.secondaryDark}
               />
             </>
@@ -469,9 +506,9 @@ const NumberPalindromesPlayground = () => {
         </Box>
         {result.length > 0 &&
           (result[0].title ? (
-            <>
+            <Box>
               <span style={{ marginBottom: 10, marginLeft: 20 }}>
-                <b>Gaps:</b>
+                <b>Gaps:a</b>
               </span>
               {result[0].gaps.map((gap, i) => (
                 <span
@@ -486,9 +523,9 @@ const NumberPalindromesPlayground = () => {
                   {gap}
                 </span>
               ))}
-            </>
+            </Box>
           ) : (
-            <>
+            <Box sx={{ overflowX: 'auto' }}>
               <Box display='flex' flexDirection='row' ml={20}>
                 <Typography fontWeight='bold' width={100} minWidth={100}>
                   Number
@@ -516,8 +553,8 @@ const NumberPalindromesPlayground = () => {
                 {showDivisors && (
                   <Typography
                     fontWeight='bold'
-                    width={300}
-                    minWidth={300}
+                    width={110}
+                    minWidth={110}
                     flex={3}
                     ml={10}
                   >
@@ -525,19 +562,19 @@ const NumberPalindromesPlayground = () => {
                   </Typography>
                 )}
               </Box>
-              <Box ml={20}>
+              <Box ml={20} minWidth={540} id='fixed-size-list-wrapper'>
                 <FixedSizeList
                   id='scroll-list-wrapper'
                   height={Math.max(window.innerHeight - 390, 200)}
                   width={window.innerWidth - 60}
-                  itemSize={43 + 1 / 3}
+                  itemSize={48 + 1 / 3}
                   itemCount={result.length}
                   overscanCount={5}
                 >
                   {getItem}
                 </FixedSizeList>
               </Box>
-            </>
+            </Box>
           ))}
       </Box>
     </PlaygroundWrapper>

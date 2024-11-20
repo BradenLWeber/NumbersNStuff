@@ -7,11 +7,14 @@ import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { parseTitleToUrl } from 'utilities/functions';
+import { useWindowSize } from 'utilities/useWindowSize';
 
 const PlaygroundWrapper = (props) => {
   const { children, explanation, postTitle } = props;
   const [helpModalOpen, setHelpModalOpen] = useState(false);
   const [postUrl, setPostUrl] = useState('');
+
+  const windowSize = useWindowSize();
 
   useEffect(() => {
     setPostUrl('/post/' + parseTitleToUrl(postTitle));
@@ -52,7 +55,9 @@ const PlaygroundWrapper = (props) => {
         onClose={() => setHelpModalOpen(false)}
         explanation={explanation}
       />
-      {children}
+      <Box id='playground-child-wrapper' mt={windowSize.getVal(0, 50)}>
+        {children}
+      </Box>
     </Box>
   );
 };

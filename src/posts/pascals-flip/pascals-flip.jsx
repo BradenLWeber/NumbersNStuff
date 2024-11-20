@@ -113,29 +113,29 @@ export const PascalsFlip = () => {
         was some pattern I was missing. I ran a few more examples and compiled
         the data.
       </Body>
-      <Indent separate={true} widths={[200]}>
-        f(x) = x² | runs for 3 lines, ends with 2s
+      <Indent separate={true} widths={[170]}>
+        f(x) = x² | runs for 3 lines, ends with&nbsp;2s
       </Indent>
-      <Indent separate={true} widths={[200]}>
-        f(x) = x² - x + 1 | runs for 3 lines, ends with 2s
+      <Indent separate={true} widths={[170]}>
+        f(x) = x² - x + 1 | runs for 3 lines, ends with&nbsp;2s
       </Indent>
-      <Indent separate={true} widths={[200]}>
-        f(x) = 2x² - 1 | runs for 3 lines, ends with 4s
+      <Indent separate={true} widths={[170]}>
+        f(x) = 2x² - 1 | runs for 3 lines, ends with&nbsp;4s
       </Indent>
-      <Indent separate={true} widths={[200]}>
-        f(x) = x³ | runs for 4 lines, ends with 6s.
+      <Indent separate={true} widths={[170]}>
+        f(x) = x³ | runs for 4 lines, ends with&nbsp;6s.
       </Indent>
-      <Indent separate={true} widths={[200]}>
-        f(x) = x³ - x² - x | runs for 4 lines, ends with 6s.
+      <Indent separate={true} widths={[170]}>
+        f(x) = x³ - x² - x | runs for 4 lines, ends with&nbsp;6s.
       </Indent>
-      <Indent separate={true} widths={[200]}>
-        f(x) = x³ + x² | runs for 4 lines, ends with 6s.
+      <Indent separate={true} widths={[170]}>
+        f(x) = x³ + x² | runs for 4 lines, ends with&nbsp;6s.
       </Indent>
-      <Indent separate={true} widths={[200]}>
-        f(x) = 2x³ -3x² + x - 5 | runs for 4 lines, ends with 12s
+      <Indent separate={true} widths={[170]}>
+        f(x) = 2x³ -3x² + x - 5 | runs for 4 lines, ends with&nbsp;12s
       </Indent>
-      <Indent separate={true} widths={[200]}>
-        f(x) = x⁴ | runs for 5 lines, ends with 24s
+      <Indent separate={true} widths={[170]}>
+        f(x) = x⁴ | runs for 5 lines, ends with&nbsp;24s
       </Indent>
       <Body>
         At this point, I started to see a pattern emerging. The line of numbers
@@ -143,28 +143,28 @@ export const PascalsFlip = () => {
         the above data according to highest term looked like this.
       </Body>
       <Indent separate={true} widths={[130]}>
-        f(x) = x² | 3 lines, ends with 2s
+        f(x) = x² | 3 lines, ends with&nbsp;2s
       </Indent>
       <Indent separate={true} widths={[130]}>
-        f(x) = x² ... | 3 lines, ends with 2s
+        f(x) = x² ... | 3 lines, ends with&nbsp;2s
       </Indent>
       <Indent separate={true} widths={[130]}>
-        f(x) = 2x² ... | 3 lines, ends with 4s
+        f(x) = 2x² ... | 3 lines, ends with&nbsp;4s
       </Indent>
       <Indent separate={true} widths={[130]}>
-        f(x) = x³ | 4 lines, ends with 6s.
+        f(x) = x³ | 4 lines, ends with&nbsp;6s.
       </Indent>
       <Indent separate={true} widths={[130]}>
-        f(x) = x³ ... | 4 lines, ends with 6s.
+        f(x) = x³ ... | 4 lines, ends with&nbsp;6s.
       </Indent>
       <Indent separate={true} widths={[130]}>
-        f(x) = x³ ... | 4 lines, ends with 6s.
+        f(x) = x³ ... | 4 lines, ends with&nbsp;6s.
       </Indent>
       <Indent separate={true} widths={[130]}>
-        f(x) = 2x³ ... | 4 lines, ends with 12s
+        f(x) = 2x³ ... | 4 lines, ends with&nbsp;12s
       </Indent>
       <Indent separate={true} widths={[130]}>
-        f(x) = x⁴ | 5 lines, ends with 24s
+        f(x) = x⁴ | 5 lines, ends with&nbsp;24s
       </Indent>
       <Body>
         Whenever I changed things other than the highest term in f(x), the end

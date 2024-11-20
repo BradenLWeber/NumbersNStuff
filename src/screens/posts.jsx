@@ -75,7 +75,7 @@ const Posts = () => {
             label='filter by'
             value={filterBy}
             onChange={(e) => updateFilterBy(e)}
-            sx={{ width: 220, ml: 30 }}
+            sx={{ maxWidth: 220, ml: 30 }}
           >
             <MenuItem value='Newest first'>Newest first</MenuItem>
             <MenuItem value='Oldest first'>Oldest first</MenuItem>

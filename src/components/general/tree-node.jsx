@@ -87,5 +87,3 @@ TreeNode.propTypes = {
 };
 
 export default TreeNode;
-
-// BRADEN make node tree expand according to current post, and organize image folder

@@ -4,12 +4,12 @@ import { useEffect, useState } from 'react';
 import BlackBoard from 'assets/global/blackboard.jpg';
 import { Color } from 'styles/Color.jsx';
 import { Link } from 'react-router-dom';
+import globalVars from 'utilities/globalVars';
 import { useMediaQuery } from '@uidotdev/usehooks';
 import { useWindowSize } from 'utilities/useWindowSize';
 
 const sideMargin = 250;
 const boxHeight = 220;
-const minScreenWidth = 700;
 const minBannerWidth = 530;
 
 const Home = () => {
@@ -31,6 +31,7 @@ const Home = () => {
   }, [windowSize]);
 
   const getTitleSize = () => {
+    if (windowSize.isSmallMobile) return 26;
     if (isSmallDevice) return 30;
     if (isMediumDevice) return 34;
     if (isLargeDevice) return 38;
@@ -38,6 +39,7 @@ const Home = () => {
   };
 
   const getNameSize = () => {
+    if (windowSize.isSmallMobile) return 16;
     if (isSmallDevice) return 18;
     if (isMediumDevice) return 20;
     if (isLargeDevice) return 21;
@@ -63,11 +65,11 @@ const Home = () => {
         );
     const offScreen =
       sideMargin * (margin * marginModifier + 3) >
-      Math.max(window.innerWidth, minScreenWidth);
-    const widthExtendsScreen = window.innerWidth < minScreenWidth;
+      Math.max(window.innerWidth, globalVars.mobileScreenWidth);
+    const widthExtendsScreen = window.innerWidth < globalVars.mobileScreenWidth;
     const triangleRight = offScreen
       ? widthExtendsScreen
-        ? minScreenWidth - sideMargin + 130
+        ? globalVars.mobileScreenWidth - sideMargin + 130
         : window.innerWidth - sideMargin + 130
       : sideMargin * (margin * marginModifier + 1) + 381;
     return (
@@ -77,9 +79,12 @@ const Home = () => {
         height={boxHeight}
         backgroundColor='white'
         width={`calc(100% - ${
-          sideMargin + sideMargin * margin * marginModifier
+          windowSize.isMobile
+            ? 70
+            : sideMargin + sideMargin * margin * marginModifier
         }px)`}
-        minWidth={530}
+        minWidth={windowSize.getVal(530, 'unset')}
+        maxWidth={windowSize.getVal('unset', 500)}
         borderRadius='0px 10px 10px 0px'
         display='flex'
         justifyContent='flex-end'
@@ -108,8 +113,11 @@ const Home = () => {
           backgroundColor={color}
         />
         <Box
+          id='banner-text-wrapper'
           height='100%'
           padding='26px 36px'
+          paddingLeft={windowSize.width < 350 ? 15 : 36}
+          paddingRight={windowSize.width < 350 ? 30 : 36}
           boxSizing='border-box'
           justifyContent='space-between'
           display='flex'
@@ -117,10 +125,15 @@ const Home = () => {
           width={450}
           position='relative'
           right={0}
+          borderLeft={
+            windowSize.width < 520
+              ? `${windowSize.width < 350 ? 15 : 30}px solid ${color}`
+              : 'unset'
+          }
         >
           <Link to={url} style={{ textDecoration: 'none' }}>
             <Typography
-              fontSize={34}
+              fontSize={windowSize.getVal(34, 34, 28)}
               fontWeight={300}
               color={Color.gray}
               textAlign='right'
@@ -134,7 +147,11 @@ const Home = () => {
               {text1}
             </Typography>
           </Link>
-          <Typography fontSize={22} fontWeight={300} textAlign='right'>
+          <Typography
+            fontSize={windowSize.getVal(22, 22, 18)}
+            fontWeight={300}
+            textAlign='right'
+          >
             {text2}
           </Typography>
         </Box>
@@ -173,11 +190,12 @@ const Home = () => {
           <Box
             id='title-bar'
             display='flex'
-            flexDirection='row'
+            flexDirection={windowSize.isMobile ? 'column' : 'row'}
             justifyContent='space-between'
-            p={60}
+            p={windowSize.isMobile ? 40 : 60}
             pb={0}
-            alignItems='flex-end'
+            alignItems={windowSize.isMobile ? 'flex-start' : 'flex-end'}
+            rowGap={20}
           >
             <Typography
               sx={{
@@ -185,6 +203,7 @@ const Home = () => {
                 fontFamily: 'Fredericka the Great',
                 color: 'white',
                 mr: 30,
+                maxWidth: windowSize.width < 512 ? 250 : 'unset',
               }}
             >
               Mathematics for the addicts
@@ -204,24 +223,25 @@ const Home = () => {
             text1='Explore Posts'
             text2={
               <>
-                Dive into a world of mathematical possibilities and, above all,{' '}
+                Dive into a world of mathematical possibilities and,
+                above&nbsp;all,&nbsp;
                 <b style={{ fontWeight: 500 }}>curiosity</b>
               </>
             }
-            color={Color.tertriaryDark}
+            color={Color.tertiaryDark}
             margin={2}
             url='/posts'
           />
           <Banner
             text1='Play Around'
-            text2='Try the interactive playgrounds and bring mathematical concepts to life'
+            text2='Try the interactive playgrounds and bring mathematical concepts&nbsp;to&nbsp;life'
             color={Color.secondaryDark}
             margin={1}
             url='/playgrounds'
           />
           <Banner
             text1='Contact Me'
-            text2='Help me take these mathematical concepts to the next level'
+            text2='Help me take these mathematical concepts to the next&nbsp;level'
             color={Color.primaryDark}
             margin={0}
             url='/about'

@@ -1,19 +1,30 @@
 import { Box, Typography } from '@mui/material';
 
 import { Color } from 'styles/Color';
-import { Font } from 'styles/Font';
 import OutlinedButton from 'components/general/outlined-button';
+import globalVars from 'utilities/globalVars';
+import { useFont } from 'utilities/useFont';
 import { useState } from 'react';
+import { useWindowSize } from 'utilities/useWindowSize';
 
 const Error = () => {
   const [message, setMessage] = useState(0);
 
+  const font = useFont();
+  const windowSize = useWindowSize();
+
   return (
-    <Box display='flex' flexDirection='column' pr={20} pb={100}>
-      <Typography mt={50} fontSize={Font.size.title} fontWeight={500}>
+    <Box
+      display='flex'
+      flexDirection='column'
+      pr={20}
+      pb={100}
+      ml={windowSize.width > globalVars.archiveRepositionWidth ? 0 : 20}
+    >
+      <Typography mt={50} fontSize={font.title} fontWeight={500}>
         The page you are looking for does not exist.
       </Typography>
-      <Typography mt={10} fontSize={Font.size.body}>
+      <Typography mt={10} fontSize={font.body}>
         Or else it's doing a really good job hiding.
       </Typography>
       {message < 126 && (
@@ -58,11 +69,7 @@ const Error = () => {
         </Typography>
       )}
       {message === 14 && <Typography>Start.</Typography>}
-      {message === 15 && (
-        <Typography>
-          4718563729475829479258692834923570283402873502856028346208374023
-        </Typography>
-      )}
+      {message === 15 && <Typography>47185637294758294792586928349</Typography>}
       {message === 16 && (
         <Typography>
           JK, that's the number of times I think you'll click this button before

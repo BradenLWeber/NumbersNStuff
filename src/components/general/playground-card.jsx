@@ -5,10 +5,13 @@ import Image from 'components/post/post-image';
 import PropTypes from 'prop-types';
 import { parseTitleToUrl } from 'utilities/functions';
 import { useNavigate } from 'react-router-dom';
+import { useWindowSize } from 'utilities/useWindowSize';
 
 const PlaygroundCard = (props) => {
   const { title, image, mb } = props;
+
   const navigate = useNavigate();
+  const windowSize = useWindowSize();
 
   const openPost = () => {
     navigate('/playground/' + parseTitleToUrl(title));
@@ -16,11 +19,12 @@ const PlaygroundCard = (props) => {
 
   return (
     <Box
-      id='playground-card-wrappers'
+      id='playground-card-wrapper'
       height='fit-content'
-      width='fit-content'
+      width={windowSize.getVal('fit-content', 'fit-content', '100%')}
+      maxWidth='100%'
       mb={mb || 0}
-      mr={10}
+      mr={windowSize.getVal('10', '10', '0')}
       backgroundColor={Color.white}
       borderRadius={3}
       display='flex'
@@ -43,7 +47,12 @@ const PlaygroundCard = (props) => {
         src={image.src}
         height={image.height}
         width={image.width}
-        style={{ maxWidth: 'unset' }}
+        style={{
+          maxWidth: '100%',
+          paddingLeft: 12,
+          paddingRight: 12,
+          boxSizing: 'border-box',
+        }}
         borderRadius='7px 7px 0px 0px'
       />
       <Typography
