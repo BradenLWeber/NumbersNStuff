@@ -23,3 +23,9 @@ code {
 html {
   overflow-y: hidden;
 }
+
+#fixed-size-list-wrapper > div {
+  overflow-x: hidden !important;
+  min-width: 540px !important;
+  padding-bottom: 20px !important;
+}

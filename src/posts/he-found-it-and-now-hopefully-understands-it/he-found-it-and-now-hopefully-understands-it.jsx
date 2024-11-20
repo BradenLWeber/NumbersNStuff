@@ -1,4 +1,5 @@
 import Body from 'components/post/post-body';
+import { Box } from '@mui/material';
 import Divider from 'components/post/post-divider';
 import Footer from 'components/post/post-footer';
 import Graph1 from './graph1.png';
@@ -92,7 +93,7 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
         width 1 and height the output of the function at the rectangles
         location, shaded in red.
       </Body>
-      <Image src={Graph1} height={400} />
+      <Image src={Graph1} width={800} maxWidth='100%' />
       <Body>
         When looking at this problem, I happened to recall that ln(
         <Letter>x</Letter>) is an antiderivative of{' '}
@@ -110,11 +111,13 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
         The graph below demonstrates that the following inequality holds for all
         positive integers <Letter>a</Letter> and <Letter>m</Letter>:
       </Body>
-      <MathJax>
-        {
-          '$$\\int_{a^m+1}^{a^{m+1}+1} \\frac{1}{x} dx \\leq \\sum_{n=a^m+1}^{a^{m+1}} \\frac{1}{n} \\leq \\int_{a^m}^{a^{m+1}} \\frac{1}{x} dx .$$'
-        }
-      </MathJax>
+      <Box sx={{ overflowX: 'auto', overflowY: 'hidden' }}>
+        <MathJax>
+          {
+            '$$\\int_{a^m+1}^{a^{m+1}+1} \\frac{1}{x} dx \\leq \\sum_{n=a^m+1}^{a^{m+1}} \\frac{1}{n} \\leq \\int_{a^m}^{a^{m+1}} \\frac{1}{x} dx .$$'
+          }
+        </MathJax>
+      </Box>
       <Body>
         Notice that the red (northeast lines) and blue (northwest lines)
         rectangles cover the same area, representing the summation, but the the
@@ -125,16 +128,18 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
         <MathJax inline>$a^m+1$</MathJax> to{' '}
         <MathJax inline>{'$a^{m + 1}+1$'}</MathJax>.
       </Body>
-      <Image src={Graph2} height={400} />
+      <Image src={Graph2} width={800} maxWidth='100%' />
       <Body>
         Applying a limit to each part of the inequality, we may then observe
         that
       </Body>
-      <MathJax>
-        {
-          '$$\\lim_{m \\to \\infty} \\int_{a^m+1}^{a^{m+1}+1} \\frac{1}{x} dx \\leq \\lim_{m \\to \\infty} \\sum_{n=a^m+1}^{a^{m+1}} \\frac{1}{n} \\leq \\lim_{m \\to \\infty} \\int_{a^m}^{a^{m+1}} \\frac{1}{x} dx .$$'
-        }
-      </MathJax>
+      <Box sx={{ overflowX: 'auto', overflowY: 'hidden' }}>
+        <MathJax>
+          {
+            '$$\\lim_{m \\to \\infty} \\int_{a^m+1}^{a^{m+1}+1} \\frac{1}{x} dx \\leq \\lim_{m \\to \\infty} \\sum_{n=a^m+1}^{a^{m+1}} \\frac{1}{n} \\leq \\lim_{m \\to \\infty} \\int_{a^m}^{a^{m+1}} \\frac{1}{x} dx .$$'
+          }
+        </MathJax>
+      </Box>
       <Body>
         If we can show that the limits of the integrals approach the same value,
         namely ln(<Letter>a</Letter>), then the limit of the summation must
@@ -144,8 +149,9 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
         Following, we evaluate the right side; a couple of the equalities are
         justified by the rules of logarithms and exponents.
       </Body>
-      <MathJax>
-        {`\\begin{align*}
+      <Box sx={{ overflowX: 'auto', overflowY: 'hidden' }}>
+        <MathJax>
+          {`\\begin{align*}
           \\lim_{m \\to \\infty} \\int_{a^m}^{a^{m+1}} \\frac{1}{x} dx
           & = \\lim_{m \\to \\infty} \\ln(x) |_{a^m}^{a^{m+1}} \\\\
           & = \\lim_{m \\to \\infty} \\ln(a^{m+1}) - \\ln(a^m)\\\\
@@ -153,7 +159,8 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
           & = \\lim_{m \\to \\infty} \\ln(a)\\\\
           & = \\ln(a)
         \\end{align*}`}
-      </MathJax>
+        </MathJax>
+      </Box>
       <Body>
         The left side is a bit more complicated because we need to account for
         the added 1's, but it starts off similar. We may move the limit inside
@@ -166,8 +173,9 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
         </MathJax>
         , in order to evaluate the limit.
       </Body>
-      <MathJax>
-        {`\\begin{align*}
+      <Box sx={{ overflowX: 'auto', overflowY: 'hidden' }}>
+        <MathJax>
+          {`\\begin{align*}
                 \\lim_{m \\to \\infty} \\int_{a^m+1}^{a^{m+1}+1} \\frac{1}{x} dx
                 & = \\lim_{m \\to \\infty} \\ln(x) |_{a^m+1}^{a^{m+1}+1} \\\\
                 & = \\lim_{m \\to \\infty} \\ln(a^{m+1}+1) - \\ln(a^m+1)\\\\
@@ -177,13 +185,16 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
                 & = \\ln \\left( \\frac{a+0}{1+0} \\right) \\\\
                 & = \\ln(a)
               \\end{align*}`}
-      </MathJax>
+        </MathJax>
+      </Box>
       <Body>Therefore,</Body>
-      <MathJax>
-        {
-          '$$\\ln(a) = \\lim_{m \\to \\infty} \\int_{a^m+1}^{a^{m+1}+1} \\frac{1}{x} dx \\leq \\lim_{m \\to \\infty} \\sum_{n=a^m+1}^{a^{m+1}} \\frac{1}{n} \\leq \\lim_{m \\to \\infty} \\int_{a^m}^{a^{m+1}} \\frac{1}{x} dx = \\ln(a)$$'
-        }
-      </MathJax>
+      <Box sx={{ overflowX: 'auto', overflowY: 'hidden' }}>
+        <MathJax>
+          {
+            '$$\\ln(a) = \\lim_{m \\to \\infty} \\int_{a^m+1}^{a^{m+1}+1} \\frac{1}{x} dx \\leq \\lim_{m \\to \\infty} \\sum_{n=a^m+1}^{a^{m+1}} \\frac{1}{n} \\leq \\lim_{m \\to \\infty} \\int_{a^m}^{a^{m+1}} \\frac{1}{x} dx = \\ln(a)$$'
+          }
+        </MathJax>
+      </Box>
       <Body>and so we achieve our desired result.</Body>
       <MathJax>
         {
@@ -195,26 +206,30 @@ export const HeFoundItAndNowHopefullyUnderstandsIt = () => {
         An alternative set of limits of integration on the function{' '}
         <MathJax inline>{'$\\frac{1}{x}$'}</MathJax> gives the same result:
       </Body>
-      <MathJax>
-        {
-          '$$\\int_1^a \\frac{1}{x} dx = \\ln(x)|_1^a = \\ln(a) - \\ln(1) = \\ln(a) .$$'
-        }
-      </MathJax>
+      <Box sx={{ overflowX: 'auto', overflowY: 'hidden' }}>
+        <MathJax>
+          {
+            '$$\\int_1^a \\frac{1}{x} dx = \\ln(x)|_1^a = \\ln(a) - \\ln(1) = \\ln(a) .$$'
+          }
+        </MathJax>
+      </Box>
       <Body>
         Given what we have already shown with Braden's identity, this implies
         that
       </Body>
-      <MathJax>
-        {
-          '$$\\int_1^a \\frac{1}{x} dx = \\ln(a) = \\lim_{m \\to \\infty} \\int_{a^m}^{a^{m+1}} \\frac{1}{x} dx.$$'
-        }
-      </MathJax>
+      <Box sx={{ overflowX: 'auto', overflowY: 'hidden' }}>
+        <MathJax>
+          {
+            '$$\\int_1^a \\frac{1}{x} dx = \\ln(a) = \\lim_{m \\to \\infty} \\int_{a^m}^{a^{m+1}} \\frac{1}{x} dx.$$'
+          }
+        </MathJax>
+      </Box>
       <Body>
         That is, the area of the blue (northwest lines) region below approaches
         the area of the red (northeast lines) region as <Letter>m</Letter>{' '}
         approaches infinity.
       </Body>
-      <Image src={Graph3} height={400} />
+      <Image src={Graph3} width={800} maxWidth='100%' />
       <Body>
         I am curious if there is some geometric interpretation for why these
         should have the same area (there is a certain amount of fudging with the

@@ -4,6 +4,7 @@ import { LinearProgress } from '@mui/material';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { sieveOfAtkin } from 'utilities/functions';
+import { useWindowSize } from 'utilities/useWindowSize';
 
 const MARGIN = 40;
 const POINTS_TO_SHOW = 100;
@@ -92,8 +93,7 @@ const ProgressBar = (props) => (
     variant='determinate'
     value={props.percent}
     sx={{
-      width: 347,
-      marginLeft: 3.5,
+      width: Math.min(347, props.windowSize.width - 40),
       '& .MuiLinearProgress-bar': {
         transition: 'none',
       },
@@ -125,6 +125,8 @@ const SpiralGap = (props) => {
   const [points, setPoints] = useState([]);
   const pointsRef = useRef(points);
   pointsRef.current = points;
+
+  const windowSize = useWindowSize();
 
   useEffect(() => {
     const primes = sieveOfAtkin(floor, ceil);
@@ -209,6 +211,7 @@ const SpiralGap = (props) => {
     <>
       {animate && (
         <ProgressBar
+          windowSize={windowSize}
           percent={
             (delayedPoints.length / (points.length * (dev ? 2 : 1))) * 100
           }

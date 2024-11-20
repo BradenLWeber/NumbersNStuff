@@ -83,8 +83,8 @@ const Home = () => {
             ? 70
             : sideMargin + sideMargin * margin * marginModifier
         }px)`}
-        minWidth={windowSize.isMobile ? 'unset' : 530}
-        maxWidth={windowSize.isMobile ? 500 : 'unset'}
+        minWidth={windowSize.getVal(530, 'unset')}
+        maxWidth={windowSize.getVal('unset', 500)}
         borderRadius='0px 10px 10px 0px'
         display='flex'
         justifyContent='flex-end'
@@ -116,6 +116,8 @@ const Home = () => {
           id='banner-text-wrapper'
           height='100%'
           padding='26px 36px'
+          paddingLeft={windowSize.width < 350 ? 15 : 36}
+          paddingRight={windowSize.width < 350 ? 30 : 36}
           boxSizing='border-box'
           justifyContent='space-between'
           display='flex'
@@ -123,11 +125,15 @@ const Home = () => {
           width={450}
           position='relative'
           right={0}
-          borderLeft={windowSize.width < 500 ? `24px solid ${color}` : 'unset'}
+          borderLeft={
+            windowSize.width < 520
+              ? `${windowSize.width < 350 ? 15 : 30}px solid ${color}`
+              : 'unset'
+          }
         >
           <Link to={url} style={{ textDecoration: 'none' }}>
             <Typography
-              fontSize={windowSize.isSmallMobile ? 28 : 34}
+              fontSize={windowSize.getVal(34, 34, 28)}
               fontWeight={300}
               color={Color.gray}
               textAlign='right'
@@ -142,7 +148,7 @@ const Home = () => {
             </Typography>
           </Link>
           <Typography
-            fontSize={windowSize.isSmallMobile ? 18 : 22}
+            fontSize={windowSize.getVal(22, 22, 18)}
             fontWeight={300}
             textAlign='right'
           >
@@ -217,7 +223,8 @@ const Home = () => {
             text1='Explore Posts'
             text2={
               <>
-                Dive into a world of mathematical possibilities and, above all,{' '}
+                Dive into a world of mathematical possibilities and,
+                above&nbsp;all,&nbsp;
                 <b style={{ fontWeight: 500 }}>curiosity</b>
               </>
             }
@@ -227,14 +234,14 @@ const Home = () => {
           />
           <Banner
             text1='Play Around'
-            text2='Try the interactive playgrounds and bring mathematical concepts to life'
+            text2='Try the interactive playgrounds and bring mathematical concepts&nbsp;to&nbsp;life'
             color={Color.secondaryDark}
             margin={1}
             url='/playgrounds'
           />
           <Banner
             text1='Contact Me'
-            text2='Help me take these mathematical concepts to the next level'
+            text2='Help me take these mathematical concepts to the next&nbsp;level'
             color={Color.primaryDark}
             margin={0}
             url='/about'

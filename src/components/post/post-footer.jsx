@@ -73,9 +73,9 @@ const Footer = (props) => {
       <Box
         id='subscribe-box-wrapper'
         display='flex'
-        flexDirection={windowSize.isMobile ? 'column' : 'row'}
+        flexDirection={windowSize.getVal('row', 'column')}
         columnGap={20}
-        alignItems={windowSize.isMobile ? 'flex-start' : 'center'}
+        alignItems={windowSize.getVal('center', 'flex-start')}
         mt={message ? 20 : 0}
         mb={40}
         rowGap={20}
@@ -84,7 +84,7 @@ const Footer = (props) => {
           Subscribe and be the first to hear about every new post!
         </Typography>
         <TextInput
-          sx={{ ml: windowSize.isMobile ? 0 : 20 }}
+          sx={{ ml: windowSize.getVal(20, 0) }}
           size='small'
           placeholder='Email'
           value={email}

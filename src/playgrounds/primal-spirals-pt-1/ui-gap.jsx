@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import TextInput from 'components/general/text-input';
 import { isNullish } from 'utilities/functions';
 import { useState } from 'react';
+import { useWindowSize } from 'utilities/useWindowSize';
 
 const UIGap = (props) => {
   const {
@@ -24,6 +25,8 @@ const UIGap = (props) => {
   const [localAnimate, setLocalAnimate] = useState(false);
   const [localAngle, setLocalAngle] = useState(90);
   const [localColorType, setLocalColorType] = useState('default');
+
+  const windowSize = useWindowSize();
 
   const submit = () => {
     reset();
@@ -77,7 +80,7 @@ const UIGap = (props) => {
       direction='row'
       display='flex'
       flexWrap='wrap'
-      mr={100}
+      mr={windowSize.getVal(100, 0)}
     >
       <Stack id='first-section' direction='row' spacing={20} height={75}>
         <TextInput
@@ -158,7 +161,7 @@ const UIGap = (props) => {
       </Stack>
       <OutlinedButton
         click={submit}
-        sx={{ height: 56 }}
+        sx={{ height: 56, mb: 20 }}
         disabled={getDisableDraw()}
       >
         Draw it!

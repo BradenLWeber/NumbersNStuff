@@ -9,12 +9,14 @@ import dayjs from 'dayjs';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
 import { parseTitleToUrl } from 'utilities/functions';
 import { useFont } from 'utilities/useFont';
+import { useWindowSize } from 'utilities/useWindowSize';
 
 const Title = (props) => {
-  const { children, playgroundName, date, author } = props;
+  const { children, playgroundName, date, author, mt, mb } = props;
   const [playgroundUrl, setPlaygroundUrl] = useState('');
 
   const font = useFont();
+  const windowSize = useWindowSize();
 
   useEffect(() => {
     if (playgroundName)
@@ -35,7 +37,8 @@ const Title = (props) => {
       >
         <Typography
           fontSize={font.title}
-          marginY={20}
+          marginTop={mt === undefined ? 20 : mt}
+          marginBottom={mb === undefined ? 20 : mb}
           color={Color.gray}
           fontWeight={500}
           lineHeight={1}
@@ -53,12 +56,16 @@ const Title = (props) => {
         )}
       </Box>
       {date && author && (
-        <Box display='flex' flexDirection='row' mt={-5}>
+        <Box
+          display='flex'
+          flexDirection={windowSize.getVal('row', 'row', 'column')}
+          mt={-5}
+        >
           <Typography color={Color.midGray} fontWeight='bold'>
             {author}
-            &nbsp;&nbsp;&nbsp;•
+            {!windowSize.isSmallMobile && <>&nbsp;&nbsp;&nbsp;•</>}
           </Typography>
-          <Typography color={Color.midGray} ml={12}>
+          <Typography color={Color.midGray} ml={windowSize.getVal(12, 12, 0)}>
             {dayjs(date).format('LL')}
           </Typography>
         </Box>
@@ -72,6 +79,8 @@ Title.propTypes = {
   playgroundName: PropTypes.string,
   date: PropTypes.string,
   author: PropTypes.string,
+  mt: PropTypes.number,
+  mb: PropTypes.number,
 };
 
 export default Title;

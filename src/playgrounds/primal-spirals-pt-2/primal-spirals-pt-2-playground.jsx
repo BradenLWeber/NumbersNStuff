@@ -7,7 +7,6 @@ import { primalSpiralsPt2Title } from 'posts/primal-spirals-pt-2/primal-spirals-
 import { useState } from 'react';
 
 const PrimalSpiralsPt2Playground = (props) => {
-  const { back } = props;
   const [start, setStart] = useState(1);
   const [gap, setGap] = useState(1);
   const [sequence, setSequence] = useState('');
@@ -67,7 +66,6 @@ const PrimalSpiralsPt2Playground = (props) => {
         setUseSequence={setUseSequence}
         setSize={setSize}
         reset={reset}
-        back={back}
       />
       <SpiralGrid
         start={start}
@@ -79,10 +77,6 @@ const PrimalSpiralsPt2Playground = (props) => {
       />
     </PlaygroundWrapper>
   );
-};
-
-PrimalSpiralsPt2Playground.propTypes = {
-  back: PropTypes.func,
 };
 
 export default PrimalSpiralsPt2Playground;

@@ -47,6 +47,9 @@ const Image = (props) => {
           fontSize={textSize}
           mb={mb === undefined ? 20 : 0}
           width='fit-content'
+          sx={{
+            textAlign: 'center',
+          }}
         >
           {cred && 'Photo By '}
           {credRef ? (

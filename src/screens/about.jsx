@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import Alert from 'components/general/alert';
 import Body from 'components/post/post-body';
 import Braden from 'assets/global/me.jpg';
-import { Color } from 'styles/Color';
 import EmailIcon from '@mui/icons-material/Email';
 import FilledButton from 'components/general/filled-button';
 import Image from 'components/post/post-image';
@@ -18,9 +17,10 @@ import { useWindowSize } from 'utilities/useWindowSize';
 import { validateEmail } from 'utilities/functions';
 
 const About = () => {
-  const imageMaxWidth = `max(calc(25vw), ${
+  const imageLaptopMaxWidth = `max(calc(25vw), ${
     globalVars.mobileScreenWidth - 500
   }px)`;
+  const imageMobileLastWidth = 'min(220px, 90%)';
 
   const [email, setEmail] = useState('');
   const [openTooltip, setOpenTooltip] = useState(false);
@@ -73,9 +73,9 @@ const About = () => {
         width='100%'
         height='100%'
         py={30}
-        px={windowSize.isSmallMobile ? globalVars.smallMobilePostPadding : 30}
+        px={windowSize.getVal(30, 30, globalVars.smallMobilePostPadding)}
         display='flex'
-        flexDirection='row'
+        flexDirection={windowSize.getVal('row', 'column-reverse')}
         boxSizing='border-box'
       >
         <Box flex={1} minWidth={0} mr={showPictures ? 50 : 0}>
@@ -84,7 +84,8 @@ const About = () => {
             My name is Braden Weber. I am just a friendly, neighborhood
             mathematician. I do math because I enjoy it, though I only sometimes
             understand it. I am not decorated educationally in the mathematical
-            sphere, but I can't shake my drive to discover new mathematical
+            sphere other than what is necessary for Engineering and Computer
+            Science, but I can't shake my drive to discover new mathematical
             concepts.
           </Body>
           <Body mt={20}>
@@ -143,29 +144,37 @@ const About = () => {
             {subscribeButtonText}
           </FilledButton>
         </Box>
-        {showPictures && (
-          <Box display='flex' flexDirection='column' alignItems='center'>
-            <img
-              alt='Braden'
-              src={Braden}
-              width={400}
-              height='auto'
-              style={{ marginTop: 114, maxWidth: imageMaxWidth }}
-            />
-            <Typography color={Color.midGray} fontSize={12}>
-              Photo by my most wonderful wife
-            </Typography>
-            <Image
-              alt='Braden and Kassi'
-              src={KassiAndBraden}
-              width={400}
-              mt={50}
-              cred='Heidi Musolff Photography'
-              credRef='https://heidimusolff.com/'
-              style={{ maxWidth: imageMaxWidth }}
-            />
-          </Box>
-        )}
+        <Box
+          display='flex'
+          flexDirection={windowSize.getVal('column', 'row', 'column')}
+          alignItems='center'
+        >
+          <Image
+            alt='Braden'
+            src={Braden}
+            width={400}
+            style={{
+              maxWidth: windowSize.getVal(
+                imageLaptopMaxWidth,
+                imageMobileLastWidth,
+              ),
+            }}
+            cred='My Wife <3'
+          />
+          <Image
+            alt='Braden and Kassi'
+            src={KassiAndBraden}
+            width={400}
+            mt={windowSize.getVal(50, 30, 10)}
+            cred='Heidi Musolff Photography'
+            credRef='https://heidimusolff.com/'
+            style={{
+              maxWidth: windowSize.isMobile
+                ? imageMobileLastWidth
+                : imageLaptopMaxWidth,
+            }}
+          />
+        </Box>
       </Box>
       <Alert open={openTooltip} onClose={handleCloseTooltip}>
         Successfully subscribed!

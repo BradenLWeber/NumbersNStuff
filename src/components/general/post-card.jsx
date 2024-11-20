@@ -30,11 +30,10 @@ const PostCard = (props) => {
       <Box
         id='post-card-wrapper'
         display='flex'
-        flexDirection={windowSize.isMobile ? 'column' : 'row'}
+        flexDirection={windowSize.getVal('row', 'column')}
         height='fit-content'
         minHeight={220}
         maxWidth={1000}
-        mr={10}
         mb={20}
         boxSizing='border-box'
         padding='20px 20px 20px 20px'
@@ -94,12 +93,12 @@ const PostCard = (props) => {
           </Box>
         </Box>
         <Box
-          width={windowSize.isMobile ? '100%' : 'fit-content'}
+          width={windowSize.getVal('fit-content', '100%')}
           display='flex'
           flexDirection='column'
           justifyContent='space-between'
-          alignItems={windowSize.isMobile ? 'flex-start' : 'flex-end'}
-          mt={windowSize.isMobile ? 20 : 0}
+          alignItems={windowSize.getVal('flex-end', 'flex-start')}
+          mt={windowSize.getVal(0, 20)}
         >
           <img
             src={image.src}
@@ -111,7 +110,7 @@ const PostCard = (props) => {
           <Typography
             color={Color.midGray}
             mb={-5}
-            mt={windowSize.isMobile ? 10 : 0}
+            mt={windowSize.getVal(0, 10)}
           >
             {createdDate}
           </Typography>

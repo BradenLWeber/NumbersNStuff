@@ -1,4 +1,5 @@
 import Body from 'components/post/post-body';
+import { Box } from '@mui/material';
 import Divider from 'components/post/post-divider';
 import Footer from 'components/post/post-footer';
 import Image from 'components/post/post-image';
@@ -118,24 +119,26 @@ export const IFoundItButIDontUnderstandIt = () => {
         10000, and so forth. Once I had a list, I calculated the{' '}
         <i>difference</i> between the steps.
       </Body>
-      <Indent separate={true} widths={[88, 120]}>
-        {'10|--> 100|= 2.25840926367'}
-      </Indent>
-      <Indent separate={true} widths={[88, 120]}>
-        {'100|--> 1,000|= 2.29809334291'}
-      </Indent>
-      <Indent separate={true} widths={[88, 120]}>
-        {'1,000|--> 10,000|= 2.30213517549'}
-      </Indent>
-      <Indent separate={true} widths={[88, 120]}>
-        {'10,000|--> 100,000|= 2.30254009382'}
-      </Indent>
-      <Indent separate={true} widths={[88, 120]}>
-        {'100,000|--> 1,000,000|= 2.302580593'}
-      </Indent>
-      <Indent separate={true} widths={[88, 120]}>
-        {'1,000,000|--> 10,000,000|= 2.30258464299'}
-      </Indent>
+      <Box maxWidth='100%' sx={{ overflowX: 'auto' }}>
+        <Indent separate={true} widths={[88, 120, 135]}>
+          {'10|--> 100|= 2.25840926367'}
+        </Indent>
+        <Indent separate={true} widths={[88, 120, 135]}>
+          {'100|--> 1,000|= 2.29809334291'}
+        </Indent>
+        <Indent separate={true} widths={[88, 120, 135]}>
+          {'1,000|--> 10,000|= 2.30213517549'}
+        </Indent>
+        <Indent separate={true} widths={[88, 120, 135]}>
+          {'10,000|--> 100,000|= 2.30254009382'}
+        </Indent>
+        <Indent separate={true} widths={[88, 120, 135]}>
+          {'100,000|--> 1,000,000|= 2.302580593'}
+        </Indent>
+        <Indent separate={true} widths={[88, 120, 135]}>
+          {'1,000,000|--> 10,000,000|= 2.30258464299'}
+        </Indent>
+      </Box>
       <Body>
         You may see a startling pattern emerge here. At least, it was startling
         to me. The longer I went on calculating the difference in between these

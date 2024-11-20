@@ -3,9 +3,12 @@ import { Box, Modal } from '@mui/material';
 import { Color } from 'styles/Color';
 import PropTypes from 'prop-types';
 import Title from 'components/post/post-title';
+import { useWindowSize } from 'utilities/useWindowSize';
 
 const ExplanationModal = (props) => {
   const { explanation, open, onClose } = props;
+
+  const windowSize = useWindowSize();
 
   return (
     <Modal open={open} onClose={onClose}>
@@ -34,7 +37,7 @@ const ExplanationModal = (props) => {
           position='absolute'
           top={0}
           width='100%'
-          height={88}
+          height={windowSize.getVal(88, 76)}
           backgroundColor={Color.secondaryLight}
           zIndex={1}
           ml={-20}
@@ -44,7 +47,7 @@ const ExplanationModal = (props) => {
           position='relative'
           zIndex={100}
           id='modal-title-wrapper'
-          height={100}
+          height={windowSize.getVal(100, 76)}
         >
           <Title>Playground Rules</Title>
         </Box>

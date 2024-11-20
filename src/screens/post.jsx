@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import Body from 'components/post/post-body';
 import Comment from 'components/post/post-comment';
 import CommentApi from 'utilities/Comment';
-import Divider from 'components/post/post-divider';
 import FilledButton from 'components/general/filled-button';
 import PrimalSpiralsPt2 from 'posts/primal-spirals-pt-2/primal-spirals-pt-2';
 import TextInput from 'components/general/text-input';
@@ -82,7 +81,7 @@ const Post = () => {
       {post.element}
       <Box
         p={10}
-        px={windowSize.isSmallMobile ? globalVars.smallMobilePostPadding : 30}
+        px={windowSize.getVal(30, 30, globalVars.smallMobilePostPadding)}
         mt={0}
         mb={50}
         display='flex'

@@ -9,23 +9,19 @@ import { Stack } from '@mui/system';
 import TextInput from 'components/general/text-input';
 import html2canvas from 'html2canvas';
 import { useState } from 'react';
+import { useWindowSize } from 'utilities/useWindowSize';
 
 const UIGrid = (props) => {
-  const {
-    setStart,
-    setGap,
-    setSequence,
-    setUseSequence,
-    setSize,
-    reset,
-    back,
-  } = props;
+  const { setStart, setGap, setSequence, setUseSequence, setSize, reset } =
+    props;
   const [localStart, setLocalStart] = useState(1);
   const [localGap, setLocalGap] = useState(1);
   const [localUseSequence, setLocalUseSequence] = useState(false);
   const [localSequence, setLocalSequence] = useState('1,2,3');
   const [localSize, setLocalSize] = useState('2');
   const [loadingPng, setLoadingPng] = useState(false);
+
+  const windowSize = useWindowSize();
 
   const makePdf = () => {
     setLoadingPng(true);
@@ -83,15 +79,13 @@ const UIGrid = (props) => {
       id='ui-bar'
       direction='row'
       columnGap={20}
+      rowGap={20}
       display='flex'
       flexWrap='wrap'
-      mr={100}
+      mr={windowSize.getVal(100, 40, 0)}
       mt={3.5}
       ml={3.5}
     >
-      <FilledButton click={back} sx={{ height: 55 }}>
-        Back
-      </FilledButton>
       <TextInput
         label='Start'
         onChange={(e) => setLocalStart(e)}
@@ -161,7 +155,6 @@ UIGrid.propTypes = {
   setUseSequence: PropTypes.func,
   setSize: PropTypes.func,
   reset: PropTypes.func,
-  back: PropTypes.func,
 };
 
 export default UIGrid;

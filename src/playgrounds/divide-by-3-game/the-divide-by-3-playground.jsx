@@ -9,6 +9,7 @@ import PlaygroundWrapper from 'components/playground/playground-wrapper';
 import TextInput from 'components/general/text-input';
 import Title from 'components/post/post-title';
 import { theDivideBy3GameTitle } from 'posts/divide-by-3-game/the-divide-by-3-game';
+import { useWindowSize } from 'utilities/useWindowSize';
 
 const DivideBy3Playground = () => {
   const [phase, setPhase] = useState(1);
@@ -25,6 +26,8 @@ const DivideBy3Playground = () => {
   const [chooseNumberButtonTextColor, setChooseNumberButtonTextColor] =
     useState(Color.black);
   const [history, setHistory] = useState([]);
+
+  const windowSize = useWindowSize();
 
   const numberChange = (num) => {
     setNumber(num.replaceAll(/[^0-9]/g, ''));
@@ -120,15 +123,17 @@ const DivideBy3Playground = () => {
   const HistoryComponent = () => (
     <>
       <Header>History</Header>
-      {history.map((hist, i) => (
-        <Typography
-          pb={i === history.length - 1 ? 10 : 0}
-          color={Color.gray}
-          key={i}
-        >
-          {hist}
-        </Typography>
-      ))}
+      <Box sx={{ overflowX: 'auto', overflowY: 'hidden' }}>
+        {history.map((hist, i) => (
+          <Typography
+            pb={i === history.length - 1 ? 10 : 0}
+            color={Color.gray}
+            key={i}
+          >
+            {hist}
+          </Typography>
+        ))}
+      </Box>
     </>
   );
 
@@ -156,7 +161,7 @@ const DivideBy3Playground = () => {
     >
       {phase === 1 && (
         <Box display='flex' flexDirection='column'>
-          <Title>Choose a large number</Title>
+          <Title mt={windowSize.getVal(20, 0)}>Choose a large number</Title>
           <TextInput
             label='Pick a good one'
             value={number}
@@ -184,9 +189,15 @@ const DivideBy3Playground = () => {
       {phase === 2 && (
         <Box display='flex' flexDirection='column'>
           <Tooltip title={number} mb={0}>
-            <div>
+            <Box
+              sx={{
+                overflowX: 'auto',
+                overflowY: 'hidden',
+                mr: windowSize.getVal(100, 0),
+              }}
+            >
               <Title>{number}</Title>
-            </div>
+            </Box>
           </Tooltip>
           {/* I moved the title margin to this component so the tooltip displays a little higher up */}
           <Box
@@ -206,14 +217,20 @@ const DivideBy3Playground = () => {
       {phase === 3 && (
         <Box>
           <Title>
-            {win ? 'Congratulations!' : 'Better Luck next time :\\'}
+            {win ? 'Congratulations!' : 'Better Luck next '}
+            {!win && <span style={{ whiteSpace: 'nowrap' }}>time :\</span>}
           </Title>
           <Header>
             {win ? 'You won in ' : 'You lost in '}
             {moves} move{moves > 1 ? 's' : ''}
             {win ? '!' : '.'}
           </Header>
-          <Body>
+          <Box
+            id='mistake-wrapper'
+            maxWidth='100%'
+            pb={10}
+            sx={{ overflowX: 'auto', overflowY: 'hidden' }}
+          >
             {win
               ? ''
               : `${number} / 3 = ${
@@ -222,7 +239,7 @@ const DivideBy3Playground = () => {
                     ? BigInt(number) / BigInt(3) + '.666666'
                     : BigInt(number) / BigInt(3) + '.333333'
                 }`}
-          </Body>
+          </Box>
           <OutlinedButton sx={{ mt: 20, mb: 20 }} click={reset}>
             Play again?
           </OutlinedButton>

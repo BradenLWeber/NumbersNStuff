@@ -157,18 +157,16 @@ const RootNavigation = (props) => {
                 <Box
                   id='mobile-menu-wrapper'
                   width={250}
-                  maxWidth={'80vw'}
+                  maxWidth='80vw'
                   backgroundColor={Color.primaryLight}
-                  height={'100%'}
+                  height='100%'
                 >
-                  {['Posts', 'Playgrounds', 'About'].map((text, i) => (
+                  {['Posts', 'Playgrounds', 'About'].map((text, i, arr) => (
                     <>
-                      <a
-                        href={'/' + text.toLowerCase()}
-                        style={{
-                          color: Color.black,
-                          textDecoration: 'none',
-                        }}
+                      <Link
+                        to={'/' + text.toLowerCase()}
+                        style={{ color: 'unset', textDecoration: 'none' }}
+                        onClick={() => setOpenMobileMenu(false)}
                       >
                         <Box
                           id='mobile-menu-item-wrapper'
@@ -181,14 +179,16 @@ const RootNavigation = (props) => {
                             {text}
                           </Typography>
                         </Box>
-                      </a>
-                      <Box
-                        id='mobile-menu-item-divider'
-                        width='calc(100% - 40px)'
-                        height={2}
-                        backgroundColor={Color.primaryDark}
-                        ml={20}
-                      />
+                      </Link>
+                      {i + 1 != arr.length && (
+                        <Box
+                          id='mobile-menu-item-divider'
+                          width='calc(100% - 40px)'
+                          height={2}
+                          backgroundColor={Color.primaryDark}
+                          ml={20}
+                        />
+                      )}
                     </>
                   ))}
                 </Box>
@@ -211,11 +211,14 @@ const RootNavigation = (props) => {
       </Box>
       <Box
         id='main-body-wrapper'
-        overflow='auto'
         flex={1}
         display='flex'
         minHeight={0}
         flexDirection='column'
+        sx={{
+          overflowY: 'auto',
+          overflowX: 'hidden',
+        }}
       >
         <Box
           flex={1}

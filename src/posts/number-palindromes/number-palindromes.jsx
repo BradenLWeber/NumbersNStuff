@@ -139,12 +139,7 @@ export const NumberPalindromes = () => {
         I'll just jump right in. I'll run the script up to a million and one.
         So, you know, it ends on a palindrome.
       </Body>
-      <Box
-        height={300}
-        sx={{ overflowY: 'auto', overflowX: 'hidden' }}
-        mt={20}
-        mb={20}
-      >
+      <Box height={300} overflow='auto' mt={20} mb={20}>
         <Indent mt={0} mb={0}>
           11,11,11,11,11,11,11,11,11,*2*,
           <br />
@@ -601,61 +596,61 @@ export const NumberPalindromes = () => {
         Here are all the numbers that are palindromes in both base 2 and base
         10, checking up to 1,000,000:
       </Body>
-      <Indent separate={true} widths={[100]}>
+      <Indent separate={true} widths={[85]}>
         1|1
       </Indent>
-      <Indent separate={true} widths={[100]}>
+      <Indent separate={true} widths={[85]}>
         3|11
       </Indent>
-      <Indent separate={true} widths={[100]}>
+      <Indent separate={true} widths={[85]}>
         5|101
       </Indent>
-      <Indent separate={true} widths={[100]}>
+      <Indent separate={true} widths={[85]}>
         7|111
       </Indent>
-      <Indent separate={true} widths={[100]}>
+      <Indent separate={true} widths={[85]}>
         9|1001
       </Indent>
-      <Indent separate={true} widths={[100]}>
+      <Indent separate={true} widths={[85]}>
         33|100001
       </Indent>
-      <Indent separate={true} widths={[100]}>
+      <Indent separate={true} widths={[85]}>
         99|1100011
       </Indent>
-      <Indent separate={true} widths={[100]}>
+      <Indent separate={true} widths={[85]}>
         313|100111001
       </Indent>
-      <Indent separate={true} widths={[100]}>
+      <Indent separate={true} widths={[85]}>
         585|1001001001
       </Indent>
-      <Indent separate={true} widths={[100]}>
+      <Indent separate={true} widths={[85]}>
         717|1011001101
       </Indent>
-      <Indent separate={true} widths={[100]}>
+      <Indent separate={true} widths={[85]}>
         7447|1110100010111
       </Indent>
-      <Indent separate={true} widths={[100]}>
+      <Indent separate={true} widths={[85]}>
         9009|10001100110001
       </Indent>
-      <Indent separate={true} widths={[100]}>
+      <Indent separate={true} widths={[85]}>
         15351|11101111110111
       </Indent>
-      <Indent separate={true} widths={[100]}>
+      <Indent separate={true} widths={[85]}>
         32223|111110111011111
       </Indent>
-      <Indent separate={true} widths={[100]}>
+      <Indent separate={true} widths={[85]}>
         39993|1001110000111001
       </Indent>
-      <Indent separate={true} widths={[100]}>
+      <Indent separate={true} widths={[85]}>
         53235|1100111111110011
       </Indent>
-      <Indent separate={true} widths={[100]}>
+      <Indent separate={true} widths={[85]}>
         53935|1101001010101111
       </Indent>
-      <Indent separate={true} widths={[100]}>
+      <Indent separate={true} widths={[85]}>
         73737|10010000000001001
       </Indent>
-      <Indent separate={true} widths={[100]}>
+      <Indent separate={true} widths={[85]}>
         585585|10001110111101110001
       </Indent>
       <Body>

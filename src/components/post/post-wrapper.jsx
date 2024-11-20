@@ -12,7 +12,7 @@ const Wrapper = (props) => {
 
   useEffect(() => {
     setPaddingLeft(
-      windowSize.isSmallMobile ? globalVars.smallMobilePostPadding : 30,
+      windowSize.getVal(30, 30, globalVars.smallMobilePostPadding),
     );
     if (windowSize.isSmallMobile) {
       setPaddingRight(globalVars.smallMobilePostPadding);
