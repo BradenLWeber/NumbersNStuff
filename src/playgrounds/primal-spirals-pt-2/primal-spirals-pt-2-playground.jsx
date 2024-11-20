@@ -1,12 +1,11 @@
 import Body from 'components/post/post-body';
 import PlaygroundWrapper from 'components/playground/playground-wrapper';
-import PropTypes from 'prop-types';
 import SpiralGrid from './spiral-grid';
 import UIGrid from './ui-grid';
 import { primalSpiralsPt2Title } from 'posts/primal-spirals-pt-2/primal-spirals-pt-2';
 import { useState } from 'react';
 
-const PrimalSpiralsPt2Playground = (props) => {
+const PrimalSpiralsPt2Playground = () => {
   const [start, setStart] = useState(1);
   const [gap, setGap] = useState(1);
   const [sequence, setSequence] = useState('');
