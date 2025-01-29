@@ -70,8 +70,11 @@ const SpiralGrid = (props) => {
   const { start, gap, sequence, key, useSequence, size } = props;
   const [grid, setGrid] = useState(null);
   const [boxSize, setBoxSize] = useState(5);
+  const [exampleSequence, setExampleSequence] = useState('');
 
   useEffect(() => {
+    setExampleSequence('');
+
     let totalBoxes = 1;
     if (size === 1) {
       totalBoxes = 1681;
@@ -120,6 +123,15 @@ const SpiralGrid = (props) => {
       numbersToUse.forEach((o) => (o.color = getBoxColor(o, start)));
     }
 
+    setExampleSequence(
+      'Sequence: ' +
+        numbersToUse
+          .slice(0, 20)
+          .map((x) => x.num)
+          .join(', ') +
+        '...',
+    );
+
     const grid = getGrid(numbersToUse.reverse(), totalBoxes);
 
     setGrid(grid);
@@ -133,41 +145,44 @@ const SpiralGrid = (props) => {
   };
 
   return (
-    <div style={{ marginTop: 20, paddingRight: 20, width: 'fit-content' }}>
-      <div
-        id='spiral-grid'
-        style={{
-          width: 'fit-content',
-          minWidth: getGridWidth(),
-        }}
-      >
-        {grid?.map((obj, i) => (
-          <div
-            style={{
-              height: boxSize,
-              display: 'flex',
-            }}
-            key={i}
-          >
-            {obj.map((o) => (
-              <div
-                style={{
-                  width: boxSize,
-                  height: boxSize,
-                  backgroundColor: o.color,
-                  display: 'inline-block',
-                  color: 'gray',
-                }}
-                title={o.num}
-                key={o.num}
-              >
-                {' '}
-              </div>
-            ))}
-          </div>
-        ))}
+    <>
+      <span style={{ marginTop: 20, display: 'block' }}>{exampleSequence}</span>
+      <div style={{ marginTop: 20, paddingRight: 20, width: 'fit-content' }}>
+        <div
+          id='spiral-grid'
+          style={{
+            width: 'fit-content',
+            minWidth: getGridWidth(),
+          }}
+        >
+          {grid?.map((obj, i) => (
+            <div
+              style={{
+                height: boxSize,
+                display: 'flex',
+              }}
+              key={i}
+            >
+              {obj.map((o) => (
+                <div
+                  style={{
+                    width: boxSize,
+                    height: boxSize,
+                    backgroundColor: o.color,
+                    display: 'inline-block',
+                    color: 'gray',
+                  }}
+                  title={o.num}
+                  key={o.num}
+                >
+                  {' '}
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
