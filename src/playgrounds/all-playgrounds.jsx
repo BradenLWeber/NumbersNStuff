@@ -3,6 +3,10 @@ import {
   numberPalindromesTitle,
 } from 'posts/number-palindromes/number-palindromes';
 import {
+  pascalsRectanglesDate,
+  pascalsRectanglesTitle,
+} from 'posts/pascals-rectangles/pascals-rectangles';
+import {
   primalSpiralsPt1Date,
   primalSpiralsPt1Title,
 } from 'posts/primal-spirals-pt-1/primal-spirals-pt-1';
@@ -15,6 +19,7 @@ import DivideBy3 from 'playgrounds/divide-by-3-game/divide-by-3.png';
 import DivideBy3Playground from './divide-by-3-game/the-divide-by-3-playground';
 import NumberPalindromes from 'playgrounds/number-palindromes/number-palindromes.png';
 import NumberPalindromesPlayground from './number-palindromes/number-palindrome-playgrounds';
+import PascalsRectanglesPlayground from './pascals-rectangles/pascals-rectangles-playground';
 import PrimalSpiralsPt1Playground from './primal-spirals-pt-1/primal-spirals-pt-1-playground';
 import PrimeGiraffe from './primal-spirals-pt-1/prime-giraffe.png';
 
@@ -68,4 +73,14 @@ export const playgrounds = [
   //   createdDate: primalSpiralsPt2Date,
   //   element: <PrimalSpiralsPt2Playground />,
   // },
+  {
+    title: pascalsRectanglesTitle,
+    image: {
+      src: PrimeGiraffe,
+      height: 190,
+      width: 240,
+    },
+    createdDate: pascalsRectanglesDate,
+    element: <PascalsRectanglesPlayground />,
+  },
 ];
