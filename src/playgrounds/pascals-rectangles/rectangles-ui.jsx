@@ -1,11 +1,9 @@
-import { Box, MenuItem, Stack, Typography } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 
-import CheckedBox from 'components/general/checked-box';
 import { Color } from 'styles/Color';
 import OutlinedButton from 'components/general/outlined-button';
 import PropTypes from 'prop-types';
 import TextInput from 'components/general/text-input';
-import { isNullish } from 'utilities/functions';
 import { useState } from 'react';
 import { useWindowSize } from 'utilities/useWindowSize';
 
@@ -78,7 +76,7 @@ const RectanglesUI = (props) => {
       >
         Calculate!
       </OutlinedButton>
-      <Typography color={Color.redDark} pl={10} width={350} pr={100}>
+      <Typography color={Color.redDark} width={350} pr={10} pb={10}>
         {warningMessage}
       </Typography>
     </Stack>
