@@ -26,7 +26,10 @@ const RectanglesUI = (props) => {
       localStart === '' ||
       Number(localMod) < 2 ||
       Number(localMod) > Number.MAX_SAFE_INTEGER ||
-      localStart.split(',').some((x) => !x)
+      localStart.split(',').some((x) => !x) ||
+      localStart
+        .split(',')
+        .some((x) => BigInt(x) > BigInt(Number.MAX_SAFE_INTEGER))
     );
   };
 
@@ -35,8 +38,15 @@ const RectanglesUI = (props) => {
   };
 
   const localStartIsInvalid = localStart.split(',').some((x) => !x);
+  const numberIsToBig =
+    Number(localMod) > Number.MAX_SAFE_INTEGER ||
+    localStart
+      .split(',')
+      .some((x) => BigInt(x) > BigInt(Number.MAX_SAFE_INTEGER));
   const warningMessage = localStartIsInvalid
     ? 'Starting string must be comma separated list of numbers'
+    : numberIsToBig
+    ? 'Numbers cannot be larger than ' + Number.MAX_SAFE_INTEGER
     : '';
 
   return (

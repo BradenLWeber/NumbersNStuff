@@ -6,9 +6,14 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { useWindowSize } from 'utilities/useWindowSize';
 
-const MAXLOOPSIZE = 1000;
+const MAXLOOPSIZE = 1000000;
 
-const generateRectangle = (mod, start) => {
+const arraysEqual = (arr1, arr2) => {
+  if (arr1.length !== arr2.length) return false;
+  return arr1.every((val, index) => val === arr2[index]);
+};
+
+const generateRectangle = async (mod, start) => {
   const width = start.split(',').length;
   const rows = [start.split(',').map((x) => Number(x) % mod)];
   const first100Rows = [...rows];
@@ -30,12 +35,17 @@ const generateRectangle = (mod, start) => {
       first100Rows.push(newRow);
     }
 
-    const foundIndex = first100Rows.findIndex((row) => _.isEqual(newRow, row));
+    const foundIndex = first100Rows.findIndex((row) =>
+      arraysEqual(newRow, row),
+    );
     if (
       foundIndex != -1 &&
       (i >= 100 || foundIndex < first100Rows.length - 1)
     ) {
       return rows;
+    }
+    if (i % 30000 == 0) {
+      await new Promise((res) => setTimeout(() => res()));
     }
   }
 
@@ -49,25 +59,29 @@ const RectanglesOutput = (props) => {
   const [rowList, setRowList] = useState([[]]);
   const [loopLength, setLoopLength] = useState(0);
   const [loopLocation, setLoopLocation] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   const windowSize = useWindowSize();
 
   useEffect(() => {
-    const rectangleList = generateRectangle(mod, start);
-    const loopLocation = rectangleList
-      .slice(0, rectangleList.length - 1)
-      .findIndex((row) =>
-        _.isEqual(row, rectangleList[rectangleList.length - 1]),
+    setLoading(true);
+    generateRectangle(mod, start).then((rectangleList) => {
+      const loopLocation = rectangleList
+        .slice(0, rectangleList.length - 1)
+        .findIndex((row) =>
+          _.isEqual(row, rectangleList[rectangleList.length - 1]),
+        );
+      setLoopLocation(loopLocation);
+      setRowList(rectangleList);
+      const noLoopFound =
+        rectangleList[rectangleList.length - 1][0] === 'No loop was found';
+      setLoopLength(
+        noLoopFound
+          ? `None found (Checked up to ${MAXLOOPSIZE} rows)`
+          : rectangleList.length - 1 - loopLocation,
       );
-    setLoopLocation(loopLocation);
-    setRowList(rectangleList);
-    const noLoopFound =
-      rectangleList[rectangleList.length - 1][0] === 'No loop was found';
-    setLoopLength(
-      noLoopFound
-        ? `None found (Checked up to ${MAXLOOPSIZE} rows)`
-        : rectangleList.length - 1 - loopLocation,
-    );
+      setLoading(false);
+    });
   }, []);
 
   const getItem = (props) => {
@@ -80,7 +94,7 @@ const RectanglesOutput = (props) => {
         style={style}
         sx={{
           height: 43 + 1 / 3,
-          backgroundColor: startsLoop ? 'yellow' : 'default',
+          backgroundColor: startsLoop && !loading ? 'yellow' : 'default',
           pl: 15,
           boxSizing: 'border-box',
         }}
@@ -100,13 +114,17 @@ const RectanglesOutput = (props) => {
           ) : (
             <span
               style={{
-                width: 30,
-                minWidth: 30,
+                width: Math.max(Math.floor(Math.log10(mod)) * 10, 30) + 10,
+                minWidth: Math.max(Math.floor(Math.log10(mod)) * 10, 30) + 10,
                 overflowX: 'auto',
                 whiteSpace: 'nowrap',
                 paddingBottom: 5,
-                marginLeft: i === 0 ? 0 : 10,
+                paddingLeft: i === 0 ? 0 : 10,
                 color: 'black',
+                height: 44,
+                display: 'flex',
+                alignItems: 'center',
+                backgroundColor: startsLoop ? 'yellow' : 'default',
               }}
               key={index + '_' + i}
             >
@@ -121,10 +139,13 @@ const RectanglesOutput = (props) => {
   return (
     <div>
       <span style={{ marginBottom: 20, display: 'block' }}>
-        Loop length: {loopLength}{' '}
-        {loopLocation === 0 || loopLocation === -1
-          ? ''
-          : `Offset ${loopLocation}`}
+        {loading
+          ? 'Calculating...'
+          : 'Loop length: ' +
+            loopLength +
+            (loopLocation === 0 || loopLocation === -1
+              ? ''
+              : ` Offset ${loopLocation}`)}
       </span>
       <Box
         id='fixed-size-list-wrapper-2'
@@ -142,7 +163,11 @@ const RectanglesOutput = (props) => {
             window.innerHeight - windowSize.getVal(250, 380, 380),
             200,
           )}
-          width={rowList[0].length * 40 + 15}
+          width={
+            rowList[0].length *
+              (Math.max(Math.floor(Math.log10(mod)) * 10, 30) + 20) +
+            15
+          }
           itemSize={48 + 1 / 3}
           itemCount={rowList.length}
           overscanCount={5}
