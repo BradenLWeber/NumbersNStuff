@@ -130,10 +130,10 @@ const UIGrid = (props) => {
         onChange={(e) => setLocalSize(e)}
         sx={{ width: 120, minWidth: 120 }}
       >
-        <MenuItem value='1'>1</MenuItem>
-        <MenuItem value='2'>2</MenuItem>
-        <MenuItem value='3'>3</MenuItem>
-        <MenuItem value='4'>4</MenuItem>
+        <MenuItem value='1'>Small</MenuItem>
+        <MenuItem value='2'>Medium</MenuItem>
+        <MenuItem value='3'>Large (slow)</MenuItem>
+        <MenuItem value='4'>Extra Large (slower)</MenuItem>
       </TextInput>
       <OutlinedButton
         click={submit}

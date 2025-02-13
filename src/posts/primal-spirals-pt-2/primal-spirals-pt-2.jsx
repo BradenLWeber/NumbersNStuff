@@ -4,7 +4,6 @@ import Divider from 'components/post/post-divider';
 import EvenSpiral from './even-spiral.png';
 import EveryThreeGoneSpiral from './every-three-gone-spiral.png';
 import EveryThreeSpiral from './every-three-spiral.png';
-import ExampleSpiralShaded from '../primal-spirals-pt-1/example-spiral-shaded.png';
 import Footer from 'components/post/post-footer';
 import Gap_1_1_1_1_1_1_1_1_2 from './gap_1_1_1_1_1_1_1_1_2.png';
 import Gap_1_1_1_1_1_1_1_2 from './gap_1_1_1_1_1_1_1_2.png';
@@ -48,6 +47,7 @@ import Sequence_s8_1_3_2_4 from './sequence_s8_1_3_2_4.png';
 import Sequence_s9_1_3_2_4 from './sequence_s9_1_3_2_4.png';
 import Title from 'components/post/post-title';
 import UlamSpiral from './ulam-spiral.png';
+import UlamSpiralZoomed from './ulam-spiral-zoomed.png';
 import Wrapper from 'components/post/post-wrapper';
 
 export const primalSpiralsPt2Title = 'Primal Spirals - Part 2';
@@ -89,7 +89,7 @@ export const PrimalSpiralsPt2 = () => {
         sequence starting in the middle and spiraling outward, and the prime
         numbers are colored in.
       </Body>
-      <Image src={ExampleSpiralShaded} height={200} />
+      <Image src={UlamSpiralZoomed} height={200} />
       <Body>
         Just as a refresher, here's what it looks like on a larger scale. The
         red dot is marking the center of the spiral.
