@@ -98,8 +98,8 @@ export const PrimalSpiralsPt2 = () => {
       <Body>
         In part 1, I explained this spiral and then scooted right past it. But I
         want to go back again and ask my favorite question. Is there something
-        about the construction of the Ulam Spiral that was arbitrarily
-        constructed? And more interestingly, what happens when we change it?
+        about the construction of the Ulam Spiral that was arbitrarily chosen?
+        And more interestingly, what happens when we change it?
       </Body>
       <Header>My Spin</Header>
       <Body>
