@@ -20,15 +20,11 @@ const generateRectangle = async (mod, start) => {
 
   for (let i = 0; i < MAXLOOPSIZE; i++) {
     const beforeRow = rows[rows.length - 1];
-    const newRow = [];
+    const newRow = new Array(width);
     for (let j = 0; j < width; j++) {
-      if (j === 0) {
-        newRow[j] = (beforeRow[j] + beforeRow[j + 1]) % mod;
-      } else if (j === width - 1) {
-        newRow[j] = (beforeRow[j] + beforeRow[j - 1]) % mod;
-      } else {
-        newRow[j] = (beforeRow[j] + beforeRow[j + 1] + beforeRow[j - 1]) % mod;
-      }
+      newRow[j] =
+        (beforeRow[j] + (beforeRow[j - 1] || 0) + (beforeRow[j + 1] || 0)) %
+        mod;
     }
     rows.push(newRow);
     if (i < 100) {
