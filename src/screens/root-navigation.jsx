@@ -50,6 +50,10 @@ const RootNavigation = (props) => {
       );
       setPreviousUrl(window.location.href);
     }
+    const element = document.querySelector('#main-body-wrapper');
+    if (element) {
+      element.scrollTo({ top: 0 });
+    }
   }, [location]);
 
   useEffect(() => {
