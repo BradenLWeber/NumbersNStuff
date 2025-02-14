@@ -168,7 +168,7 @@ const RootNavigation = (props) => {
                   id='mobile-menu-wrapper'
                   width={250}
                   maxWidth='80vw'
-                  backgroundColor={Color.primaryLight}
+                  backgroundColor={Color.white}
                   height='100%'
                 >
                   {['Posts', 'Playgrounds', 'About'].map((text, i, arr) => (

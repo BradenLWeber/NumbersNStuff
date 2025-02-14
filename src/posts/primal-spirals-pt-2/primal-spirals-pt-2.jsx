@@ -51,7 +51,7 @@ import UlamSpiralZoomed from './ulam-spiral-zoomed.png';
 import Wrapper from 'components/post/post-wrapper';
 
 export const primalSpiralsPt2Title = 'Primal Spirals - Part 2';
-export const primalSpiralsPt2Date = '8/25/2024';
+export const primalSpiralsPt2Date = '2/13/2025';
 
 export const PrimalSpiralsPt2 = () => {
   return (
